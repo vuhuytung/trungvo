@@ -1,0 +1,797 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://117.103.196.16:8088/WcfServiceAPI?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Go.Image.Entity" />
+  <xs:import schemaLocation="http://117.103.196.16:8088/WcfServiceAPI?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="GoClubs_UploadImageBase64">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="content" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="extention" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="accountId" type="xs:long" />
+        <xs:element minOccurs="0" name="returnSize" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoClubs_UploadImageBase64Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GoClubs_UploadImageBase64Result" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoClubs_GetAllAlbumsByUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="accountId" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoClubs_GetAllAlbumsByUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GoClubs_GetAllAlbumsByUserResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoClubs_GetAllImagesByAlbum">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="albumId" type="xs:long" />
+        <xs:element minOccurs="0" name="returnSize" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoClubs_GetAllImagesByAlbumResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GoClubs_GetAllImagesByAlbumResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoClubs_GetPageImagesByAlbum">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="albumId" type="xs:long" />
+        <xs:element minOccurs="0" name="returnSize" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element minOccurs="0" name="totalRecord" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoClubs_GetPageImagesByAlbumResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GoClubs_GetPageImagesByAlbumResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="totalRecord" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoClubs_GetAllImagesInDefaultAlbum">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="accountId" type="xs:long" />
+        <xs:element minOccurs="0" name="returnSize" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoClubs_GetAllImagesInDefaultAlbumResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GoClubs_GetAllImagesInDefaultAlbumResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoClubs_GetPageImagesInDefaultAlbum">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="accountId" type="xs:long" />
+        <xs:element minOccurs="0" name="returnSize" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element minOccurs="0" name="totalRecord" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoClubs_GetPageImagesInDefaultAlbumResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GoClubs_GetPageImagesInDefaultAlbumResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="totalRecord" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoClubs_GetAlbumInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="albumId" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoClubs_GetAlbumInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GoClubs_GetAlbumInfoResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoClubs_GetImageInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="imageId" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoClubs_GetImageInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GoClubs_GetImageInfoResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoPortal_GetImageByCategoryWithFilter">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="categoryId" type="xs:int" />
+        <xs:element minOccurs="0" name="numberRecord" type="xs:int" />
+        <xs:element minOccurs="0" name="feature" type="xs:int" />
+        <xs:element minOccurs="0" name="duration" type="xs:int" />
+        <xs:element minOccurs="0" name="returnSize" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoPortal_GetImageByCategoryWithFilterResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GoPortal_GetImageByCategoryWithFilterResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Embedded_GetAllCategory">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Embedded_GetAllCategoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Embedded_GetAllCategoryResult" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Embedded_GetPageAlbumByCategory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="categoryId" type="xs:int" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element minOccurs="0" name="totalRecord" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Embedded_GetPageAlbumByCategoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Embedded_GetPageAlbumByCategoryResult" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="totalRecord" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Embedded_GetPageImageByAlbum">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="albumId" type="xs:long" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element minOccurs="0" name="totalRecord" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Embedded_GetPageImageByAlbumResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Embedded_GetPageImageByAlbumResult" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="totalRecord" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Embedded_GetMostViewedAlbum">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element minOccurs="0" name="totalRecord" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Embedded_GetMostViewedAlbumResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Embedded_GetMostViewedAlbumResult" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="totalRecord" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Embedded_GetMostViewedImage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element minOccurs="0" name="totalRecord" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Embedded_GetMostViewedImageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Embedded_GetMostViewedImageResult" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="totalRecord" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServerInfo">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServerInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ServerInfoResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoNews_UploadImage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="buffer" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="extention" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="accountId" type="xs:long" />
+        <xs:element minOccurs="0" name="returnSize" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoNews_UploadImageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GoNews_UploadImageResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoNews_UploadImageBase64">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="content" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="extention" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="accountId" type="xs:long" />
+        <xs:element minOccurs="0" name="returnSize" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoNews_UploadImageBase64Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GoNews_UploadImageBase64Result" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoNews_DeleteImage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="accountId" type="xs:long" />
+        <xs:element minOccurs="0" name="imageId" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoNews_DeleteImageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GoNews_DeleteImageResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoNews_GetImageList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="accountId" type="xs:long" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element minOccurs="0" name="totalRecord" type="xs:long" />
+        <xs:element minOccurs="0" name="returnSize" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoNews_GetImageListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GoNews_GetImageListResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="totalRecord" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoNews_GetImageListByDate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="accountId" type="xs:long" />
+        <xs:element minOccurs="0" name="fromDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="toDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element minOccurs="0" name="totalRecord" type="xs:long" />
+        <xs:element minOccurs="0" name="returnSize" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoNews_GetImageListByDateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GoNews_GetImageListByDateResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="totalRecord" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Missteen_UploadImageBase64">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="content" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="extention" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="accountId" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Missteen_UploadImageBase64Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Missteen_UploadImageBase64Result" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Missteen_UploadImage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="buffer" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="extention" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="accountId" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Missteen_UploadImageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Missteen_UploadImageResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Missteen_GetNumberOfImageByAccountId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="accountId" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Missteen_GetNumberOfImageByAccountIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Missteen_GetNumberOfImageByAccountIdResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Missteen_UpdateUserInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="accountId" type="xs:long" />
+        <xs:element minOccurs="0" name="registrationNumber" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="registrationName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Missteen_UpdateUserInfoResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoBlogs_UploadImage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="buffer" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="extention" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="accountId" type="xs:long" />
+        <xs:element minOccurs="0" name="returnSize" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoBlogs_UploadImageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GoBlogs_UploadImageResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoBlogs_UploadImageBase64">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="content" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="extention" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="accountId" type="xs:long" />
+        <xs:element minOccurs="0" name="returnSize" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoBlogs_UploadImageBase64Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GoBlogs_UploadImageBase64Result" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoBlogs_GetAllImages">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="accountId" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoBlogs_GetAllImagesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GoBlogs_GetAllImagesResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoBlogs_GetImagesInBlogs">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="accountId" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoBlogs_GetImagesInBlogsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GoBlogs_GetImagesInBlogsResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoBlogs_GetImagesInBlogsByDate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="accountId" type="xs:long" />
+        <xs:element minOccurs="0" name="fromDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="toDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element minOccurs="0" name="totalRecord" type="xs:long" />
+        <xs:element minOccurs="0" name="returnSize" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoBlogs_GetImagesInBlogsByDateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GoBlogs_GetImagesInBlogsByDateResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="totalRecord" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoBlogs_GetAllAlbumsByUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="accountId" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoBlogs_GetAllAlbumsByUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GoBlogs_GetAllAlbumsByUserResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoBlogs_GetPageAlbumsByUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="accountId" type="xs:long" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element minOccurs="0" name="totalRecord" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoBlogs_GetPageAlbumsByUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GoBlogs_GetPageAlbumsByUserResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="totalRecord" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoBlogs_GetAllImagesByAlbum">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="albumId" type="xs:long" />
+        <xs:element minOccurs="0" name="returnSize" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoBlogs_GetAllImagesByAlbumResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GoBlogs_GetAllImagesByAlbumResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoBlogs_GetPageImagesByAlbum">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="albumId" type="xs:long" />
+        <xs:element minOccurs="0" name="returnSize" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element minOccurs="0" name="totalRecord" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoBlogs_GetPageImagesByAlbumResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GoBlogs_GetPageImagesByAlbumResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="totalRecord" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoBlogs_GetAllImagesInDefaultAlbum">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="accountId" type="xs:long" />
+        <xs:element minOccurs="0" name="returnSize" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoBlogs_GetAllImagesInDefaultAlbumResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GoBlogs_GetAllImagesInDefaultAlbumResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoBlogs_GetPageImagesInDefaultAlbum">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="accountId" type="xs:long" />
+        <xs:element minOccurs="0" name="returnSize" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element minOccurs="0" name="totalRecord" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoBlogs_GetPageImagesInDefaultAlbumResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GoBlogs_GetPageImagesInDefaultAlbumResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="totalRecord" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoGTS_GetHotAlbumsByCategory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="categoryId" type="xs:int" />
+        <xs:element minOccurs="0" name="numberRecord" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoGTS_GetHotAlbumsByCategoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GoGTS_GetHotAlbumsByCategoryResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoGTS_GetMostViewedAlbumsByCategory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="categoryId" type="xs:int" />
+        <xs:element minOccurs="0" name="numberRecord" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoGTS_GetMostViewedAlbumsByCategoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GoGTS_GetMostViewedAlbumsByCategoryResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoGTS_GetNewestAlbumsByCategory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="categoryId" type="xs:int" />
+        <xs:element minOccurs="0" name="numberRecord" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoGTS_GetNewestAlbumsByCategoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GoGTS_GetNewestAlbumsByCategoryResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoGTS_GetAllImageByAlbum">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="albumId" type="xs:long" />
+        <xs:element minOccurs="0" name="returnSize" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoGTS_GetAllImageByAlbumResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GoGTS_GetAllImageByAlbumResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoLocation_UploadImage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="buffer" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="extention" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="accountId" type="xs:long" />
+        <xs:element minOccurs="0" name="returnSize" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="imageId" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoLocation_UploadImageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GoLocation_UploadImageResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="imageId" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoLocation_UploadImageObject">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="buffer" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="extention" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="accountId" type="xs:long" />
+        <xs:element minOccurs="0" name="returnSize" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoLocation_UploadImageObjectResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Go.Image.Entity" minOccurs="0" name="GoLocation_UploadImageObjectResult" nillable="true" type="q1:Image" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoLocation_GetImageUrlById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="imageId" type="xs:long" />
+        <xs:element minOccurs="0" name="returnSize" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoLocation_GetImageUrlByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GoLocation_GetImageUrlByIdResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoLocation_GetImageById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="imageId" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoLocation_GetImageByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Go.Image.Entity" minOccurs="0" name="GoLocation_GetImageByIdResult" nillable="true" type="q2:Image" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoLocation_DeleteImage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="accountId" type="xs:long" />
+        <xs:element minOccurs="0" name="imageId" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoLocation_DeleteImageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GoLocation_DeleteImageResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoLocation_DeleteImages">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="accountId" type="xs:long" />
+        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="imageId" nillable="true" type="q3:ArrayOflong" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoLocation_DeleteImagesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GoLocation_DeleteImagesResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoLocation_GetImageList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="accountId" type="xs:long" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element minOccurs="0" name="totalRecord" type="xs:long" />
+        <xs:element minOccurs="0" name="returnSize" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoLocation_GetImageListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GoLocation_GetImageListResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="totalRecord" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoClubs_UploadImage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="buffer" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="extention" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="accountId" type="xs:long" />
+        <xs:element minOccurs="0" name="returnSize" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GoClubs_UploadImageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GoClubs_UploadImageResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

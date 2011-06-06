@@ -1,0 +1,926 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="UploadService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="NetTcpBinding_IUploadService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://117.103.196.16:8088/WcfServiceAPI?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://117.103.196.16:8088/WcfServiceAPI?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://117.103.196.16:8088/WcfServiceAPI?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Go.Image.Entity" />
+      <xsd:import schemaLocation="http://117.103.196.16:8088/WcfServiceAPI?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IUploadService_GoClubs_UploadImageBase64_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoClubs_UploadImageBase64" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoClubs_UploadImageBase64_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoClubs_UploadImageBase64Response" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoClubs_GetAllAlbumsByUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoClubs_GetAllAlbumsByUser" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoClubs_GetAllAlbumsByUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoClubs_GetAllAlbumsByUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoClubs_GetAllImagesByAlbum_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoClubs_GetAllImagesByAlbum" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoClubs_GetAllImagesByAlbum_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoClubs_GetAllImagesByAlbumResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoClubs_GetPageImagesByAlbum_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoClubs_GetPageImagesByAlbum" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoClubs_GetPageImagesByAlbum_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoClubs_GetPageImagesByAlbumResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoClubs_GetAllImagesInDefaultAlbum_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoClubs_GetAllImagesInDefaultAlbum" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoClubs_GetAllImagesInDefaultAlbum_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoClubs_GetAllImagesInDefaultAlbumResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoClubs_GetPageImagesInDefaultAlbum_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoClubs_GetPageImagesInDefaultAlbum" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoClubs_GetPageImagesInDefaultAlbum_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoClubs_GetPageImagesInDefaultAlbumResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoClubs_GetAlbumInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoClubs_GetAlbumInfo" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoClubs_GetAlbumInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoClubs_GetAlbumInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoClubs_GetImageInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoClubs_GetImageInfo" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoClubs_GetImageInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoClubs_GetImageInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoPortal_GetImageByCategoryWithFilter_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoPortal_GetImageByCategoryWithFilter" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoPortal_GetImageByCategoryWithFilter_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoPortal_GetImageByCategoryWithFilterResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_Embedded_GetAllCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:Embedded_GetAllCategory" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_Embedded_GetAllCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Embedded_GetAllCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_Embedded_GetPageAlbumByCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:Embedded_GetPageAlbumByCategory" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_Embedded_GetPageAlbumByCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Embedded_GetPageAlbumByCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_Embedded_GetPageImageByAlbum_InputMessage">
+    <wsdl:part name="parameters" element="tns:Embedded_GetPageImageByAlbum" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_Embedded_GetPageImageByAlbum_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Embedded_GetPageImageByAlbumResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_Embedded_GetMostViewedAlbum_InputMessage">
+    <wsdl:part name="parameters" element="tns:Embedded_GetMostViewedAlbum" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_Embedded_GetMostViewedAlbum_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Embedded_GetMostViewedAlbumResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_Embedded_GetMostViewedImage_InputMessage">
+    <wsdl:part name="parameters" element="tns:Embedded_GetMostViewedImage" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_Embedded_GetMostViewedImage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Embedded_GetMostViewedImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_ServerInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServerInfo" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_ServerInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServerInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoNews_UploadImage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoNews_UploadImage" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoNews_UploadImage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoNews_UploadImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoNews_UploadImageBase64_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoNews_UploadImageBase64" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoNews_UploadImageBase64_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoNews_UploadImageBase64Response" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoNews_DeleteImage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoNews_DeleteImage" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoNews_DeleteImage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoNews_DeleteImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoNews_GetImageList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoNews_GetImageList" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoNews_GetImageList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoNews_GetImageListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoNews_GetImageListByDate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoNews_GetImageListByDate" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoNews_GetImageListByDate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoNews_GetImageListByDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_Missteen_UploadImageBase64_InputMessage">
+    <wsdl:part name="parameters" element="tns:Missteen_UploadImageBase64" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_Missteen_UploadImageBase64_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Missteen_UploadImageBase64Response" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_Missteen_UploadImage_InputMessage">
+    <wsdl:part name="parameters" element="tns:Missteen_UploadImage" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_Missteen_UploadImage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Missteen_UploadImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_Missteen_GetNumberOfImageByAccountId_InputMessage">
+    <wsdl:part name="parameters" element="tns:Missteen_GetNumberOfImageByAccountId" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_Missteen_GetNumberOfImageByAccountId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Missteen_GetNumberOfImageByAccountIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_Missteen_UpdateUserInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:Missteen_UpdateUserInfo" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_Missteen_UpdateUserInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Missteen_UpdateUserInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoBlogs_UploadImage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoBlogs_UploadImage" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoBlogs_UploadImage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoBlogs_UploadImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoBlogs_UploadImageBase64_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoBlogs_UploadImageBase64" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoBlogs_UploadImageBase64_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoBlogs_UploadImageBase64Response" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoBlogs_GetAllImages_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoBlogs_GetAllImages" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoBlogs_GetAllImages_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoBlogs_GetAllImagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoBlogs_GetImagesInBlogs_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoBlogs_GetImagesInBlogs" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoBlogs_GetImagesInBlogs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoBlogs_GetImagesInBlogsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoBlogs_GetImagesInBlogsByDate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoBlogs_GetImagesInBlogsByDate" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoBlogs_GetImagesInBlogsByDate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoBlogs_GetImagesInBlogsByDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoBlogs_GetAllAlbumsByUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoBlogs_GetAllAlbumsByUser" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoBlogs_GetAllAlbumsByUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoBlogs_GetAllAlbumsByUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoBlogs_GetPageAlbumsByUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoBlogs_GetPageAlbumsByUser" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoBlogs_GetPageAlbumsByUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoBlogs_GetPageAlbumsByUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoBlogs_GetAllImagesByAlbum_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoBlogs_GetAllImagesByAlbum" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoBlogs_GetAllImagesByAlbum_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoBlogs_GetAllImagesByAlbumResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoBlogs_GetPageImagesByAlbum_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoBlogs_GetPageImagesByAlbum" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoBlogs_GetPageImagesByAlbum_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoBlogs_GetPageImagesByAlbumResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoBlogs_GetAllImagesInDefaultAlbum_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoBlogs_GetAllImagesInDefaultAlbum" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoBlogs_GetAllImagesInDefaultAlbum_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoBlogs_GetAllImagesInDefaultAlbumResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoBlogs_GetPageImagesInDefaultAlbum_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoBlogs_GetPageImagesInDefaultAlbum" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoBlogs_GetPageImagesInDefaultAlbum_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoBlogs_GetPageImagesInDefaultAlbumResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoGTS_GetHotAlbumsByCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoGTS_GetHotAlbumsByCategory" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoGTS_GetHotAlbumsByCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoGTS_GetHotAlbumsByCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoGTS_GetMostViewedAlbumsByCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoGTS_GetMostViewedAlbumsByCategory" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoGTS_GetMostViewedAlbumsByCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoGTS_GetMostViewedAlbumsByCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoGTS_GetNewestAlbumsByCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoGTS_GetNewestAlbumsByCategory" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoGTS_GetNewestAlbumsByCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoGTS_GetNewestAlbumsByCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoGTS_GetAllImageByAlbum_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoGTS_GetAllImageByAlbum" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoGTS_GetAllImageByAlbum_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoGTS_GetAllImageByAlbumResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoLocation_UploadImage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoLocation_UploadImage" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoLocation_UploadImage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoLocation_UploadImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoLocation_UploadImageObject_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoLocation_UploadImageObject" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoLocation_UploadImageObject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoLocation_UploadImageObjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoLocation_GetImageUrlById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoLocation_GetImageUrlById" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoLocation_GetImageUrlById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoLocation_GetImageUrlByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoLocation_GetImageById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoLocation_GetImageById" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoLocation_GetImageById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoLocation_GetImageByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoLocation_DeleteImage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoLocation_DeleteImage" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoLocation_DeleteImage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoLocation_DeleteImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoLocation_DeleteImages_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoLocation_DeleteImages" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoLocation_DeleteImages_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoLocation_DeleteImagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoLocation_GetImageList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoLocation_GetImageList" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoLocation_GetImageList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoLocation_GetImageListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoClubs_UploadImage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GoClubs_UploadImage" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_GoClubs_UploadImage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GoClubs_UploadImageResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IUploadService">
+    <wsdl:operation name="GoClubs_UploadImageBase64">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoClubs_UploadImageBase64" message="tns:IUploadService_GoClubs_UploadImageBase64_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoClubs_UploadImageBase64Response" message="tns:IUploadService_GoClubs_UploadImageBase64_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoClubs_GetAllAlbumsByUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoClubs_GetAllAlbumsByUser" message="tns:IUploadService_GoClubs_GetAllAlbumsByUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoClubs_GetAllAlbumsByUserResponse" message="tns:IUploadService_GoClubs_GetAllAlbumsByUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoClubs_GetAllImagesByAlbum">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoClubs_GetAllImagesByAlbum" message="tns:IUploadService_GoClubs_GetAllImagesByAlbum_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoClubs_GetAllImagesByAlbumResponse" message="tns:IUploadService_GoClubs_GetAllImagesByAlbum_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoClubs_GetPageImagesByAlbum">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoClubs_GetPageImagesByAlbum" message="tns:IUploadService_GoClubs_GetPageImagesByAlbum_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoClubs_GetPageImagesByAlbumResponse" message="tns:IUploadService_GoClubs_GetPageImagesByAlbum_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoClubs_GetAllImagesInDefaultAlbum">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoClubs_GetAllImagesInDefaultAlbum" message="tns:IUploadService_GoClubs_GetAllImagesInDefaultAlbum_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoClubs_GetAllImagesInDefaultAlbumResponse" message="tns:IUploadService_GoClubs_GetAllImagesInDefaultAlbum_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoClubs_GetPageImagesInDefaultAlbum">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoClubs_GetPageImagesInDefaultAlbum" message="tns:IUploadService_GoClubs_GetPageImagesInDefaultAlbum_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoClubs_GetPageImagesInDefaultAlbumResponse" message="tns:IUploadService_GoClubs_GetPageImagesInDefaultAlbum_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoClubs_GetAlbumInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoClubs_GetAlbumInfo" message="tns:IUploadService_GoClubs_GetAlbumInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoClubs_GetAlbumInfoResponse" message="tns:IUploadService_GoClubs_GetAlbumInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoClubs_GetImageInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoClubs_GetImageInfo" message="tns:IUploadService_GoClubs_GetImageInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoClubs_GetImageInfoResponse" message="tns:IUploadService_GoClubs_GetImageInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoPortal_GetImageByCategoryWithFilter">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoPortal_GetImageByCategoryWithFilter" message="tns:IUploadService_GoPortal_GetImageByCategoryWithFilter_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoPortal_GetImageByCategoryWithFilterResponse" message="tns:IUploadService_GoPortal_GetImageByCategoryWithFilter_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Embedded_GetAllCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/Embedded_GetAllCategory" message="tns:IUploadService_Embedded_GetAllCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/Embedded_GetAllCategoryResponse" message="tns:IUploadService_Embedded_GetAllCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Embedded_GetPageAlbumByCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/Embedded_GetPageAlbumByCategory" message="tns:IUploadService_Embedded_GetPageAlbumByCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/Embedded_GetPageAlbumByCategoryResponse" message="tns:IUploadService_Embedded_GetPageAlbumByCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Embedded_GetPageImageByAlbum">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/Embedded_GetPageImageByAlbum" message="tns:IUploadService_Embedded_GetPageImageByAlbum_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/Embedded_GetPageImageByAlbumResponse" message="tns:IUploadService_Embedded_GetPageImageByAlbum_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Embedded_GetMostViewedAlbum">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/Embedded_GetMostViewedAlbum" message="tns:IUploadService_Embedded_GetMostViewedAlbum_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/Embedded_GetMostViewedAlbumResponse" message="tns:IUploadService_Embedded_GetMostViewedAlbum_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Embedded_GetMostViewedImage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/Embedded_GetMostViewedImage" message="tns:IUploadService_Embedded_GetMostViewedImage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/Embedded_GetMostViewedImageResponse" message="tns:IUploadService_Embedded_GetMostViewedImage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServerInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/ServerInfo" message="tns:IUploadService_ServerInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/ServerInfoResponse" message="tns:IUploadService_ServerInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoNews_UploadImage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoNews_UploadImage" message="tns:IUploadService_GoNews_UploadImage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoNews_UploadImageResponse" message="tns:IUploadService_GoNews_UploadImage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoNews_UploadImageBase64">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoNews_UploadImageBase64" message="tns:IUploadService_GoNews_UploadImageBase64_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoNews_UploadImageBase64Response" message="tns:IUploadService_GoNews_UploadImageBase64_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoNews_DeleteImage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoNews_DeleteImage" message="tns:IUploadService_GoNews_DeleteImage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoNews_DeleteImageResponse" message="tns:IUploadService_GoNews_DeleteImage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoNews_GetImageList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoNews_GetImageList" message="tns:IUploadService_GoNews_GetImageList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoNews_GetImageListResponse" message="tns:IUploadService_GoNews_GetImageList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoNews_GetImageListByDate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoNews_GetImageListByDate" message="tns:IUploadService_GoNews_GetImageListByDate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoNews_GetImageListByDateResponse" message="tns:IUploadService_GoNews_GetImageListByDate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Missteen_UploadImageBase64">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/Missteen_UploadImageBase64" message="tns:IUploadService_Missteen_UploadImageBase64_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/Missteen_UploadImageBase64Response" message="tns:IUploadService_Missteen_UploadImageBase64_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Missteen_UploadImage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/Missteen_UploadImage" message="tns:IUploadService_Missteen_UploadImage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/Missteen_UploadImageResponse" message="tns:IUploadService_Missteen_UploadImage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Missteen_GetNumberOfImageByAccountId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/Missteen_GetNumberOfImageByAccountId" message="tns:IUploadService_Missteen_GetNumberOfImageByAccountId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/Missteen_GetNumberOfImageByAccountIdResponse" message="tns:IUploadService_Missteen_GetNumberOfImageByAccountId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Missteen_UpdateUserInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/Missteen_UpdateUserInfo" message="tns:IUploadService_Missteen_UpdateUserInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/Missteen_UpdateUserInfoResponse" message="tns:IUploadService_Missteen_UpdateUserInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoBlogs_UploadImage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoBlogs_UploadImage" message="tns:IUploadService_GoBlogs_UploadImage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoBlogs_UploadImageResponse" message="tns:IUploadService_GoBlogs_UploadImage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoBlogs_UploadImageBase64">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoBlogs_UploadImageBase64" message="tns:IUploadService_GoBlogs_UploadImageBase64_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoBlogs_UploadImageBase64Response" message="tns:IUploadService_GoBlogs_UploadImageBase64_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoBlogs_GetAllImages">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoBlogs_GetAllImages" message="tns:IUploadService_GoBlogs_GetAllImages_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoBlogs_GetAllImagesResponse" message="tns:IUploadService_GoBlogs_GetAllImages_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoBlogs_GetImagesInBlogs">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoBlogs_GetImagesInBlogs" message="tns:IUploadService_GoBlogs_GetImagesInBlogs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoBlogs_GetImagesInBlogsResponse" message="tns:IUploadService_GoBlogs_GetImagesInBlogs_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoBlogs_GetImagesInBlogsByDate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoBlogs_GetImagesInBlogsByDate" message="tns:IUploadService_GoBlogs_GetImagesInBlogsByDate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoBlogs_GetImagesInBlogsByDateResponse" message="tns:IUploadService_GoBlogs_GetImagesInBlogsByDate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoBlogs_GetAllAlbumsByUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoBlogs_GetAllAlbumsByUser" message="tns:IUploadService_GoBlogs_GetAllAlbumsByUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoBlogs_GetAllAlbumsByUserResponse" message="tns:IUploadService_GoBlogs_GetAllAlbumsByUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoBlogs_GetPageAlbumsByUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoBlogs_GetPageAlbumsByUser" message="tns:IUploadService_GoBlogs_GetPageAlbumsByUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoBlogs_GetPageAlbumsByUserResponse" message="tns:IUploadService_GoBlogs_GetPageAlbumsByUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoBlogs_GetAllImagesByAlbum">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoBlogs_GetAllImagesByAlbum" message="tns:IUploadService_GoBlogs_GetAllImagesByAlbum_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoBlogs_GetAllImagesByAlbumResponse" message="tns:IUploadService_GoBlogs_GetAllImagesByAlbum_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoBlogs_GetPageImagesByAlbum">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoBlogs_GetPageImagesByAlbum" message="tns:IUploadService_GoBlogs_GetPageImagesByAlbum_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoBlogs_GetPageImagesByAlbumResponse" message="tns:IUploadService_GoBlogs_GetPageImagesByAlbum_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoBlogs_GetAllImagesInDefaultAlbum">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoBlogs_GetAllImagesInDefaultAlbum" message="tns:IUploadService_GoBlogs_GetAllImagesInDefaultAlbum_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoBlogs_GetAllImagesInDefaultAlbumResponse" message="tns:IUploadService_GoBlogs_GetAllImagesInDefaultAlbum_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoBlogs_GetPageImagesInDefaultAlbum">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoBlogs_GetPageImagesInDefaultAlbum" message="tns:IUploadService_GoBlogs_GetPageImagesInDefaultAlbum_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoBlogs_GetPageImagesInDefaultAlbumResponse" message="tns:IUploadService_GoBlogs_GetPageImagesInDefaultAlbum_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoGTS_GetHotAlbumsByCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoGTS_GetHotAlbumsByCategory" message="tns:IUploadService_GoGTS_GetHotAlbumsByCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoGTS_GetHotAlbumsByCategoryResponse" message="tns:IUploadService_GoGTS_GetHotAlbumsByCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoGTS_GetMostViewedAlbumsByCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoGTS_GetMostViewedAlbumsByCategory" message="tns:IUploadService_GoGTS_GetMostViewedAlbumsByCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoGTS_GetMostViewedAlbumsByCategoryResponse" message="tns:IUploadService_GoGTS_GetMostViewedAlbumsByCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoGTS_GetNewestAlbumsByCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoGTS_GetNewestAlbumsByCategory" message="tns:IUploadService_GoGTS_GetNewestAlbumsByCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoGTS_GetNewestAlbumsByCategoryResponse" message="tns:IUploadService_GoGTS_GetNewestAlbumsByCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoGTS_GetAllImageByAlbum">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoGTS_GetAllImageByAlbum" message="tns:IUploadService_GoGTS_GetAllImageByAlbum_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoGTS_GetAllImageByAlbumResponse" message="tns:IUploadService_GoGTS_GetAllImageByAlbum_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoLocation_UploadImage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoLocation_UploadImage" message="tns:IUploadService_GoLocation_UploadImage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoLocation_UploadImageResponse" message="tns:IUploadService_GoLocation_UploadImage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoLocation_UploadImageObject">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoLocation_UploadImageObject" message="tns:IUploadService_GoLocation_UploadImageObject_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoLocation_UploadImageObjectResponse" message="tns:IUploadService_GoLocation_UploadImageObject_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoLocation_GetImageUrlById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoLocation_GetImageUrlById" message="tns:IUploadService_GoLocation_GetImageUrlById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoLocation_GetImageUrlByIdResponse" message="tns:IUploadService_GoLocation_GetImageUrlById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoLocation_GetImageById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoLocation_GetImageById" message="tns:IUploadService_GoLocation_GetImageById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoLocation_GetImageByIdResponse" message="tns:IUploadService_GoLocation_GetImageById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoLocation_DeleteImage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoLocation_DeleteImage" message="tns:IUploadService_GoLocation_DeleteImage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoLocation_DeleteImageResponse" message="tns:IUploadService_GoLocation_DeleteImage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoLocation_DeleteImages">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoLocation_DeleteImages" message="tns:IUploadService_GoLocation_DeleteImages_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoLocation_DeleteImagesResponse" message="tns:IUploadService_GoLocation_DeleteImages_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoLocation_GetImageList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoLocation_GetImageList" message="tns:IUploadService_GoLocation_GetImageList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoLocation_GetImageListResponse" message="tns:IUploadService_GoLocation_GetImageList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GoClubs_UploadImage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUploadService/GoClubs_UploadImage" message="tns:IUploadService_GoClubs_UploadImage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUploadService/GoClubs_UploadImageResponse" message="tns:IUploadService_GoClubs_UploadImage_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NetTcpBinding_IUploadService" type="tns:IUploadService">
+    <wsp:PolicyReference URI="#NetTcpBinding_IUploadService_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="GoClubs_UploadImageBase64">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoClubs_UploadImageBase64" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoClubs_GetAllAlbumsByUser">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoClubs_GetAllAlbumsByUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoClubs_GetAllImagesByAlbum">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoClubs_GetAllImagesByAlbum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoClubs_GetPageImagesByAlbum">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoClubs_GetPageImagesByAlbum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoClubs_GetAllImagesInDefaultAlbum">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoClubs_GetAllImagesInDefaultAlbum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoClubs_GetPageImagesInDefaultAlbum">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoClubs_GetPageImagesInDefaultAlbum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoClubs_GetAlbumInfo">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoClubs_GetAlbumInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoClubs_GetImageInfo">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoClubs_GetImageInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoPortal_GetImageByCategoryWithFilter">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoPortal_GetImageByCategoryWithFilter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Embedded_GetAllCategory">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/Embedded_GetAllCategory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Embedded_GetPageAlbumByCategory">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/Embedded_GetPageAlbumByCategory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Embedded_GetPageImageByAlbum">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/Embedded_GetPageImageByAlbum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Embedded_GetMostViewedAlbum">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/Embedded_GetMostViewedAlbum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Embedded_GetMostViewedImage">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/Embedded_GetMostViewedImage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServerInfo">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/ServerInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoNews_UploadImage">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoNews_UploadImage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoNews_UploadImageBase64">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoNews_UploadImageBase64" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoNews_DeleteImage">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoNews_DeleteImage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoNews_GetImageList">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoNews_GetImageList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoNews_GetImageListByDate">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoNews_GetImageListByDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Missteen_UploadImageBase64">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/Missteen_UploadImageBase64" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Missteen_UploadImage">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/Missteen_UploadImage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Missteen_GetNumberOfImageByAccountId">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/Missteen_GetNumberOfImageByAccountId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Missteen_UpdateUserInfo">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/Missteen_UpdateUserInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoBlogs_UploadImage">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoBlogs_UploadImage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoBlogs_UploadImageBase64">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoBlogs_UploadImageBase64" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoBlogs_GetAllImages">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoBlogs_GetAllImages" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoBlogs_GetImagesInBlogs">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoBlogs_GetImagesInBlogs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoBlogs_GetImagesInBlogsByDate">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoBlogs_GetImagesInBlogsByDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoBlogs_GetAllAlbumsByUser">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoBlogs_GetAllAlbumsByUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoBlogs_GetPageAlbumsByUser">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoBlogs_GetPageAlbumsByUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoBlogs_GetAllImagesByAlbum">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoBlogs_GetAllImagesByAlbum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoBlogs_GetPageImagesByAlbum">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoBlogs_GetPageImagesByAlbum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoBlogs_GetAllImagesInDefaultAlbum">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoBlogs_GetAllImagesInDefaultAlbum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoBlogs_GetPageImagesInDefaultAlbum">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoBlogs_GetPageImagesInDefaultAlbum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoGTS_GetHotAlbumsByCategory">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoGTS_GetHotAlbumsByCategory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoGTS_GetMostViewedAlbumsByCategory">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoGTS_GetMostViewedAlbumsByCategory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoGTS_GetNewestAlbumsByCategory">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoGTS_GetNewestAlbumsByCategory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoGTS_GetAllImageByAlbum">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoGTS_GetAllImageByAlbum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoLocation_UploadImage">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoLocation_UploadImage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoLocation_UploadImageObject">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoLocation_UploadImageObject" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoLocation_GetImageUrlById">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoLocation_GetImageUrlById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoLocation_GetImageById">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoLocation_GetImageById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoLocation_DeleteImage">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoLocation_DeleteImage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoLocation_DeleteImages">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoLocation_DeleteImages" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoLocation_GetImageList">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoLocation_GetImageList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GoClubs_UploadImage">
+      <soap12:operation soapAction="http://tempuri.org/IUploadService/GoClubs_UploadImage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UploadService">
+    <wsdl:port name="NetTcpBinding_IUploadService" binding="tns:NetTcpBinding_IUploadService">
+      <soap12:address location="net.tcp://117.103.196.16:8089/WcfServiceAPI" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://117.103.196.16:8089/WcfServiceAPI</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

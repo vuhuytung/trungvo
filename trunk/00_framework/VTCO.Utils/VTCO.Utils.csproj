@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{807A8C12-E6BA-441E-9791-AD832F178B95}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VTCO.Utils</RootNamespace>
+    <AssemblyName>VTCO.Utils</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Enyim.Caching">
+      <HintPath>..\..\_dlls\Enyim.Caching.dll</HintPath>
+    </Reference>
+    <Reference Include="Go.Solr.Entity, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\_dlls\Go.Solr.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Caching">
+      <HintPath>..\..\_dlls\Microsoft.Practices.EnterpriseLibrary.Caching.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging">
+      <HintPath>..\..\_dlls\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\_dlls\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SolrNet, Version=0.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\_dlls\SolrNet.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UserInfo, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\_dlls\UserInfo.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdminUtils.cs" />
+    <Compile Include="Caching.cs" />
+    <Compile Include="DeepZoomComposer\DeepZoomCreationProgressEventArgs.cs" />
+    <Compile Include="DeepZoomComposer\DeepZoomGenerator.cs" />
+    <Compile Include="DeepZoomComposer\EditableBitmap.cs" />
+    <Compile Include="Encryption.cs" />
+    <Compile Include="GoServices\Banknetvn.cs" />
+    <Compile Include="GoServices\Bet168.cs" />
+    <Compile Include="GoServices\GoRaoVatServices.cs" />
+    <Compile Include="GoServices\ActivityWS.cs" />
+    <Compile Include="GoServices\NganLuong.cs" />
+    <Compile Include="GoServices\VTCebankSSO\CacheRepository.cs" />
+    <Compile Include="GoServices\VTCebankSSO\DataCaching.cs" />
+    <Compile Include="GoServices\VTCebankSSO\HttpHelper.cs" />
+    <Compile Include="GoServices\VTCebankSSO\SSOHelper.cs" />
+    <Compile Include="GoServices\UserInfoAPI.cs" />
+    <Compile Include="GoServices\VTCebankSSO\KeyGenerate.cs" />
+    <Compile Include="GoServices\WSMapApi.cs" />
+    <Compile Include="JMessageLog.cs" />
+    <Compile Include="Logging.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RijndaelEnhanced.cs" />
+    <Compile Include="UserUtils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VTCO.Config\VTCO.Config.csproj">
+      <Project>{68071AC2-E372-4AAB-AFF6-387D0A943FCB}</Project>
+      <Name>VTCO.Config</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
