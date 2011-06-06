@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://117.103.196.16:8088/WcfServiceAPI?wsdl" docRef="http://117.103.196.16:8088/WcfServiceAPI" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+</discovery>
