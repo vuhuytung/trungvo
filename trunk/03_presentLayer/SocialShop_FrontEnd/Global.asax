@@ -45,49 +45,49 @@
          * the Session and Authentication logic and if we update the cookies here we'll get our
          * Session and Authentication restored correctly
          */
-        string[] arrSessionCookie = {
-                                        VTCO.Config.Constants.COOKIE_LOGIN_TYPE,
-                                        VTCO.Config.Constants.COOKIE_USER_ID,
-                                        VTCO.Config.Constants.COOKIE_PAYGATE_ID,
-                                        VTCO.Config.Constants.COOKIE_PAYGATE_NAME,
-                                        VTCO.Config.Constants.COOKIE_PUBLIC_NAME,
-                                        VTCO.Config.Constants.COOKIE_SHOP_ID,
-                                        VTCO.Config.Constants.COOKIE_SHOP_NAME
-                                    };
+        //string[] arrSessionCookie = {
+        //                                VTCO.Config.Constants.COOKIE_LOGIN_TYPE,
+        //                                VTCO.Config.Constants.COOKIE_USER_ID,
+        //                                VTCO.Config.Constants.COOKIE_PAYGATE_ID,
+        //                                VTCO.Config.Constants.COOKIE_PAYGATE_NAME,
+        //                                VTCO.Config.Constants.COOKIE_PUBLIC_NAME,
+        //                                VTCO.Config.Constants.COOKIE_SHOP_ID,
+        //                                VTCO.Config.Constants.COOKIE_SHOP_NAME
+        //                            };
 
 
-        try
-        {
-            string session_param_name = "ASPSESSID";
-            string strTemp = HttpContext.Current.Request.Form[session_param_name] ?? HttpContext.Current.Request.QueryString[session_param_name];
-            if (strTemp != null)
-            {
-                string[] arr = VTCO.Utils.UserUtils.GetDeCodeCookieData(strTemp);
-                for (int i = 0; i < arrSessionCookie.Length; i++)
-                {
-                    string session_cookie_name = arrSessionCookie[i];
-                    UpdateCookie(session_cookie_name, arr[i]);
-                }
-            }
-        }
-        catch (Exception)
-        {
-            Response.StatusCode = 500;
-            Response.Write("Error Initializing Session");
-        }
+        //try
+        //{
+        //    string session_param_name = "ASPSESSID";
+        //    string strTemp = HttpContext.Current.Request.Form[session_param_name] ?? HttpContext.Current.Request.QueryString[session_param_name];
+        //    if (strTemp != null)
+        //    {
+        //        string[] arr = VTCO.Utils.UserUtils.GetDeCodeCookieData(strTemp);
+        //        for (int i = 0; i < arrSessionCookie.Length; i++)
+        //        {
+        //            string session_cookie_name = arrSessionCookie[i];
+        //            UpdateCookie(session_cookie_name, arr[i]);
+        //        }
+        //    }
+        //}
+        //catch (Exception)
+        //{
+        //    Response.StatusCode = 500;
+        //    Response.Write("Error Initializing Session");
+        //}
 
     }
     void UpdateCookie(string cookie_name, string cookie_value)
     {
-        HttpCookie cookie = HttpContext.Current.Request.Cookies.Get(cookie_name);
-        if (cookie == null)
-        {
-            cookie = new HttpCookie(cookie_name);
-            cookie.HttpOnly = true;
-            HttpContext.Current.Request.Cookies.Add(cookie);
-        }
-        cookie.Value = cookie_value;
-        cookie.HttpOnly = true;
-        HttpContext.Current.Request.Cookies.Set(cookie);
+        //HttpCookie cookie = HttpContext.Current.Request.Cookies.Get(cookie_name);
+        //if (cookie == null)
+        //{
+        //    cookie = new HttpCookie(cookie_name);
+        //    cookie.HttpOnly = true;
+        //    HttpContext.Current.Request.Cookies.Add(cookie);
+        //}
+        //cookie.Value = cookie_value;
+        //cookie.HttpOnly = true;
+        //HttpContext.Current.Request.Cookies.Set(cookie);
     }
 </script>
