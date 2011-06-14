@@ -161,7 +161,7 @@ text-align:center;
 }
 .topFooter
 {
-    height:40px;
+    height:50px;
     text-align:center;
     background:url(/images/lineFooterH.png) no-repeat bottom center;
 }
@@ -169,7 +169,8 @@ text-align:center;
 
 .topFooter .menuItem
 {
-    line-height:35px;
+    height:40px;
+    line-height:30px;
     font-weight:bold;
     font-size:11px;
     padding:5px;
@@ -182,11 +183,10 @@ text-align:center;
 }
 .topFooter .line
 {
-    background:url(/images/line-topmenu.png) no-repeat 0 10px;
+    background:url(/images/line-topmenu.png) no-repeat 0 20px;
     width:2px;
-    display:block;
-    float:left;
-    height:30px;
+    display:inline-block;
+    height:40px;
 }
 .bottomFooter
 {
@@ -306,7 +306,7 @@ text-align:center;
 
 .box .spDate
 {
-    color:#AAA;
+    color:#AAA; 
     font-style:italic;
 }
 .box .otherTopNedws
