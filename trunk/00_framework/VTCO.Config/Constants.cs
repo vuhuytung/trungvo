@@ -12,7 +12,7 @@ namespace VTCO.Config
     {
         // Khai báo các Connection String key liên quan đến Solution
         #region ConnectionString Constant
-        public const string CONNECTION_STRING_SOCIALSHOP = "SocialShop.ConnectionString";
+        public const string CONNECTION_STRING = "ConnectionString";
         #endregion
 
         // Khai báo các Constant key các phân hệ

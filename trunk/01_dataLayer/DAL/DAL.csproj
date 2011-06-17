@@ -50,8 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBAdmin.cs" />
+    <Compile Include="DBCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SocialShop.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\00_framework\VTCO.Config\VTCO.Config.csproj">

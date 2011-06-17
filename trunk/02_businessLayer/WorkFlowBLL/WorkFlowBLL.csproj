@@ -112,7 +112,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CtrAdmin.cs" />
+    <Compile Include="CtrCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\ServiceUpload\Reference.cs">
       <AutoGen>True</AutoGen>

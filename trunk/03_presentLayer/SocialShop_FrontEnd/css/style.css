@@ -69,18 +69,8 @@ text-align:center;
     position:relative;
     z-index:10;
 }
-.menutop .menuParent
-{
-    line-height:25px;
-    font-weight:bold;
-    font-size:12px;
-    padding:5px;
-    margin:0 10px;
-    color:#000;
-    text-transform:uppercase;
-    font-family:Tahoma;
-    float:left;
-}
+
+
 .menutop li
 {
     display:inline;
@@ -113,15 +103,68 @@ text-align:center;
     width:9px;
     float:left;
 }
+
+.menutop .menuParent
+{
+    line-height:40px;
+    font-weight:bold;
+    font-size:12px;
+    padding:14px;
+    color:#000;
+    text-transform:uppercase;
+    font-family:Tahoma;
+    /*float:left;*/
+    background:url(/images/line-topmenu.png) no-repeat 0 10px;    
+} 
+
+.Menufirst
+{
+    background:none !important;
+}
+.liParent
+{
+    position:relative;
+}
+
+.ulChild1,.ulChild2
+{
+    position:absolute;
+    top:25px;
+    left:0px;
+    z-index:999;
+    background:#FFF;
+    display:block;
+    width:180px;
+}
+.ulChild1 li a,.ulChild2 li a
+{
+    height:30px;
+    line-height:30px;
+    display:block;
+    text-align:left;
+    border-top:solid 1px #EEE;
+    padding-left:10px;
+    background:#CDECDE;
+}
+.ulChild1 li a:hover,.ulChild2 li a:hover
+{
+    background-color:#FFF;
+}
+.ulChild2
+{
+    top:-1px;
+    left:180px;
+}
 .shadowTop
 {
-    background:url(/images/back-topbody.png) no-repeat top left;
+    background:url(/images/top-body.png) repeat-x top left;
     height:6px;    
     position:relative;
-    z-index:11;
-    width:1002px;
+    z-index:9;
+    width:990px;
+    margin:0 auto;
     padding-top:6px;
-    margin-top:-6px;
+    margin-top:-6px;    
 }
 .shadowBottom
 {
@@ -145,7 +188,7 @@ text-align:center;
     margin:0 auto;
     margin-top:-6px;
     position:relative;
-    z-index:15;
+    z-index:8;
     background:#FFF;
     text-align:left;
 }
