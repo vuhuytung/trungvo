@@ -1,0 +1,163 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<%@ Register Src="userControls/ucFooter.ascx" TagName="ucFooter" TagPrefix="uc1" %>
+<%@ Register Src="userControls/ucDoitac.ascx" TagName="ucDoitac" TagPrefix="uc2" %>
+<%@ Register Src="userControls/ucMenu.ascx" TagName="ucMenu" TagPrefix="uc3" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+    <!--[if IE 6]>
+    <script src="/js/framework/DD_belatedPNG_0.0.8a.js" type="text/javascript"></script>
+    <script>
+      /* EXAMPLE */
+      DD_belatedPNG.fix('.png_bg,img');
+  
+      /* string argument can be any CSS selector */
+      /* .png_bg example is unnecessary */
+      /* change it to what suits you! */
+    </script>
+    <![endif]-->
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div class="wrap">
+        <!--Begin header-->
+        <div class="header png_bg">
+            <div class="banner">
+            </div>
+            <!--Begin menutop-->
+            <uc3:ucMenu ID="ucMenu1" runat="server" />
+        </div>
+        <!--End header-->
+        <!--Begin main-->
+        <div class="clear">
+        </div>
+        <div class="main">
+            <div class="shadowTop png_bg">
+                <!-- -->
+            </div>
+            <!--Begin Main content-->
+            <div class="maincontent png_bg">
+                <div class="contentWrap">
+                    <div class="topSearch">
+                        <div class="containSubmenu">
+                        </div>
+                        <div class="leftTopSearch">
+                            <div class="showImage">
+                                <div>
+                                    <div style="height: 185px;">
+                                        <img src="/images/duan.png" width="427" height="185" />
+                                    </div>
+                                    <div style="height: 46px; margin-top: 15px; text-align: left; color: #ff8040;">
+                                        <div class="nl" style="width: 317px; font-weight: bold; font-family: Tahoma; margin: 0 10px;">
+                                            Căn hộ cao cấp ngoại ô thành phố Vinh</div>
+                                        <div class="nl">
+                                            <a href="#">
+                                                <img src="/images/btnChitiet.png" /></a></div>
+                                        <div class="clear">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="listImage">
+                                <table>
+                                    <tr>
+                                        <td valign="middle" class="titleListImage">
+                                            Căn hộ tại chung cư TECCO
+                                        </td>
+                                        <td class="frameListImage png_bg" valign="middle" align="center">
+                                            <img src="/images/duan1.png" width="110" height="67" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td valign="middle" class="titleListImage">
+                                            Căn hộ tại chung cư TECCO
+                                        </td>
+                                        <td class="frameListImage png_bg" valign="middle" align="center">
+                                            <img src="/images/duan1.png" width="110" height="67" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="clear">
+                            </div>
+                        </div>
+                        <div class="rightTopSearch">
+                            <div class="titleSearch png_bg">
+                                TÌM KIẾM NÂNG CAO
+                            </div>
+                            <div>
+                                <div class="label nl">
+                                    Tìm tại</div>
+                                <div class="value nr">
+                                    <select class="inputText" style="width: 80px;">
+                                        <option>Vinh</option>
+                                    </select></div>
+                                <div class="clear">
+                                </div>
+                                <div class="label nl">
+                                    Phường / Xã</div>
+                                <div class="value nr">
+                                    <select class="inputText" style="width: 100px;">
+                                        <option>[--Tất cả--]</option>
+                                    </select></div>
+                                <div class="clear">
+                                </div>
+                                <div class="label nl">
+                                    Loại hình</div>
+                                <div class="value nr">
+                                    <select class="inputText" style="width: 100px;">
+                                        <option>[--Tất cả--]</option>
+                                    </select></div>
+                                <div class="clear">
+                                </div>
+                                <div class="label nl">
+                                    Khoảng giá</div>
+                                <div class="value nr">
+                                    <select class="inputText" style="width: 80px;">
+                                        <option>[--Tất cả--]</option>
+                                    </select></div>
+                                <div class="clear">
+                                </div>
+                            </div>
+                            <div style="text-align: center; padding: 10px;">
+                                <a href="#">
+                                    <img src="/images/btnSearch.png" /></a>
+                            </div>
+                        </div>
+                        <div class="clear">
+                        </div>
+                        <!--End top search-->
+                    </div>
+                    <!--Begin body content-->
+                    <div class="bodyContent">
+                        <div class="leftMain nl">
+                            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                            </asp:ContentPlaceHolder>                            
+                        </div>
+                        <div class="rightMain nr">
+                            <uc2:ucDoitac ID="ucDoitac1" runat="server" />
+                        </div>
+                        <div class="clear">
+                        </div>
+                        <!--End body content-->
+                    </div>
+                </div>
+            </div>
+            <!--End Main con tent-->
+            <div class="clear">
+            </div>
+            <div class="shadowBottom png_bg">
+                <!-- -->
+            </div>
+        </div>
+        <!--End main-->
+        <uc1:ucFooter ID="ucFooter1" runat="server" />
+    </div>
+    </form>
+</body>
+</html>

@@ -54,11 +54,11 @@ namespace VTCO.Config
         /// <summary>
         /// Xâu kết nối cơ sở dữ liệu Club
         /// </summary>
-        public string ConnectionStringSocialShop
+        public string ConnectionString
         {
             get
             {
-                return GetConnectionStringKeyValue(Constants.CONNECTION_STRING_SOCIALSHOP);
+                return GetConnectionStringKeyValue(Constants.CONNECTION_STRING);
             }
         }
 
