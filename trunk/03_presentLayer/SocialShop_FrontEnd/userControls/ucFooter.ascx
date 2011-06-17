@@ -1,13 +1,10 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="ucFooter.ascx.cs" Inherits="userControls_ucFooter" %>
 <div class="topFooter png">
-    <div class="paddingTop">
-    </div>
     <div class="clear">
     </div>
-    <a class="menuItem" href="#">Trang chủ</a> <span class="line png_bg"></span><a class="menuItem"
-        href="#">Trang chủ</a> <span class="line png_bg"></span><a class="menuItem" href="#">
-            Trang chủ</a> <span class="line png_bg"></span><a class="menuItem" href="#">Trang chủ</a>
-    <span class="line png_bg"></span><a class="menuItem" href="#">Trang chủ</a>
+    <a class="menuItem Menufirst" href="#">Trang chủ</a> <a class="menuItem png_bg"
+        href="#">Trang chủ</a> <a class="menuItem png_bg" href="#">
+            Trang chủ</a> <a class="menuItem png_bg" href="#">Trang chủ</a></span><a class="menuItem png_bg" href="#">Trang chủ</a>
 </div>
 <div class="bottomFooter">
     AULAC real estate JSC<br />
