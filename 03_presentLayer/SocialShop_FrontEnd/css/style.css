@@ -75,14 +75,7 @@ text-align:center;
 {
     display:inline;
 }
-.menutop .line
-{
-    background:url(/images/line-topmenu.png) no-repeat 0 10px;
-    width:2px;
-    display:block;
-    float:left;
-    height:30px;
-}
+
 .menutop .leftMenutop
 {
     background:url(/images/left-topmenu.png) no-repeat top left;
@@ -110,11 +103,12 @@ text-align:center;
     font-weight:bold;
     font-size:12px;
     padding:14px;
+    margin-top:5px;
     color:#000;
     text-transform:uppercase;
     font-family:Tahoma;
     /*float:left;*/
-    background:url(/images/line-topmenu.png) no-repeat 0 10px;    
+    
 } 
 
 .Menufirst
@@ -144,15 +138,17 @@ text-align:center;
     text-align:left;
     border-top:solid 1px #EEE;
     padding-left:10px;
-    background:#CDECDE;
+    background:#DCA322;
+    color:#000;
 }
 .ulChild1 li a:hover,.ulChild2 li a:hover
 {
     background-color:#FFF;
+    text-decoration:none;
 }
 .ulChild2
 {
-    top:-1px;
+    top:0px;
     left:180px;
 }
 .shadowTop
