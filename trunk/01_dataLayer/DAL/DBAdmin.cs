@@ -11,10 +11,10 @@ namespace DAL
         /// Hàm tạo đối tượng thể hiện của AdminDataContext
         /// </summary>
         /// <returns></returns>
-        public DataContext.AdminDataContext CreateInstance()
+      /*  public DataContext.AdminDataContext CreateInstance()
         {
             return new DataContext.AdminDataContext(VTCO.Config.Global.Settings.ConnectionStringSocialShop);
 
-        }
+        }*/
     }
 }

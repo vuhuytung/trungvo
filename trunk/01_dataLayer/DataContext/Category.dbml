@@ -1,13 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Database1" Class="CategoryDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=183.182.100.136;Initial Catalog=Database1;User ID=tmt" SettingsObjectName="DataContext.Properties.Settings" SettingsPropertyName="Database1ConnectionString" Provider="System.Data.SqlClient" />
   <Function Name="dbo.uspCategoryGetAll" Method="uspCategoryGetAll">
-    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
     <ElementType Name="uspCategoryGetAllResult">
       <Column Name="CategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="ParentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="URL" Type="System.String" DbType="NVarChar(400)" CanBeNull="true" />
-      <Column Name="Status" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="[Order]" Member="Order" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
   </Function>

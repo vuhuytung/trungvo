@@ -59,6 +59,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>News.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Partners.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Partners.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Project.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Project.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -78,6 +88,16 @@
       <LastGenOutput>News.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
+    <None Include="Partners.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Partners.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Project.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Project.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -94,6 +114,16 @@
   <ItemGroup>
     <None Include="News.dbml.layout">
       <DependentUpon>News.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Partners.dbml.layout">
+      <DependentUpon>Partners.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Project.dbml.layout">
+      <DependentUpon>Project.dbml</DependentUpon>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

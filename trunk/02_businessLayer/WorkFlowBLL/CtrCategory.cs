@@ -9,11 +9,10 @@ using VTCO.Config;
 namespace WorkFlowBLL
 {
     public class CtrCategory
-    {       
-
-        public List<uspCategoryGetAllResult> GetListCategory(int status)
+    {
+        public List<uspCategoryGetAllResult> GetListCategory()
         {
-           return BDS.CategoryInstance.uspCategoryGetAll(status).ToList();
-        }        
+            return BDS.Category.uspCategoryGetAll().ToList();
+        }
     }
 }

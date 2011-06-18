@@ -3,29 +3,5 @@
     Đối tác
 </div>
 <div class="box" style="padding-left: 5px;">
-    <a href="#">
-        <img src="/images/Doitac.png" width="166" height="124" />
-    </a><a href="#">
-        <img src="/images/Doitac.png" width="166" height="124" />
-    </a><a href="#">
-        <img src="/images/Doitac.png" width="166" height="124" />
-    </a><a href="#">
-        <img src="/images/Doitac.png" width="166" height="124" />
-    </a><a href="#">
-        <img src="/images/Doitac.png" width="166" height="124" />
-    </a><a href="#">
-        <img src="/images/Doitac.png" width="166" height="124" />
-    </a><a href="#">
-        <img src="/images/Doitac.png" width="166" height="124" />
-    </a><a href="#">
-        <img src="/images/Doitac.png" width="166" height="124" />
-    </a><a href="#">
-        <img src="/images/Doitac.png" width="166" height="124" />
-    </a><a href="#">
-        <img src="/images/Doitac.png" width="166" height="124" />
-    </a><a href="#">
-        <img src="/images/Doitac.png" width="166" height="124" />
-    </a><a href="#">
-        <img src="/images/Doitac.png" width="166" height="124" />
-    </a>
+    <asp:Literal ID="Literal1" runat="server"></asp:Literal>
 </div>

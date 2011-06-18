@@ -113,6 +113,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CtrCategory.cs" />
+    <Compile Include="CtrPartner.cs" />
+    <Compile Include="CtrProject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\ServiceUpload\Reference.cs">
       <AutoGen>True</AutoGen>
