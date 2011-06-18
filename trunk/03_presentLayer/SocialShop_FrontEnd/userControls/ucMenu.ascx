@@ -38,7 +38,7 @@
     <div class="leftMenutop png_bg">
     </div>
     <div class="centerMenutop">
-        <ul>
+      <!--  <ul>
             <li class="liParent"><a href="#" style="background:none" class="menuParent Menufirst">Trang chủ</a>
                 <ul style="display: none" class="ulChild1">
                     <li><a href="#" class="menuChildren">Menu con</a></li>
@@ -84,7 +84,8 @@
                     <li><a href="#" class="menuChildren">Menu con</a></li>
                 </ul>
             </li>
-        </ul>
+        </ul> -->
+        <asp:Literal ID="Literal1" runat="server"></asp:Literal>
     </div>
     <div class="rightMenutop png_bg">
     </div>
