@@ -14,7 +14,7 @@ namespace ComponentBLL
         public bool ExistCompanyName(string companyName)
         {
             int? ret = 0;
-            BDS.AdminInstance.uspCompanyNameExist(companyName, ref ret);
+           // BDS.AdminInstance.uspCompanyNameExist(companyName, ref ret);
             return ret == 1 ? true : false;
         }
 
@@ -27,7 +27,7 @@ namespace ComponentBLL
         public bool ExistCompanyNameUpdate(string companyName, int companyId)
         {
             int? ret = 0;
-            BDS.AdminInstance.uspCompanyNameUpdateExist(companyName, companyId, ref ret);
+            //BDS.AdminInstance.uspCompanyNameUpdateExist(companyName, companyId, ref ret);
             return ret == 1 ? true : false;
         }
 
@@ -39,7 +39,7 @@ namespace ComponentBLL
         public bool ExistEmailCompany(string email)
         {
             int? ret = 0;
-            BDS.AdminInstance.uspCompanyExistEmail(email, ref ret);
+            //BDS.AdminInstance.uspCompanyExistEmail(email, ref ret);
             return ret == 1 ? true : false;
         }
 
@@ -52,7 +52,7 @@ namespace ComponentBLL
         public bool ExistEmailCompanyUpdate(string email, int companyID)
         {
             int? ret = 0;
-            BDS.AdminInstance.uspCompanyExistEmailUpdate(email, companyID, ref ret);
+            //BDS.AdminInstance.uspCompanyExistEmailUpdate(email, companyID, ref ret);
             return ret == 1 ? true : false;
         }
 
@@ -64,7 +64,7 @@ namespace ComponentBLL
         public bool ExistCompanyChild(int companyID)
         {
             int? ret = 0;
-            BDS.AdminInstance.uspCompanyExistChild(companyID, ref ret);
+           // BDS.AdminInstance.uspCompanyExistChild(companyID, ref ret);
             return ret == 1 ? true : false;
         }
 

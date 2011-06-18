@@ -49,8 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BDS.cs" />
     <Compile Include="DBAdmin.cs" />
     <Compile Include="DBCategory.cs" />
+    <Compile Include="DBPartner.cs" />
+    <Compile Include="DBProject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
