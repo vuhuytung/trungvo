@@ -12,7 +12,7 @@
     <script src="/js/framework/DD_belatedPNG_0.0.8a.js" type="text/javascript"></script>
     <script>
       /* EXAMPLE */
-      DD_belatedPNG.fix('.png_bg,img');
+      DD_belatedPNG.fix('.png_bg');
   
       /* string argument can be any CSS selector */
       /* .png_bg example is unnecessary */

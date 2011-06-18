@@ -105,8 +105,9 @@
                     <img src="/images/Doitac.png" width="140" class="nl" style="border: solid 1px #AAA;
                         margin: 10px;" />
                     <p>
-                        <span class="spTitle">Bàn đọc sách không nên đối diện với cổng ra vào</span> <span
+                        <span class="spTitle" style="color:#ff8040">Bàn đọc sách không nên đối diện với cổng ra vào</span> <span
                             class="spDate">07/06/2011</span>
+                            <br /><br />
                         <p>
                             Thông thường khi nhắc đến phong thủy cho một ngôi nhà người ta hay quan tâm đến
                             phòng khách, phòng ngủ và bếp hơn là không gian đọc sách. Thế nhưng nếu có thể tuân
