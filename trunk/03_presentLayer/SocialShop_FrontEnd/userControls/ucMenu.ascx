@@ -7,7 +7,7 @@
         },
         function () {
             $(this).find("ul").first().css("display", "none");
-            $(this).find("a").first().css("background", "url(/images/line-topmenu.png) no-repeat 0 10px !important;");
+            $(this).find("a").first().css("background", "transparent !important");
             $(this).find(".Menufirst").css("background", "none !important");
         });
         $(".menuChildren").parent().hover(function () {
@@ -20,17 +20,31 @@
         });
     });
     </script>
+    <!--[if lt IE 8]>
+    <style type="text/css">
+        .ulChild1
+        {
+            position:absolute;
+            top:40px;
+        }
+        .ulChild2
+        {
+            position:absolute;
+            left:90px;
+        }
+    </style>
+    <![endif]-->
 <div class="menutop">
     <div class="leftMenutop png_bg">
     </div>
     <div class="centerMenutop">
         <ul>
-            <li class="liParent"><a href="#" class="menuParent Menufirst">Trang chủ</a>
+            <li class="liParent"><a href="#" style="background:none" class="menuParent Menufirst">Trang chủ</a>
                 <ul style="display: none" class="ulChild1">
                     <li><a href="#" class="menuChildren">Menu con</a></li>
                     <li><a href="#" class="menuChildren">Menu con</a></li>
                     <li><a href="#" class="menuChildren">Menu con</a></li>
-                    <li class="liParent"><a href="#" class="menuChildren">Menu con</a>
+                    <li class="liChildren"><a href="#" class="menuChildren">Menu con</a>
                         <ul style="display: none" class="ulChild2">
                             <li><a href="#" class="menuChildren">Menu con 2</a></li>
                             <li><a href="#" class="menuChildren">Menu con</a></li>
@@ -65,7 +79,7 @@
                     <li><a href="#" class="menuChildren">Menu con</a></li>
                 </ul>
             </li>
-            <li class="liParent"><a href="#" class="menuParent">Trang chủ</a>
+            <li class="liParent" style="margin-right:20px;"><a href="#" class="menuParent">Trang chủ</a>
                 <ul style="display: none" class="ulChild1">
                     <li><a href="#" class="menuChildren">Menu con</a></li>
                 </ul>
