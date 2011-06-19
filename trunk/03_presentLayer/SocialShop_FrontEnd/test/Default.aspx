@@ -6,15 +6,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <script src="../js/jqfootball.js" type="text/javascript"></script>
-    <link href="../css/cssTrangchu.css" rel="stylesheet" type="text/css" />
+    <link href="../css/main.css" rel="stylesheet" type="text/css" />
     <script src="../js/framework/jquery-1.5.min.js" type="text/javascript"></script>
+    <script src="../csript/slide.js" type="text/javascript"></script>
+
 </head>
 
 <body>
     <form id="form1" runat="server">
     <div>
-        <asp:Literal ID="Literal1" runat="server"></asp:Literal>
+        <uc:slide runat="server" />
     </div>
     </form>
 </body>

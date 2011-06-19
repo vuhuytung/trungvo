@@ -13,7 +13,6 @@ public partial class userControls_Slide : System.Web.UI.UserControl
         if (!IsPostBack)
         {
             Literal1.Text = project.GenHtmlSlide();
-            Literal2.Text = project.GenHtmlThumb();
         }
     }
 }

@@ -15,40 +15,41 @@ namespace WorkFlowBLL
        }
        public string GenHtmlSlide()
        {
-           List<uspProjectGetTop3Result> a = new List<uspProjectGetTop3Result>();
-           a = GetProjectTop3();
            StringBuilder sb = new StringBuilder();
+          List<uspProjectGetTop3Result> a = new List<uspProjectGetTop3Result>();
+           a = GetProjectTop3();
+          
            sb.Append("<div id='bigPic'>");
            foreach (uspProjectGetTop3Result item in a)
            {
-               sb.Append("<div class='img'>");
-               sb.Append("<img alt='anh' src='" + item.Img + "'/>");
+               sb.Append("<div class='box'>");
+               sb.Append("<div class='box_img'>");
+               sb.Append("<a href='#'><img alt='anh' src='" + item.Img + "'/></a></div>");
+
+               sb.Append("<div class='box_title'>"+ item.Title + " </div>");
                sb.Append("</div>");
            }
            sb.Append("</div>");
-           return sb.ToString();
-       }
-       public string GenHtmlThumb()
-       {
-           int rel = 1;
-           List<uspProjectGetTop3Result> a = new List<uspProjectGetTop3Result>();
-           a = GetProjectTop3();
-           StringBuilder sb = new StringBuilder();
-           sb.Append("<div class='ssLeft'>");
+
+           sb.Append("<div class='leftSlide'>");
            sb.Append("<ul id='thumbs'>");
+           int rel = 1;
            foreach (uspProjectGetTop3Result item in a)
            {
 
                sb.Append("<li rel='" + rel.ToString() + "'>");
-               sb.Append("<div><div class='title_left'><img alt='anh' src='" + item.Img + "'/></div>");
-               sb.Append("<div class='title_right'><a href='#'>" + item.Title + "</a></div></div>");
+               sb.Append("<div class='my_Title'>" + item.Title + "</div>");
+               sb.Append("<div class='my_Img'><img src='" + item.Img + "' alt='anh'/></div>");
                sb.Append("</li>");
                rel++;
            }
 
+           sb.Replace("rel='1'", "rel='1' class='active'");
            sb.Append("</ul>");
            sb.Append("</div>");
            return sb.ToString();
+  
        }
+      
     }
 }
