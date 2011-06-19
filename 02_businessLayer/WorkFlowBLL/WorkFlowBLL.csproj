@@ -113,6 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CtrCategory.cs" />
+    <Compile Include="CtrLocation.cs" />
     <Compile Include="CtrPartner.cs" />
     <Compile Include="CtrProject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
