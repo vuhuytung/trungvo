@@ -8,6 +8,7 @@ namespace DAL
 {
    public class BDS
     {
+
        public static CategoryDataContext Category
        {
            get 
@@ -23,13 +24,21 @@ namespace DAL
                return new PartnersDataContext();
            }
        }
-       public static ProjectDataContext Project
+       public static  ProjectDataContext Project
        {
            get
            {
                return new ProjectDataContext();
            }
        }
+       public static LocationDataContext Location
+       {
+           get
+           {
+               return new LocationDataContext();
+           }
+       }
+
 
     }
 }
