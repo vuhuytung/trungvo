@@ -15,7 +15,7 @@ namespace WorkFlowBLL
         List<uspCategoryGetAllResult> menu;
         private List<uspCategoryGetAllResult> GetListCategory()
         {
-            return BDS.Category.uspCategoryGetAll().ToList();
+            return BDS.CategoryInstance.uspCategoryGetAll().ToList();
         }
 
         private void GenHtmlMenu(List<uspCategoryGetAllResult> menu, int ParentID,int y)

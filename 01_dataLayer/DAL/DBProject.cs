@@ -8,7 +8,7 @@ namespace DAL
 {
    public class DBProject
     {
-       public DataContext.ProjectDataContext CreateProjectInstance()
+       public DataContext.ProjectDataContext CreateInstance()
        {
            return new ProjectDataContext(VTCO.Config.Global.Settings.ConnectionString);
        }

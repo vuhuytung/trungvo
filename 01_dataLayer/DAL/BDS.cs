@@ -9,36 +9,37 @@ namespace DAL
    public class BDS
     {
 
-       public static CategoryDataContext Category
+       public static DataContext.CategoryDataContext CategoryInstance
        {
            get 
            {
-              return new CategoryDataContext(); 
+               return VTCO.Config.Pattern.Singleton<DBCategory>.Instance.CreateInstance();
            }
        }
 
-       public static PartnersDataContext Partner
+       public static DataContext.PartnersDataContext PartnerInstance
        {
            get
            {
-               return new PartnersDataContext();
-           }
-       }
-       public static  ProjectDataContext Project
-       {
-           get
-           {
-               return new ProjectDataContext();
-           }
-       }
-       public static LocationDataContext Location
-       {
-           get
-           {
-               return new LocationDataContext();
+               return VTCO.Config.Pattern.Singleton<DBPartner>.Instance.CreateInstance();
            }
        }
 
+       public static DataContext.ProjectDataContext ProjectInstance
+       {
+           get
+           {
+               return VTCO.Config.Pattern.Singleton<DBProject>.Instance.CreateInstance();
+           }
+       }
+
+       public static DataContext.LocationDataContext LocationInstance
+       {
+           get
+           {
+               return VTCO.Config.Pattern.Singleton<DBLocation>.Instance.CreateInstance();
+           }
+       }       
 
     }
 }
