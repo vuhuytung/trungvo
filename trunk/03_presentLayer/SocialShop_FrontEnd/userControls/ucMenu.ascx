@@ -1,91 +1,77 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="ucMenu.ascx.cs" Inherits="userControls_ucMenu" %>
-<script type="text/javascript">
-    $(function () {
-        $(".menuParent").parent().hover(function () {
-            $(this).find("ul").first().fadeIn(300); // css("display", "block");
-            $(this).find("a").first().css("background", "#DCA322 !important");
-        },
-        function () {
-            $(this).find("ul").first().css("display", "none");
-            $(this).find("a").first().css("background", "transparent !important");
-            $(this).find(".Menufirst").css("background", "none !important");
-        });
-        $(".menuChildren").parent().hover(function () {
-            $(this).find("ul").first().fadeIn(100); // css("display", "block");
-            $(this).find("a").first().css("background", "#FFF !important");
-        },
-        function () {
-            $(this).find("ul").first().css("display", "none");
-            $(this).find("a").first().css("background", "#DCA322 !important;");
-        });
-    });
-    </script>
-    <!--[if lt IE 8]>
-    <style type="text/css">
-        .ulChild1
-        {
-            position:absolute;
-            top:40px;
-        }
-        .ulChild2
-        {
-            position:absolute;
-            left:90px;
-        }
-    </style>
-    <![endif]-->
+<script src="/js/menu.js" type="text/javascript"></script>
 <div class="menutop">
     <div class="leftMenutop png_bg">
     </div>
     <div class="centerMenutop">
-      <!--  <ul>
-            <li class="liParent"><a href="#" style="background:none" class="menuParent Menufirst">Trang chủ</a>
-                <ul style="display: none" class="ulChild1">
-                    <li><a href="#" class="menuChildren">Menu con</a></li>
-                    <li><a href="#" class="menuChildren">Menu con</a></li>
-                    <li><a href="#" class="menuChildren">Menu con</a></li>
-                    <li class="liChildren"><a href="#" class="menuChildren">Menu con</a>
-                        <ul style="display: none" class="ulChild2">
-                            <li><a href="#" class="menuChildren">Menu con 2</a></li>
-                            <li><a href="#" class="menuChildren">Menu con</a></li>
+        <ul class="menu" id="menu">
+            <li><a href="#" class="menulink">Dropdown One</a>
+                <ul>
+                    <li><a href="#">Navigation Item 1</a></li>
+                    <li><a href="#" class="sub">Navigation Item 2</a>
+                        <ul>
+                            <li class="topline"><a href="#">Navigation Item 1</a></li>
+                            <li><a href="#">Navigation Item 2</a></li>
+                            <li><a href="#">Navigation Item 3</a></li>
+                            <li><a href="#">Navigation Item 4</a></li>
+                            <li><a href="#">Navigation Item 5</a></li>
                         </ul>
                     </li>
-                    <li><a href="#" class="menuChildren">Menu con</a></li>
-                    <li><a href="#" class="menuChildren">Menu con</a></li>
+                    <li><a href="#" class="sub">Navigation Item 3</a>
+                        <ul>
+                            <li class="topline"><a href="#">Navigation Item 1</a></li>
+                            <li><a href="#">Navigation Item 2</a></li>
+                            <li><a href="#" class="sub">Navigation Item 3</a>
+                                <ul>
+                                    <li class="topline"><a href="#">Navigation Item 1</a></li>
+                                    <li><a href="#">Navigation Item 2</a></li>
+                                    <li><a href="#">Navigation Item 3</a></li>
+                                    <li><a href="#">Navigation Item 4</a></li>
+                                    <li><a href="#">Navigation Item 5</a></li>
+                                    <li><a href="#">Navigation Item 6</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Navigation Item 4</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Navigation Item 4</a></li>
+                    <li><a href="#">Navigation Item 5</a></li>
                 </ul>
             </li>
-            <li class="liParent"><a href="#" class="menuParent">Trang chủ</a>
-                <ul style="display: none" class="ulChild1">
-                    <li><a href="#" class="menuChildren">Menu con</a></li>
+            <li><a href="#" class="menulink">Non-Dropdown</a></li>
+            <li><a href="#" class="menulink">Dropdown Two</a>
+                <ul>
+                    <li><a href="#">Navigation Item 1</a></li>
+                    <li><a href="#" class="sub">Navigation Item 2</a>
+                        <ul>
+                            <li class="topline"><a href="#">Navigation Item 1</a></li>
+                            <li><a href="#">Navigation Item 2</a></li>
+                            <li><a href="#">Navigation Item 3</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </li>
-            <li class="liParent"><a href="#" class="menuParent">Trang chủ</a>
-                <ul style="display: none" class="ulChild1">
-                    <li><a href="#" class="menuChildren">Menu con</a></li>
+            <li><a href="#" class="menulink">Dropdown Three</a>
+                <ul>
+                    <li><a href="#">Navigation Item 1</a></li>
+                    <li><a href="#">Navigation Item 2</a></li>
+                    <li><a href="#">Navigation Item 3</a></li>
+                    <li><a href="#">Navigation Item 4</a></li>
+                    <li><a href="#">Navigation Item 5</a></li>
+                    <li><a href="#" class="sub">Navigation Item 6</a>
+                        <ul>
+                            <li class="topline"><a href="#">Navigation Item 1</a></li>
+                            <li><a href="#">Navigation Item 2</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Navigation Item 7</a></li>
+                    <li><a href="#">Navigation Item 8</a></li>
+                    <li><a href="#">Navigation Item 9</a></li>
+                    <li><a href="#">Navigation Item 10</a></li>
                 </ul>
             </li>
-            <li class="liParent"><a href="#" class="menuParent">Trang chủ</a>
-                <ul style="display: none" class="ulChild1">
-                    <li><a href="#" class="menuChildren">Menu con</a></li>
-                </ul>
-            </li>
-            <li class="liParent"><a href="#" class="menuParent">Trang chủ</a>
-                <ul style="display: none" class="ulChild1">
-                    <li><a href="#" class="menuChildren">Menu con</a></li>
-                </ul>
-            </li>
-            <li class="liParent"><a href="#" class="menuParent">Trang chủ</a>
-                <ul style="display: none" class="ulChild1">
-                    <li><a href="#" class="menuChildren">Menu con</a></li>
-                </ul>
-            </li>
-            <li class="liParent" style="margin-right:20px;"><a href="#" class="menuParent">Trang chủ</a>
-                <ul style="display: none" class="ulChild1">
-                    <li><a href="#" class="menuChildren">Menu con</a></li>
-                </ul>
-            </li>
-        </ul> -->
-        <asp:Literal ID="Literal1" runat="server"></asp:Literal>
+        </ul>
+        <%--<asp:Literal ID="Literal1" runat="server"></asp:Literal>--%>
     </div>
     <div class="rightMenutop png_bg">
     </div>
@@ -93,3 +79,7 @@
     </div>
     <!--End menutop-->
 </div>
+<script type="text/javascript">
+    var menu = new menu.dd("menu");
+    menu.init("menu", "menuhover");
+</script>

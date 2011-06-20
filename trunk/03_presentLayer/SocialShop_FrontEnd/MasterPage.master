@@ -6,9 +6,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/css/template.css" rel="stylesheet" type="text/css" />
     <script src="/js/framework/jquery-1.4.1.min.js" type="text/javascript"></script>
-    <!--[if IE 6]>
+    <!--[if lte IE 6]>  
+    <script type="text/javascript">  
+        $(function(){
+            $("*:first-child").addClass("firstChild")  
+        });
+    </script>  
     <script src="/js/framework/DD_belatedPNG_0.0.8a.js" type="text/javascript"></script>
     <script>
       /* EXAMPLE */
@@ -36,27 +41,19 @@
         <!--Begin main-->
         <div class="clear">
         </div>
-        <div class="main">
-            <div class="shadowTop png_bg">
-                <!-- -->
-            </div>
-            <!--Begin Main content-->
-            <div class="maincontent png_bg">
-                <div class="contentWrap">
+        <div class="main png_bg">
                     <asp:ContentPlaceHolder ID="plhBody" runat="server">
                         
                         
 
 
                     </asp:ContentPlaceHolder>
-                </div>
-            </div>
             <!--End Main con tent-->
             <div class="clear">
             </div>
-            <div class="shadowBottom png_bg">
+        </div>
+        <div class="shadowBottom png_bg">
                 <!-- -->
-            </div>
         </div>
         <!--End main-->
         <div class="footer">
