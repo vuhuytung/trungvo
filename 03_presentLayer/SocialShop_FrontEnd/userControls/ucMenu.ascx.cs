@@ -12,7 +12,7 @@ public partial class userControls_ucMenu : System.Web.UI.UserControl
         CtrCategory Menu = new CtrCategory();
         if (!IsPostBack)
         {
-            Literal1.Text = Menu.ReturnHtmlMenu();
+            //Literal1.Text = Menu.ReturnHtmlMenu();
         }
         
     }

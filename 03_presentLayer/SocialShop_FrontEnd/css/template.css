@@ -59,19 +59,12 @@ text-align:center;
     margin:0 auto;
     margin-left:6px;
     position:relative;
-    z-index:9;
+    z-index:9999;
 }
 .banner
 {
     height:195px;
 }
-.menutop
-{
-    margin-left:3px;
-    position:relative;
-    z-index:10;
-}
-
 .menutop .leftMenutop
 {
     background:url(/images/left-topmenu.png) no-repeat top left;
@@ -84,6 +77,8 @@ text-align:center;
     background:url(/images/center-topmenu.png) repeat-x top left;
     height:40px;
     float:left;
+    z-index:9999;
+    position:relative;
 }
 .menutop .rightMenutop
 {
@@ -91,13 +86,13 @@ text-align:center;
     height:40px;
     width:9px;
     float:left;
+    z-index:9998;
+    position:relative;
 }
-
-
 ul.menu {list-style:none; margin:0; padding:0; margin-top:5px;}
 ul.menu * {margin:0; padding:0}
 ul.menu a {display:block; color:#000; text-decoration:none}
-ul.menu li {position:relative; float:left; margin-right:2px; background:url("/images/line-topmenu.gif") no-repeat scroll left top transparent;}
+ul.menu li {position:relative; float:left; margin-right:2px; background:url("/images/line-topmenu.gif") no-repeat scroll left 5px transparent;}
 ul.menu li:first-child, ul.menu li.firstChild{ background:none; }
 ul.menu ul {position:absolute; top:26px; left:0; background:#d1d1d1; display:none; opacity:0; list-style:none}
 /*ul.menu ul li {position:relative; border:1px solid #aaa; border-top:none; width:148px; margin:0}*/
@@ -107,93 +102,21 @@ ul.menu ul li a:hover {background-color:#c5c5c5}
 ul.menu ul ul {left:148px; top:-1px}
 /*ul.menu .menulink {border:1px solid #aaa; padding:5px 7px 7px; font-weight:bold; background:url(/images/header.gif); width:134px}*/
 ul.menu .menulink {padding:5px 15px; font-weight:bold; }
-ul.menu .menulink:hover, ul.menu .menuhover {background:url(/images/header_over.gif)}
+ul.menu .menulink:hover, ul.menu .menuhover {background:#d49c1f;}
 ul.menu .sub {background:#d1d1d1 url(/images/arrow.gif) 136px 8px no-repeat}
 /*ul.menu .topline {border-top:1px solid #aaa}*/
 
 
-.shadowTop
-{
-    background:url(/images/top-body.png) repeat-x top left;
-    height:6px;    
-    position:relative;
-    z-index:9;
-    width:990px;
-    margin:0 auto;
-    padding-top:6px;
-    margin-top:-6px;    
-}
-.shadowBottom
-{
-    background:url(/images/back-bottombody.png) no-repeat top left;
-    height:6px;    
-    position:relative;
-    z-index:11;
-    width:1002px;
-    padding-bottom:6px;
-    margin-bottom:-6px;
-}
+
 .main
 {
-    position:relative;
-    z-index:0;
-    text-align:left;
-}
-.maincontent
-{
     background:url(/images/back-centerbody.png) repeat-y top left;
-    text-align:center;
-    z-index:16;
-}
-.contentWrap
-{
-    width:990px;
-    margin:0 auto;
-    margin-top:-6px;
+    padding:0 6px;
     position:relative;
-    z-index:8;
-    background:#FFF;
+    z-index:1;
     text-align:left;
 }
-.contentWrap .containSubmenu
-{
-    height:18px;
-}
 
-
-.footer
-{
-    text-align:center;
-}
-.topFooter
-{
-    height:50px;
-    text-align:center;
-    background:url(/images/lineFooterH.png) no-repeat bottom center;
-}
-
-
-.topFooter .menuItem
-{
-    height:40px;
-    line-height:30px;
-    font-weight:bold;
-    font-size:11px;
-    padding:15px;
-    color:#FFF;
-    background:url(/images/line-topmenu.png) no-repeat 0 20px;
-    display:inline-block;
-}
-.bottomFooter
-{
-    margin:0 auto;
-    width:300px;
-    text-align:left;
-    font-size:11px;
-    color:#FFF;
-    line-height:20px;
-    padding-top:10px;
-}
 
 
 .topSearch
@@ -201,6 +124,7 @@ ul.menu .sub {background:#d1d1d1 url(/images/arrow.gif) 136px 8px no-repeat}
     height:275px;
     padding:5px;
     background:#EEEEEE;
+    margin-bottom:5px;
 }
 
 .topSearch .leftTopSearch
@@ -265,10 +189,80 @@ ul.menu .sub {background:#d1d1d1 url(/images/arrow.gif) 136px 8px no-repeat}
     height:30px;
     padding-top:5px;
 }
-.bodyContent
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.shadowBottom
 {
-    margin-top:10px;
+    background:url(/images/back-bottombody.png) no-repeat top left;
+    height:6px;    
+    padding-bottom:6px;
+    margin-bottom:-6px;
 }
+.footer
+{
+    text-align:center;
+}
+.topFooter
+{
+    height:50px;
+    text-align:center;
+    background:url(/images/lineFooterH.png) no-repeat bottom center;
+}
+
+
+.topFooter .menuItem
+{
+    height:40px;
+    line-height:30px;
+    font-weight:bold;
+    font-size:11px;
+    padding:15px;
+    color:#FFF;
+    background:url(/images/line-bottom.gif) no-repeat 0 20px;
+    display:inline-block;
+}
+.bottomFooter
+{
+    margin:0 auto;
+    width:300px;
+    text-align:left;
+    font-size:11px;
+    color:#FFF;
+    line-height:20px;
+    padding-top:10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .bodyContent .leftMain
 {
     width:600px;
@@ -308,4 +302,10 @@ ul.menu .sub {background:#d1d1d1 url(/images/arrow.gif) 136px 8px no-repeat}
 .box .otherTopNedws
 {
     width:200px;
+}
+.box .title
+{
+    color:#ff8040;
+    font-weight:bold;
+    font-size:1.1em;
 }
