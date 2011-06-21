@@ -3,20 +3,24 @@
 <asp:Literal ID="Literal1" runat="server"></asp:Literal>
 </div>
 <div class="search">
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+    <ContentTemplate>
     <table>
         <tr>
             <td>Tìm tại:</td>
             <td>
-                <asp:DropDownList ID="DropDownProvince" runat="server" 
-                    onselectedindexchanged="DropDownProvince_SelectedIndexChanged" AutoPostBack="true">
+                <asp:DropDownList ID="ddlProvince" runat="server" 
+                    onselectedindexchanged="ddlProvince_SelectedIndexChanged" AutoPostBack="true">
                 </asp:DropDownList>
             </td>
         </tr>
         <tr>
             <td>Quận/Huyện</td>
             <td>
-                <asp:DropDownList ID="DropDownDistrict" runat="server"  AutoPostBack="true" 
-                    Height="16px" onselectedindexchanged="DropDownDistrict_SelectedIndexChanged" 
+                <asp:DropDownList ID="ddlDistrict" runat="server"  AutoPostBack="true" 
+                    Height="22px" onselectedindexchanged="ddlDistrict_SelectedIndexChanged" 
                     Width="136px">
                 </asp:DropDownList>
             </td>
@@ -25,17 +29,25 @@
             <td> Phường/Xã            
             </td>
             <td>
-                <asp:DropDownList ID="DropDownVillage" runat="server" Width="136px">
+                <asp:DropDownList ID="ddlVillage" runat="server" Width="136px">
                 </asp:DropDownList>
             </td>
         </tr>
         <tr>
             <td>Loại BĐS</td>
             <td>
-                <asp:DropDownList ID="DropDownTypeBDS" runat="server">
+                <asp:DropDownList ID="ddlTypeBDS" runat="server">
+                </asp:DropDownList>
+            </td>
+        </tr>
+        <tr>
+            <td>Khoảng Giá</td>
+            <td>
+                <asp:DropDownList ID="ddlPrice" runat="server">
                 </asp:DropDownList>
             </td>
         </tr>
     </table>
-
+    </ContentTemplate>
+    </asp:UpdatePanel>
 </div>

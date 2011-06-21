@@ -1,0 +1,6 @@
+E:\aulac\01_dataLayer\DataContext\bin\Debug\DataContext.dll.config
+E:\aulac\01_dataLayer\DataContext\bin\Debug\DataContext.dll
+E:\aulac\01_dataLayer\DataContext\bin\Debug\DataContext.pdb
+E:\aulac\01_dataLayer\DataContext\obj\Debug\ResolveAssemblyReference.cache
+E:\aulac\01_dataLayer\DataContext\obj\Debug\DataContext.dll
+E:\aulac\01_dataLayer\DataContext\obj\Debug\DataContext.pdb

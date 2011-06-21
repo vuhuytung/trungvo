@@ -1,0 +1,6 @@
+E:\aulac\00_framework\VTCO.Library\bin\Debug\VTCO.Library.dll
+E:\aulac\00_framework\VTCO.Library\bin\Debug\VTCO.Library.pdb
+E:\aulac\00_framework\VTCO.Library\bin\Debug\HtmlAgilityPack.dll
+E:\aulac\00_framework\VTCO.Library\obj\Debug\ResolveAssemblyReference.cache
+E:\aulac\00_framework\VTCO.Library\obj\Debug\VTCO.Library.dll
+E:\aulac\00_framework\VTCO.Library\obj\Debug\VTCO.Library.pdb

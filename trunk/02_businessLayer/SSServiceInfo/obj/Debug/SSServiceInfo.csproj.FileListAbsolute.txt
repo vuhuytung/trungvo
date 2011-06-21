@@ -1,0 +1,5 @@
+E:\aulac\02_businessLayer\SSServiceInfo\bin\Debug\SSServiceInfo.dll
+E:\aulac\02_businessLayer\SSServiceInfo\bin\Debug\SSServiceInfo.pdb
+E:\aulac\02_businessLayer\SSServiceInfo\obj\Debug\ResolveAssemblyReference.cache
+E:\aulac\02_businessLayer\SSServiceInfo\obj\Debug\SSServiceInfo.dll
+E:\aulac\02_businessLayer\SSServiceInfo\obj\Debug\SSServiceInfo.pdb
