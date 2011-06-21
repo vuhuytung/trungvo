@@ -7,35 +7,70 @@ using System.Web.UI.WebControls;
 using WorkFlowBLL;
 public partial class userControls_Slide : System.Web.UI.UserControl
 {
-    CtrProject project = new CtrProject();
+    CtrSlideShow project = new CtrSlideShow();
     CtrLocation Location = new CtrLocation();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
             Literal1.Text = project.GenHtmlSlide();
-            DropDownProvince.DataSource = Location.GetProvince();
-            DropDownProvince.DataTextField = "Name";
-            DropDownProvince.DataValueField = "ProvinceCode";
-            DropDownProvince.SelectedIndex = 26;
-            DropDownProvince.DataBind();
+            ddlProvince.DataSource = Location.LocationGetProvince();
+            ddlProvince.DataTextField = "Name";
+            ddlProvince.DataValueField = "ProvinceCode";
+            ddlProvince.SelectedIndex = -1;
+            ddlProvince.DataBind();
+            ddlDistrict.Items.Add(new ListItem("---------Tất cả---------"));
+            ddlVillage.Items.Add(new ListItem("--------Tất cả----------"));
+
+            //add Type BDS temp
+            ddlTypeBDS.Items.Add(new ListItem("Bất động sản cần bán"));
+            ddlTypeBDS.Items.Add(new ListItem("Bất động sản cần mua"));
+
+            //add Price temp
+
+            ddlPrice.Items.Add(new ListItem("dưới 5 triệu"));
+            ddlPrice.Items.Add(new ListItem("5 -20 triệu"));
+            ddlPrice.Items.Add(new ListItem("20-100 triệu"));
+            ddlPrice.Items.Add(new ListItem("100-500 triệu"));
+            ddlPrice.Items.Add(new ListItem("500 triệu-2 tỷ"));
+            ddlPrice.Items.Add(new ListItem("2-3 tỷ"));
+            ddlPrice.Items.Add(new ListItem("trên 3 tỷ"));
         } 
            
     }
-    protected void DropDownProvince_SelectedIndexChanged(object sender, EventArgs e)
+    protected void ddlProvince_SelectedIndexChanged(object sender, EventArgs e)
     {
-        int index = Int32.Parse(DropDownProvince.SelectedValue);
-        DropDownDistrict.DataSource = Location.GetDistrict(index);
-        DropDownDistrict.DataTextField = "Name";
-        DropDownDistrict.DataValueField = "DistrictCode";
-        DropDownDistrict.DataBind();
+        int index = Int32.Parse(ddlProvince.SelectedValue);
+        if (index != -1)
+        {
+            ddlDistrict.DataSource = Location.LocationGetDistrict(index);
+            ddlDistrict.DataTextField = "Name";
+            ddlDistrict.DataValueField = "DistrictCode";
+            ddlDistrict.DataBind();
+        }
+        else
+        {
+            ddlDistrict.Items.Clear();
+            ddlDistrict.Items.Add(new ListItem("--------Tất cả--------"));
+
+            ddlVillage.Items.Clear();
+            ddlVillage.Items.Add(new ListItem("--------Tất cả----------"));
+        }
     }
-    protected void DropDownDistrict_SelectedIndexChanged(object sender, EventArgs e)
+    protected void ddlDistrict_SelectedIndexChanged(object sender, EventArgs e)
     {
-        int index = Int32.Parse(DropDownDistrict.SelectedValue);
-        DropDownVillage.DataSource = Location.GetVillage(index);
-        DropDownVillage.DataTextField = "Name";
-        DropDownVillage.DataValueField = "VillageCode";
-        DropDownVillage.DataBind();
+        int index = Int32.Parse(ddlDistrict.SelectedValue);
+        if (index != -1)
+        {
+            ddlVillage.DataSource = Location.LocationGetVillage(index);
+            ddlVillage.DataTextField = "Name";
+            ddlVillage.DataValueField = "VillageCode";
+            ddlVillage.DataBind();
+        }
+        else
+        {
+            ddlVillage.Items.Clear();
+            ddlVillage.Items.Add(new ListItem("--------Tất cả--------"));
+        }
     }
 }

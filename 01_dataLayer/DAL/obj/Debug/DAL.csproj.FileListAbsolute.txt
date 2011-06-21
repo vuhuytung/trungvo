@@ -1,0 +1,9 @@
+E:\aulac\01_dataLayer\DAL\bin\Debug\DAL.dll
+E:\aulac\01_dataLayer\DAL\bin\Debug\DAL.pdb
+E:\aulac\01_dataLayer\DAL\bin\Debug\DataContext.dll
+E:\aulac\01_dataLayer\DAL\bin\Debug\VTCO.Config.dll
+E:\aulac\01_dataLayer\DAL\bin\Debug\VTCO.Config.pdb
+E:\aulac\01_dataLayer\DAL\bin\Debug\DataContext.pdb
+E:\aulac\01_dataLayer\DAL\obj\Debug\ResolveAssemblyReference.cache
+E:\aulac\01_dataLayer\DAL\obj\Debug\DAL.dll
+E:\aulac\01_dataLayer\DAL\obj\Debug\DAL.pdb

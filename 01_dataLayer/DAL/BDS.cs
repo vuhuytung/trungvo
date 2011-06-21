@@ -25,11 +25,11 @@ namespace DAL
            }
        }
 
-       public static DataContext.ProjectDataContext ProjectInstance
+       public static DataContext.SlideShowDataContext SlideShowInstance
        {
            get
            {
-               return VTCO.Config.Pattern.Singleton<DBProject>.Instance.CreateInstance();
+               return VTCO.Config.Pattern.Singleton<DBSlideShow>.Instance.CreateInstance();
            }
        }
 

@@ -1,0 +1,5 @@
+E:\aulac\00_framework\VTCO.Config\bin\Debug\VTCO.Config.dll
+E:\aulac\00_framework\VTCO.Config\bin\Debug\VTCO.Config.pdb
+E:\aulac\00_framework\VTCO.Config\obj\Debug\ResolveAssemblyReference.cache
+E:\aulac\00_framework\VTCO.Config\obj\Debug\VTCO.Config.dll
+E:\aulac\00_framework\VTCO.Config\obj\Debug\VTCO.Config.pdb

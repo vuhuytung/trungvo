@@ -1,27 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Database1" Class="LocationDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=183.182.100.136;Initial Catalog=Database1;Persist Security Info=True;User ID=tmt" SettingsObjectName="DataContext.Properties.Settings" SettingsPropertyName="Database1ConnectionString1" Provider="System.Data.SqlClient" />
-  <Function Name="dbo.uspLocationGetProvince" Method="uspLocationGetProvince">
-    <ElementType Name="uspLocationGetProvinceResult">
-      <Column Name="LocationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="ProvinceCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.uspLocationGetDistrict" Method="uspLocationGetDistrict">
-    <Parameter Name="ProvinceCode" Parameter="provinceCode" Type="System.Int32" DbType="Int" />
-    <ElementType Name="uspLocationGetDistrictResult">
-      <Column Name="LocationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="ProvinceCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="DistrictCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="VillageCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.uspLocationGetVillage" Method="uspLocationGetVillage">
-    <Parameter Name="DistrictCode" Parameter="districtCode" Type="System.Int32" DbType="Int" />
-    <ElementType Name="uspLocationGetVillageResult">
+  <Function Name="dbo.uspLocationGetAll" Method="uspLocationGetAll">
+    <ElementType Name="uspLocationGetAllResult">
       <Column Name="LocationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />

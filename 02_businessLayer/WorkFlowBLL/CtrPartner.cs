@@ -13,7 +13,7 @@ namespace WorkFlowBLL
     {
        private List<uspPartnersGetAllResult> GetListPartner()
        {
-           return BDS.Partner.uspPartnersGetAll().ToList();
+           return BDS.PartnerInstance.uspPartnersGetAll().ToList();
        }
 
        public string GenHtml()
