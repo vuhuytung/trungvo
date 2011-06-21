@@ -44,7 +44,7 @@ namespace WorkFlowBLL
                             .Select(x => x);
            List<uspLocationGetAllResult> b = new List<uspLocationGetAllResult>();
            uspLocationGetAllResult a = new uspLocationGetAllResult();
-           a.Name = "-------Tất cả-------";
+           a.Name = "---------Tất cả---------";
            a.DistrictCode = -1;
            b.Add(a);
            foreach (uspLocationGetAllResult pro in District)
@@ -65,7 +65,7 @@ namespace WorkFlowBLL
                         .Select(x => x);
            List<uspLocationGetAllResult> b = new List<uspLocationGetAllResult>();
            uspLocationGetAllResult a = new uspLocationGetAllResult();
-           a.Name = "-------Tất cả-------";
+           a.Name = "---------Tất cả---------";
            a.VillageCode = -1;
            b.Add(a);
            foreach (uspLocationGetAllResult pro in Village)
