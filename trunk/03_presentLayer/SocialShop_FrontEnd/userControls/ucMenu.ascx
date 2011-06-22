@@ -1,10 +1,12 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="ucMenu.ascx.cs" Inherits="userControls_ucMenu" %>
-<script src="/js/menu.js" type="text/javascript"></script>
+<script src="/js/userControls/menu.js" type="text/javascript"></script>
 <div class="menutop">
     <div class="leftMenutop png_bg">
     </div>
     <div class="centerMenutop">
-        <ul class="menu" id="menu">
+        <asp:Literal ID="ltrMenu" runat="server"></asp:Literal>
+        
+        <%--<ul class="menu" id="menu">
             <li><a href="#" class="menulink">Dropdown One</a>
                 <ul>
                     <li><a href="#">Navigation Item 1</a></li>
@@ -70,8 +72,7 @@
                     <li><a href="#">Navigation Item 10</a></li>
                 </ul>
             </li>
-        </ul>
-        <%--<asp:Literal ID="Literal1" runat="server"></asp:Literal>--%>
+        </ul>--%>
     </div>
     <div class="rightMenutop png_bg">
     </div>
@@ -82,4 +83,5 @@
 <script type="text/javascript">
     var menu = new menu.dd("menu");
     menu.init("menu", "menuhover");
+    $("ul.menu li ul li ul").prev().addClass("sub");
 </script>
