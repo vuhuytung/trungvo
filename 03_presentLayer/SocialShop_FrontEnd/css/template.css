@@ -65,6 +65,10 @@ text-align:center;
 {
     height:195px;
 }
+.menutop
+{
+    text-align:left;
+}
 .menutop .leftMenutop
 {
     background:url(/images/left-topmenu.png) no-repeat top left;
@@ -96,14 +100,14 @@ ul.menu li {position:relative; float:left; margin-right:2px; background:url("/im
 ul.menu li:first-child, ul.menu li.firstChild{ background:none; }
 ul.menu ul {position:absolute; top:26px; left:0; background:#d1d1d1; display:none; opacity:0; list-style:none}
 /*ul.menu ul li {position:relative; border:1px solid #aaa; border-top:none; width:148px; margin:0}*/
-ul.menu ul li {position:relative; border-top:none; width:148px; margin:0}
-ul.menu ul li a {display:block; padding:3px 7px 5px; background-color:#d1d1d1}
+ul.menu ul li {position:relative; border-top:none; width:180px; margin:0;}
+ul.menu ul li a {display:block; padding:6px; background-color:#d1d1d1; padding-left:15px;}
 ul.menu ul li a:hover {background-color:#c5c5c5}
-ul.menu ul ul {left:148px; top:-1px}
+ul.menu ul ul {left:180px; top:-1px}
 /*ul.menu .menulink {border:1px solid #aaa; padding:5px 7px 7px; font-weight:bold; background:url(/images/header.gif); width:134px}*/
 ul.menu .menulink {padding:5px 15px; font-weight:bold; }
 ul.menu .menulink:hover, ul.menu .menuhover {background:#d49c1f;}
-ul.menu .sub {background:#d1d1d1 url(/images/arrow.gif) 136px 8px no-repeat}
+ul.menu .sub {background:#d1d1d1 url(/images/arrow.gif) 170px 8px no-repeat}
 /*ul.menu .topline {border-top:1px solid #aaa}*/
 
 
