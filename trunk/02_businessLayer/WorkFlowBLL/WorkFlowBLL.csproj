@@ -114,6 +114,7 @@
   <ItemGroup>
     <Compile Include="CtrNews.cs" />
     <Compile Include="CtrCategory.cs" />
+    <Compile Include="CtrDocument.cs" />
     <Compile Include="CtrLocation.cs" />
     <Compile Include="CtrPartner.cs" />
     <Compile Include="CtrSendMail.cs" />
