@@ -39,7 +39,14 @@ namespace DAL
            {
                return VTCO.Config.Pattern.Singleton<DBLocation>.Instance.CreateInstance();
            }
-       }       
+       }
+       public static DataContext.NewsDataContext NewsInstance
+       {
+           get
+           {
+               return VTCO.Config.Pattern.Singleton<DBNews>.Instance.CreateInstance();
+           }
+       }
 
     }
 }

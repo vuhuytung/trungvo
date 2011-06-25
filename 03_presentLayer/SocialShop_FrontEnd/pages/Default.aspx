@@ -95,37 +95,53 @@
         </div>
         <!--End top search-->
     </div>
+    <div class="clear">
+        </div>
     <!--Begin body content-->
     <div class="bodyContent">
         <div class="leftMain nl">
-            <div class="box">
-                <div class="title">
-                    Sàn giao dịch</div>
-                <div class="topNews nl">
-                    <img src="/images/Doitac.png" width="140" class="nl" style="border: solid 1px #AAA;
-                        margin: 10px;" />
-                    <p>
-                        <span class="spTitle" style="color:#ff8040">Bàn đọc sách không nên đối diện với cổng ra vào</span> <span
-                            class="spDate">07/06/2011</span>
-                            <br /><br />
-                        <p>
-                            Thông thường khi nhắc đến phong thủy cho một ngôi nhà người ta hay quan tâm đến
-                            phòng khách, phòng ngủ và bếp hơn là không gian đọc sách. Thế nhưng nếu có thể tuân
-                            theo các nguyên tắc phong thủy cho phòng đọc sẽ tạo nên sự thoải mái, thư giãn lý
-                            tưởng.
-                        </p>
-                    </p>
-                    <div class="clear">
+            <asp:Repeater ID="rptContent" runat="server" 
+                onitemdatabound="rptContent_ItemDataBound">
+                <ItemTemplate>
+                    <div class="box">
+                        <div class="title">
+                            <span><a href="#"><%#Eval("Info.Name") %></a></span>
+                        </div>
+                        <div class="topNews nl">
+                            <img src="/images/Doitac.png" width="140" class="nl" style="border: solid 1px #AAA;
+                                margin: 10px;" />
+                            <p>
+                                <span class="spTitle"><a href="#"><%#Eval("Items[0].Title") %></a></span>
+                                <span class="spDate"><%#Eval("Items[0].CreateDate","{0:dd/MM/yyyy}") %></span>
+                                <br />
+                                <br />
+                                <p>
+                                    <%#Eval("Items[0].Description") %>
+                                </p>
+                            </p>
+                            <div class="clear">
+                            </div>
+                        </div>
+                        <div class="otherTopNews nr">
+                            <ul>
+                                <% ktra = 0; %>
+                                <asp:Repeater runat="server" ID="rptList" DataSource='<%#Eval("Items") %>'>
+                                    <ItemTemplate>
+                                        <%if (ktra != 0)
+                                          { %>
+                                        <li><a href="#"><%#Eval("Title") %></a></li>
+                                        <%}
+                                            ktra = 1;
+                                            %>
+                                    </ItemTemplate>
+                                </asp:Repeater>                                
+                            </ul>
+                        </div>
+                        <div class="clear">
+                        </div>
                     </div>
-                </div>
-                <div class="otherTopNedws nr">
-                    <ul>
-                        <li><a href="#">abc</a></li>
-                    </ul>
-                </div>
-                <div class="clear">
-                </div>
-            </div>
+                </ItemTemplate>
+            </asp:Repeater>
         </div>
         <div class="rightMain nr">
             <uc2:ucDoitac runat="server" ID="ucDoitac1" />

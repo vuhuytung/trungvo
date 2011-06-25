@@ -112,6 +112,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CtrNews.cs" />
     <Compile Include="CtrCategory.cs" />
     <Compile Include="CtrLocation.cs" />
     <Compile Include="CtrPartner.cs" />
