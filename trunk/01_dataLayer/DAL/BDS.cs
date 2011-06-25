@@ -40,6 +40,14 @@ namespace DAL
                return VTCO.Config.Pattern.Singleton<DBLocation>.Instance.CreateInstance();
            }
        }
+       public static DataContext.DocumentDataContext DocumentInstance
+       {
+           get
+           {
+               return VTCO.Config.Pattern.Singleton<BDDocument>.Instance.CreateInstance();
+           }
+       }
+       
        public static DataContext.NewsDataContext NewsInstance
        {
            get
@@ -50,3 +58,4 @@ namespace DAL
 
     }
 }
+
