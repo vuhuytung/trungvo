@@ -10,7 +10,7 @@ public partial class userControls_ucMenu : System.Web.UI.UserControl
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        CtrCategory Menu = new CtrCategory();
+        //CtrCategory Menu = new CtrCategory();
         if (!IsPostBack)
         {
             ltrMenu.Text = GetMenuTop(null, 0);
