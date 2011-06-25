@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BDS.cs" />
+    <Compile Include="DBNews.cs" />
     <Compile Include="DBAdmin.cs" />
     <Compile Include="DBCategory.cs" />
     <Compile Include="DBLocation.cs" />

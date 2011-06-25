@@ -6,6 +6,7 @@
 }
 a{
 text-decoration:none;
+color:#000;
 }
 img{
 border:0 none;
@@ -118,17 +119,16 @@ ul.menu .sub {background:#d1d1d1 url(/images/arrow.gif) 170px 8px no-repeat}
     padding:0 6px;
     position:relative;
     z-index:1;
-    text-align:left;
+    text-align:left;    
 }
 
 
 
 .topSearch
 {
-    height:275px;
+    height:250px;
     padding:5px;
     background:#EEEEEE;
-    margin-bottom:5px;
 }
 
 .topSearch .leftTopSearch
@@ -210,9 +210,7 @@ ul.menu .sub {background:#d1d1d1 url(/images/arrow.gif) 170px 8px no-repeat}
 .shadowBottom
 {
     background:url(/images/back-bottombody.png) no-repeat top left;
-    height:6px;    
-    padding-bottom:6px;
-    margin-bottom:-6px;
+    height:12px;    
 }
 .footer
 {
@@ -266,11 +264,14 @@ ul.menu .sub {background:#d1d1d1 url(/images/arrow.gif) 170px 8px no-repeat}
 
 
 
-
+.bodyContent
+{
+    margin-top:5px;
+}
 .bodyContent .leftMain
 {
-    width:600px;
-    padding-left:15px;
+    width:620px;
+    padding-left:10px;
 }
 .bodyContent .rightMain
 {
@@ -290,11 +291,13 @@ ul.menu .sub {background:#d1d1d1 url(/images/arrow.gif) 170px 8px no-repeat}
 
 .leftMain .box
 {
-    padding:10px;
+    padding:5px;
+    margin-bottom:10px;
+    text-align:justify;
 }
 .box .topNews
 {
-    width:355px;
+    width:360px;
     text-align:justify;
 }
 
@@ -303,13 +306,43 @@ ul.menu .sub {background:#d1d1d1 url(/images/arrow.gif) 170px 8px no-repeat}
     color:#AAA; 
     font-style:italic;
 }
-.box .otherTopNedws
+.box .otherTopNews
 {
-    width:200px;
+    width:235px;
 }
 .box .title
 {
     color:#ff8040;
     font-weight:bold;
     font-size:1.1em;
+    border-bottom:2px solid #459B30;
+    margin-bottom:10px;
+    padding-bottom:1px;
+}
+.box .title span
+{
+    background: url("/images/cat-sectitle.png") no-repeat scroll right top transparent;
+    height: 20px;
+    line-height: 20px;
+    padding: 3px 50px 3px 10px;
+}
+.box .title span a
+{
+    color:#FFF;
+}
+    
+.box .spTitle
+{
+    font-weight:bold;
+}
+.box .otherTopNews ul li
+{
+    list-style:none;
+    background:url("/images/icon-square.jpg") no-repeat 3px 6px;
+    padding: 0 3px 2px 17px;
+}
+.box a:active
+{
+    color:#ff8040;
+    text-decoration:underline;
 }
