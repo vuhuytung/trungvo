@@ -16,7 +16,11 @@
 <body>
     <form id="form1" runat="server">
     <div>
-       <uc:Add runat="server" />
+        <asp:GridView ID="GridView1" runat="server">
+        </asp:GridView>
+    </div>
+    <div>
+        <asp:Literal ID="Literal1" runat="server"></asp:Literal>
     </div>
     </form>
 </body>

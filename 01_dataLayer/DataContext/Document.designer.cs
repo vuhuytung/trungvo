@@ -63,15 +63,24 @@ namespace DataContext
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspDocumentGetAll")]
-		public ISingleResult<uspDocumentGetAllResult> uspDocumentGetAll([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CategoryID", DbType="Int")] System.Nullable<int> categoryID)
+		public ISingleResult<uspDocumentGetAllResult> uspDocumentGetAll([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CategoryID", DbType="Int")] System.Nullable<int> categoryID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> currPage, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> recodperpage, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Pagesize", DbType="Int")] System.Nullable<int> pagesize)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), categoryID);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), categoryID, currPage, recodperpage, pagesize);
 			return ((ISingleResult<uspDocumentGetAllResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspDocumentGetPage")]
+		public ISingleResult<uspDocumentGetPageResult> uspDocumentGetPage([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CategoryID", DbType="Int")] System.Nullable<int> categoryID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> currPage, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> recodperpage, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Pagesize", DbType="Int")] System.Nullable<int> pagesize)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), categoryID, currPage, recodperpage, pagesize);
+			return ((ISingleResult<uspDocumentGetPageResult>)(result.ReturnValue));
 		}
 	}
 	
 	public partial class uspDocumentGetAllResult
 	{
+		
+		private System.Nullable<long> _RowNum;
 		
 		private int _DocumentID;
 		
@@ -89,6 +98,22 @@ namespace DataContext
 		
 		public uspDocumentGetAllResult()
 		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RowNum", DbType="BigInt")]
+		public System.Nullable<long> RowNum
+		{
+			get
+			{
+				return this._RowNum;
+			}
+			set
+			{
+				if ((this._RowNum != value))
+				{
+					this._RowNum = value;
+				}
+			}
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DocumentID", DbType="Int NOT NULL")]
@@ -199,6 +224,32 @@ namespace DataContext
 				if ((this._Status != value))
 				{
 					this._Status = value;
+				}
+			}
+		}
+	}
+	
+	public partial class uspDocumentGetPageResult
+	{
+		
+		private string _PhanTrang;
+		
+		public uspDocumentGetPageResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhanTrang", DbType="NVarChar(4000)")]
+		public string PhanTrang
+		{
+			get
+			{
+				return this._PhanTrang;
+			}
+			set
+			{
+				if ((this._PhanTrang != value))
+				{
+					this._PhanTrang = value;
 				}
 			}
 		}
