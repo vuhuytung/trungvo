@@ -2,6 +2,7 @@
 
 <%@ Register Src="userControls/ucFooter.ascx" TagName="ucFooter" TagPrefix="uc1" %>
 <%@ Register Src="userControls/ucMenu.ascx" TagName="ucMenu" TagPrefix="uc3" %>
+<%@ Register src="userControls/ucNavigator.ascx" tagname="ucNavigator" tagprefix="uc2" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -42,7 +43,8 @@
         <div class="clear">
         </div>
         <div class="main png_bg">
-                    <asp:ContentPlaceHolder ID="plhBody" runat="server">
+                    <uc2:ucNavigator ID="ucNavigator1" runat="server" />
+                    <asp:ContentPlaceHolder ID="plhBody" runat="server">                                                                       
                         
                         
 
