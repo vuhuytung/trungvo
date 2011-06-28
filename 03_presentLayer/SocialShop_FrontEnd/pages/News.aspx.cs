@@ -28,7 +28,6 @@ public partial class pages_News : System.Web.UI.Page
             if(NewsIDs.Length>0)
                 NewsIDs = NewsIDs.Substring(NewsIDs.LastIndexOf(","));
 
-            rptOther.DataSource = ctrN.GetListNewsByCategory(CatID, 10);
         }
         ucPaging1.PageChange += new UserControls_ucPaging.PagingHandler(ucPaging1_PageChange);
         if (!IsPostBack)
