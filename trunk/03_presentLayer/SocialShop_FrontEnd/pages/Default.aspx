@@ -100,8 +100,7 @@
     <!--Begin body content-->
     <div class="bodyContent">
         <div class="leftMain nl">
-            <asp:Repeater ID="rptContent" runat="server" 
-                onitemdatabound="rptContent_ItemDataBound">
+            <asp:Repeater ID="rptContent" runat="server">
                 <ItemTemplate>
                     <div class="box">
                         <div class="title">
