@@ -18,10 +18,6 @@ public partial class pages_Default : System.Web.UI.Page
         _data=ctrNews.GetListCategoryNewsForHome().Items;
         rptContent.DataSource = _data;
         rptContent.DataBind();
-    }
-    protected void rptContent_ItemDataBound(object sender, RepeaterItemEventArgs e)
-    {
-        //var rptList (e.Item.FindControl("rptList") as Repeater);
-        //rptList.DataSource=
+        ((MasterPage)(this.Master)).VisibleNavigator = false;
     }
 }
