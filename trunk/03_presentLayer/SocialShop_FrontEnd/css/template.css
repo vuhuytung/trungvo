@@ -266,7 +266,7 @@ ul.menu .sub {background:#d1d1d1 url(/images/arrow.gif) 170px 8px no-repeat}
 
 .bodyContent
 {
-    margin-top:5px;
+    padding-top:5px;
 }
 .bodyContent .leftMain
 {
@@ -335,13 +335,13 @@ ul.menu .sub {background:#d1d1d1 url(/images/arrow.gif) 170px 8px no-repeat}
 {
     font-weight:bold;
 }
-.box .otherTopNews ul li
+.otherTopNews ul li
 {
     list-style:none;
     background:url("/images/icon-square.jpg") no-repeat 3px 6px;
-    padding: 0 3px 2px 17px;
+    padding: 3px 3px 2px 17px;
 }
-.box a:active
+a:active
 {
     color:#ff8040;
     text-decoration:underline;

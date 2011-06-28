@@ -108,7 +108,7 @@
                             <span><a href="#"><%#Eval("Info.Name") %></a></span>
                         </div>
                         <div class="topNews nl">
-                            <img src="/images/Doitac.png" width="140" class="nl" style="border: solid 1px #AAA;
+                            <img src="<%#Eval("Items[0].Img") %>" width="140" class="nl" style="border: solid 1px #AAA;
                                 margin: 10px;" />
                             <p>
                                 <span class="spTitle"><a href="#"><%#Eval("Items[0].Title") %></a></span>

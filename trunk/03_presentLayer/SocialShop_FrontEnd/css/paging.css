@@ -1,0 +1,3 @@
+﻿.paginator2 a{margin: 0;  color: #000; background-color:transparent; padding:0 3px;}
+.paginator2 a:hover, .paginator2 a.selected:hover, .paginator2 a.selected {background-color:#459B30; color: #FFF;}
+.paginator2 {padding:7px 10px 6px; }
