@@ -41,8 +41,8 @@
             <div class="clear">
             </div>
             <hr style="margin-top: 30px;" />
-            <span style="padding-left: 10px; margin: 10px; text-decoration: underline;">Các tin
-                khác cùng chuyên mục:</span>
+           <div class="listOtherNews">Các tin
+                khác cùng chuyên mục:</div>
             <div style="position: relative; padding-left: 45px; padding-top: 20px;">
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>
