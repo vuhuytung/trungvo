@@ -11,30 +11,20 @@ namespace WorkFlowBLL
 {
     public class CtrNews
     {
-        /*
-        /// <summary>
-        /// Lấy danh sách các sản phẩm trong giỏ hàng
-        /// </summary>
-        /// <returns></returns>
-        public ClassExtend<SiteInfo, ClassExtend<uspCartGetListShopIDByUserIDResult, uspCartGetListProductByShopIDResult>> GetListProductForCart()
+
+        public List<uspNewsGetByCategoryIDHomeResult> GetListNewsByCategory(int CatID, int top)
         {
-            if (!UserUtils.IsLogin) return null;
-            ClassExtend<SiteInfo, ClassExtend<uspCartGetListShopIDByUserIDResult, uspCartGetListProductByShopIDResult>> objReturn = new ClassExtend<SiteInfo, ClassExtend<uspCartGetListShopIDByUserIDResult, uspCartGetListProductByShopIDResult>>();
-            ClassExtend<uspCartGetListShopIDByUserIDResult, uspCartGetListProductByShopIDResult> obj;
-            var lstShopIDByUserID = SocialShop.ProductInstance.uspCartGetListShopIDByUserID(UserUtils.UserID).ToList();
-            foreach (uspCartGetListShopIDByUserIDResult _obj in lstShopIDByUserID)
-            {
-                obj = new ClassExtend<uspCartGetListShopIDByUserIDResult, uspCartGetListProductByShopIDResult>();
-                obj.Info = _obj;
-                obj.Items = SocialShop.ProductInstance.uspCartGetListProductByShopID(UserUtils.UserID, _obj.ShopID).ToList();
-                obj.TotalRecord = obj.Items.Count;
-                objReturn.Items.Add(obj);
-            }
-            objReturn.Info = SiteInfo.Instance;
-            objReturn.TotalRecord = lstShopIDByUserID.Count;
-            return objReturn;
+            return BDS.NewsInstance.uspNewsGetByCategoryIDHome(CatID, top).ToList();
         }
-         * */
+
+        public ClassExtend<string,uspNewsGetByCategoryIDOtherResult> GetListNewsByCategoryOther(int CatID, string newsIDOther, int cur, int ps)
+        {
+            ClassExtend<string, uspNewsGetByCategoryIDOtherResult> ret = new ClassExtend<string, uspNewsGetByCategoryIDOtherResult>();
+            int? total = 0;
+            ret.Items= BDS.NewsInstance.uspNewsGetByCategoryIDOther(CatID, newsIDOther, cur,ps, ref total).ToList();
+            ret.TotalRecord = total.Value;
+            return ret;
+        }
 
         public ClassExtend<string, ClassExtend<uspCategoryGetForHomeResult, uspNewsGetByCategoryIDHomeResult>> GetListCategoryNewsForHome()
         {
