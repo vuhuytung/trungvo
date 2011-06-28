@@ -346,3 +346,12 @@ a:active
     color:#ff8040;
     text-decoration:underline;
 }
+.listOtherNews
+{
+    padding:15px 5px 5px 20px; 
+    margin: 10px; 
+    text-decoration: underline; 
+    border-top:solid 1px #AAA; 
+    font-weight:bold; 
+    color:#ff8040
+}
