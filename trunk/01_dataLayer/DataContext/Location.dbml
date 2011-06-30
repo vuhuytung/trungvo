@@ -10,4 +10,30 @@
       <Column Name="VillageCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
+  <Function Name="dbo.uspLocationGetListDistrict" Method="uspLocationGetListDistrict">
+    <Parameter Name="ProvinceCode" Parameter="provinceCode" Type="System.Int32" DbType="Int" />
+    <ElementType Name="uspLocationGetListDistrictResult">
+      <Column Name="LocationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DistrictCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.uspLocationGetListVillage" Method="uspLocationGetListVillage">
+    <Parameter Name="DistrictCode" Parameter="districtCode" Type="System.Int32" DbType="Int" />
+    <ElementType Name="uspLocationGetListVillageResult">
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="VillageCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LocationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.uspLocationGetProvinces" Method="uspLocationGetProvinces">
+    <ElementType Name="uspLocationGetProvincesResult">
+      <Column Name="LocationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ProvinceCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DistrictCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="VillageCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
 </Database>

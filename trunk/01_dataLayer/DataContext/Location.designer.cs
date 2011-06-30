@@ -68,6 +68,27 @@ namespace DataContext
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<uspLocationGetAllResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspLocationGetListDistrict")]
+		public ISingleResult<uspLocationGetListDistrictResult> uspLocationGetListDistrict([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ProvinceCode", DbType="Int")] System.Nullable<int> provinceCode)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), provinceCode);
+			return ((ISingleResult<uspLocationGetListDistrictResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspLocationGetListVillage")]
+		public ISingleResult<uspLocationGetListVillageResult> uspLocationGetListVillage([global::System.Data.Linq.Mapping.ParameterAttribute(Name="DistrictCode", DbType="Int")] System.Nullable<int> districtCode)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), districtCode);
+			return ((ISingleResult<uspLocationGetListVillageResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspLocationGetProvinces")]
+		public ISingleResult<uspLocationGetProvincesResult> uspLocationGetProvinces()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<uspLocationGetProvincesResult>)(result.ReturnValue));
+		}
 	}
 	
 	public partial class uspLocationGetAllResult
@@ -86,6 +107,246 @@ namespace DataContext
 		private int _VillageCode;
 		
 		public uspLocationGetAllResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationID", DbType="Int NOT NULL")]
+		public int LocationID
+		{
+			get
+			{
+				return this._LocationID;
+			}
+			set
+			{
+				if ((this._LocationID != value))
+				{
+					this._LocationID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Code", DbType="Int NOT NULL")]
+		public int Code
+		{
+			get
+			{
+				return this._Code;
+			}
+			set
+			{
+				if ((this._Code != value))
+				{
+					this._Code = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this._Name = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProvinceCode", DbType="Int NOT NULL")]
+		public int ProvinceCode
+		{
+			get
+			{
+				return this._ProvinceCode;
+			}
+			set
+			{
+				if ((this._ProvinceCode != value))
+				{
+					this._ProvinceCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DistrictCode", DbType="Int NOT NULL")]
+		public int DistrictCode
+		{
+			get
+			{
+				return this._DistrictCode;
+			}
+			set
+			{
+				if ((this._DistrictCode != value))
+				{
+					this._DistrictCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VillageCode", DbType="Int NOT NULL")]
+		public int VillageCode
+		{
+			get
+			{
+				return this._VillageCode;
+			}
+			set
+			{
+				if ((this._VillageCode != value))
+				{
+					this._VillageCode = value;
+				}
+			}
+		}
+	}
+	
+	public partial class uspLocationGetListDistrictResult
+	{
+		
+		private int _LocationID;
+		
+		private int _DistrictCode;
+		
+		private string _Name;
+		
+		public uspLocationGetListDistrictResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationID", DbType="Int NOT NULL")]
+		public int LocationID
+		{
+			get
+			{
+				return this._LocationID;
+			}
+			set
+			{
+				if ((this._LocationID != value))
+				{
+					this._LocationID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DistrictCode", DbType="Int NOT NULL")]
+		public int DistrictCode
+		{
+			get
+			{
+				return this._DistrictCode;
+			}
+			set
+			{
+				if ((this._DistrictCode != value))
+				{
+					this._DistrictCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this._Name = value;
+				}
+			}
+		}
+	}
+	
+	public partial class uspLocationGetListVillageResult
+	{
+		
+		private string _Name;
+		
+		private int _VillageCode;
+		
+		private int _LocationID;
+		
+		public uspLocationGetListVillageResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this._Name = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VillageCode", DbType="Int NOT NULL")]
+		public int VillageCode
+		{
+			get
+			{
+				return this._VillageCode;
+			}
+			set
+			{
+				if ((this._VillageCode != value))
+				{
+					this._VillageCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationID", DbType="Int NOT NULL")]
+		public int LocationID
+		{
+			get
+			{
+				return this._LocationID;
+			}
+			set
+			{
+				if ((this._LocationID != value))
+				{
+					this._LocationID = value;
+				}
+			}
+		}
+	}
+	
+	public partial class uspLocationGetProvincesResult
+	{
+		
+		private int _LocationID;
+		
+		private int _Code;
+		
+		private string _Name;
+		
+		private int _ProvinceCode;
+		
+		private int _DistrictCode;
+		
+		private int _VillageCode;
+		
+		public uspLocationGetProvincesResult()
 		{
 		}
 		
