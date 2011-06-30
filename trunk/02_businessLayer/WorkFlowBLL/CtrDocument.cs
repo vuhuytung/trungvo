@@ -4,17 +4,20 @@ using System.Linq;
 using System.Text;
 using DAL;
 using DataContext;
+using EntityBLL;
 namespace WorkFlowBLL
 {
   public class CtrDocument
     {
-      public List<uspDocumentGetAllResult> DocumentGetAll(int CategoryID,int CurrentPage,int Record,int PageSize)
+
+      public ClassExtend<string, uspDocumentGetAllResult> GetListDocByCategory(int CatID,int cur, int ps)
       {
-          return BDS.DocumentInstance.uspDocumentGetAll(CategoryID, CurrentPage, Record, PageSize).ToList();
+          ClassExtend<string, uspDocumentGetAllResult> ret = new ClassExtend<string, uspDocumentGetAllResult>();
+          int? total = 0;
+          ret.Items = BDS.DocumentInstance.uspDocumentGetAll(CatID, cur, ps, ref total).ToList();
+          ret.TotalRecord = total.Value;
+          return ret;
       }
-      public List<uspDocumentGetPageResult> DocumentGetPage(int CategoryID, int CurrentPage, int Record, int PageSize)
-      {
-          return BDS.DocumentInstance.uspDocumentGetPage(CategoryID, CurrentPage, Record, PageSize).ToList();
-      }
+
     }
 }
