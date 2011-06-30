@@ -76,5 +76,32 @@ namespace WorkFlowBLL
 
        }
 
+       /// <summary>
+       /// Lấy danh sách các tỉnh
+       /// </summary>
+       /// <returns></returns>
+       public List<uspLocationGetProvincesResult> GetProvince()
+       {
+           return BDS.LocationInstance.uspLocationGetProvinces().ToList();
+       }
+       /// <summary>
+       /// Lấy danh sách các huyện dựa vào mã tỉnh
+       /// </summary>
+       /// <param name="proviceCode"></param>
+       /// <returns></returns>
+       public List<uspLocationGetListDistrictResult> GetDistrict(int proviceCode)
+       {
+           return BDS.LocationInstance.uspLocationGetListDistrict(proviceCode).ToList();
+       }
+       /// <summary>
+       /// Lấy danh sách các xã thuộc huyện dựa vào mã huyện
+       /// </summary>
+       /// <param name="destrictCode"></param>
+       /// <returns></returns>
+       public List<uspLocationGetListVillageResult> GetVillage(int destrictCode)
+       {
+           return BDS.LocationInstance.uspLocationGetListVillage(destrictCode).ToList();
+       }
+
     }
 }
