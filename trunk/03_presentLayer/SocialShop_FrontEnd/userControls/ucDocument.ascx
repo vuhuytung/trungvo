@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="ucDocument.ascx.cs" Inherits="userControls_ucDocument" %>
 <%@ Register Src="ucPaging.ascx" TagName="ucPaging" TagPrefix="uc1" %>
-<div class="wrapper">
+<div >
     <asp:ScriptManager ID="ScriptManager1" runat="server">
     </asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -23,11 +23,9 @@
                 </ItemTemplate>
             </asp:Repeater>
             </div>
-            <div id="divPaging" runat="server" class="paginator2 nr">
-                <uc1:ucPaging ID="ucPaging1" runat="server" />
-            </div>
         </ContentTemplate>
     </asp:UpdatePanel>
-    <div class="clear">
-    </div>
+       <div id="divPaging" runat="server" class="paginator2 nr">
+                <uc1:ucPaging ID="ucPaging1" runat="server" />
+       </div>
 </div>

@@ -1,17 +1,16 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="ucContact.ascx.cs" Inherits="userControls_ucContact" %>
 <script type="text/javascript">
     function Validate() {
-        var txtname = document.getElementById("ctl03_txtName");
+        var txtname = document.getElementById("plhBody_ucContact1_txtName");
         if (txtname.value == "") {
             alert('Họ tên không được để trống !');
             return false;
         }
-
         return true;
     }
 
 </script>
-<table>
+<table cellspacing="6">
     <tr>
         <td>Họ tên</td>
         <td>
@@ -47,7 +46,7 @@
         </td>
     </tr>
     <tr>
-        <td colspan="2">
+        <td colspan="2" style=" padding-left:150px; padding-top:20px;">
             <asp:Button ID="btnSend" runat="server" Text="Gửi" Width="66px"  
                 OnClientClick="return Validate()" onclick="btnSend_Click"/>
             <asp:Button ID="btnCancel" runat="server" Text="hủy" Width="70px" 

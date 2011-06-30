@@ -3,9 +3,7 @@
 <%@ Register src="ucTopSearch.ascx" tagname="ucTopSearch" tagprefix="uc2" %>
 <div>
     <div class="topsearch">
-    
         <uc2:ucTopSearch ID="ucTopSearch1" runat="server" />
-    
     </div>    
     <asp:Repeater ID="RptReatyMarket" runat="server">
         <ItemTemplate>

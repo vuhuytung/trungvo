@@ -12,6 +12,7 @@
     <div class="bodyContent">
         <div class="leftMain nl">
             <uc1:ucRealtyMarket ID="ucRealtyMarket1" runat="server" />
+           
             <div class="clear">
             </div>
             <hr style="margin-top: 30px;" />
