@@ -3,10 +3,10 @@
   <Function Name="dbo.uspDocumentGetAll" Method="uspDocumentGetAll">
     <Parameter Name="CategoryID" Parameter="categoryID" Type="System.Int32" DbType="Int" />
     <Parameter Name="currPage" Type="System.Int32" DbType="Int" />
-    <Parameter Name="recodperpage" Type="System.Int32" DbType="Int" />
     <Parameter Name="Pagesize" Parameter="pagesize" Type="System.Int32" DbType="Int" />
+    <Parameter Name="TotalRecord" Parameter="totalRecord" Type="System.Int32" DbType="Int" Direction="InOut" />
     <ElementType Name="uspDocumentGetAllResult">
-      <Column Name="RowNum" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="RowNumber" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Column Name="DocumentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Title" Type="System.String" DbType="NVarChar(400) NOT NULL" CanBeNull="false" />
       <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
@@ -14,15 +14,6 @@
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="CategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.uspDocumentGetPage" Method="uspDocumentGetPage">
-    <Parameter Name="CategoryID" Parameter="categoryID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="currPage" Type="System.Int32" DbType="Int" />
-    <Parameter Name="recodperpage" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Pagesize" Parameter="pagesize" Type="System.Int32" DbType="Int" />
-    <ElementType Name="uspDocumentGetPageResult">
-      <Column Name="PhanTrang" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>
