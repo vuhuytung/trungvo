@@ -1,0 +1,52 @@
+﻿body    {
+             font-family:Arial;
+             font-size:14px;
+        }
+        .wrapper
+        {
+            width:100%;
+            float:left;
+        }
+        .doc_wrap
+        {
+            width:700px;
+            float:left;
+            border-bottom:1px dotted #D3B439;
+        }
+        .doc_title
+        {
+            width:100%;
+            float:left;
+            text-align:justify;
+            padding:5px 5px;
+        }
+        .doc_desc
+        {
+            width:100%;
+            float:left;
+            padding:5px 5px;
+            text-align:justify;
+        }
+       
+        .doc_download
+        {
+            float:left;
+             width:100%;
+             padding:5px 5px;
+        }
+        .doc_download a
+        {
+            color:Red;
+            text-decoration:none;
+            
+        }
+        .cssPage
+        {
+            margin-left:5px;
+        }
+        .doc_page
+        {
+            float:left;
+            padding-left:100px;
+            padding-top:20px;
+        }

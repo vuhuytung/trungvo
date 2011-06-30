@@ -80,6 +80,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="RealtyMarket.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RealtyMarket.dbml</DependentUpon>
+    </Compile>
     <Compile Include="SlideShow.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -116,6 +121,11 @@
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="RealtyMarket.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>RealtyMarket.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
     <None Include="SlideShow.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
@@ -154,6 +164,11 @@
   <ItemGroup>
     <None Include="Document.dbml.layout">
       <DependentUpon>Document.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RealtyMarket.dbml.layout">
+      <DependentUpon>RealtyMarket.dbml</DependentUpon>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

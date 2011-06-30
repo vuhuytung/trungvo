@@ -117,6 +117,7 @@
     <Compile Include="CtrDocument.cs" />
     <Compile Include="CtrLocation.cs" />
     <Compile Include="CtrPartner.cs" />
+    <Compile Include="CtrRealtyMarket.cs" />
     <Compile Include="CtrSendMail.cs" />
     <Compile Include="CtrSlideShow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
