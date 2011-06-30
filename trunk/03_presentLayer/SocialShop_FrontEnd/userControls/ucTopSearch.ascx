@@ -44,6 +44,11 @@
                 </asp:DropDownList>
             </td>
         </tr>
+        <tr>
+            <td colspan="2" style=" text-align:center; padding-top:7px;">
+            
+                <asp:Button ID="btdSearch" runat="server" Text="Tìm" Width="70px" /></td>
+        </tr>
     </table>
     </ContentTemplate>
     </asp:UpdatePanel>

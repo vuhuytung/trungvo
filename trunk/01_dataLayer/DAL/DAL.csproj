@@ -56,6 +56,7 @@
     <Compile Include="DBCategory.cs" />
     <Compile Include="DBLocation.cs" />
     <Compile Include="DBPartner.cs" />
+    <Compile Include="DBRealtyMarket.cs" />
     <Compile Include="DBSlideShow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,0 +1,35 @@
+﻿body {
+}
+ .realty_item
+        {
+            float:left;
+            width:100%;
+            border-bottom:1px dotted #E8DC5C;
+            padding:3px;
+        }
+        .img_item
+        {
+            width:100px;
+            height:100px;
+            float:left;
+            margin-right:10px;
+            border:1px dotted #CFCFCF;
+        }
+        .detail_item
+        {
+            float:left;
+            height:70px;
+        }
+        .topsearch
+        {
+            width:100%;
+            height:150px;
+            background:#C2C63D;
+            padding-left:200px;
+            margin-bottom:10px;
+        }
+        a
+        {
+            text-decoration:none;
+            color:Blue;
+        }
