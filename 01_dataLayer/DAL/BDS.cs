@@ -62,6 +62,13 @@ namespace DAL
                return VTCO.Config.Pattern.Singleton<DBRealtyMarket>.Instance.CreateInstance();
            }
        }
+       public static DataContext.AdminDataContext AdminInstance
+       {
+           get
+           {
+               return VTCO.Config.Pattern.Singleton<DBAdmin>.Instance.CreateInstance();
+           }
+       }
 
     }
 }
