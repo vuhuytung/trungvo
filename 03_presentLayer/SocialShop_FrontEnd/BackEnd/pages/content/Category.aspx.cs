@@ -147,7 +147,7 @@ public partial class BackEnd_pages_content_Category : System.Web.UI.Page
         if (tb == null)
         {
             tb = MyMenu.GetListCategory(-1);
-            ddlParentID.Items.Add(new ListItem("Trang chủ VTCEdu", "0"));
+            ddlParentID.Items.Add(new ListItem("Trang chủ", "0"));
         }        
         var rows = tb.Where(x=>x.ParentID==parentID);
         foreach (var row in rows)
