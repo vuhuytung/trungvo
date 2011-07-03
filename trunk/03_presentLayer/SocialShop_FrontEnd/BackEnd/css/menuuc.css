@@ -1,0 +1,222 @@
+﻿
+#menu ul.group {
+	margin: 12px 0px 0px 14px !important;
+	margin: 12px 0px 0px 7px;
+	padding: 0px 0px 0px;
+	list-style: none;
+	float: left;
+	z-index:4;
+}
+#menu ul.group li {
+	display: inline;
+	float: left;
+	position: static;
+	z-index: 5;
+	margin-left:0px !important;
+}
+#menu ul.group li a {
+	display: block;
+	float: left;
+	height: 100px;
+	width: 120px;
+	overflow:hidden;
+	font-size: 12px;
+	font-weight: bold;
+	font-style: italic;
+	color: white;
+	text-decoration:none;
+	text-align:center;
+	z-index:6;
+}
+#menu ul.group li a * {
+	cursor: pointer;
+}
+#menu ul.group li a span.outer {
+	display: block;
+	height: 90px;
+	padding-top: 10px
+}
+#menu ul.group li a span.inner {
+	display: block;
+	padding: 55px 10px 9px 10px;
+	white-space: nowrap;
+	background-repeat: no-repeat;
+	background-position: 50% 3px;
+}
+
+
+#menu ul.group li a 
+{
+	background:url('../img/navigation_background_blue.gif') repeat-x top left;
+}
+#menu ul.group li.first a {
+	background:url('../img/navigation_first_blue.gif') no-repeat top left;
+}
+#menu ul.group li.last a {
+	background:url('../img/navigation_last_blue.gif') no-repeat top right;
+}
+#menu ul.group li.first a span.inner {
+	border-left: none !important;
+}
+#menu ul.group li.last a span.inner {
+	border-right: none !important;
+}
+
+#menu ul.group li a:hover, #menu ul.group li a.hover {
+	background-position: bottom left;
+	text-decoration: none;
+}
+#menu ul.group li.last a:hover, #menu ul.group li.last a.hover  {
+	background-position: bottom right;
+}
+#menu ul.group li a.current {
+	background-position: bottom left;
+	text-decoration: none;
+}
+#menu ul.group li.last a.current  {
+	background-position: bottom right;
+}
+#menu ul.group li.first a.current  {
+	background-position: bottom left;
+}
+
+#menu ul.group li a span.inner
+{
+	border-right: 1px solid #4985b2;
+	border-left: 1px solid #e5e5e5;
+}
+#menu ul.group li a:hover span.inner {
+	border-right: 1px solid #4985b2;
+	border-left: 1px solid #e5e5e5;
+}
+#menu ul.group li a.more {
+}
+#menu .additional a span {
+  	border-left: 1px solid #e5e5e5;
+}
+#menu .homepage { background-image: url(../img/icon_dashboard.png); background-repeat: no-repeat;  }
+#menu .content { background-image: url(../img/icon_edit.png); background-repeat: no-repeat;  }
+#menu .reports { background-image: url(../img/icon_reports.png); background-repeat: no-repeat;  }
+#menu .users { background-image: url(../img/icon_users.png); background-repeat: no-repeat;  } 
+#menu .catalogue { background-image: url(../img/icon_media.png); background-repeat: no-repeat;  }
+#menu .event_manager { background-image: url(../img/icon_clock.png); background-repeat: no-repeat;  } 
+#menu .news { background-image: url(../img/icon_news.png); background-repeat: no-repeat;  }
+#menu .settings { background-image: url(../img/icon_settings.png); background-repeat: no-repeat;  }
+#hidden_submenu {
+	background:#FFF;
+	padding:10px;
+	display:none;
+	width:918px !important;
+	border-left: 1px solid #9C9C9C;
+	border-right: 1px solid #9C9C9C;
+	border-bottom: 1px solid #CCC;
+}
+#hidden_submenu .more_menu { float:left; margin: 10px 5px; }
+#hidden_submenu .more_menu li { margin-left: 30px; }
+
+#tabs 
+{
+	float:left;
+	width:940px;
+	margin-top:10px;
+}
+
+#tabs .subMenu {
+	height: 25px;
+	padding-top: 8px;
+	border-bottom: 1px solid #346a92;
+	width: 940px !important;
+}
+
+#tabs ul {
+	margin: 0px 0px 0px 12px;
+	padding: 0px;
+	list-style: none;
+}
+
+#tabs ul li {
+	display: inline;
+}
+
+#tabs ul li a {
+	font-family:Arial, Helvetica, sans-serif;
+	display: block;
+	float: left;
+	height: 25px;
+	margin-right: 3px;
+	font-size: 11px;
+	font-weight: bold;
+	overflow: hidden;
+	border-bottom: 0px;
+	background: #DEDEDE;
+	text-decoration:none;
+	color: #1b486a;
+}
+
+#tabs ul li a:hover {
+	background-color:#ffffff;
+}
+
+#tabs ul li a span {
+	height: 20px;
+	padding: 0px 10px;
+	display: block;
+	padding-top: 5px;
+	cursor: pointer;
+	white-space: nowrap;
+	float:left;
+}
+
+#tabs ul li a.current {
+  background-color: #FFFFFF;
+}
+
+#tabs ul li.first a span {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+#tabs {
+	background: #639ecb;
+}
+
+#tabs .container {
+	background:url('../img/tabs_bg.gif.gif') repeat-x left top;
+	border-bottom: none;
+}
+
+#tabs ul li a {
+	background: url('../img/tabs_left.gif') no-repeat left top;
+	border: 0px;
+}
+
+#tabs ul li a span {
+	background: url('../img/tabs_right.gif') no-repeat right top;
+}
+
+#tabs ul li a.current {
+  background-position: left bottom;
+}
+
+#tabs ul li a.current span {
+	background-position: right bottom;
+}
+#tabs ul li a.tempoff {
+  background-position: left top;
+}
+
+#tabs ul li a.tempoff span {
+	background-position: right top;
+}
+
+#tabs ul li.first a{
+  color: #1b486a !important;	
+}
+.lblMsg1
+{
+	text-align:center;
+	font-family:Arial;
+	padding:10px 5px;
+	font-size:14px;
+	background:#ECE9D8;
+	border:1px solid Blue;
+}

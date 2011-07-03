@@ -1,0 +1,57 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="backend_MasterPage" %>
+
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+
+<%@ Register src="~/BackEnd/UserControls/ucMenu.ascx" tagname="ucMenu" tagprefix="uc1" %>
+<%@ Register src="~/BackEnd/UserControls/ucHeader.ascx" tagname="ucHeader" tagprefix="uc2" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>VTC Online - Website Administration</title>
+    <link href="/backend/css/css.css" rel="stylesheet" type="text/css" />
+    <link href="/backend/css/menuuc.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/swfobject.js"></script>
+    <link href="/backend/css/popup.css" rel="stylesheet" type="text/css" />
+    <script src="/js/framework/jquery-1.5.min.js" type="text/javascript"></script>
+    <script src="/backend/js/Cookies.js" type="text/javascript"></script>
+    <script src="/backend/js/ucMenu.js" type="text/javascript"></script>
+    <link href="/backend/css/StyleForMobileSMS.css" rel="stylesheet" type="text/css" />
+    <link href="/backend/css/PopupMove.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+    function del()
+    {
+        
+        var str = $(".prtMobileSMS_ListControl input[type='hidden']:first").val();
+        return confirm(str);
+    }
+   
+    </script>
+</head>
+<body class="body">
+    <form id="form1" runat="server">
+    <%--<telerik:RadScriptManager ID="RadScriptManager1" runat="server">
+    </telerik:RadScriptManager>--%>
+    <div class="wrapper">
+        
+        <!-- Begin ucHeader -->
+         <uc2:ucHeader ID="ucHeader" runat="server" />
+        <!-- End ucHeader -->
+        
+        <div id="menu">
+            <uc1:ucMenu ID="ucMenu2" runat="server" />
+        </div>
+        <div class="container">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            
+            </asp:ContentPlaceHolder>
+        </div>
+        
+        <div class="bottomContainer">
+                    Website Administration by VTC Online
+        </div>
+    </div>     
+    </form>
+</body>
+</html>
