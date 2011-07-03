@@ -9,7 +9,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>VTC Online - Website Administration</title>
+    <title>Website Administration</title>
     <link href="/backend/css/css.css" rel="stylesheet" type="text/css" />
     <link href="/backend/css/menuuc.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="js/swfobject.js"></script>
