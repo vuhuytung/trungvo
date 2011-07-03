@@ -49,6 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Admin.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Category.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -92,6 +97,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Admin.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Admin.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="app.config" />
     <None Include="Category.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
@@ -169,6 +179,11 @@
   <ItemGroup>
     <None Include="RealtyMarket.dbml.layout">
       <DependentUpon>RealtyMarket.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Admin.dbml.layout">
+      <DependentUpon>Admin.dbml</DependentUpon>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
