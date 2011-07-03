@@ -76,11 +76,18 @@ namespace DataContext
 			return ((ISingleResult<uspCategoryGetListResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspCategoryGetForHome")]
-		public ISingleResult<uspCategoryGetForHomeResult> uspCategoryGetForHome()
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspCategoryGetByParentID")]
+		public ISingleResult<uspCategoryGetByParentIDResult> uspCategoryGetByParentID([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ParentID", DbType="Int")] System.Nullable<int> parentID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Int")] System.Nullable<int> status)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<uspCategoryGetForHomeResult>)(result.ReturnValue));
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), parentID, status);
+			return ((ISingleResult<uspCategoryGetByParentIDResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspCategoryGetInfoByCategoryID")]
+		public ISingleResult<uspCategoryGetInfoByCategoryIDResult> uspCategoryGetInfoByCategoryID([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CategoryID", DbType="Int")] System.Nullable<int> categoryID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), categoryID);
+			return ((ISingleResult<uspCategoryGetInfoByCategoryIDResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -316,7 +323,7 @@ namespace DataContext
 		}
 	}
 	
-	public partial class uspCategoryGetForHomeResult
+	public partial class uspCategoryGetByParentIDResult
 	{
 		
 		private int _CategoryID;
@@ -331,7 +338,7 @@ namespace DataContext
 		
 		private System.Nullable<int> _Order;
 		
-		public uspCategoryGetForHomeResult()
+		public uspCategoryGetByParentIDResult()
 		{
 		}
 		
@@ -427,6 +434,140 @@ namespace DataContext
 				if ((this._Order != value))
 				{
 					this._Order = value;
+				}
+			}
+		}
+	}
+	
+	public partial class uspCategoryGetInfoByCategoryIDResult
+	{
+		
+		private int _CategoryID;
+		
+		private System.Nullable<int> _ParentID;
+		
+		private string _Name;
+		
+		private string _URL;
+		
+		private int _Status;
+		
+		private System.Nullable<int> _Order;
+		
+		private System.Nullable<int> _Type;
+		
+		public uspCategoryGetInfoByCategoryIDResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategoryID", DbType="Int NOT NULL")]
+		public int CategoryID
+		{
+			get
+			{
+				return this._CategoryID;
+			}
+			set
+			{
+				if ((this._CategoryID != value))
+				{
+					this._CategoryID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ParentID", DbType="Int")]
+		public System.Nullable<int> ParentID
+		{
+			get
+			{
+				return this._ParentID;
+			}
+			set
+			{
+				if ((this._ParentID != value))
+				{
+					this._ParentID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(250) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this._Name = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_URL", DbType="NVarChar(250)")]
+		public string URL
+		{
+			get
+			{
+				return this._URL;
+			}
+			set
+			{
+				if ((this._URL != value))
+				{
+					this._URL = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Int NOT NULL")]
+		public int Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this._Status = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Order]", Storage="_Order", DbType="Int")]
+		public System.Nullable<int> Order
+		{
+			get
+			{
+				return this._Order;
+			}
+			set
+			{
+				if ((this._Order != value))
+				{
+					this._Order = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="Int")]
+		public System.Nullable<int> Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this._Type = value;
 				}
 			}
 		}
