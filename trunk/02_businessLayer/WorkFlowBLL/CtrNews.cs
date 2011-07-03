@@ -43,14 +43,14 @@ namespace WorkFlowBLL
         /// Lấy các chuyên mục lớn đi kèm các top 5 tin tức trong chuyên mục đó
         /// </summary>
         /// <returns></returns>
-        public ClassExtend<string, ClassExtend<uspCategoryGetForHomeResult, uspNewsGetByCategoryIDHomeResult>> GetListCategoryNewsForHome()
+        public ClassExtend<string, ClassExtend<uspCategoryGetByParentIDResult, uspNewsGetByCategoryIDHomeResult>> GetListCategoryNewsForHome()
         {
-            ClassExtend<string, ClassExtend<uspCategoryGetForHomeResult, uspNewsGetByCategoryIDHomeResult>> ret=new ClassExtend<string,ClassExtend<uspCategoryGetForHomeResult,uspNewsGetByCategoryIDHomeResult>>();
-            ClassExtend<uspCategoryGetForHomeResult, uspNewsGetByCategoryIDHomeResult> obj;
-            var lstCat = BDS.CategoryInstance.uspCategoryGetForHome().ToList();
+            ClassExtend<string, ClassExtend<uspCategoryGetByParentIDResult, uspNewsGetByCategoryIDHomeResult>> ret = new ClassExtend<string, ClassExtend<uspCategoryGetByParentIDResult, uspNewsGetByCategoryIDHomeResult>>();
+            ClassExtend<uspCategoryGetByParentIDResult, uspNewsGetByCategoryIDHomeResult> obj;
+            var lstCat = BDS.CategoryInstance.uspCategoryGetByParentID(0,1).ToList();
             foreach (var menu1 in lstCat)
             {
-                obj = new ClassExtend<uspCategoryGetForHomeResult, uspNewsGetByCategoryIDHomeResult>();
+                obj = new ClassExtend<uspCategoryGetByParentIDResult, uspNewsGetByCategoryIDHomeResult>();
                 obj.Info = menu1;
                 obj.Items = BDS.NewsInstance.uspNewsGetByCategoryIDHome(menu1.CategoryID, 5).ToList();
                 obj.TotalRecord = obj.Items.Count;

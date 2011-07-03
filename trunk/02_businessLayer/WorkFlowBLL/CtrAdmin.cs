@@ -10,6 +10,14 @@ namespace WorkFlowBLL
 {
     public class CtrAdmin
     {
+
+        public List<uspFunctionByParentIDResult> FunctionGetByParentID(int @parentID, int @status)
+        {
+            return BDS.AdminInstance.uspFunctionByParentID(@parentID, @status).ToList();
+        }
+
+
+        /*
         /// <summary>
         /// Check Login BackEnd
         /// </summary>
@@ -17,8 +25,8 @@ namespace WorkFlowBLL
         /// <param name="pass"></param>
         /// <returns></returns>
         public bool CheckLoginBackEnd(string userName, string pass)
-        { 
-            int? ret=0;
+        {
+            int? ret = 0;
             SocialShop.AdminInstance.uspCheckLoginBackEnd(userName, pass, ref ret);
             if (ret != null) return (int)ret == 1 ? true : false;
             return false;
@@ -87,9 +95,9 @@ namespace WorkFlowBLL
         public ClassExtend<int, uspAdminGetListToAddShopResult> GetListAdminToAddShop(int companyID)
         {
             var objReturn = new ClassExtend<int, uspAdminGetListToAddShopResult>
-                                {
-                                    Items = SocialShop.AdminInstance.uspAdminGetListToAddShop(companyID).ToList()
-                                };
+            {
+                Items = SocialShop.AdminInstance.uspAdminGetListToAddShop(companyID).ToList()
+            };
             objReturn.TotalRecord = objReturn.Items.Count;
             objReturn.Info = 0;
             return objReturn;
@@ -157,9 +165,9 @@ namespace WorkFlowBLL
         public ClassExtend<int, uspPermissionGetListRoleInUserResult> GetListRoleInAdmin(int adminID)
         {
             var objReturn = new ClassExtend<int, uspPermissionGetListRoleInUserResult>
-                                {
-                                    Items = SocialShop.AdminInstance.uspPermissionGetListRoleInUser(adminID).ToList()
-                                };
+            {
+                Items = SocialShop.AdminInstance.uspPermissionGetListRoleInUser(adminID).ToList()
+            };
             objReturn.TotalRecord = objReturn.Items.Count;
             objReturn.Info = 0;
             return objReturn;
@@ -173,9 +181,9 @@ namespace WorkFlowBLL
         public ClassExtend<int, uspPermissionGetListRoleNotInUserResult> GetListRoleNotInAdmin(int adminID)
         {
             var objReturn = new ClassExtend<int, uspPermissionGetListRoleNotInUserResult>
-                                {
-                                    Items = SocialShop.AdminInstance.uspPermissionGetListRoleNotInUser(adminID).ToList()
-                                };
+            {
+                Items = SocialShop.AdminInstance.uspPermissionGetListRoleNotInUser(adminID).ToList()
+            };
             objReturn.TotalRecord = objReturn.Items.Count;
             objReturn.Info = 0;
             return objReturn;
@@ -187,9 +195,10 @@ namespace WorkFlowBLL
             SocialShop.AdminInstance.uspAdminCheckUserName(userName, ref ret);
             return ret == 1 ? true : false;
         }
+         * */
 
         //****************************ShopManager*****************************************//
-
+        /*
         public int InsertShopManager(int companyID, int shopID, int status)
         {
             return SocialShop.AdminInstance.uspShopManagerInsert(companyID, shopID, DateTime.Now, 1);
@@ -198,10 +207,10 @@ namespace WorkFlowBLL
         public ClassExtend<int, uspShopManagerGetListShopByCompanyResult> GetListShopByCompany(int companyID)
         {
             var objReturn = new ClassExtend<int, uspShopManagerGetListShopByCompanyResult>
-                                {
-                                    Items =
-                                        SocialShop.AdminInstance.uspShopManagerGetListShopByCompany(companyID).ToList()
-                                };
+            {
+                Items =
+                    SocialShop.AdminInstance.uspShopManagerGetListShopByCompany(companyID).ToList()
+            };
             objReturn.TotalRecord = objReturn.Items.Count;
             objReturn.Info = 0;
             return objReturn;
@@ -219,10 +228,10 @@ namespace WorkFlowBLL
         /// <param name="description"></param>
         /// <param name="function"></param>
         /// <returns></returns>
-        public int InsertLog(char action,string description,string function)
+        public int InsertLog(char action, string description, string function)
         {
             return SocialShop.AdminInstance.uspLogInsert(VTCO.Utils.AdminUtils.AdminID, VTCO.Utils.AdminUtils.UserName, action, description, function);
-        }        
-        
+        }*/
+
     }
 }
