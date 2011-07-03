@@ -12,7 +12,6 @@ namespace WorkFlowBLL
     public class CtrCategory
     {
         StringBuilder sb = new StringBuilder();
-        List<uspCategoryGetAllResult> menu;
         //private List<uspCategoryGetAllResult> GetListCategory()
         //{
         //    return BDS.CategoryInstance.uspCategoryGetAll().ToList();
@@ -22,6 +21,16 @@ namespace WorkFlowBLL
         public List<uspCategoryGetListResult> GetListCategory(int status)
         {
             return BDS.CategoryInstance.uspCategoryGetList(status).ToList();
+        }
+
+        public List<uspCategoryGetByParentIDResult> GetByParentID(int parentID, int status)
+        {
+            return BDS.CategoryInstance.uspCategoryGetByParentID(parentID, status).ToList();
+        }
+
+        public uspCategoryGetInfoByCategoryIDResult GetInfo(int CatID)
+        {
+            return BDS.CategoryInstance.uspCategoryGetInfoByCategoryID(CatID).FirstOrDefault();
         }
 
         //private void GenHtmlMenu(List<uspCategoryGetAllResult> menu, int ParentID,int y)
