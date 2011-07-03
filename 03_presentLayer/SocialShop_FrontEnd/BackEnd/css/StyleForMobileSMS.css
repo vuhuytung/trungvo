@@ -1,0 +1,416 @@
+﻿body {
+}
+.SMS_content
+{
+	padding-top:5px;
+	font-family:Tahoma;
+	font-weight:bold;
+	padding-bottom:5px;
+}
+.SMS_content_SvName1
+{
+	float:left;
+	width:100px;
+	padding-right:10px;
+	text-align:right;
+	padding-top:2px;
+}
+.SMS_content_SvName2
+{
+	float:left;
+	
+}
+.SMS_content_National1
+{
+	float:left;
+	width:100px;
+	text-align:right;
+	padding-right:10px;
+	padding-top:3px;
+	font-size:12px;
+}
+.SMS_content_National2
+{
+	float:left;
+	padding-left:5px;
+}
+.SMS_content_StartDate1
+{
+	float:left;
+	width:100px;
+	padding-right:10px;
+	text-align:right;
+	padding-top:3px;
+	font-size:12px;
+}
+.SMS_content_StartDate2
+{
+	float:left;
+	width:155px;
+	
+}
+.SMS_content_ToDate1
+{
+	float:left;
+	text-align:right;
+	width:75px;
+	padding-right:12px;
+	padding-top:3px;
+}
+.SMS_content_ToDate2
+{
+	float:left;
+	width:155px;
+}
+.SMS_content_Status1
+{
+	float:left;
+	width:96px;
+	padding-right:12px;
+	text-align:right;
+	font-size:12px;
+	padding-top:3px;
+}
+.SMS_content_Status2
+{
+	float:left;
+	font-size:12px;
+	padding-top:3px;
+}
+.SMS_content_Price1
+{
+	float:left;
+	width:100px;
+	text-align:right;
+	padding-right:10px;
+	font-size:12px;
+}
+.SMS_content_Price2
+{
+	float:left;
+}
+.SMS_content_Code1
+{
+	float:left;
+	width:84px;
+	text-align:right;
+	padding-right:10px;
+	font-size:12px;
+	padding-top:3px;
+}
+.SMS_content_Code2
+{
+	float:left;
+}
+.SMS_content_Search
+{
+	float:left;
+	padding-left:105px;
+}
+.SMS_content_Search input 
+{
+	padding-left:5px;
+	padding-right:5px;
+}
+.Management_delete
+{
+	float:right;
+}
+.Management_Save
+{
+	float:right;
+	
+}
+.Management_skip
+{
+	float:right;
+	
+}
+.Management_skip img
+{
+	padding-top:3px;
+	padding-left:5px;
+	padding-right:5px;
+}
+.Management_Save img
+{
+	padding-top:3px;
+	padding-left:5px;
+	padding-right:5px;
+}
+.Management_delete img
+{
+	padding-top:3px;
+	padding-left:5px;
+	padding-right:5px;
+}
+.Management_Add
+{
+	float:right;
+	padding-left:5px;
+	padding-right:5px;
+}
+.Management_Add img 
+{
+	padding-top:3px;
+}
+.title_title
+{
+	float:left
+}
+/* Repeater */
+.HeadListMobileSMS
+{
+	background-color:#EFEFEF;
+	border-bottom:1px solid #E0E0E0;
+	width:100%;
+	font-family:Tahoma;
+	font-size:12px;
+	padding-bottom:8px;
+	text-align:center;
+	font-weight:bold;
+	padding-top:10px;
+}
+.HeadListMobileSMS_check
+{
+	float:left;
+	text-align:center;
+	width:25px;
+}
+.HeadListMobileSMS_ServiceName
+{
+	float:left;
+	width:490px;
+}
+.HeadListMobileSMS_CreateDate
+{
+	float:left;
+	width:120px;
+}
+.HeadListMobileSMS_Code
+{
+	float:left;
+	width:100px;
+}
+.HeadListMobileSMS_Price
+{
+	float:left;
+	width:100px;
+}
+.HeadListMobileSMS_UserCreate
+{
+	float:left;
+	width:100px;
+}
+.HeadListMobileSMS_Status
+{
+	float:left;
+	width:120px;
+	text-align:center;
+}
+.prtMobileSMS_row1
+{
+	width:100%;
+	border-bottom:1px solid #E0E0E0;
+	text-align:center;
+}
+.prtMobileSMS_row2
+{
+	width:100%;
+	background-color:#F5F7FA;
+	border-bottom:1px solid #E0E0E0;
+	text-align:center;
+}
+
+
+.prtMobileSMS_check
+{
+	float:left;
+	text-align:center;
+	width:25px;
+	padding-top:6px;
+	padding-bottom:6px;
+}
+.prtMobileSMS_ServiceName
+{
+	float:left;
+	width:482px;
+	padding-left:10px;
+	text-align:left;
+	overflow:hidden;
+	padding-top:6px;
+}
+.prtMobileSMS_CreateDate
+{
+	float:left;
+	width:120px;
+	padding-top:6px;
+}
+.prtMobileSMS_Code
+{
+	float:left;
+	width:100px;
+	padding-top:6px;
+}
+.prtMobileSMS_Price
+{
+	float:left;
+	width:100px;
+	padding-top:6px;
+}
+.prtMobileSMS_UserCreate
+{
+	float:left;
+	width:100px;
+	padding-top:6px;
+}
+.prtMobileSMS_Status
+{
+	float:left;
+	width:120px;
+	padding-top:6px;
+}
+.prtMobileSMS_ListControl
+{
+	float:left;
+	width:95px;
+	text-align:center;
+	padding-top:6px;
+}
+.AddNew_MobileSMS
+{
+	width:780px;
+	margin:0 auto 0;
+}
+.fwidth
+{
+	width:100%;
+}
+.clearn
+{
+	clear:both;
+}
+.left
+{
+	float:left;
+}
+.tright
+{
+	text-align:right;
+	padding-right:10px;
+	font-family:Tahoma;
+	font-weight:bold;
+	padding-top:2px;
+}
+.AddNew_MobileSMS_ServiceName1
+{
+	width:100px;
+}
+.AddNew_MobileSMS_ServiceName
+{
+	padding-top:5px;
+	padding-bottom:5px;
+}
+.AddNew_MobileSMS_Custom
+{
+	padding-top:5px;
+	padding-bottom:5px;
+}
+.AddNew_MobileSMS_National1
+{
+	width:100px;
+	
+}
+.AddNew_MobileSMS_Status
+{
+	width:117px;
+}
+.AddNew_MobileSMS_Description
+{
+	padding-top:5px;
+	padding-bottom:5px;
+}
+.AddNew_MobileSMS_Code
+{
+	width:100px;
+}
+.AddNew_MobileSMS_Price
+{
+	width:100px;
+}
+.AddNew_MobileSMS_Description1
+{
+	width:100px;
+}
+.AddNew_MobileSMS_Content
+{
+	padding-bottom:5px;
+	padding-top:5px;
+}
+.AddNew_MobileSMS_Content1
+{
+	width:100px;
+}
+.AddNew_MobileSMS_Content body
+{
+	background-color:White;
+	background-image:none;
+}
+.AddNew_MobileSMS_Title
+{
+	padding-bottom:5px;
+	padding-top: 5px;
+}
+.AddNew_MobileSMS_Title1
+{
+	width:100px;
+}
+.AddNew_MobileSMS_Order
+{
+	width:80px;
+}
+.SMS_content_ServicePhone1
+{
+	width:104px;
+	font-size:12px;
+}
+.AddNew_MobileSMS_ServiceNumBer
+{
+	width:120px;
+}
+.MsBox
+{
+	text-align:center;
+	width:100%;
+	font-family:Tahoma;
+	color:Crimson;
+	font-weight:bold;
+}
+.SMS_content_Type
+{
+	width:60px;
+
+	
+}
+.AddNew_MobileSMS_Type1
+{
+	width:100px;
+}
+.AddNew_MobileSMS_Type
+{
+	padding-bottom:7px;
+	padding-top:5px;
+}
+.AddNew_MobileSMS_image1
+{
+	width:100px;
+}
+.AddNew_MobileSMS_image
+{
+	padding-top:10px;
+	padding-bottom:10px;
+}
+.FileUpload
+{
+	margin-right:20px;
+}

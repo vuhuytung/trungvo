@@ -1,0 +1,79 @@
+﻿h1
+{
+	color: white;
+	font-size: 24px;
+	font-style: italic;
+	font-weight: normal;
+	line-height: 35px;
+	margin-bottom: 0;
+	margin-top: 80px;
+	text-align: center;
+}
+p, h1
+{
+	margin-bottom: 20px;
+}
+.Login_loginbox
+{
+	-moz-background-clip: border;
+	-moz-background-inline-policy: continuous;
+	-moz-background-origin: padding;
+	-moz-border-radius-topleft:4px;
+	-moz-border-radius-topright:4px;
+	-moz-border-radius-bottomleft:4px;
+	-moz-border-radius-bottomright:4px;
+	background: #F6F5F5 url(../img/bg_login.gif) repeat-x scroll left top;
+	border: 1px solid #666666;
+	margin: 10px 0 0;
+	padding: 20px;
+}
+.Login_inputText
+{
+	-moz-background-clip: border;
+	-moz-background-inline-policy: continuous;
+	-moz-background-origin: padding;
+	background: #FFFFF8 none repeat scroll 0 0;
+	border: 1px solid #999999;
+	color: #333333;
+	font-family: "Trebuchet MS" ,Arial,Helvetica,sans-serif;
+	font-size: 16px;
+	margin: 5px;
+	padding: 7px;
+	width: 240px;
+}
+
+.Login_Copyright
+{
+	margin: auto;
+	text-align: center;
+	width: 235px;
+	-moz-background-clip:border;
+	-moz-background-inline-policy:continuous;
+	-moz-background-origin:padding;
+	background:transparent url(../img/copyright_bg_span.gif) no-repeat scroll right top;
+	border:0 none;
+	color:#888888 !important;
+	display:block;
+ 	font-size:11px;
+	font-weight:bold;
+	height:30px;
+	outline-color:-moz-use-text-color !important;
+	outline-style:none !important;
+	outline-width:medium !important;
+	overflow:hidden;
+	padding:0 15px 0 0 !important;
+	text-decoration:none;
+}
+.Login_Copyright span {
+	-moz-background-clip:border;
+	-moz-background-inline-policy:continuous;
+	-moz-background-origin:padding;
+	background:transparent url(../img/copyright_bg_left.gif) no-repeat scroll left top;
+	display:block;
+	height:30px;
+	line-height:25px;
+	outline-color:-moz-use-text-color !important;
+	outline-style:none !important;
+	outline-width:medium !important;
+	padding:0 0 0 15px;
+}
