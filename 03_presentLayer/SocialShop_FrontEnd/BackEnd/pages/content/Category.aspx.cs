@@ -58,7 +58,7 @@ public partial class BackEnd_pages_content_Category : System.Web.UI.Page
 
     private void LoadTreeMenu()
     {
-        var RootNode = new RadTreeNode("Trang chủ VTCEdu", "0");
+        var RootNode = new RadTreeNode("Trang chủ", "0");
         RadTreeViewMenu.Nodes.Add(RootNode);
         AddNodes(RadTreeViewMenu.Nodes[0].Nodes, 0);
         RadTreeViewMenu.ExpandAllNodes();
@@ -127,13 +127,12 @@ public partial class BackEnd_pages_content_Category : System.Web.UI.Page
     }
     private void BinDataForDropType()
     {
-        ddlMenuType.Items.Add(new ListItem("Nhóm tin tức", "1"));
-        ddlMenuType.Items.Add(new ListItem("Nhóm Menu", "2"));
-        ddlMenuType.Items.Add(new ListItem("Tin tức", "3"));
-        ddlMenuType.Items.Add(new ListItem("Phòng ban", "4"));
-        ddlMenuType.Items.Add(new ListItem("Tài nguyên", "5"));
-        ddlMenuType.Items.Add(new ListItem("Nhân sự", "6"));
-        ddlMenuType.Items.Add(new ListItem("Liên kết ngoài", "7"));
+        ddlMenuType.Items.Add(new ListItem("Nhóm menu", "1"));
+        ddlMenuType.Items.Add(new ListItem("Menu chỉ chứa 1 tin", "2"));
+        ddlMenuType.Items.Add(new ListItem("Nhóm các tin", "3"));
+        ddlMenuType.Items.Add(new ListItem("Tài nguyên", "4"));
+        ddlMenuType.Items.Add(new ListItem("Bất động sản", "5"));
+        ddlMenuType.Items.Add(new ListItem("Liên kết ngoài", "6"));
     }
 
     private void BinDataForDropDllPrentID()
@@ -154,8 +153,8 @@ public partial class BackEnd_pages_content_Category : System.Web.UI.Page
         foreach (var row in rows)
         {
             if (row.CategoryID == currentMenuID) continue;
-            ddlParentID.Items.Add(new ListItem(space + "..." + row.Name, row.CategoryID.ToString()));
-            GetMenuTop(tb, row.CategoryID, space + "...", currentMenuID);
+            ddlParentID.Items.Add(new ListItem(space + ". . . " + row.Name, row.CategoryID.ToString()));
+            GetMenuTop(tb, row.CategoryID, space + ". . . ", currentMenuID);
         }
     }
 
