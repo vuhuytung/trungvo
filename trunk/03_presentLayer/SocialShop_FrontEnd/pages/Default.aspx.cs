@@ -11,7 +11,7 @@ using EntityBLL;
 public partial class pages_Default : System.Web.UI.Page
 {
     protected int ktra=0;
-    List<ClassExtend<uspCategoryGetForHomeResult,uspNewsGetByCategoryIDHomeResult>> _data;
+    List<ClassExtend<uspCategoryGetByParentIDResult,uspNewsGetByCategoryIDHomeResult>> _data;
     protected void Page_Load(object sender, EventArgs e)
     {
         CtrNews ctrNews = new CtrNews();
