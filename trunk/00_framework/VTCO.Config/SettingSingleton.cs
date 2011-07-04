@@ -13,7 +13,14 @@ namespace VTCO.Config
     /// </summary>
     public sealed class SettingSingleton
     {
+        #region Singleton Pattern
+        private static readonly SettingSingleton instance = new SettingSingleton();
 
+        public static SettingSingleton Instance
+        {
+            get { return SettingSingleton.instance; }
+        }
+        #endregion
         #region Process Method
         /// <summary>
         /// Lấy giá trị của Key trong AppSetting
@@ -1095,5 +1102,27 @@ namespace VTCO.Config
             }
         }     
         #endregion
+
+        /// <summary>
+        /// Key mã hóa công khai
+        /// </summary>
+        public string PublicKey
+        {
+            get
+            {
+                return GetAppKeyValue(Constants.KEY);
+            }
+        }
+
+        /// <summary>
+        /// Đường dẫn chứa PublicKey và PrivateKey cho RSA Cryptography
+        /// </summary>
+        public string KeyPath
+        {
+            get
+            {
+                return GetAppKeyValue(Constants.KEY_PATH);
+            }
+        }
     }
 }
