@@ -33,12 +33,17 @@ a:hover
 /**************************************/
 /* Common Style
 /**************************************/
-.inputbox
+.inputbox, .inputText
 {
     border: 1px solid #999999;
     padding: 2px;
-    font-size: 11px;
+    font-size: 12px;
     width: 115px;
+}
+.inputbox:focus, .inputText:focus
+{
+    border-color:#99defd;
+    border-width:2px;
 }
 
 /**************************************/
