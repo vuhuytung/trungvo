@@ -22,15 +22,64 @@ namespace WorkFlowBLL
         {
             return BDS.CategoryInstance.uspCategoryGetList(status).ToList();
         }
-
+        
+        /// <summary>
+        /// Lấy danh sách chuyên mục và các chuyên mục con
+        /// </summary>
+        /// <param name="parentID"></param>
+        /// <param name="status"></param>
+        /// <returns></returns>
         public List<uspCategoryGetByParentIDResult> GetByParentID(int parentID, int status)
         {
             return BDS.CategoryInstance.uspCategoryGetByParentID(parentID, status).ToList();
         }
 
+        /// <summary>
+        /// Lấy thông tin một chuyên mục
+        /// </summary>
+        /// <param name="CatID"></param>
+        /// <returns></returns>
         public uspCategoryGetInfoByCategoryIDResult GetInfo(int CatID)
         {
             return BDS.CategoryInstance.uspCategoryGetInfoByCategoryID(CatID).FirstOrDefault();
+        }
+
+        /// <summary>
+        /// Thêm mới bản ghi
+        /// </summary>
+        /// <param name="parentID"></param>
+        /// <param name="name"></param>
+        /// <param name="uRL"></param>
+        /// <param name="status"></param>
+        /// <param name="order"></param>
+        /// <param name="type"></param>
+        /// <returns>-1: Tên menu rỗng, >0: Insert thành công</returns>
+        public int Insert(int parentID,string name,string uRL,int status,int order, int type)
+        {
+            int ret = ComponentBLL.Category.ValidateInsert(name);
+            if(ret<0) return ret;
+            return BDS.CategoryInstance.uspCategoryInsert(parentID, name, uRL, status, order, type);
+        }
+
+        /// <summary>
+        /// Cập nhật bản ghi
+        /// </summary>
+        /// <param name="categoryID"></param>
+        /// <param name="parentID"></param>
+        /// <param name="name"></param>
+        /// <param name="uRL"></param>
+        /// <param name="status"></param>
+        /// <param name="order"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public int Update(int categoryID,int parentID,string name,string uRL,int status,int order,int type)
+        {
+            return BDS.CategoryInstance.uspCategoryUpdateByCategoryID(categoryID, parentID, name, uRL, status, order, type);
+        }
+
+        public int Delete(int categoryID)
+        {            
+            return BDS.CategoryInstance.uspCategoryDeleteByCategoryID(categoryID);
         }
 
         //private void GenHtmlMenu(List<uspCategoryGetAllResult> menu, int ParentID,int y)
