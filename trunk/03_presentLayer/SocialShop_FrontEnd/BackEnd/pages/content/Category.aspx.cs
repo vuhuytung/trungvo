@@ -17,7 +17,6 @@ using Telerik.Web.UI;
 using VTCO.Library;
 using System.Messaging;
 using System.Text;
-using VTCO.Encrypt;
 using System.Collections.Generic;
 
 public partial class BackEnd_pages_content_Category : System.Web.UI.Page
