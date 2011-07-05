@@ -69,7 +69,13 @@ namespace DAL
                return VTCO.Config.Pattern.Singleton<DBAdmin>.Instance.CreateInstance();
            }
        }
-
+       public static DataContext.UserDataContext UserInstance
+       {
+           get
+           {
+               return VTCO.Config.Pattern.Singleton<DBUser>.Instance.CreateInstance();
+           }
+       }
     }
 }
 
