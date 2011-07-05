@@ -113,6 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CookieManagement.cs" />
+    <Compile Include="CtrUser.cs" />
     <Compile Include="CtrAdmin.cs" />
     <Compile Include="CtrNews.cs" />
     <Compile Include="CtrCategory.cs" />
