@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="BDDocument.cs" />
     <Compile Include="BDS.cs" />
+    <Compile Include="DBUser.cs" />
     <Compile Include="DBNews.cs" />
     <Compile Include="DBAdmin.cs" />
     <Compile Include="DBCategory.cs" />
