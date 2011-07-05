@@ -22,7 +22,7 @@
                     </div>
                 </ItemTemplate>
             </asp:Repeater>
-            </div>
+           
         </ContentTemplate>
     </asp:UpdatePanel>
        <div id="divPaging" runat="server" class="paginator2 nr">
