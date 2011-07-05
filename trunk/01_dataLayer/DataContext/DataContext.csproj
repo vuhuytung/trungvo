@@ -95,6 +95,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SlideShow.dbml</DependentUpon>
     </Compile>
+    <Compile Include="User.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>User.dbml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Admin.dbml">
@@ -142,6 +147,11 @@
       <LastGenOutput>SlideShow.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
+    <None Include="User.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>User.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
@@ -184,6 +194,11 @@
   <ItemGroup>
     <None Include="Admin.dbml.layout">
       <DependentUpon>Admin.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="User.dbml.layout">
+      <DependentUpon>User.dbml</DependentUpon>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
