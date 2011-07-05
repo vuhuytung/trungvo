@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Net;
-using VTCO.Encrypt;
+using VTCO.Utils;
 
 namespace WorkFlowBLL
 {
