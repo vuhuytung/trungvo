@@ -24,7 +24,5 @@
         </div>
         <!--End body content-->
   </div>
-
-
 </asp:Content>
 
