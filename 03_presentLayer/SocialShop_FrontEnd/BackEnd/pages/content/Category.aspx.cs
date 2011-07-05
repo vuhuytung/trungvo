@@ -236,14 +236,14 @@ public partial class BackEnd_pages_content_Category : System.Web.UI.Page
                     {
                         try
                         {
-                            //MyMenu.DeleteMenuByMenuID(MenuID);
+                            MyMenu.Delete(MenuID);
                         }
                         catch
                         {
                             lblMsg1.Visible = true;
                             return;
                         }
-                        Response.Redirect("~/backend/Menu.aspx");
+                        Response.Redirect("~/admin/category");
                     }
                     else
                     {
@@ -266,73 +266,59 @@ public partial class BackEnd_pages_content_Category : System.Web.UI.Page
     }
     protected void btnSave_Click(object sender, EventArgs e)
     {
-        //if (CheckAddOrEdit == 1)
-        //{
-        //    MenuInfo MenuInfo = new MenuInfo();
-        //    MenuInfo.Name = HtmlUtility.HtmlEncode(txtMenuName.Text.Trim());
-        //    MenuInfo.Type = Convert.ToInt32(ddlMenuType.SelectedValue);
-        //    MenuInfo.Order = Convert.ToInt32(txtOrder.Text);
-        //    MenuInfo.ParentID = MenuID;
-        //    if (MenuInfo.Type != Convert.ToInt32(EnumMenuType.Link))
-        //    {
-        //        if (MenuInfo.Type == Convert.ToInt32(EnumMenuType.GroupMenu))
-        //        {
-        //            MenuInfo.Url = "#";
-        //        }
-        //        else
-        //            MenuInfo.Url = string.Empty;
-        //    }
-        //    else
-        //    {
-        //        MenuInfo.Url = HtmlUtility.HtmlEncode(txtUrl.Text.Trim());
-        //    }
-        //    if (rdbActive.Checked)
-        //    {
-        //        MenuInfo.Status = Convert.ToInt32(EnumStatus.Active);
-        //    }
-        //    if (rdbNoActive.Checked)
-        //    {
-        //        MenuInfo.Status = Convert.ToInt32(EnumStatus.InActive);
-        //    }
-        //    MyMenu.InsertMenu(MenuInfo);
-        //    Response.Redirect("~/backend/Menu.aspx");
-        //}
-        //else
-        //{
-        //    MenuInfo MenuInfo = MyMenuDB.GetInfo(MenuID);
-        //    MenuInfo.Name = HtmlUtility.HtmlEncode(txtMenuName.Text.Trim());
-        //    MenuInfo.Type = Convert.ToInt32(ddlMenuType.SelectedValue);
-        //    MenuInfo.Order = Convert.ToInt32(txtOrder.Text);
-        //    MenuInfo.ParentID = Convert.ToInt32(ddlParentID.SelectedValue);
-        //    if (MenuInfo.Type == Convert.ToInt32(EnumMenuType.Link))
-        //    {
-        //        MenuInfo.Url = HtmlUtility.HtmlEncode(txtUrl.Text.Trim());
-        //    }
-        //    else
-        //    {
-        //        if (MenuInfo.Type == Convert.ToInt32(EnumMenuType.GroupMenu))
-        //        {
-        //            MenuInfo.Url = "#";
-        //        }
-        //        else
-        //            MenuInfo.Url = string.Empty;
-        //    }
-        //    if (rdbActive.Checked)
-        //    {
-        //        MenuInfo.Status = Convert.ToInt32(EnumStatus.Active);
-        //    }
-        //    if (rdbNoActive.Checked)
-        //    {
-        //        MenuInfo.Status = Convert.ToInt32(EnumStatus.InActive);
-        //    }
-        //    MyMenu.UpdateMenuByMenuID(MenuInfo);
-        //    Response.Redirect("~/backend/Menu.aspx");
-        //}
+        string name = "";
+        int type = 1;
+        int order = 1;
+        int parentId = 1;
+        string link = "";
+        int status = 1;
+        if (CheckAddOrEdit == 1)
+        {
+            name = HtmlUtility.HtmlEncode(txtMenuName.Text.Trim());
+            type = Convert.ToInt32(ddlMenuType.SelectedValue);
+            order= Convert.ToInt32(txtOrder.Text);
+            parentId = Convert.ToInt32(ddlParentID.SelectedValue);
+            if (type == 6)
+            {
+                link = HtmlUtility.HtmlEncode(txtUrl.Text.Trim());
+            }
+            if (rdbActive.Checked)
+            {
+                status = 1;
+            }
+            if (rdbNoActive.Checked)
+            {
+                status = 0;
+            }
+            MyMenu.Insert(parentId,name,link,status,order,type);
+            Response.Redirect("~/admin/category");
+        }
+        else
+        {
+            name = HtmlUtility.HtmlEncode(txtMenuName.Text.Trim());
+            type = Convert.ToInt32(ddlMenuType.SelectedValue);
+            order = Convert.ToInt32(txtOrder.Text);
+            parentId = Convert.ToInt32(ddlParentID.SelectedValue);
+            if (type == 6)
+            {
+                link = HtmlUtility.HtmlEncode(txtUrl.Text.Trim());
+            }
+            if (rdbActive.Checked)
+            {
+                status = 1;
+            }
+            if (rdbNoActive.Checked)
+            {
+                status = 0;
+            }
+            MyMenu.Update(MenuID, parentId, name, link, status, order, type);
+            Response.Redirect("~/admin/category");
+        }
     }
 
     protected void ddlMenuType_SelectedIndexChanged1(object sender, EventArgs e)
     {
-        if (ddlMenuType.SelectedValue == "4")//Convert.ToInt32(EnumMenuType.Link).ToString())
+        if (ddlMenuType.SelectedValue == "6")//Convert.ToInt32(EnumMenuType.Link).ToString())
         {
             SetControls(true);
         }

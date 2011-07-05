@@ -151,10 +151,6 @@
       <Project>{192AA2BB-C2B8-4882-88F5-82C02765FC2E}</Project>
       <Name>DataContext</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\VTCO.Encrypt\VTCO.Encrypt.csproj">
-      <Project>{7EC985D8-31C0-4930-803D-0CF85B41291A}</Project>
-      <Name>VTCO.Encrypt</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ComponentBLL\ComponentBLL.csproj">
       <Project>{D8D41B36-906A-4506-853A-2C85B38EA7A9}</Project>
       <Name>ComponentBLL</Name>

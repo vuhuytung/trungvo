@@ -13,7 +13,7 @@ namespace WorkFlowBLL
         /// <summary>
         /// Thêm mới một bản ghi
         /// </summary>
-        /// <param name="userName"></param>
+        /// <param name="userName">absdasđ</param>
         /// <param name="passWord"></param>
         /// <param name="fullName"></param>
         /// <param name="address"></param>
@@ -22,7 +22,8 @@ namespace WorkFlowBLL
         /// <returns></returns>
         public int Insert(string userName,string passWord,string fullName,string address,string phone,string email)
         {
-            return BDS.UserInstance.uspUserInsert(userName, passWord, fullName, address, phone, email, DateTime.Now, true);
+            var pass = VTCO.Utils.Encryption.GetMD5(passWord);
+            return BDS.UserInstance.uspUserInsert(userName, pass, fullName, address, phone, email, DateTime.Now, true);
         }
        
     }

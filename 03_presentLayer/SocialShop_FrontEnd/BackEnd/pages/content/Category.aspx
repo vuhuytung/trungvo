@@ -58,7 +58,7 @@
                     <div id="divSystemMenu">
                         <div style="padding: 3px;">
                             <telerik:RadTreeView ID="RadTreeViewMenu" runat="server" OnContextMenuItemClick="RadTreeViewMenu_ContextMenuItemClick"
-                                OnClientContextMenuItemClicking="onClientContextMenuItemClicking" Skin="Vista"
+                                OnClientContextMenuItemClicking="onClientContextMenuItemClicking" Skin="Hay"
                                 Font-Size="11px" Font-Names="Times New Roman">
                                 <ContextMenus>
                                     <telerik:RadTreeViewContextMenu Skin="WebBlue">
@@ -141,9 +141,8 @@
                                         Trạng thái:
                                     </td>
                                     <td>
-                                        <asp:RadioButton ID="rdbActive" runat="server" GroupName="status" />Kích hoạt
-                                        <asp:RadioButton ID="rdbNoActive" runat="server" GroupName="status" />Chưa kích
-                                        hoạt
+                                        <asp:RadioButton ID="rdbActive" runat="server" GroupName="status" Text="Kích hoạt" />
+                                        <asp:RadioButton ID="rdbNoActive" runat="server" GroupName="status" Text="Khóa" />
                                     </td>
                                 </tr>
                             </table>
