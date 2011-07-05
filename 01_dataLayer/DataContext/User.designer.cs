@@ -22,6 +22,7 @@ namespace DataContext
 	using System;
 	
 	
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Database1")]
 	public partial class UserDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -30,6 +31,12 @@ namespace DataContext
     #region Extensibility Method Definitions
     partial void OnCreated();
     #endregion
+		
+		public UserDataContext() : 
+				base(global::DataContext.Properties.Settings.Default.Database1ConnectionString1, mappingSource)
+		{
+			OnCreated();
+		}
 		
 		public UserDataContext(string connection) : 
 				base(connection, mappingSource)
@@ -53,6 +60,13 @@ namespace DataContext
 				base(connection, mappingSource)
 		{
 			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspUserInsert")]
+		public int uspUserInsert([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserName", DbType="VarChar(50)")] string userName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PassWord", DbType="VarChar(150)")] string passWord, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FullName", DbType="NVarChar(100)")] string fullName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="NVarChar(200)")] string address, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Phone", DbType="VarChar(20)")] string phone, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="VarChar(200)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RegisterDate", DbType="DateTime")] System.Nullable<System.DateTime> registerDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Bit")] System.Nullable<bool> status)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userName, passWord, fullName, address, phone, email, registerDate, status);
+			return ((int)(result.ReturnValue));
 		}
 	}
 }
