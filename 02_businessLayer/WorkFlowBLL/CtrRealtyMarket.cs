@@ -18,5 +18,9 @@ namespace WorkFlowBLL
           ret.TotalRecord = total.Value;
           return ret;
       }
+      public List<uspRealtyMarketGetInfoByRealtyMarketIDResult> GetDetailRealtyMarketByID(int id)
+      {
+          return BDS.RealtymarketInstance.uspRealtyMarketGetInfoByRealtyMarketID(id).ToList();
+      }
     }
 }
