@@ -34,10 +34,12 @@
                         Visible="false" Text=""></asp:Label>
                 </div>
                 <div>
-                    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
-                        <AjaxSettings>
+                    <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" Skin="Default">
+                    </telerik:RadAjaxLoadingPanel>
+                    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" DefaultLoadingPanelID="RadAjaxLoadingPanel1">
+                        <AjaxSettings>                            
                             <telerik:AjaxSetting AjaxControlID="RadTreeViewMenu">
-                                <UpdatedControls>
+                                <UpdatedControls>                                    
                                     <telerik:AjaxUpdatedControl ControlID="RadTreeViewMenu" />
                                     <telerik:AjaxUpdatedControl ControlID="lblMsg1" />
                                     <telerik:AjaxUpdatedControl ControlID="CtrEdit" />
