@@ -1,0 +1,91 @@
+﻿
+        .doc_wrapper
+        {
+            float:left;
+        }
+        .doc_wrap
+        {
+            
+            float:left;
+            border-bottom:1px dotted #D3B439;
+            width:100%;
+        }
+        .doc_title
+        {
+            float:left;
+            text-align:justify;
+            padding:5px 5px;
+            width:100%;
+        }
+        .doc_desc
+        {
+            float:left;
+            padding:5px 5px;
+            text-align:justify;
+            width:100%;
+            display:none;
+        }
+       
+        .doc_download
+        {
+             padding:5px 5px;
+             float:left;
+             display:none;
+        }
+        .doc_download a
+        {
+            color:Red;
+            text-decoration:none;
+            
+        }
+        .tbl_doc
+        {
+          margin-left:100px;
+        }
+       .tbl_doc thead tr td
+       {
+           color:Red; 
+           font-weight:bold; 
+           text-align:center;
+       }
+        .tbl_doc thead tr .td1
+        {
+            width:70px;
+       }
+     .tbl_doc tr .td2
+     {
+          text-align:center;
+     }
+     .tbl_doc tr  td
+     {
+         padding:4px 2px;
+         border:1px solid #CFCFCF;
+     }
+     .doc_content
+     {
+         padding:30px 5px 0 5px;
+     }
+     table 
+     {
+         border-collapse:collapse;
+     }
+     .box_search
+     {
+         width:100%; 
+         float:left;
+         margin-left:10px;
+     }
+    .box_hide
+    {
+        width:100%;
+        height:100%;
+         z-index:100;
+         position:absolute;
+         top:0px;
+         left:0px;
+         display:none;
+    }
+   
+    .box_body
+    {
+         font-family:Arial;}

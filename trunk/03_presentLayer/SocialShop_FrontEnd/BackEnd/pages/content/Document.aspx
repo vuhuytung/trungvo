@@ -1,9 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BackEnd/MasterPage.master" AutoEventWireup="true" CodeFile="Document.aspx.cs" Inherits="BackEnd_pages_content_Document" %>
+﻿ <%@ Page Title="" Language="C#" MasterPageFile="~/BackEnd/MasterPage.master" AutoEventWireup="true" CodeFile="Document.aspx.cs" Inherits="BackEnd_pages_content_Document" %>
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 <%@ Register Src="~/userControls/ucPaging.ascx" TagName="ucPaging" TagPrefix="uc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-<div style=" font-family:Arial;">
+
+<div class="box_body">
     <div style=" text-align:center; width:100%; float:left;">
         <h1 style="color:Blue;">Quản lý tài liệu</h1>
     </div>
@@ -57,7 +58,7 @@
                         <asp:LinkButton ID="lbtEdit" runat="server">Sửa</asp:LinkButton>
                     </td>
                     <td class="td2">
-                        <asp:LinkButton ID="lbtDelete" CssClass="xoa" runat="server" CommandArgument='<%#Eval("DocumentID") %>'>Xóa</asp:LinkButton>
+                        <asp:LinkButton ID="lbtDelete" CssClass="xoa" runat="server"  CommandArgument='<%#Eval("DocumentID") %>'>Xóa</asp:LinkButton>
                     </td>
                 </tr>
             </ItemTemplate>
