@@ -1,9 +1,9 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="ucAddNewBDS.ascx.cs" Inherits="userControls_ucAddNewBDS" %>
 <script type="text/javascript">
     function Validate() {
-        var ddlTinh = document.getElementById("ctl03_ddlProvince");
-        var ddlHuyen = document.getElementById("ctl03_ddlDistrict");
-        var ddlXa = document.getElementById("ctl03_ddlVillage");
+        var ddlTinh = document.getElementById("plhBody_ucAddNewBDS1_ddlProvince");
+        var ddlHuyen = document.getElementById("plhBody_ucAddNewBDS1_ddlDistrict");
+        var ddlXa = document.getElementById("plhBody_ucAddNewBDS1_ddlVillage");
         if (ddlTinh.value == -1) {
             alert('Bạn chưa chọn tỉnh/TP !');
             return false;
@@ -18,19 +18,18 @@
         }
         return true;
     }
-
 </script>
-<table cellspacing="8">
+<table cellspacing="8" class="tbl_addnewbds">
     <tr>
         <td>Tiêu đề thông tin    
         </td>
-        <td colspan="3">
-            <asp:TextBox ID="txtTitle" runat="server" Width="492px"></asp:TextBox>*</td>
+        <td colspan="4">
+            <asp:TextBox ID="txtTitle" runat="server" Width="400px"></asp:TextBox><a>*</a></td>
     </tr>
     <tr>
         <td>Họ tên </td>
         <td>
-            <asp:TextBox ID="txtName" runat="server"></asp:TextBox>*</td>
+            <asp:TextBox ID="txtName" runat="server"></asp:TextBox><a>*</a></td>
     </tr>
     <tr>
         <td>Loại BĐS</td>
@@ -41,32 +40,37 @@
     </tr>
     <tr>
         <td>Địa chỉ</td>
-        <td>Tỉnh/TP&nbsp;&nbsp;
+        <td>
             <asp:DropDownList ID="ddlProvince" runat="server" 
                 onselectedindexchanged="ddlProvince_SelectedIndexChanged" AutoPostBack="true">
-            </asp:DropDownList>*
+            </asp:DropDownList><a>*</a>
         </td>
-        <td>&nbsp; Quận/Huyện&nbsp;&nbsp;
+        <td>
             <asp:DropDownList ID="ddlDistrict" runat="server" 
                 onselectedindexchanged="ddlDistrict_SelectedIndexChanged" AutoPostBack="true">
-            </asp:DropDownList>*
+            </asp:DropDownList><a>*</a>
         </td>
-        <td>&nbsp; Phường/xã&nbsp;&nbsp;
-            <asp:DropDownList ID="ddlVillage" runat="server">
-            </asp:DropDownList>*
-        </td>
-    </tr>
+         </tr>
+         <tr>
+            <td>
+            </td>
+            <td>
+                <asp:DropDownList ID="ddlVillage" runat="server">
+                </asp:DropDownList><a>*</a>
+            </td>
+        </tr>
+   
     <tr>
         <td>Điện thoại</td>
         <td>
-            <asp:TextBox ID="txtPhone" runat="server"></asp:TextBox>*</td>
+            <asp:TextBox ID="txtPhone" runat="server"></asp:TextBox><a>*</a></td>
         <td>Email liên hệ</td>
         <td>
             <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
         </td>
     </tr>
     <tr>
-        <td>Tình trạng pháp lí</td>
+        <td>Tình trạng pháp lý</td>
         <td>
             <asp:TextBox ID="txtLegal" runat="server"></asp:TextBox>
         </td>
@@ -156,11 +160,13 @@
         <td>
         
             <asp:TextBox ID="txtPrice" runat="server"></asp:TextBox></td>
+     </tr>
+     <tr>
         <td>Ảnh BĐS</td>
-        <td>
+        <td colspan="2">
             <asp:FileUpload ID="fuploadImg" runat="server" />
         </td>
-    </tr>
+   </tr>
     <tr>
         <td>Mô tả</td>
         <td colspan="3">
