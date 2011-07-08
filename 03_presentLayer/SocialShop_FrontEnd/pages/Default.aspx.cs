@@ -18,6 +18,6 @@ public partial class pages_Default : System.Web.UI.Page
         _data=ctrNews.GetListCategoryNewsForHome().Items;
         rptContent.DataSource = _data;
         rptContent.DataBind();
-        ((MasterPage)(this.Master)).VisibleNavigator = false;
+        ((master_masterFrontend)(this.Master)).VisibleNavigator = false;
     }
 }
