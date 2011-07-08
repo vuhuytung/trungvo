@@ -1,8 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/master/masterFrontend.master" AutoEventWireup="true"
     CodeFile="News.aspx.cs" Inherits="pages_News" %>
 
-<%@ Register Src="/userControls/ucDoitac.ascx" TagName="ucDoitac" TagPrefix="uc2" %>
-<%@ Register Src="../userControls/ucPaging.ascx" TagName="ucPaging" TagPrefix="uc1" %>
+<%@ Register Src="~/userControls/ucDoitac.ascx" TagName="ucDoitac" TagPrefix="uc2" %>
+<%@ Register Src="~/userControls/ucPaging.ascx" TagName="ucPaging" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <link href="/css/paging.css" rel="stylesheet" type="text/css" />
 </asp:Content>
