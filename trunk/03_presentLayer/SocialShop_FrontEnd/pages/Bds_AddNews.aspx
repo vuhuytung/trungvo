@@ -1,10 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Bds_AddNews.aspx.cs" Inherits="pages_Bds_AddNews" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/master/masterFrontend.master" AutoEventWireup="true" CodeFile="Bds_AddNews.aspx.cs" Inherits="pages_Bds_AddNews" %>
 
-<%@ Register src="../userControls/ucAddNewBDS.ascx" tagname="ucAddNewBDS" tagprefix="uc1" %>
-<%@ Register src="../userControls/ucDoitac.ascx" tagname="ucDoitac" tagprefix="uc2" %>
+<%@ Register src="~/userControls/ucAddNewBDS.ascx" tagname="ucAddNewBDS" tagprefix="uc1" %>
+<%@ Register src="~/userControls/ucDoitac.ascx" tagname="ucDoitac" tagprefix="uc2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <link href="../css/bds_detail.css" rel="stylesheet" type="text/css" />
+    <link href="/css/bds_detail.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="plhBody" Runat="Server">
 <div class="bodyContent">
