@@ -1,4 +1,4 @@
-﻿ <%@ Page Title="" Language="C#" MasterPageFile="~/BackEnd/MasterPage.master" AutoEventWireup="true" CodeFile="Document.aspx.cs" Inherits="BackEnd_pages_content_Document" %>
+﻿ <%@ Page Title="" Language="C#" MasterPageFile="~/masterBackend.master" AutoEventWireup="true" CodeFile="Document.aspx.cs" Inherits="BackEnd_pages_content_Document" %>
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 <%@ Register Src="~/userControls/ucPaging.ascx" TagName="ucPaging" TagPrefix="uc1" %>
 
