@@ -13,8 +13,7 @@
                                 <%#Eval("Title") %></a>
                         </div>
                         <div class="doc_desc">
-                            <a>
-                                <%#Eval("Description") %></a>
+                           <a><%#Eval("Description") %></a>
                         </div>
                         <div class="doc_download">
                             <a href='download.aspx?file=<%#Eval("Url") %>'>Download tài liệu này !</a>

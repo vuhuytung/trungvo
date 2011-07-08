@@ -69,6 +69,20 @@ namespace DataContext
 			totalRecord = ((System.Nullable<int>)(result.GetParameterValue(3)));
 			return ((ISingleResult<uspDocumentGetAllResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspDocumentGetInfoByDocumentID")]
+		public ISingleResult<uspDocumentGetInfoByDocumentIDResult> uspDocumentGetInfoByDocumentID([global::System.Data.Linq.Mapping.ParameterAttribute(Name="DocumentID", DbType="Int")] System.Nullable<int> documentID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), documentID);
+			return ((ISingleResult<uspDocumentGetInfoByDocumentIDResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspDocumentUpdateByDocumentID")]
+		public int uspDocumentUpdateByDocumentID([global::System.Data.Linq.Mapping.ParameterAttribute(Name="DocumentID", DbType="Int")] System.Nullable<int> documentID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Title", DbType="NVarChar(400)")] string title, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Description", DbType="NText")] string description, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="URL", DbType="VarChar(500)")] string uRL, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CategoryID", DbType="Int")] System.Nullable<int> categoryID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Int")] System.Nullable<int> status)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), documentID, title, description, uRL, categoryID, status);
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	public partial class uspDocumentGetAllResult
@@ -108,6 +122,140 @@ namespace DataContext
 					this._RowNumber = value;
 				}
 			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DocumentID", DbType="Int NOT NULL")]
+		public int DocumentID
+		{
+			get
+			{
+				return this._DocumentID;
+			}
+			set
+			{
+				if ((this._DocumentID != value))
+				{
+					this._DocumentID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", DbType="NVarChar(400) NOT NULL", CanBeNull=false)]
+		public string Title
+		{
+			get
+			{
+				return this._Title;
+			}
+			set
+			{
+				if ((this._Title != value))
+				{
+					this._Title = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this._Description = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_URL", DbType="VarChar(500) NOT NULL", CanBeNull=false)]
+		public string URL
+		{
+			get
+			{
+				return this._URL;
+			}
+			set
+			{
+				if ((this._URL != value))
+				{
+					this._URL = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime NOT NULL")]
+		public System.DateTime CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this._CreateDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategoryID", DbType="Int NOT NULL")]
+		public int CategoryID
+		{
+			get
+			{
+				return this._CategoryID;
+			}
+			set
+			{
+				if ((this._CategoryID != value))
+				{
+					this._CategoryID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Int NOT NULL")]
+		public int Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this._Status = value;
+				}
+			}
+		}
+	}
+	
+	public partial class uspDocumentGetInfoByDocumentIDResult
+	{
+		
+		private int _DocumentID;
+		
+		private string _Title;
+		
+		private string _Description;
+		
+		private string _URL;
+		
+		private System.DateTime _CreateDate;
+		
+		private int _CategoryID;
+		
+		private int _Status;
+		
+		public uspDocumentGetInfoByDocumentIDResult()
+		{
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DocumentID", DbType="Int NOT NULL")]
