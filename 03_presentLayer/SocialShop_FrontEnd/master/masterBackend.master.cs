@@ -13,7 +13,7 @@ using System.Xml.Linq;
 using WorkFlowBLL;
 using VTCO.Config;
 
-public partial class backend_MasterPage : System.Web.UI.MasterPage
+public partial class masterBackend : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {

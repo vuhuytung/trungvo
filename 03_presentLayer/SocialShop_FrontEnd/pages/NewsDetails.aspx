@@ -2,7 +2,7 @@
     CodeFile="NewsDetails.aspx.cs" Inherits="pages_NewsDetails" %>
 
 <%@ Register Src="/userControls/ucDoitac.ascx" TagName="ucDoitac" TagPrefix="uc2" %>
-<%@ Register Src="../userControls/ucPaging.ascx" TagName="ucPaging" TagPrefix="uc1" %>
+<%@ Register Src="/userControls/ucPaging.ascx" TagName="ucPaging" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <link href="/css/paging.css" rel="stylesheet" type="text/css" />
 </asp:Content>
