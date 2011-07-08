@@ -40,6 +40,23 @@ namespace WorkFlowBLL
         }
 
         /// <summary>
+        /// Lấy danh sách tin tức cho phần quản lý tin
+        /// </summary>
+        /// <param name="CatID"></param>
+        /// <param name="status"></param>
+        /// <param name="cur"></param>
+        /// <param name="ps"></param>
+        /// <returns></returns>
+        public ClassExtend<string, uspNewsGetListForAdminResult> GetListForAdmin(int CatID, int status, int cur, int ps)
+        {
+            ClassExtend<string, uspNewsGetListForAdminResult> ret = new ClassExtend<string, uspNewsGetListForAdminResult>();
+            int? total = 0;
+            ret.Items = BDS.NewsInstance.uspNewsGetListForAdmin(CatID, status, cur, ps, ref total).ToList();
+            ret.TotalRecord = total.Value;
+            return ret;
+        }
+
+        /// <summary>
         /// Lấy các chuyên mục lớn đi kèm các top 5 tin tức trong chuyên mục đó
         /// </summary>
         /// <returns></returns>
