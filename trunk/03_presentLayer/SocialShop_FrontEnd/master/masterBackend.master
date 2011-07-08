@@ -12,7 +12,7 @@
     <title>Website Administration</title>
     <link href="/backend/css/css.css" rel="stylesheet" type="text/css" />
     <link href="/backend/css/menuuc.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="/js/swfobject.js"></script>
+    <script type="text/javascript" src="/Backend/js/swfobject.js"></script>
     <link href="/backend/css/popup.css" rel="stylesheet" type="text/css" />
     <script src="/js/framework/jquery-1.5.min.js" type="text/javascript"></script>
     <script src="/backend/js/Cookies.js" type="text/javascript"></script>
