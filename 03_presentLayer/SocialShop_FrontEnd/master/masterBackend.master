@@ -19,7 +19,7 @@
     <script src="/backend/js/ucMenu.js" type="text/javascript"></script>
     <link href="/backend/css/StyleForMobileSMS.css" rel="stylesheet" type="text/css" />
     <link href="/backend/css/PopupMove.css" rel="stylesheet" type="text/css" />
-    <link href="/css/document.css" rel="stylesheet" type="text/css" />
+    <link href="/BackEnd/css/document.css" rel="stylesheet" type="text/css" />
     <link href="/css/paging.css" rel="stylesheet" type="text/css" />
     <script  src="/backend/js/doc_script.js" type="text/javascript"></script>
 
