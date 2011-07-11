@@ -15,6 +15,7 @@
     <script type="text/javascript" src="/Backend/js/swfobject.js"></script>
     <link href="/backend/css/popup.css" rel="stylesheet" type="text/css" />
     <script src="/js/framework/jquery-1.5.min.js" type="text/javascript"></script>
+    <script src="/plugin/alert/js/jquery.alerts.js" type="text/javascript"></script>
     <script src="/backend/js/Cookies.js" type="text/javascript"></script>
     <script src="/backend/js/ucMenu.js" type="text/javascript"></script>
     <link href="/backend/css/StyleForMobileSMS.css" rel="stylesheet" type="text/css" />
@@ -30,7 +31,9 @@
         var str = $(".prtMobileSMS_ListControl input[type='hidden']:first").val();
         return confirm(str);
     }
-   
+    function ConfirmDelete() {
+        return confirm("Bạn có chắc chắn xóa không?");
+    }
     </script>
 </head>
 <body class="body">
