@@ -98,14 +98,6 @@ namespace DataContext
 			return ((ISingleResult<uspNewsGetByCategoryIDOtherResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspNewsGetListForAdmin")]
-		public ISingleResult<uspNewsGetListForAdminResult> uspNewsGetListForAdmin([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CategoryID", DbType="Int")] System.Nullable<int> categoryID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Keyword", DbType="NVarChar(250)")] string keyword, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FromDate", DbType="DateTime")] System.Nullable<System.DateTime> fromDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ToDate", DbType="DateTime")] System.Nullable<System.DateTime> toDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Int")] System.Nullable<int> status, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="IsHot", DbType="Int")] System.Nullable<int> isHot, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> currentPage, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pageSize, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] ref System.Nullable<int> totalRecord)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), categoryID, keyword, fromDate, toDate, status, isHot, currentPage, pageSize, totalRecord);
-			totalRecord = ((System.Nullable<int>)(result.GetParameterValue(8)));
-			return ((ISingleResult<uspNewsGetListForAdminResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspNewsUpdateHot")]
 		public int uspNewsUpdateHot([global::System.Data.Linq.Mapping.ParameterAttribute(Name="NewsID", DbType="Int")] System.Nullable<int> newsID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="IsHot", DbType="Bit")] System.Nullable<bool> isHot)
 		{
@@ -125,6 +117,14 @@ namespace DataContext
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), newsID, title, description, content, img, publishDate, userID, lastModify, categoryID, resource, status, isHot);
 			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspNewsGetListForAdmin")]
+		public ISingleResult<uspNewsGetListForAdminResult> uspNewsGetListForAdmin([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CategoryID", DbType="Int")] System.Nullable<int> categoryID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Keyword", DbType="NVarChar(250)")] string keyword, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FromDate", DbType="DateTime")] System.Nullable<System.DateTime> fromDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ToDate", DbType="DateTime")] System.Nullable<System.DateTime> toDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Int")] System.Nullable<int> status, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="IsHot", DbType="Int")] System.Nullable<int> isHot, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> currentPage, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> pageSize, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] ref System.Nullable<int> totalRecord)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), categoryID, keyword, fromDate, toDate, status, isHot, currentPage, pageSize, totalRecord);
+			totalRecord = ((System.Nullable<int>)(result.GetParameterValue(8)));
+			return ((ISingleResult<uspNewsGetListForAdminResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -661,6 +661,8 @@ namespace DataContext
 		
 		private string _Resource;
 		
+		private System.Nullable<bool> _IsHot;
+		
 		public uspNewsGetListForAdminResult()
 		{
 		}
@@ -821,6 +823,22 @@ namespace DataContext
 				if ((this._Resource != value))
 				{
 					this._Resource = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsHot", DbType="Bit")]
+		public System.Nullable<bool> IsHot
+		{
+			get
+			{
+				return this._IsHot;
+			}
+			set
+			{
+				if ((this._IsHot != value))
+				{
+					this._IsHot = value;
 				}
 			}
 		}
