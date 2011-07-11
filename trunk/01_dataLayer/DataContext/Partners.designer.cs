@@ -68,6 +68,34 @@ namespace DataContext
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<uspPartnersGetAllResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspPartnersGetInfoByPartnersID")]
+		public ISingleResult<uspPartnersGetInfoByPartnersIDResult> uspPartnersGetInfoByPartnersID([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PartnersID", DbType="Int")] System.Nullable<int> partnersID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), partnersID);
+			return ((ISingleResult<uspPartnersGetInfoByPartnersIDResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspPartnersUpdateByPartnersID")]
+		public int uspPartnersUpdateByPartnersID([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PartnersID", DbType="Int")] System.Nullable<int> partnersID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Name", DbType="NVarChar(200)")] string name, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Img", DbType="VarChar(200)")] string img, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Website", DbType="VarChar(400)")] string website, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Bit")] System.Nullable<bool> status)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), partnersID, name, img, website, status);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspPartnersDeleteByPartnersID")]
+		public int uspPartnersDeleteByPartnersID([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PartnersID", DbType="Int")] System.Nullable<int> partnersID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), partnersID);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspPartnersInsert")]
+		public int uspPartnersInsert([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Name", DbType="NVarChar(200)")] string name, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Img", DbType="VarChar(200)")] string img, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Website", DbType="VarChar(400)")] string website, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Bit")] System.Nullable<bool> status)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), name, img, website, status);
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	public partial class uspPartnersGetAllResult
@@ -84,6 +112,104 @@ namespace DataContext
 		private System.Nullable<bool> _Status;
 		
 		public uspPartnersGetAllResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PartnersID", DbType="Int NOT NULL")]
+		public int PartnersID
+		{
+			get
+			{
+				return this._PartnersID;
+			}
+			set
+			{
+				if ((this._PartnersID != value))
+				{
+					this._PartnersID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(200)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this._Name = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Img", DbType="VarChar(200)")]
+		public string Img
+		{
+			get
+			{
+				return this._Img;
+			}
+			set
+			{
+				if ((this._Img != value))
+				{
+					this._Img = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Website", DbType="VarChar(400)")]
+		public string Website
+		{
+			get
+			{
+				return this._Website;
+			}
+			set
+			{
+				if ((this._Website != value))
+				{
+					this._Website = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Bit")]
+		public System.Nullable<bool> Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this._Status = value;
+				}
+			}
+		}
+	}
+	
+	public partial class uspPartnersGetInfoByPartnersIDResult
+	{
+		
+		private int _PartnersID;
+		
+		private string _Name;
+		
+		private string _Img;
+		
+		private string _Website;
+		
+		private System.Nullable<bool> _Status;
+		
+		public uspPartnersGetInfoByPartnersIDResult()
 		{
 		}
 		
