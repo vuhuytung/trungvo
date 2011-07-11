@@ -65,7 +65,8 @@
                                 Ảnh
                             </td>
                             <td style="padding: 5px 0;">
-                                <!-- <asp:Image ID="Image1" runat="server" Width="250" Height="180" ImageUrl=/>-->
+                                <asp:Image ID="Image1" runat="server" Width="250" Height="180" ImageUrl='<%#Eval("Img") %>' />
+                                
                                 <asp:Label ID="lblID" runat="server" Text='<%#Eval("ID") %>' Visible="false"></asp:Label>
                             </td>
                         </tr>
