@@ -171,13 +171,20 @@ a:hover
     border: 1px solid #AAAAAA;
     color: #222222;
     font-weight: bold;
-    padding: 4px;
+    padding:4px 0;
     height: 20px;
+    line-height:20px;
+    width:100%;
+}
+.box .title span
+{
+    margin-left:20px;
 }
 .box .title-addnew
 {
     float: right;
     text-decoration: none;
+    margin:0 10px;
 }
 
 .box .content
