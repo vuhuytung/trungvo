@@ -47,11 +47,11 @@ namespace WorkFlowBLL
         /// <param name="cur"></param>
         /// <param name="ps"></param>
         /// <returns></returns>
-        public ClassExtend<string, uspNewsGetListForAdminResult> GetListForAdmin(int CatID, int status, int cur, int ps)
+        public ClassExtend<string, uspNewsGetListForAdminResult> GetListForAdmin(int CatID, string keyWord,DateTime fromDate, DateTime toDate, int status, int isHot, int cur, int ps)
         {
             ClassExtend<string, uspNewsGetListForAdminResult> ret = new ClassExtend<string, uspNewsGetListForAdminResult>();
             int? total = 0;
-            ret.Items = BDS.NewsInstance.uspNewsGetListForAdmin(CatID, status, cur, ps, ref total).ToList();
+            ret.Items = BDS.NewsInstance.uspNewsGetListForAdmin(CatID,keyWord, fromDate, toDate, status,isHot, cur, ps, ref total).ToList();
             ret.TotalRecord = total.Value;
             return ret;
         }
@@ -86,6 +86,27 @@ namespace WorkFlowBLL
         public uspNewsGetInfoByNewsIDResult GetInfo(int newsID)
         {
             return BDS.NewsInstance.uspNewsGetInfoByNewsID(newsID).FirstOrDefault();
+        }
+
+        public int UpdateStatus(int newsID, bool status)
+        {
+            return BDS.NewsInstance.uspNewsUpdateStatus(newsID, status);
+        }
+        public int UpdateHot(int newsID, bool isHot)
+        {
+            return BDS.NewsInstance.uspNewsUpdateHot(newsID, isHot);
+        }
+        public int Delete(int newsID)
+        {
+            return BDS.NewsInstance.uspNewsDeleteByNewsID(newsID);
+        }
+        public int Insert(string title,string description,string content,string img, DateTime publishDate, int categoryID,string resource,bool status,bool isHot)
+        {
+            return BDS.NewsInstance.uspNewsInsert(title, description, content, img,DateTime.Now, publishDate, 1,DateTime.Now, categoryID, resource, status, isHot);
+        }
+        public int Update(int newsID, string title,string description,string content,string img,DateTime createDate,DateTime publishDate, int categoryID,string resource,bool status,bool isHot)
+        {
+            return BDS.NewsInstance.uspNewsUpdateByNewsID(newsID, title, description, content, img, publishDate, 1, DateTime.Now, categoryID, resource, status, isHot);
         }
     }
 }
