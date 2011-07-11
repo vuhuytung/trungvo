@@ -1,33 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Database1" Class="NewsDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=183.182.100.136;Initial Catalog=Database1;Persist Security Info=True;User ID=tmt" SettingsObjectName="DataContext.Properties.Settings" SettingsPropertyName="Database1ConnectionString1" Provider="System.Data.SqlClient" />
-  <Function Name="dbo.uspNewsGetByCategoryIDHome" Method="uspNewsGetByCategoryIDHome">
-    <Parameter Name="CategoryID" Parameter="categoryID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="top" Type="System.Int32" DbType="Int" />
-    <ElementType Name="uspNewsGetByCategoryIDHomeResult">
-      <Column Name="NewsID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Img" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
-      <Column Name="CategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Title" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
-      <Column Name="Description" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.uspNewsGetByCategoryIDOther" Method="uspNewsGetByCategoryIDOther">
-    <Parameter Name="CategoryID" Parameter="categoryID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="NewsOther" Parameter="newsOther" Type="System.String" DbType="NVarChar(50)" />
-    <Parameter Name="currentPage" Type="System.Int32" DbType="Int" />
-    <Parameter Name="pageSize" Type="System.Int32" DbType="Int" />
-    <Parameter Name="totalRecord" Type="System.Int32" DbType="Int" Direction="InOut" />
-    <ElementType Name="uspNewsGetByCategoryIDOtherResult">
-      <Column Name="RowNumber" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="NewsID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Img" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
-      <Column Name="CategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Title" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
-      <Column Name="Description" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.uspNewsGetInfoByNewsID" Method="uspNewsGetInfoByNewsID">
     <Parameter Name="NewsID" Parameter="newsID" Type="System.Int32" DbType="Int" />
     <ElementType Name="uspNewsGetInfoByNewsIDResult">
@@ -45,9 +17,52 @@
       <Column Name="Status" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
+  <Function Name="dbo.uspNewsUpdateStatus" Method="uspNewsUpdateStatus">
+    <Parameter Name="NewsID" Parameter="newsID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Status" Parameter="status" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.uspNewsDeleteByNewsID" Method="uspNewsDeleteByNewsID">
+    <Parameter Name="NewsID" Parameter="newsID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.uspNewsGetByCategoryIDHome" Method="uspNewsGetByCategoryIDHome">
+    <Parameter Name="CategoryID" Parameter="categoryID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="top" Type="System.Int32" DbType="Int" />
+    <ElementType Name="uspNewsGetByCategoryIDHomeResult">
+      <Column Name="NewsID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Img" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsHot" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.uspNewsGetByCategoryIDOther" Method="uspNewsGetByCategoryIDOther">
+    <Parameter Name="CategoryID" Parameter="categoryID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NewsOther" Parameter="newsOther" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="currentPage" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pageSize" Type="System.Int32" DbType="Int" />
+    <Parameter Name="totalRecord" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <ElementType Name="uspNewsGetByCategoryIDOtherResult">
+      <Column Name="RowNumber" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="NewsID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Img" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsHot" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
   <Function Name="dbo.uspNewsGetListForAdmin" Method="uspNewsGetListForAdmin">
     <Parameter Name="CategoryID" Parameter="categoryID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Keyword" Parameter="keyword" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="FromDate" Parameter="fromDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="ToDate" Parameter="toDate" Type="System.DateTime" DbType="DateTime" />
     <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IsHot" Parameter="isHot" Type="System.Int32" DbType="Int" />
     <Parameter Name="currentPage" Type="System.Int32" DbType="Int" />
     <Parameter Name="pageSize" Type="System.Int32" DbType="Int" />
     <Parameter Name="totalRecord" Type="System.Int32" DbType="Int" Direction="InOut" />
@@ -63,5 +78,40 @@
       <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Resource" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
     </ElementType>
+  </Function>
+  <Function Name="dbo.uspNewsUpdateHot" Method="uspNewsUpdateHot">
+    <Parameter Name="NewsID" Parameter="newsID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IsHot" Parameter="isHot" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.uspNewsInsert" Method="uspNewsInsert">
+    <Parameter Name="Title" Parameter="title" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="Content" Parameter="content" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Img" Parameter="img" Type="System.String" DbType="VarChar(250)" />
+    <Parameter Name="CreateDate" Parameter="createDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="PublishDate" Parameter="publishDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="LastModify" Parameter="lastModify" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="CategoryID" Parameter="categoryID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Resource" Parameter="resource" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="Status" Parameter="status" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="IsHot" Parameter="isHot" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.uspNewsUpdateByNewsID" Method="uspNewsUpdateByNewsID">
+    <Parameter Name="NewsID" Parameter="newsID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Title" Parameter="title" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="Content" Parameter="content" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Img" Parameter="img" Type="System.String" DbType="VarChar(250)" />
+    <Parameter Name="PublishDate" Parameter="publishDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="LastModify" Parameter="lastModify" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="CategoryID" Parameter="categoryID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Resource" Parameter="resource" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="Status" Parameter="status" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="IsHot" Parameter="isHot" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
   </Function>
 </Database>
