@@ -9,4 +9,33 @@
       <Column Name="Status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </ElementType>
   </Function>
+  <Function Name="dbo.uspPartnersGetInfoByPartnersID" Method="uspPartnersGetInfoByPartnersID">
+    <Parameter Name="PartnersID" Parameter="partnersID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="uspPartnersGetInfoByPartnersIDResult">
+      <Column Name="PartnersID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Img" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Website" Type="System.String" DbType="VarChar(400)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.uspPartnersUpdateByPartnersID" Method="uspPartnersUpdateByPartnersID">
+    <Parameter Name="PartnersID" Parameter="partnersID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Img" Parameter="img" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="Website" Parameter="website" Type="System.String" DbType="VarChar(400)" />
+    <Parameter Name="Status" Parameter="status" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.uspPartnersDeleteByPartnersID" Method="uspPartnersDeleteByPartnersID">
+    <Parameter Name="PartnersID" Parameter="partnersID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.uspPartnersInsert" Method="uspPartnersInsert">
+    <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Img" Parameter="img" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="Website" Parameter="website" Type="System.String" DbType="VarChar(400)" />
+    <Parameter Name="Status" Parameter="status" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
 </Database>

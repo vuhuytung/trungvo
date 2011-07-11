@@ -92,13 +92,40 @@
     }
     .box_edit
     {
-        width:350px;
-        height:250px;
+        width:400px;
+        height:300px;
         background:#FFF;
         position:absolute;
         left:330px;
         top:50px;
-        padding:10px 10px;
+        padding:20px 20px;
         
     }
+    /*==============css for slideshow==============*/
+    .img_thumb
+    {
+        width:50px;
+        height:40px;
+        display:block;
+        float:left;
+    }
+    .img1
+    {
+        width:500px;
+        height:400px;
+        display:none;
+        z-index:1000;
+    }
+      .title_slide
+      {
+          float:left;
+          height:40px;
+          padding:3px 5px;
+      }  
+    .img_thumb img:hover .img
+    {
+        display:block;
+    }
     
+
+       

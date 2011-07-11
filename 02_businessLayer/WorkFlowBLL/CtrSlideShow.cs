@@ -13,6 +13,26 @@ namespace WorkFlowBLL
        {
            return BDS.SlideShowInstance.uspSlideShowGetGroup(3).ToList();
        }
+       public List<uspSlideShowGetAllResult> SlideGetAll()
+       {
+           return BDS.SlideShowInstance.uspSlideShowGetAll().ToList();
+       }
+       public List<uspSlideShowGetInfoByIDResult> GetSlideInfo(int ID)
+       {
+           return BDS.SlideShowInstance.uspSlideShowGetInfoByID(ID).ToList();
+       }
+       public void SlideUpdate(int ID,string title, string img, int status)
+       {
+            BDS.SlideShowInstance.uspSlideShowUpdateByID(ID, title, img, status);
+       }
+       public void SlideInsert(string title, string img, int status)
+       {
+           BDS.SlideShowInstance.uspSlideShowInsert(title, img, status);
+       }
+       public void SlideDeleteByID(int ID)
+       {
+           BDS.SlideShowInstance.uspSlideShowDeleteByID(ID);
+       }
        public string GenHtmlSlide()
        {
            StringBuilder sb = new StringBuilder();
