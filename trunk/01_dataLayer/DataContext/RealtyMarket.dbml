@@ -1,30 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Database1" Class="RealtyMarketDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=183.182.100.136;Initial Catalog=Database1;Persist Security Info=True;User ID=tmt" SettingsObjectName="DataContext.Properties.Settings" SettingsPropertyName="Database1ConnectionString1" Provider="System.Data.SqlClient" />
-  <Function Name="dbo.uspRealtyMarketGetByCondition" Method="uspRealtyMarketGetByCondition">
-    <Parameter Name="Code" Parameter="code" Type="System.Int32" DbType="Int" />
-    <Parameter Name="TypeCode" Parameter="typeCode" Type="System.Int32" DbType="Int" />
-    <Parameter Name="TypeBDS" Parameter="typeBDS" Type="System.Int32" DbType="Int" />
-    <Parameter Name="PriceStart" Parameter="priceStart" Type="System.Int32" DbType="Int" />
-    <Parameter Name="PriceEnd" Parameter="priceEnd" Type="System.Int32" DbType="Int" />
-    <Parameter Name="currPage" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Pagesize" Parameter="pagesize" Type="System.Int32" DbType="Int" />
-    <Parameter Name="TotalRecord" Parameter="totalRecord" Type="System.Int32" DbType="Int" Direction="InOut" />
-    <ElementType Name="uspRealtyMarketGetByConditionResult">
-      <Column Name="RowNumber" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+  <Function Name="dbo.uspRealtyMarketGetInfoByRealtyMarketID" Method="uspRealtyMarketGetInfoByRealtyMarketID">
+    <Parameter Name="RealtyMarketID" Parameter="realtyMarketID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="uspRealtyMarketGetInfoByRealtyMarketIDResult">
       <Column Name="RealtyMarketID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Title" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
       <Column Name="Descrition" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Image" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
       <Column Name="UserPublish" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Email" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="Price" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="LegalStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LegalStatus" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
       <Column Name="Acreage" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ClientRoom" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="BedRoom" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Bathrooms" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Position" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Position" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
       <Column Name="Floor" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="GaraOto" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="Cooler" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
@@ -42,9 +35,17 @@
       <Column Name="Status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.uspRealtyMarketGetInfoByRealtyMarketID" Method="uspRealtyMarketGetInfoByRealtyMarketID">
-    <Parameter Name="RealtyMarketID" Parameter="realtyMarketID" Type="System.Int32" DbType="Int" />
-    <ElementType Name="uspRealtyMarketGetInfoByRealtyMarketIDResult">
+  <Function Name="dbo.uspRealtyMarketGetByCondition" Method="uspRealtyMarketGetByCondition">
+    <Parameter Name="Code" Parameter="code" Type="System.Int32" DbType="Int" />
+    <Parameter Name="TypeCode" Parameter="typeCode" Type="System.Int32" DbType="Int" />
+    <Parameter Name="TypeBDS" Parameter="typeBDS" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PriceStart" Parameter="priceStart" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PriceEnd" Parameter="priceEnd" Type="System.Int32" DbType="Int" />
+    <Parameter Name="currPage" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Pagesize" Parameter="pagesize" Type="System.Int32" DbType="Int" />
+    <Parameter Name="TotalRecord" Parameter="totalRecord" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <ElementType Name="uspRealtyMarketGetByConditionResult">
+      <Column Name="RowNumber" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Column Name="RealtyMarketID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Title" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
       <Column Name="Descrition" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />

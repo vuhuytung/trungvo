@@ -62,6 +62,13 @@ namespace DataContext
 			OnCreated();
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspRealtyMarketGetInfoByRealtyMarketID")]
+		public ISingleResult<uspRealtyMarketGetInfoByRealtyMarketIDResult> uspRealtyMarketGetInfoByRealtyMarketID([global::System.Data.Linq.Mapping.ParameterAttribute(Name="RealtyMarketID", DbType="Int")] System.Nullable<int> realtyMarketID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), realtyMarketID);
+			return ((ISingleResult<uspRealtyMarketGetInfoByRealtyMarketIDResult>)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspRealtyMarketGetByCondition")]
 		public ISingleResult<uspRealtyMarketGetByConditionResult> uspRealtyMarketGetByCondition([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Code", DbType="Int")] System.Nullable<int> code, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TypeCode", DbType="Int")] System.Nullable<int> typeCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TypeBDS", DbType="Int")] System.Nullable<int> typeBDS, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PriceStart", DbType="Int")] System.Nullable<int> priceStart, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PriceEnd", DbType="Int")] System.Nullable<int> priceEnd, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> currPage, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Pagesize", DbType="Int")] System.Nullable<int> pagesize, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TotalRecord", DbType="Int")] ref System.Nullable<int> totalRecord)
 		{
@@ -69,25 +76,18 @@ namespace DataContext
 			totalRecord = ((System.Nullable<int>)(result.GetParameterValue(7)));
 			return ((ISingleResult<uspRealtyMarketGetByConditionResult>)(result.ReturnValue));
 		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspRealtyMarketGetInfoByRealtyMarketID")]
-		public ISingleResult<uspRealtyMarketGetInfoByRealtyMarketIDResult> uspRealtyMarketGetInfoByRealtyMarketID([global::System.Data.Linq.Mapping.ParameterAttribute(Name="RealtyMarketID", DbType="Int")] System.Nullable<int> realtyMarketID)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), realtyMarketID);
-			return ((ISingleResult<uspRealtyMarketGetInfoByRealtyMarketIDResult>)(result.ReturnValue));
-		}
 	}
 	
-	public partial class uspRealtyMarketGetByConditionResult
+	public partial class uspRealtyMarketGetInfoByRealtyMarketIDResult
 	{
-		
-		private System.Nullable<long> _RowNumber;
 		
 		private int _RealtyMarketID;
 		
 		private string _Title;
 		
 		private string _Descrition;
+		
+		private string _Image;
 		
 		private string _UserPublish;
 		
@@ -99,7 +99,7 @@ namespace DataContext
 		
 		private System.Nullable<int> _Type;
 		
-		private System.Nullable<int> _LegalStatus;
+		private string _LegalStatus;
 		
 		private System.Nullable<int> _Acreage;
 		
@@ -109,7 +109,7 @@ namespace DataContext
 		
 		private System.Nullable<int> _Bathrooms;
 		
-		private System.Nullable<int> _Position;
+		private string _Position;
 		
 		private System.Nullable<int> _Floor;
 		
@@ -141,24 +141,8 @@ namespace DataContext
 		
 		private System.Nullable<bool> _Status;
 		
-		public uspRealtyMarketGetByConditionResult()
+		public uspRealtyMarketGetInfoByRealtyMarketIDResult()
 		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RowNumber", DbType="BigInt")]
-		public System.Nullable<long> RowNumber
-		{
-			get
-			{
-				return this._RowNumber;
-			}
-			set
-			{
-				if ((this._RowNumber != value))
-				{
-					this._RowNumber = value;
-				}
-			}
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RealtyMarketID", DbType="Int NOT NULL")]
@@ -205,6 +189,22 @@ namespace DataContext
 				if ((this._Descrition != value))
 				{
 					this._Descrition = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="NVarChar(500)")]
+		public string Image
+		{
+			get
+			{
+				return this._Image;
+			}
+			set
+			{
+				if ((this._Image != value))
+				{
+					this._Image = value;
 				}
 			}
 		}
@@ -289,8 +289,8 @@ namespace DataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LegalStatus", DbType="Int")]
-		public System.Nullable<int> LegalStatus
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LegalStatus", DbType="NVarChar(250)")]
+		public string LegalStatus
 		{
 			get
 			{
@@ -369,8 +369,8 @@ namespace DataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Position", DbType="Int")]
-		public System.Nullable<int> Position
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Position", DbType="NVarChar(250)")]
+		public string Position
 		{
 			get
 			{
@@ -626,8 +626,10 @@ namespace DataContext
 		}
 	}
 	
-	public partial class uspRealtyMarketGetInfoByRealtyMarketIDResult
+	public partial class uspRealtyMarketGetByConditionResult
 	{
+		
+		private System.Nullable<long> _RowNumber;
 		
 		private int _RealtyMarketID;
 		
@@ -689,8 +691,24 @@ namespace DataContext
 		
 		private System.Nullable<bool> _Status;
 		
-		public uspRealtyMarketGetInfoByRealtyMarketIDResult()
+		public uspRealtyMarketGetByConditionResult()
 		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RowNumber", DbType="BigInt")]
+		public System.Nullable<long> RowNumber
+		{
+			get
+			{
+				return this._RowNumber;
+			}
+			set
+			{
+				if ((this._RowNumber != value))
+				{
+					this._RowNumber = value;
+				}
+			}
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RealtyMarketID", DbType="Int NOT NULL")]
