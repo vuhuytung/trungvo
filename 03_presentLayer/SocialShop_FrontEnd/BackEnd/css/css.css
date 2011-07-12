@@ -478,6 +478,26 @@ a:hover
     height: 16px;
     width: 16px;
 }
+.hot_action
+{
+    -moz-background-clip: border;
+    -moz-background-inline-policy: continuous;
+    -moz-background-origin: padding;
+    background: transparent url(../img/hot_action.gif) no-repeat scroll left top;
+    display: inline-block;
+    height: 16px;
+    width: 30px;
+}
+.unhot_action
+{
+    -moz-background-clip: border;
+    -moz-background-inline-policy: continuous;
+    -moz-background-origin: padding;
+    background: transparent url(../img/unhot_action.gif) no-repeat scroll left top;
+    display: inline-block;
+    height: 16px;
+    width: 30px;
+}
 
 .downArrow_icon
 {
