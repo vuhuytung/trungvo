@@ -15,7 +15,7 @@
 }
 #bigPic{
 	width:455px;
-	height:300px;
+	height:315px;
 	padding:1px;
 	border:1px solid #CCC;
 	background-color:#FFF;
@@ -25,7 +25,7 @@
 #bigPic img{
 	position:absolute;
 	width:450px;
-	height:250px;
+	height:265px;
 	border:none;
 }
 .box
@@ -39,7 +39,7 @@
 {
     float:left;
     width:450px;
-	height:250px;
+	height:265px;
 }
 .box_title
 {
@@ -75,7 +75,7 @@ ul#thumbs li{
     width:70px;
     height:80px;
 }
-ul#thumbs img{
+/*ul#thumbs img{
 	float:left;
 	width:100px;
 	height:90px;
@@ -83,7 +83,7 @@ ul#thumbs img{
 	overflow:hidden;
 	position:relative;
 	z-index:1;		
-}
+}/*
 /*======================*/
 .leftSlide
 {
@@ -102,4 +102,21 @@ ul#thumbs img{
 .my_Img
 {
     float:left;
+    background:url("../images/frame.png") no-repeat;
+    width:130px;
+    height:95px;
+    position:relative;
+}
+.my_Img img
+{
+    float:left;
+	width:110px;
+	height:70px;
+	line-height:80px;
+	overflow:hidden;
+	z-index:1;
+	position:absolute;
+	top:11px;
+	left:9px;
+		
 }
