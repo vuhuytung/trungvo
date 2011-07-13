@@ -1,8 +1,8 @@
 ﻿body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
 	margin:0;
 	padding:0;
-	font-family:Tahoma, "Times New Roman", Arial ;
-	font-size:12px;
+	font-family:"Times New Roman", Arial ;
+	font-size:12pt;
 }
 a{
 text-decoration:none;
@@ -16,6 +16,7 @@ text-decoration:underline;
 }
 ol,ul {
 	list-style:none;
+	font-size:12px;
 }
 h1,h2,h3,h4,h5,h6 {
 	font-size:100%;
@@ -305,6 +306,7 @@ ul.menu .sub {background:#d1d1d1 url(/images/arrow.gif) 170px 8px no-repeat}
 {
     color:#AAA; 
     font-style:italic;
+    font-size:11pt;
 }
 .box .otherTopNews
 {
@@ -333,13 +335,20 @@ ul.menu .sub {background:#d1d1d1 url(/images/arrow.gif) 170px 8px no-repeat}
     
 .box .spTitle
 {
-    font-weight:bold;
+    font-weight:bold;    
 }
 .otherTopNews ul li
 {
-    list-style:none;
-    background:url("/images/icon-square.jpg") no-repeat 3px 6px;
-    padding: 3px 3px 2px 17px;
+    list-style:none;    
+    padding: 3px 3px 2px 0px;
+    font-size:12px;
+    font-family:Arial;
+    list-style-image:url("/images/icon-square.jpg");
+}
+.otherTopNews ul li a:hover
+{
+    text-decoration:none;
+    color:#ff8040;
 }
 a:active
 {
