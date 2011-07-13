@@ -41,42 +41,44 @@
             </asp:Repeater>
             <div class="clear">
             </div>
-            <div class="box" style="border: none; padding-bottom: 0">
-                <div class="title">
-                    <span><a>Các tin khác cùng chuyên mục</a></span>
+            <div runat="server" id="divListOtherNews">
+                <div class="box" style="border: none; padding-bottom: 0">
+                    <div class="title">
+                        <span><a>Các tin khác cùng chuyên mục</a></span>
+                    </div>
+                </div>
+                <div style="position: relative; padding-left: 20px;">
+                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate>
+                            <div class="otherTopNews">
+                                <ul>
+                                    <asp:Repeater runat="server" ID="rptOther">
+                                        <ItemTemplate>
+                                            <li><a href='/news/<%#VTCO.Library.Lib.GetUrlText(Eval("CategoryName").ToString()) %>-<%#Eval("CategoryID") %>/<%#VTCO.Library.Lib.GetUrlText(Eval("Title").ToString()) %>-<%#Eval("NewsID") %>'>
+                                                <%#Eval("Title") %></a><span class="spDate">
+                                                <%#Eval("CreateDate","{0:dd/MM/yyyy}") %></span>
+                                                <%#(Convert.ToBoolean(Eval("IsHot")))?"<img src='/images/hot.gif' />":"" %>
+                                            </li>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
+                                </ul>
+                                <asp:UpdateProgress ID="UpdateProgress1" runat="server">
+                                    <ProgressTemplate>
+                                        <center>
+                                            <img src="/images/ajax-loader.gif" title="Loading..." alt="Loading..." /></center>
+                                    </ProgressTemplate>
+                                </asp:UpdateProgress>
+                            </div>
+                            <div id="divPaging" runat="server" class="paginator2 nr">
+                                <uc1:ucPaging ID="ucPaging1" runat="server" />
+                            </div>
+                            <div class="clear">
+                            </div>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
                 </div>
             </div>
-            <div style="position: relative; padding-left: 20px;">
-                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                    <ContentTemplate>
-                        <div class="otherTopNews">
-                            <ul>
-                                <asp:Repeater runat="server" ID="rptOther">
-                                    <ItemTemplate>
-                                        <li><a href='/news/<%#VTCO.Library.Lib.GetUrlText(Eval("CategoryName").ToString()) %>-<%#Eval("CategoryID") %>/<%#VTCO.Library.Lib.GetUrlText(Eval("Title").ToString()) %>-<%#Eval("NewsID") %>'>
-                                            <%#Eval("Title") %></a><span class="spDate">
-                                            <%#Eval("CreateDate","{0:dd/MM/yyyy}") %></span>
-                                            <%#(Convert.ToBoolean(Eval("IsHot")))?"<img src='/images/hot.gif' />":"" %>
-                                        </li>
-                                    </ItemTemplate>
-                                </asp:Repeater>
-                            </ul>
-                            <asp:UpdateProgress ID="UpdateProgress1" runat="server">
-                                <ProgressTemplate>
-                                    <center>
-                                        <img src="/images/ajax-loader.gif" title="Loading..." alt="Loading..." /></center>
-                                </ProgressTemplate>
-                            </asp:UpdateProgress>
-                        </div>
-                        <div id="divPaging" runat="server" class="paginator2 nr">
-                            <uc1:ucPaging ID="ucPaging1" runat="server" />
-                        </div>
-                        <div class="clear">
-                        </div>
-                    </ContentTemplate>
-                </asp:UpdatePanel>
-            </div>
-        </div>
+        </div>        
     <div class="rightMain nr"> <uc2:ucDoitac runat="server" ID="ucDoitac1" /> </div>
     <div class="clear"> </div> <!--End body content--> </div>
 </asp:Content>
