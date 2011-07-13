@@ -42,8 +42,7 @@ a:hover
 }
 .inputbox:focus, .inputText:focus
 {
-    border-color:#99defd;
-    border-width:2px;
+    border-color:#000;
 }
 
 /**************************************/
