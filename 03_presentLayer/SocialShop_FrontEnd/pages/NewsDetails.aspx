@@ -43,7 +43,7 @@
                             <ul>
                                 <asp:Repeater runat="server" ID="rptOther">
                                     <ItemTemplate>
-                                        <li><a href="#">
+                                        <li><a href='/news/<%#VTCO.Library.Lib.GetUrlText(Eval("CategoryName").ToString()) %>-<%#Eval("CategoryID") %>/<%#VTCO.Library.Lib.GetUrlText(Eval("Title").ToString()) %>-<%#Eval("NewsID") %>'>
                                             <%#Eval("Title") %></a></li>
                                     </ItemTemplate>
                                 </asp:Repeater>
