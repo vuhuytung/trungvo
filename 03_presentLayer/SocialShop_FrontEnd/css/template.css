@@ -95,8 +95,8 @@ text-align:center;
     z-index:9998;
     position:relative;
 }
-ul.menu {list-style:none; margin:0; padding:0; margin-top:5px;}
-ul.menu * {margin:0; padding:0}
+ul.menu {list-style:none; margin:0; padding:0; margin-top:5px; }
+ul.menu * {margin:0; padding:0; font-family:Tahoma; font-size:12px;}
 ul.menu a {display:block; color:#000; text-decoration:none}
 ul.menu li {position:relative; float:left; margin-right:2px; background:url("/images/line-topmenu.gif") no-repeat scroll left 5px transparent;}
 ul.menu li:first-child, ul.menu li.firstChild{ background:none; }
@@ -173,6 +173,7 @@ ul.menu .sub {background:#d1d1d1 url(/images/arrow.gif) 170px 8px no-repeat}
     text-align:left;
     font-weight:bold;
     font-family:Tahoma;
+    font-size:12px;
 }
 .rightTopSearch .titleSearch
 {
@@ -283,6 +284,12 @@ ul.menu .sub {background:#d1d1d1 url(/images/arrow.gif) 170px 8px no-repeat}
 {
     border:solid 1px #EEE;
     border-bottom-width:2px;
+    font-family:Arial;
+}
+.box *
+{
+    font-family:Arial;
+    font-size:12px;
 }
 .rightMain .box
 {
@@ -293,20 +300,18 @@ ul.menu .sub {background:#d1d1d1 url(/images/arrow.gif) 170px 8px no-repeat}
 .leftMain .box
 {
     padding:5px;
-    margin-bottom:10px;
-    text-align:justify;
+    margin-bottom:10px;    
 }
 .box .topNews
 {
-    width:360px;
-    text-align:justify;
+    width:360px;    
 }
 
 .box .spDate
 {
     color:#AAA; 
     font-style:italic;
-    font-size:11pt;
+    font-size:11px;
 }
 .box .otherTopNews
 {
@@ -315,8 +320,7 @@ ul.menu .sub {background:#d1d1d1 url(/images/arrow.gif) 170px 8px no-repeat}
 .box .title
 {
     color:#ff8040;
-    font-weight:bold;
-    font-size:1.1em;
+    font-weight:bold;    
     border-bottom:2px solid #459B30;
     margin-bottom:10px;
     padding-bottom:1px;
@@ -335,15 +339,20 @@ ul.menu .sub {background:#d1d1d1 url(/images/arrow.gif) 170px 8px no-repeat}
     
 .box .spTitle
 {
-    font-weight:bold;    
+    font-weight:bold;  
+    font-size:12px;  
 }
-.otherTopNews ul li
+.otherTopNews ul li a
 {
-    list-style:none;    
-    padding: 3px 3px 2px 0px;
     font-size:12px;
     font-family:Arial;
-    list-style-image:url("/images/icon-square.jpg");
+    background:url("/images/icon-square.jpg") no-repeat 3px 5px;
+    padding-left:17px;
+}
+.otherTopNews li.listHome
+{
+    display:block;
+    margin-top:10px;
 }
 .otherTopNews ul li a:hover
 {
