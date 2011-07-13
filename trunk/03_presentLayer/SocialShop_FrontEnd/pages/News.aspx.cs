@@ -24,10 +24,10 @@ public partial class pages_News : System.Web.UI.Page
             rptContent.DataBind();
             foreach (var item in _data)
             {
-                NewsIDs += item.CategoryID + ",";
+                NewsIDs += item.NewsID + ",";
             }
             if(NewsIDs.Length>0)
-                NewsIDs = NewsIDs.Substring(NewsIDs.LastIndexOf(","));
+                NewsIDs = NewsIDs.Substring(0,NewsIDs.LastIndexOf(","));
 
         }
         ucPaging1.PageChange += new UserControls_ucPaging.PagingHandler(ucPaging1_PageChange);
