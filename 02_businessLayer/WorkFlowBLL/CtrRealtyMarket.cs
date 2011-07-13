@@ -22,5 +22,13 @@ namespace WorkFlowBLL
       {
           return BDS.RealtymarketInstance.uspRealtyMarketGetInfoByRealtyMarketID(id).ToList();
       }
+      public void UpdateMarket(int ID, string Title, string Desc, string user, string phone, string email, int price, int TypeBDS, string Img, string Legal, string Acreage, string ClientRoom, string bedRoom, string bathroom, string Position,string address, string Floor, int Location,  bool maugiao, bool hospital, bool school, bool market, bool university, bool Status)
+      {
+          BDS.RealtymarketInstance.uspRealtyMarketUpdateByRealtyMarketID(ID, Title, Img, Desc, user, phone, email, price, TypeBDS, Legal, Acreage, ClientRoom, bedRoom, bathroom, Position, Floor, maugiao, hospital, school, market, university, address, Location, Status);
+      }
+      public void InsertMarket(string Title, string Desc, string user, string phone, string email, int price, int TypeBDS, string Img, string Legal, string Acreage, string ClientRoom, string bedRoom, string bathroom, string Position, string address, string Floor, int Location, bool maugiao, bool hospital, bool school, bool market, bool university, bool Status)
+      {
+          BDS.RealtymarketInstance.uspRealtyMarketInsert(Title, Desc, Img, user, phone, email, price, TypeBDS, Legal, Acreage, ClientRoom, bedRoom, bathroom, Position, Floor, maugiao, hospital, school, market, university, address, Location, Status);
+      }
     }
 }
