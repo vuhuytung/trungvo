@@ -34,8 +34,11 @@
                     </div>
             <div class="clear">
             </div>            
-            <div class="listOtherNews">Các tin
-                khác cùng chuyên mục:</div>
+            <div class="box" style="border: none; padding-bottom: 0">
+                <div class="title">
+                    <span><a>Các tin khác cùng chuyên mục</a></span>
+                </div>
+            </div>
             <div style="position: relative; padding-left: 40px;">
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>
@@ -44,7 +47,10 @@
                                 <asp:Repeater runat="server" ID="rptOther">
                                     <ItemTemplate>
                                         <li><a href='/news/<%#VTCO.Library.Lib.GetUrlText(Eval("CategoryName").ToString()) %>-<%#Eval("CategoryID") %>/<%#VTCO.Library.Lib.GetUrlText(Eval("Title").ToString()) %>-<%#Eval("NewsID") %>'>
-                                            <%#Eval("Title") %></a></li>
+                                            <%#Eval("Title") %></a><span class="spDate">
+                                            <%#Eval("CreateDate","{0:dd/MM/yyyy}") %></span>
+                                            <%#(Convert.ToBoolean(Eval("IsHot")))?"<img src='/images/hot.gif' />":"" %>
+                                        </li>
                                     </ItemTemplate>
                                 </asp:Repeater>
                             </ul>

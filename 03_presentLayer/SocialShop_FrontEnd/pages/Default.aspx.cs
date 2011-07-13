@@ -14,6 +14,7 @@ public partial class pages_Default : System.Web.UI.Page
     List<ClassExtend<uspCategoryGetByParentIDResult,uspNewsGetByCategoryIDHomeResult>> _data;
     protected void Page_Load(object sender, EventArgs e)
     {
+        Page.Title = "CÔNG TY CỔ PHẦN BẤT ĐỘNG SẢN ÂU LẠC";
         CtrNews ctrNews = new CtrNews();
         _data=ctrNews.GetListCategoryNewsForHome().Items;
         rptContent.DataSource = _data;
