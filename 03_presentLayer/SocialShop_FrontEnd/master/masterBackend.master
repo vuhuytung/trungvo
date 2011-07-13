@@ -35,6 +35,9 @@
         return confirm("Bạn có chắc chắn xóa không?");
     }
     </script>
+    <asp:ContentPlaceHolder ID="Header" runat="server">
+            
+    </asp:ContentPlaceHolder>
 </head>
 <body class="body">
     <form id="form1" runat="server">
