@@ -24,6 +24,7 @@ public partial class pages_NewsDetails : System.Web.UI.Page
             else
                 selImage.Src = _data.Img;
             selTitle.InnerText = _data.Title;
+            Page.Title = _data.Title;
             selCreateDate.InnerText = _data.CreateDate.ToString("dd/MM/yyyy");
             selDescription.InnerText = _data.Description;
             selContent.InnerHtml = _data.Content;
