@@ -102,11 +102,11 @@ namespace WorkFlowBLL
         }
         public int Insert(string title,string description,string content,string img, DateTime publishDate, int categoryID,string resource,bool status,bool isHot)
         {
-            return BDS.NewsInstance.uspNewsInsert(title, description, content, img,DateTime.Now, publishDate, 1,DateTime.Now, categoryID, resource, status, isHot);
+            return BDS.NewsInstance.uspNewsInsert(title, description, content, img,publishDate, 7,categoryID, resource, status, isHot);
         }
-        public int Update(int newsID, string title,string description,string content,string img,DateTime createDate,DateTime publishDate, int categoryID,string resource,bool status,bool isHot)
+        public int Update(int newsID, string title,string description,string content,string img,DateTime publishDate, int categoryID,string resource,bool status,bool isHot)
         {
-            return BDS.NewsInstance.uspNewsUpdateByNewsID(newsID, title, description, content, img, publishDate, 1, DateTime.Now, categoryID, resource, status, isHot);
+            return BDS.NewsInstance.uspNewsUpdateByNewsID(newsID, title, description, content, img, publishDate, 7, categoryID, resource, status, isHot);
         }
     }
 }
