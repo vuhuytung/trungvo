@@ -295,7 +295,16 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
         }
         else if (e.CommandName == "Delete")
         {
-
+            try
+            {
+                ctrN.DeleteMarket(Int32.Parse(e.CommandArgument.ToString()));
+                BindRpt();
+                ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('Delete success !')", true);
+            }
+            catch
+            {
+                ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('Delete fail !')", true);
+            }
         }
     }
     protected void btnUpdate_Click(object sender, EventArgs e)
@@ -343,12 +352,12 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
                 string text = HttpUtility.HtmlEncode(txtDesc.Text).Replace("\n", "</br>");
                 ctrN.UpdateMarket(Int32.Parse(lblID.Text), txtTitle.Text, text, txtUser.Text, txtPhone.Text, txtEmail.Text, Int32.Parse(txtPrice.Text), Int32.Parse(ddlTypeBDS1.SelectedValue), fupload.FileName, txtLegal.Text, txtDientich.Text, txtClientRoom.Text, txtBedRoom.Text, txtBathrooms.Text, txtPosition.Text, txtAddress.Text, txtFloor.Text, 1, chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked, chkUniversity.Checked, chkStatus.Checked);
                 BindRpt();
-                ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('Cập nhật thành công !')",true);
+                ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('Update success !')",true);
 
             }
             catch
             {
-                ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('Cập nhật lổi !')",true);
+                ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('Update fail !')",true);
             }
         }
         catch
@@ -442,11 +451,11 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
             int locationID = GetLocationID(ddlProvince2, ddlDistrict2, ddlVillage2);
             ctrN.InsertMarket(txtTitle.Text, txtDesc.Text, txtUser.Text, txtPhone.Text, txtEmail.Text, Int32.Parse(txtPrice.Text), Int32.Parse(ddlTypeBDSs2.SelectedValue), fupload.FileName, txtLegal.Text, txtDientich.Text, txtClientRoom.Text, txtBedRoom.Text, txtBathrooms.Text, txtPosition.Text, txtAddress.Text, txtFloor.Text, locationID, chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked, chkUniversity.Checked, chkStatus.Checked);
             BindRpt();
-            ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('thêm mới thành công !')", true);
+            ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('Insert success !')", true);
         }
         catch
         {
-            ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('Thêm mới lổi !')", true);
+            ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('Insert fail !')", true);
         }
     }
     protected void btnThoat_Click(object sender, EventArgs e)

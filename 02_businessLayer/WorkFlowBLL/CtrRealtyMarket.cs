@@ -30,5 +30,9 @@ namespace WorkFlowBLL
       {
           BDS.RealtymarketInstance.uspRealtyMarketInsert(Title, Desc, Img, user, phone, email, price, TypeBDS, Legal, Acreage, ClientRoom, bedRoom, bathroom, Position, Floor, maugiao, hospital, school, market, university, address, Location, Status);
       }
+      public void DeleteMarket(int ID)
+      {
+          BDS.RealtymarketInstance.uspRealtyMarketDeleteByRealtyMarketID(ID);
+      }
     }
 }
