@@ -145,7 +145,10 @@ public partial class userControls_ucAddNewBDS : System.Web.UI.UserControl
             ddlVillage.Items.Insert(0, new ListItem("Phường/Xã", "-1"));
         }
     }
-
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+    }
+         
 }
  public class LocationInfoSearch
     {

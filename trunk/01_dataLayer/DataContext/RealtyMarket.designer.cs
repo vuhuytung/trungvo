@@ -137,6 +137,13 @@ namespace DataContext
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), title, descrition, image, userPublish, phone, email, price, type, legalStatus, acreage, clientRoom, bedRoom, bathrooms, position, floor, nearKindergarten, nearHospital, nearlySchool, nearlyMarket, nearlyUniversity, address, locationID, status);
 			return ((int)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspRealtyMarketDeleteByRealtyMarketID")]
+		public int uspRealtyMarketDeleteByRealtyMarketID([global::System.Data.Linq.Mapping.ParameterAttribute(Name="RealtyMarketID", DbType="Int")] System.Nullable<int> realtyMarketID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), realtyMarketID);
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	public partial class uspRealtyMarketGetInfoByRealtyMarketIDResult
