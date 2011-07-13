@@ -13,20 +13,20 @@
         <div class="leftMain nl">
             <asp:Repeater ID="rptContent" runat="server">
                 <ItemTemplate>
-                    <div class="box">
+                    <div class="box" style="border:none; border-bottom:solid 1px #EEE;">
                         <%--<div class="title">
                             <span><a href="#"><%#Eval("Info.Name") %></a></span>
                         </div>--%>
                         <div class="topNews nl" style="width: 100%">
                             <img src="<%#Eval("Img") %>.thumb" width="120" class="nl" style="border: solid 1px #AAA;
-                                margin: 10px;" />
+                                margin: 10px; margin-top:0" />
                             <p>
                                 <span class="spTitle"><a href='/news/<%#VTCO.Library.Lib.GetUrlText(Eval("CategoryName").ToString()) %>-<%#Eval("CategoryID") %>/<%#VTCO.Library.Lib.GetUrlText(Eval("Title").ToString()) %>-<%#Eval("NewsID") %>'>
                                     <%#Eval("Title") %></a></span> <span class="spDate">
                                         <%#Eval("CreateDate","{0:dd/MM/yyyy}") %></span>
                                 <br />
                                 <br />
-                                <p>
+                                <p style="text-indent:15px;">
                                     <%#Eval("Description") %>
                                 </p>
                             </p>
@@ -40,9 +40,12 @@
             </asp:Repeater>
             <div class="clear">
             </div>
-           <div class="listOtherNews">Các tin
-                khác cùng chuyên mục:</div>
-            <div style="position: relative; padding-left: 45px; padding-top: 20px;">
+           <div class="box" style="border:none; padding-bottom:0">
+                <div class="title">
+                    <span><a>Các tin khác cùng chuyên mục</a></span>
+                </div>
+            </div>        
+            <div style="position: relative; padding-left: 20px;">
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>
                         <div class="otherTopNews">
