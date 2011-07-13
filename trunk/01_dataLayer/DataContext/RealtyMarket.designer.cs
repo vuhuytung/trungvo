@@ -62,6 +62,37 @@ namespace DataContext
 			OnCreated();
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspRealtyMarketUpdateByRealtyMarketID")]
+		public int uspRealtyMarketUpdateByRealtyMarketID(
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="RealtyMarketID", DbType="Int")] System.Nullable<int> realtyMarketID, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Title", DbType="NVarChar(250)")] string title, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Image", DbType="NVarChar(500)")] string image, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Descrition", DbType="NVarChar(500)")] string descrition, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserPublish", DbType="NVarChar(50)")] string userPublish, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Phone", DbType="NVarChar(50)")] string phone, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="NVarChar(100)")] string email, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Price", DbType="Int")] System.Nullable<int> price, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Type", DbType="Int")] System.Nullable<int> type, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="LegalStatus", DbType="NVarChar(250)")] string legalStatus, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Acreage", DbType="NVarChar(50)")] string acreage, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="ClientRoom", DbType="NVarChar(2)")] string clientRoom, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="BedRoom", DbType="NVarChar(2)")] string bedRoom, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Bathrooms", DbType="NVarChar(2)")] string bathrooms, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Position", DbType="NVarChar(250)")] string position, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Floor", DbType="NVarChar(2)")] string floor, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="NearKindergarten", DbType="Bit")] System.Nullable<bool> nearKindergarten, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="NearHospital", DbType="Bit")] System.Nullable<bool> nearHospital, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="NearlySchool", DbType="Bit")] System.Nullable<bool> nearlySchool, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="NearlyMarket", DbType="Bit")] System.Nullable<bool> nearlyMarket, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="NearlyUniversity", DbType="Bit")] System.Nullable<bool> nearlyUniversity, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="NVarChar(250)")] string address, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="LocationID", DbType="Int")] System.Nullable<int> locationID, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Bit")] System.Nullable<bool> status)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), realtyMarketID, title, image, descrition, userPublish, phone, email, price, type, legalStatus, acreage, clientRoom, bedRoom, bathrooms, position, floor, nearKindergarten, nearHospital, nearlySchool, nearlyMarket, nearlyUniversity, address, locationID, status);
+			return ((int)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspRealtyMarketGetInfoByRealtyMarketID")]
 		public ISingleResult<uspRealtyMarketGetInfoByRealtyMarketIDResult> uspRealtyMarketGetInfoByRealtyMarketID([global::System.Data.Linq.Mapping.ParameterAttribute(Name="RealtyMarketID", DbType="Int")] System.Nullable<int> realtyMarketID)
 		{
@@ -75,6 +106,36 @@ namespace DataContext
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), code, typeCode, typeBDS, priceStart, priceEnd, currPage, pagesize, totalRecord);
 			totalRecord = ((System.Nullable<int>)(result.GetParameterValue(7)));
 			return ((ISingleResult<uspRealtyMarketGetByConditionResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspRealtyMarketInsert")]
+		public int uspRealtyMarketInsert(
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Title", DbType="NVarChar(250)")] string title, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Descrition", DbType="NVarChar(500)")] string descrition, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Image", DbType="NVarChar(500)")] string image, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserPublish", DbType="NVarChar(50)")] string userPublish, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Phone", DbType="NVarChar(20)")] string phone, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="NVarChar(100)")] string email, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Price", DbType="Int")] System.Nullable<int> price, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Type", DbType="Int")] System.Nullable<int> type, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="LegalStatus", DbType="NVarChar(250)")] string legalStatus, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Acreage", DbType="NVarChar(50)")] string acreage, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="ClientRoom", DbType="NVarChar(2)")] string clientRoom, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="BedRoom", DbType="NVarChar(2)")] string bedRoom, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Bathrooms", DbType="NVarChar(2)")] string bathrooms, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Position", DbType="NVarChar(250)")] string position, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Floor", DbType="NVarChar(2)")] string floor, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="NearKindergarten", DbType="Bit")] System.Nullable<bool> nearKindergarten, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="NearHospital", DbType="Bit")] System.Nullable<bool> nearHospital, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="NearlySchool", DbType="Bit")] System.Nullable<bool> nearlySchool, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="NearlyMarket", DbType="Bit")] System.Nullable<bool> nearlyMarket, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="NearlyUniversity", DbType="Bit")] System.Nullable<bool> nearlyUniversity, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="NVarChar(250)")] string address, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="LocationID", DbType="Int")] System.Nullable<int> locationID, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Bit")] System.Nullable<bool> status)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), title, descrition, image, userPublish, phone, email, price, type, legalStatus, acreage, clientRoom, bedRoom, bathrooms, position, floor, nearKindergarten, nearHospital, nearlySchool, nearlyMarket, nearlyUniversity, address, locationID, status);
+			return ((int)(result.ReturnValue));
 		}
 	}
 	
@@ -101,17 +162,17 @@ namespace DataContext
 		
 		private string _LegalStatus;
 		
-		private System.Nullable<int> _Acreage;
+		private string _Acreage;
 		
-		private System.Nullable<int> _ClientRoom;
+		private string _ClientRoom;
 		
-		private System.Nullable<int> _BedRoom;
+		private string _BedRoom;
 		
-		private System.Nullable<int> _Bathrooms;
+		private string _Bathrooms;
 		
 		private string _Position;
 		
-		private System.Nullable<int> _Floor;
+		private string _Floor;
 		
 		private System.Nullable<bool> _GaraOto;
 		
@@ -305,8 +366,8 @@ namespace DataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Acreage", DbType="Int")]
-		public System.Nullable<int> Acreage
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Acreage", DbType="NVarChar(50)")]
+		public string Acreage
 		{
 			get
 			{
@@ -321,8 +382,8 @@ namespace DataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientRoom", DbType="Int")]
-		public System.Nullable<int> ClientRoom
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientRoom", DbType="VarChar(2)")]
+		public string ClientRoom
 		{
 			get
 			{
@@ -337,8 +398,8 @@ namespace DataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BedRoom", DbType="Int")]
-		public System.Nullable<int> BedRoom
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BedRoom", DbType="VarChar(2)")]
+		public string BedRoom
 		{
 			get
 			{
@@ -353,8 +414,8 @@ namespace DataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Bathrooms", DbType="Int")]
-		public System.Nullable<int> Bathrooms
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Bathrooms", DbType="VarChar(2)")]
+		public string Bathrooms
 		{
 			get
 			{
@@ -385,8 +446,8 @@ namespace DataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Floor", DbType="Int")]
-		public System.Nullable<int> Floor
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Floor", DbType="VarChar(2)")]
+		public string Floor
 		{
 			get
 			{
@@ -651,17 +712,17 @@ namespace DataContext
 		
 		private string _LegalStatus;
 		
-		private System.Nullable<int> _Acreage;
+		private string _Acreage;
 		
-		private System.Nullable<int> _ClientRoom;
+		private string _ClientRoom;
 		
-		private System.Nullable<int> _BedRoom;
+		private string _BedRoom;
 		
-		private System.Nullable<int> _Bathrooms;
+		private string _Bathrooms;
 		
 		private string _Position;
 		
-		private System.Nullable<int> _Floor;
+		private string _Floor;
 		
 		private System.Nullable<bool> _GaraOto;
 		
@@ -871,8 +932,8 @@ namespace DataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Acreage", DbType="Int")]
-		public System.Nullable<int> Acreage
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Acreage", DbType="NVarChar(50)")]
+		public string Acreage
 		{
 			get
 			{
@@ -887,8 +948,8 @@ namespace DataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientRoom", DbType="Int")]
-		public System.Nullable<int> ClientRoom
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientRoom", DbType="VarChar(2)")]
+		public string ClientRoom
 		{
 			get
 			{
@@ -903,8 +964,8 @@ namespace DataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BedRoom", DbType="Int")]
-		public System.Nullable<int> BedRoom
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BedRoom", DbType="VarChar(2)")]
+		public string BedRoom
 		{
 			get
 			{
@@ -919,8 +980,8 @@ namespace DataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Bathrooms", DbType="Int")]
-		public System.Nullable<int> Bathrooms
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Bathrooms", DbType="VarChar(2)")]
+		public string Bathrooms
 		{
 			get
 			{
@@ -951,8 +1012,8 @@ namespace DataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Floor", DbType="Int")]
-		public System.Nullable<int> Floor
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Floor", DbType="VarChar(2)")]
+		public string Floor
 		{
 			get
 			{

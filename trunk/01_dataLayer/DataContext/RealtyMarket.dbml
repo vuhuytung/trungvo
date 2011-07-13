@@ -1,5 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Database1" Class="RealtyMarketDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=183.182.100.136;Initial Catalog=Database1;Persist Security Info=True;User ID=tmt" SettingsObjectName="DataContext.Properties.Settings" SettingsPropertyName="Database1ConnectionString1" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.uspRealtyMarketUpdateByRealtyMarketID" Method="uspRealtyMarketUpdateByRealtyMarketID">
+    <Parameter Name="RealtyMarketID" Parameter="realtyMarketID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Title" Parameter="title" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="Image" Parameter="image" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="Descrition" Parameter="descrition" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="UserPublish" Parameter="userPublish" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Phone" Parameter="phone" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Price" Parameter="price" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Type" Parameter="type" Type="System.Int32" DbType="Int" />
+    <Parameter Name="LegalStatus" Parameter="legalStatus" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="Acreage" Parameter="acreage" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="ClientRoom" Parameter="clientRoom" Type="System.String" DbType="NVarChar(2)" />
+    <Parameter Name="BedRoom" Parameter="bedRoom" Type="System.String" DbType="NVarChar(2)" />
+    <Parameter Name="Bathrooms" Parameter="bathrooms" Type="System.String" DbType="NVarChar(2)" />
+    <Parameter Name="Position" Parameter="position" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="Floor" Parameter="floor" Type="System.String" DbType="NVarChar(2)" />
+    <Parameter Name="NearKindergarten" Parameter="nearKindergarten" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="NearHospital" Parameter="nearHospital" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="NearlySchool" Parameter="nearlySchool" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="NearlyMarket" Parameter="nearlyMarket" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="NearlyUniversity" Parameter="nearlyUniversity" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="LocationID" Parameter="locationID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Status" Parameter="status" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
   <Function Name="dbo.uspRealtyMarketGetInfoByRealtyMarketID" Method="uspRealtyMarketGetInfoByRealtyMarketID">
     <Parameter Name="RealtyMarketID" Parameter="realtyMarketID" Type="System.Int32" DbType="Int" />
     <ElementType Name="uspRealtyMarketGetInfoByRealtyMarketIDResult">
@@ -13,12 +40,12 @@
       <Column Name="Price" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="LegalStatus" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="Acreage" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ClientRoom" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="BedRoom" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Bathrooms" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Acreage" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ClientRoom" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="BedRoom" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="Bathrooms" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="Position" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="Floor" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Floor" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="GaraOto" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="Cooler" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="CableTv" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
@@ -56,12 +83,12 @@
       <Column Name="Price" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="LegalStatus" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="Acreage" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ClientRoom" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="BedRoom" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Bathrooms" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Acreage" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ClientRoom" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="BedRoom" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="Bathrooms" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="Position" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="Floor" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Floor" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="GaraOto" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="Cooler" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="CableTv" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
@@ -77,5 +104,31 @@
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </ElementType>
+  </Function>
+  <Function Name="dbo.uspRealtyMarketInsert" Method="uspRealtyMarketInsert">
+    <Parameter Name="Title" Parameter="title" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="Descrition" Parameter="descrition" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="Image" Parameter="image" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="UserPublish" Parameter="userPublish" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Phone" Parameter="phone" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Price" Parameter="price" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Type" Parameter="type" Type="System.Int32" DbType="Int" />
+    <Parameter Name="LegalStatus" Parameter="legalStatus" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="Acreage" Parameter="acreage" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="ClientRoom" Parameter="clientRoom" Type="System.String" DbType="NVarChar(2)" />
+    <Parameter Name="BedRoom" Parameter="bedRoom" Type="System.String" DbType="NVarChar(2)" />
+    <Parameter Name="Bathrooms" Parameter="bathrooms" Type="System.String" DbType="NVarChar(2)" />
+    <Parameter Name="Position" Parameter="position" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="Floor" Parameter="floor" Type="System.String" DbType="NVarChar(2)" />
+    <Parameter Name="NearKindergarten" Parameter="nearKindergarten" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="NearHospital" Parameter="nearHospital" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="NearlySchool" Parameter="nearlySchool" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="NearlyMarket" Parameter="nearlyMarket" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="NearlyUniversity" Parameter="nearlyUniversity" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="LocationID" Parameter="locationID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Status" Parameter="status" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
   </Function>
 </Database>

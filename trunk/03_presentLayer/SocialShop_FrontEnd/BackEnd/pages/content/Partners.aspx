@@ -8,7 +8,7 @@
                 <table cellspacing="8">
                     <tr>
                         <td colspan="2" style="text-align: center; padding: 5px 0;">
-                            <a style=" color:Red; font-size:16px;">Thêm đối tác mới</a>
+                            <a style="color: Red; font-size: 16px;">Thêm đối tác mới</a>
                         </td>
                     </tr>
                     <tr>
@@ -28,7 +28,9 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Website đối tác</td>
+                        <td>
+                            Website đối tác
+                        </td>
                         <td>
                             <asp:TextBox ID="txtWeb" runat="server"></asp:TextBox>
                         </td>
