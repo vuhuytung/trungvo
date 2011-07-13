@@ -100,17 +100,17 @@
     <!--Begin body content-->
     <div class="bodyContent">
         <div class="leftMain nl">
-            <asp:Repeater ID="rptContent" runat="server">
+            <asp:Repeater ID="rptContent" runat="server" >
                 <ItemTemplate>
                     <div class="box">
                         <div class="title">
-                            <span><a href="#"><%#Eval("Info.Name") %></a></span>
+                            <span><a href='/news/<%#VTCO.Library.Lib.GetUrlText(Eval("Info.Name").ToString()) %>-<%#Eval("Info.CategoryID") %>'><%#Eval("Info.Name") %></a></span>
                         </div>
                         <div class="topNews nl">
-                            <img src="<%#Eval("Items[0].Img") %>" width="140" class="nl" style="border: solid 1px #AAA;
+                            <img src="<%#Eval("Items[0].Img") %>.thumb" width="140" class="nl" style="border: solid 1px #AAA;
                                 margin: 10px;" />
                             <p>
-                                <span class="spTitle"><a href="#"><%#Eval("Items[0].Title") %></a></span>
+                                <span class="spTitle"><a href='/news/<%#VTCO.Library.Lib.GetUrlText(Eval("Items[0].CategoryName").ToString()) %>-<%#Eval("Items[0].CategoryID") %>/<%#VTCO.Library.Lib.GetUrlText(Eval("Items[0].Title").ToString()) %>-<%#Eval("Items[0].NewsID") %>'><%#Eval("Items[0].Title") %></a></span>
                                 <span class="spDate"><%#Eval("Items[0].CreateDate","{0:dd/MM/yyyy}") %></span>
                                 <br />
                                 <br />
@@ -123,12 +123,12 @@
                         </div>
                         <div class="otherTopNews nr">
                             <ul>
-                                <% ktra = 0; %>
+                                <% ktra = 0; %>                                
                                 <asp:Repeater runat="server" ID="rptList" DataSource='<%#Eval("Items") %>'>
                                     <ItemTemplate>
                                         <%if (ktra != 0)
                                           { %>
-                                        <li><a href="#"><%#Eval("Title") %></a></li>
+                                        <li><a href='/news/<%#VTCO.Library.Lib.GetUrlText(Eval("CategoryName").ToString()) %>-<%#Eval("CategoryID") %>/<%#VTCO.Library.Lib.GetUrlText(Eval("Title").ToString()) %>-<%#Eval("NewsID") %>'><%#Eval("Title") %></a></li>
                                         <%}
                                             ktra = 1;
                                             %>
