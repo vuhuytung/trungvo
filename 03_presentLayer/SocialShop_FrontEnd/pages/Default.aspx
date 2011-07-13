@@ -108,13 +108,13 @@
                         </div>
                         <div class="topNews nl">
                             <img src="<%#Eval("Items[0].Img") %>.thumb" width="140" class="nl" style="border: solid 1px #AAA;
-                                margin: 10px;" />
+                                margin: 10px; margin-top:0;" />
                             <p>
                                 <span class="spTitle"><a href='/news/<%#VTCO.Library.Lib.GetUrlText(Eval("Items[0].CategoryName").ToString()) %>-<%#Eval("Items[0].CategoryID") %>/<%#VTCO.Library.Lib.GetUrlText(Eval("Items[0].Title").ToString()) %>-<%#Eval("Items[0].NewsID") %>'><%#Eval("Items[0].Title") %></a></span>
                                 <span class="spDate"><%#Eval("Items[0].CreateDate","{0:dd/MM/yyyy}") %></span>
                                 <br />
                                 <br />
-                                <p>
+                                <p style="text-indent:15px;">
                                     <%#Eval("Items[0].Description") %>
                                 </p>
                             </p>
@@ -128,7 +128,7 @@
                                     <ItemTemplate>
                                         <%if (ktra != 0)
                                           { %>
-                                        <li><a href='/news/<%#VTCO.Library.Lib.GetUrlText(Eval("CategoryName").ToString()) %>-<%#Eval("CategoryID") %>/<%#VTCO.Library.Lib.GetUrlText(Eval("Title").ToString()) %>-<%#Eval("NewsID") %>'><%#Eval("Title") %></a></li>
+                                        <li class="listHome"><a href='/news/<%#VTCO.Library.Lib.GetUrlText(Eval("CategoryName").ToString()) %>-<%#Eval("CategoryID") %>/<%#VTCO.Library.Lib.GetUrlText(Eval("Title").ToString()) %>-<%#Eval("NewsID") %>'><%#Eval("Title") %></a></li>
                                         <%}
                                             ktra = 1;
                                             %>
