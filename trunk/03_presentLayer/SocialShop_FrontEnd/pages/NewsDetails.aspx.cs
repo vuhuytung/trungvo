@@ -51,5 +51,6 @@ public partial class pages_NewsDetails : System.Web.UI.Page
         rptOther.DataSource = _data.Items;
         rptOther.DataBind();
         ucPaging1.TotalRecord = _data.TotalRecord;
+        divListOtherNews.Visible = _data.TotalRecord > 0;
     }
 }
