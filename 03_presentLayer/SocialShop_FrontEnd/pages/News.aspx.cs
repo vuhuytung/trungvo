@@ -16,6 +16,8 @@ public partial class pages_News : System.Web.UI.Page
         try{
             CatID=Convert.ToInt32(Request.QueryString["CategoryID"]);
         }finally{
+            CtrCategory ctrCate=new CtrCategory();
+            Page.Title = "Tin tức - "+ctrCate.GetInfo(CatID).Name;
             CtrNews ctrN = new CtrNews();
             var _data = ctrN.GetListNewsByCategory(CatID, 10);
             rptContent.DataSource = _data;
