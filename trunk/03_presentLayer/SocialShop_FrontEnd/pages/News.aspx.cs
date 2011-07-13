@@ -6,7 +6,6 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using WorkFlowBLL;
 using DataContext;
-using System.Threading;
 
 public partial class pages_News : System.Web.UI.Page
 {
@@ -42,11 +41,11 @@ public partial class pages_News : System.Web.UI.Page
 
     protected void ucPaging1_PageChange(object sender)
     {
-        Thread.Sleep(3000);
         CtrNews ctrN = new CtrNews();
         var _data = ctrN.GetListNewsByCategoryOther(CatID, NewsIDs, ucPaging1.CurrentPage, ucPaging1.PageSize);
         rptOther.DataSource = _data.Items;
         rptOther.DataBind();
         ucPaging1.TotalRecord = _data.TotalRecord;
+        ucPaging1.Visible = ucPaging1.TotalPage > 1;
     }
 }

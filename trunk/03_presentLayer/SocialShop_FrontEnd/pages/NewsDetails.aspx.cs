@@ -30,7 +30,7 @@ public partial class pages_NewsDetails : System.Web.UI.Page
             if ((_data.Resource == null) || (_data.Resource.Trim() == ""))
                 selResource.Visible = false;
             else
-                selResource.InnerText = "Nguồn "+_data.Resource;
+                selResource.InnerText = "Nguồn: "+_data.Resource;
         }
         ucPaging1.PageChange += new UserControls_ucPaging.PagingHandler(ucPaging1_PageChange);
         if (!IsPostBack)

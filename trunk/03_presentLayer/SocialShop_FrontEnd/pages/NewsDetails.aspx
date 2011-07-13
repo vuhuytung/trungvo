@@ -11,22 +11,21 @@
     </asp:ScriptManager>
     <div class="bodyContent">
         <div class="leftMain nl">
-                    <div class="box" style="border:none">
+                    <div class="box" style="border:none; padding:20px; padding-top:0;">
                         <div class="topNews nl" style="width: 100%">                            
                             <p>
-                                <span class="spTitle"><a href="#" runat="server" id="selTitle"></a></span> 
-                                <br /><span class="spDate" runat="server" id="selCreateDate"></span>
+                                <span class="spTitle" style="font-size:19px; color:#004175;" id="selTitle" runat="server"></span> 
+                                <span class="spDate" runat="server" id="selCreateDate"></span>
                                 <br />
                                 <br />
-                                <p runat="server" id="selDescription" style="font-weight:bold; color:#5f5f5f;">                                   
-                                </p>
-                            </p>       
+                                <span runat="server" id="selDescription" style="font-weight:bold; color:#5f5f5f;">                                   
+                                </span>
+                            </p>
                             <center>
-                            <img width="450" runat="server" id="selImage" class="clear" style="border: solid 1px #AAA;
-                                margin: 10px;" />                
+                            <img width="450" runat="server" id="selImage" class="clear" style="border: solid 1px #AAA; margin:30px 10px;" />                
                             </center>     
                             <p runat="server" id="selContent"></p>
-                            <p style="text-align:right; font-weight:bold" id="selResource" runat="server"></p>
+                            <p style="text-align:right; font-style:italic; padding:10px;" id="selResource" runat="server"></p>
                             <div class="clear">
                             </div>
                         </div>
