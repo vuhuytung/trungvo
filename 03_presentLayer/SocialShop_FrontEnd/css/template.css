@@ -10,7 +10,13 @@ color:#000;
 }
 img{
 border:0 none;
+max-width:550px !important;
+width: expression(this.width > 550 ? 550: true);
+height:auto !important;
+
 }
+
+
 a:hover{
 text-decoration:underline;
 }
