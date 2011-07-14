@@ -33,7 +33,7 @@ public partial class userControls_ucMenu : System.Web.UI.UserControl
             str="<ul class='menu' id='menu'>";
             tb = new List<uspCategoryGetListResult>();
             tb = menuMgr.GetListCategory(1);
-            str += "<li><a href='/home' class='menulink' >Trang chủ</a></li>";
+            str += "<li><a href='/index' class='menulink' >Trang chủ</a></li>";
         }
         //Lấy các menu trong bảng tb có trạng thái hoạt động và có menu cha là parentID sắp xếp theo Order
         var rows = tb.Where(x=>x.ParentID == parentID);
@@ -44,11 +44,27 @@ public partial class userControls_ucMenu : System.Web.UI.UserControl
             str += "<li>";
             if (row.ParentID == 0)
             {
-                str += "<a href='#" + row.CategoryID + ".html' class='menulink'>" + row.Name + "</a>";
+                switch(row.Type.Value)
+                {
+                    case 2:
+                        str += "<a href='/news/"+ VTCO.Library.Lib.GetUrlText(row.Name)+"-" + row.CategoryID + "' class='menulink'>" + row.Name + "</a>";
+                        break;
+                    default:
+                        str += "<a href='#" + row.CategoryID + ".html' class='menulink'>" + row.Name + "</a>";
+                        break;
+                }
             }
             else
             {
-                str += "<a href='#" + row.CategoryID + ".html'>" + row.Name + "</a>";
+                switch (row.Type.Value)
+                {
+                    case 2:
+                        str += "<a href='/news/" + VTCO.Library.Lib.GetUrlText(row.Name) + "-" + row.CategoryID + "' >" + row.Name + "</a>";
+                        break;
+                    default:
+                        str += "<a href='#' >" + row.Name + "</a>";
+                        break;
+                }
             }
             str += GetMenuTop(tb, row.CategoryID);
             str += "</li>";
