@@ -118,4 +118,8 @@
       <Column Name="CategoryName" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
+  <Function Name="dbo.uspNewsDeleteMulti" Method="uspNewsDeleteMulti">
+    <Parameter Name="NewsIDs" Parameter="newsIDs" Type="System.String" DbType="NVarChar(100)" />
+    <Return Type="System.Int32" />
+  </Function>
 </Database>
