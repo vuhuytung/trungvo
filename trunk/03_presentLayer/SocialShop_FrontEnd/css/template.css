@@ -63,7 +63,7 @@ text-align:center;
 .header
 {
     background:url(/images/banner.png) no-repeat top left;
-    height:235px;
+    height:230px;
     margin:0 auto;
     margin-left:6px;
     position:relative;
@@ -76,6 +76,7 @@ text-align:center;
 .menutop
 {
     text-align:left;
+    margin-right:6px;
 }
 .menutop .leftMenutop
 {
@@ -101,31 +102,27 @@ text-align:center;
     z-index:9998;
     position:relative;
 }
+/*
 ul.menu {list-style:none; margin:0; padding:0; margin-top:5px; }
 ul.menu * {margin:0; padding:0; font-family:Tahoma; font-size:12px;}
 ul.menu a {display:block; color:#000; text-decoration:none}
 ul.menu li {position:relative; float:left; margin-right:2px; background:url("/images/line-topmenu.gif") no-repeat scroll left 5px transparent;}
 ul.menu li:first-child, ul.menu li.firstChild{ background:none; }
 ul.menu ul {position:absolute; top:26px; left:0; background:#d1d1d1; display:none; opacity:0; list-style:none}
-/*ul.menu ul li {position:relative; border:1px solid #aaa; border-top:none; width:148px; margin:0}*/
 ul.menu ul li {position:relative; border-top:none; width:180px; margin:0;}
 ul.menu ul li a {display:block; padding:6px; background-color:#d1d1d1; padding-left:15px;}
 ul.menu ul li a:hover {background-color:#c5c5c5}
 ul.menu ul ul {left:180px; top:-1px}
-/*ul.menu .menulink {border:1px solid #aaa; padding:5px 7px 7px; font-weight:bold; background:url(/images/header.gif); width:134px}*/
 ul.menu .menulink {padding:5px 15px; font-weight:bold; }
 ul.menu .menulink:hover, ul.menu .menuhover {background:#d49c1f;}
 ul.menu .sub {background:#d1d1d1 url(/images/arrow.gif) 170px 8px no-repeat}
-/*ul.menu .topline {border-top:1px solid #aaa}*/
-
+*/
 
 
 .main
 {
     background:url(/images/back-centerbody.png) repeat-y top left;
     padding:0 6px;
-    position:relative;
-    z-index:1;
     text-align:left;    
 }
 
