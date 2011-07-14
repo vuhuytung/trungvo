@@ -265,6 +265,7 @@
                                     <DateInput LabelCssClass="radLabelCss_WebBlue" Skin="WebBlue">
                                     </DateInput>
                                 </telerik:RadDatePicker>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ForeColor="Red" ErrorMessage="*" ValidationGroup="news" ControlToValidate="rdpPublishDateEdit"></asp:RequiredFieldValidator>
                             </div>
                         </td>
                         <td class="tdStyle" style="width: 150px">
@@ -291,7 +292,7 @@
                             <asp:DropDownList ID="ddlNewsMenu" runat="server" Width="150">
                             </asp:DropDownList>
                             <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="ddlNewsMenu"
-                                ErrorMessage="*" ValidationExpression="[1-9][0-9]*" ValidationGroup="news" SetFocusOnError="True"
+                                ErrorMessage="*" ForeColor="Red" ValidationExpression="[1-9][0-9]*" ValidationGroup="news" SetFocusOnError="True"
                                 Font-Bold="True"></asp:RegularExpressionValidator>
                         </td>
                         <td class="tdStyle" style="width: 150px">
@@ -316,6 +317,7 @@
                         </td>
                         <td colspan="5" class="tdStyle" style="width: 720px">
                             <asp:TextBox ID="txtTitle" runat="server" Width="450px" MaxLength="100" CssClass="inputText"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ValidationGroup="news" ForeColor="Red" ErrorMessage="*" ControlToValidate="txtTitle"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr>
@@ -325,6 +327,7 @@
                         <td colspan="5" class="tdStyle">
                             <asp:TextBox ID="txtAbstract" runat="server" Width="500px" MaxLength="250" Height="100px"
                                 CssClass="inputText" TextMode="MultiLine" Rows="2" Font-Names="Arial" Font-Size="13px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ValidationGroup="news" ForeColor="Red" ErrorMessage="*" ControlToValidate="txtAbstract"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr valign="top">
@@ -333,13 +336,13 @@
                         </td>
                         <td class="tdStyle">
                             <div style="border: 1px solid #E2E5E6; max-height: 150px; max-width: 150px">
-                                <img width="150" style="max-height: 150px; max-width: 150px" alt="" runat="server"
+                                <img width="150" style="max-height: 150px; max-width: 150px" alt="Ảnh đại diện" runat="server"
                                     id="imgNews" src="~/BackEnd/img/noimage.jpg" />
                             </div>
                         </td>
                         <td class="tdStyle" colspan="4">
                             <asp:FileUpload ID="UploadImage" runat="server" Width="220" /><br />
-                            <asp:RegularExpressionValidator ID="vldUploadImage1" runat="server" ControlToValidate="UploadImage"
+                            <asp:RegularExpressionValidator ID="vldUploadImage1" runat="server" ControlToValidate="UploadImage"  ForeColor="Red"
                                 ValidationExpression="(.*\.([gG][iI][fF]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[pP][nN][gG])$)"
                                 Display="Dynamic" ErrorMessage="File *.Gif, *.Jpg, *.Jpeg, *.Png" ValidationGroup="news"
                                 Enabled="true" SetFocusOnError="True"></asp:RegularExpressionValidator>
@@ -356,7 +359,7 @@
                             MediaManager-ViewPaths="~/images/news" MediaManager-UploadPaths="~/images/news" MediaManager-DeletePaths="~/images/news">
                             </telerik:RadEditor>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="radContent"
-                                ErrorMessage="Chưa nhập nội dung" SetFocusOnError="True" ValidationGroup="news"></asp:RequiredFieldValidator>
+                                ErrorMessage="*" ForeColor="Red" SetFocusOnError="True" ValidationGroup="news"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr>

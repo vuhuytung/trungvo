@@ -277,7 +277,7 @@ public partial class BackEnd_pages_content_News : System.Web.UI.Page
             lblLastModifyEdit.Text = info.LastModify.Value.ToString("dd/MM/yyyy HH:mm:ss");
             rdpPublishDateEdit.SelectedDate = info.PublishDate;
             ddlStatusEdit.SelectedValue = info.Status ? "1" : "0";
-            ddlIsHotEdit.SelectedValue = info.IsHot.Value ? "1" : "0";
+            ddlIsHotEdit.SelectedValue = info.IsHot??false ? "1" : "0";
 
             txtTitle.Text = HtmlUtility.HtmlDecode(info.Title);
             txtAbstract.Text = HtmlUtility.HtmlDecode(info.Description);
