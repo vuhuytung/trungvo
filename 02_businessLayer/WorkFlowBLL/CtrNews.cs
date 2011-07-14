@@ -6,6 +6,8 @@ using DAL;
 using DataContext;
 using VTCO.Config;
 using System.Text;
+using System.Web;
+using System.IO;
 
 namespace WorkFlowBLL
 {
@@ -111,6 +113,21 @@ namespace WorkFlowBLL
         public int Update(int newsID, string title,string description,string content,string img,DateTime publishDate, int categoryID,string resource,bool status,bool isHot)
         {
             return BDS.NewsInstance.uspNewsUpdateByNewsID(newsID, title, description, content, img, publishDate, 7, categoryID, resource, status, isHot);
+        }
+        public void DeleteImage(HttpRequest Request, string urlimg)
+        {
+            string strImagePath = Request.PhysicalApplicationPath + urlimg;
+            if (File.Exists(strImagePath) && !urlimg.Contains("noimage.jpg"))
+            {
+                FileInfo file = new FileInfo(Request.PhysicalApplicationPath + urlimg);
+                file.Attributes = FileAttributes.Archive;
+                if (file.Exists)
+                    file.Delete();
+                file = new FileInfo(Request.PhysicalApplicationPath + urlimg+".thumb");
+                file.Attributes = FileAttributes.Archive;
+                if (file.Exists)
+                    file.Delete();
+            }
         }
     }
 }
