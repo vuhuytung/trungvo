@@ -100,6 +100,10 @@ namespace WorkFlowBLL
         {
             return BDS.NewsInstance.uspNewsDeleteByNewsID(newsID);
         }
+        public int DeleteMulti(string newsIDs)
+        {
+            return BDS.NewsInstance.uspNewsDeleteMulti(newsIDs);
+        }
         public int Insert(string title,string description,string content,string img, DateTime publishDate, int categoryID,string resource,bool status,bool isHot)
         {
             return BDS.NewsInstance.uspNewsInsert(title, description, content, img,publishDate, 7,categoryID, resource, status, isHot);
