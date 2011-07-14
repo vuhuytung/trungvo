@@ -11,8 +11,8 @@
     </asp:ScriptManager>
     <div class="bodyContent">
         <div class="leftMain nl">
-                    <div class="box" style="border:none; padding:20px; padding-top:0;">
-                        <div class="topNews nl" style="width: 100%">                            
+                    <div class="box" style="border:none;">
+                        <div class="topNews nl" style="width:600px">
                             <p>
                                 <span class="spTitle" style="font-size:19px; color:#004175;" id="selTitle" runat="server"></span> 
                                 <span class="spDate" runat="server" id="selCreateDate"></span>
