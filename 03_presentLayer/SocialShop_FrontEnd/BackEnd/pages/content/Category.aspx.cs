@@ -15,7 +15,6 @@ using DataContext;
 using VTCO.Config;
 using Telerik.Web.UI;
 using VTCO.Library;
-//using System.Messaging;
 using System.Text;
 using System.Collections.Generic;
 
@@ -61,11 +60,6 @@ public partial class BackEnd_pages_content_Category : System.Web.UI.Page
         RadTreeViewMenu.Nodes.Add(RootNode);
         AddNodes(RadTreeViewMenu.Nodes[0].Nodes, 0);
         RadTreeViewMenu.ExpandAllNodes();
-
-        var RootNode1 = new TreeNode("Trang chủ", "0");
-        trvCategory.Nodes.Add(RootNode1);
-        AddNodes1(trvCategory.Nodes[0].ChildNodes, 0);
-        trvCategory.ExpandAll();
     }
 
     private void SetControls(bool edit)
@@ -76,8 +70,7 @@ public partial class BackEnd_pages_content_Category : System.Web.UI.Page
 
     private void SetControlsRdb(bool edit)
     {
-        rdbActive.Checked = edit;
-        rdbNoActive.Checked = !edit;
+        ddlStatus.SelectedValue = edit ? "1" : "0";
     }
 
     private void SetControlsEdit(bool edit, string name)
@@ -104,34 +97,23 @@ public partial class BackEnd_pages_content_Category : System.Web.UI.Page
             AddNodes(Node.Nodes, Menu.CategoryID);
         }
     }
-    private void AddNodes1(TreeNodeCollection treeMenu, int menuParentID)
-    {
-        var ListMenu = MyMenu.GetByParentID(menuParentID, -1);
-        foreach (var Menu in ListMenu)
-        {
-            var Node = new TreeNode("<b onclick='alert(0); return false;'>"+Menu.Name+"</b>", Menu.CategoryID.ToString());
-            treeMenu.Add(Node);
-            AddNodes1(Node.ChildNodes, Menu.CategoryID);
-        }
-    }
-    private void MoveNodes(RadTreeNodeCollection radTreeMenu, int menuParentID)
-    {
-        var ListMenu = MyMenu.GetByParentID(menuParentID,-1);
-        foreach (var Menu in ListMenu)
-        {
-            var Node = new RadTreeNode(Menu.Name, Menu.CategoryID.ToString());
-            radTreeMenu.Remove(Node);
-            MoveNodes(Node.Nodes, Menu.CategoryID);
-        }
-    }
+    //private void MoveNodes(RadTreeNodeCollection radTreeMenu, int menuParentID)
+    //{
+    //    var ListMenu = MyMenu.GetByParentID(menuParentID,-1);
+    //    foreach (var Menu in ListMenu)
+    //    {
+    //        var Node = new RadTreeNode(Menu.Name, Menu.CategoryID.ToString());
+    //        radTreeMenu.Remove(Node);
+    //        MoveNodes(Node.Nodes, Menu.CategoryID);
+    //    }
+    //}
     private void BinDataForDropType()
     {
         ddlMenuType.Items.Add(new ListItem("Nhóm menu", "1"));
-        ddlMenuType.Items.Add(new ListItem("Menu chỉ chứa 1 tin", "2"));
-        ddlMenuType.Items.Add(new ListItem("Nhóm các tin", "3"));
-        ddlMenuType.Items.Add(new ListItem("Tài nguyên", "4"));
-        ddlMenuType.Items.Add(new ListItem("Bất động sản", "5"));
-        ddlMenuType.Items.Add(new ListItem("Liên kết ngoài", "6"));
+        ddlMenuType.Items.Add(new ListItem("Tin tức", "2"));
+        ddlMenuType.Items.Add(new ListItem("Tài nguyên", "3"));
+        ddlMenuType.Items.Add(new ListItem("Bất động sản", "4"));
+        ddlMenuType.Items.Add(new ListItem("Liên kết ngoài", "5"));
     }
 
     private void BinDataForDropDllPrentID()
@@ -168,7 +150,7 @@ public partial class BackEnd_pages_content_Category : System.Web.UI.Page
                 {
                     CheckAddOrEdit = 1;
                     txtMenuName.Focus();
-                    SetControlsEdit(true, "Lưu lại");
+                    SetControlsEdit(true, " Lưu lại ");
                     SetControls(false);
                     Clear();
                     MenuID = Convert.ToInt32(e.Node.Value);
@@ -192,7 +174,7 @@ public partial class BackEnd_pages_content_Category : System.Web.UI.Page
                 {
                     CheckAddOrEdit = 0;
                     txtMenuName.Focus();
-                    SetControlsEdit(true, "Cập nhật");
+                    SetControlsEdit(true, " Cập nhật ");
                     MenuID = Convert.ToInt32(e.Node.Value);
                     ddlParentID.Enabled = true;
                     ddlParentID.Items.Clear();
@@ -259,10 +241,6 @@ public partial class BackEnd_pages_content_Category : System.Web.UI.Page
         }
     }
 
-    protected void btnCancel_Click(object sender, EventArgs e)
-    {
-        Clear();
-    }
     protected void btnSave_Click(object sender, EventArgs e)
     {
         string name = "";
@@ -281,14 +259,7 @@ public partial class BackEnd_pages_content_Category : System.Web.UI.Page
             {
                 link = HtmlUtility.HtmlEncode(txtUrl.Text.Trim());
             }
-            if (rdbActive.Checked)
-            {
-                status = 1;
-            }
-            if (rdbNoActive.Checked)
-            {
-                status = 0;
-            }
+            status = Convert.ToInt32(ddlStatus.SelectedValue);
             MyMenu.Insert(parentId,name,link,status,order,type);
             Response.Redirect("~/admin/category");
         }
@@ -302,14 +273,7 @@ public partial class BackEnd_pages_content_Category : System.Web.UI.Page
             {
                 link = HtmlUtility.HtmlEncode(txtUrl.Text.Trim());
             }
-            if (rdbActive.Checked)
-            {
-                status = 1;
-            }
-            if (rdbNoActive.Checked)
-            {
-                status = 0;
-            }
+            status = Convert.ToInt32(ddlStatus.SelectedValue);
             MyMenu.Update(MenuID, parentId, name, link, status, order, type);
             Response.Redirect("~/admin/category");
         }
@@ -317,7 +281,7 @@ public partial class BackEnd_pages_content_Category : System.Web.UI.Page
 
     protected void ddlMenuType_SelectedIndexChanged1(object sender, EventArgs e)
     {
-        if (ddlMenuType.SelectedValue == "6")//Convert.ToInt32(EnumMenuType.Link).ToString())
+        if (ddlMenuType.SelectedValue == "5")
         {
             SetControls(true);
         }

@@ -2,7 +2,7 @@
     CodeFile="Category.aspx.cs" Inherits="BackEnd_pages_content_Category" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">    
     <telerik:RadScriptManager ID="RadScriptManager1" runat="server">
     </telerik:RadScriptManager>
     <script type="text/javascript">
@@ -87,8 +87,8 @@
                     </div>
                 </div>
 
-                <div id="CtrEdit" class="divframe" runat="server" visible="false" style="width:49%; float:right;">
-                    <div class="divSubHeader">
+                <div id="CtrEdit" class="divframe" runat="server" visible="false" style="width:49%; float:left;">
+                    <div class="divSubHeader" style="font-weight:bold; padding:10px;">
                         Chi tiết Menu
                     </div>
                     <div class="divDetailMenu">
@@ -109,7 +109,7 @@
                                         Tên Menu:
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="txtMenuName" MaxLength="35" runat="server" CssClass="inputText"></asp:TextBox>
+                                        <asp:TextBox ID="txtMenuName" MaxLength="50" Width="180px" runat="server" CssClass="inputText"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
@@ -143,8 +143,10 @@
                                         Trạng thái:
                                     </td>
                                     <td>
-                                        <asp:RadioButton ID="rdbActive" runat="server" GroupName="status" Text="Kích hoạt" />
-                                        <asp:RadioButton ID="rdbNoActive" runat="server" GroupName="status" Text="Khóa" />
+                                        <asp:DropDownList runat="server" ID="ddlStatus">
+                                            <asp:ListItem Text="Kích hoạt" Value="1"></asp:ListItem>
+                                            <asp:ListItem Text="Khóa" Value="0"></asp:ListItem>
+                                        </asp:DropDownList>
                                     </td>
                                 </tr>
                             </table>
@@ -170,20 +172,14 @@
                         </div>
                         <br />
                         <div style="margin-left: 90px; margin-bottom: 10px">
-                            <asp:Button ID="btnSave" CssClass="button" runat="server" ValidationGroup="Error"
-                                OnClick="btnSave_Click" BorderStyle="None" />
-                            <asp:Button ID="btnCancel" CssClass="button" runat="server" Text="Hủy" OnClick="btnCancel_Click"
-                                BorderStyle="None" />
-                            <asp:Button ID="btnClose" CssClass="button" runat="server" Text="Đóng" OnClick="btnClose_Click"
-                                BorderStyle="None" />
+                            <asp:Button ID="btnSave" runat="server" Text=" Cập nhật " ValidationGroup="Error" OnClick="btnSave_Click"/>
+                            <asp:Button ID="btnClose" runat="server" Text=" Hủy bỏ " OnClick="btnClose_Click" />
                         </div>
                     </div>
                 </div>
                 <div style="clear: both">
                 </div>
             </div>
-            <asp:TreeView runat="server" ID="trvCategory">
-            </asp:TreeView>
         </div>
     </div>
 </asp:Content>
