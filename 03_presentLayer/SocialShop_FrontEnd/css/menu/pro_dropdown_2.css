@@ -31,7 +31,7 @@ way to fit your requirements.
 #nav li:hover ul.sub li
 {display:block; height:25px; position:relative; float:left; width:154px; font-weight:normal;}
 #nav li:hover ul.sub li a
-{display:block; font-size:12px; height:18px; width:152px; line-height:22px; text-indent:5px; color:#000; text-decoration:none;border:1px solid #bbd37e;}
+{display:block; font-size:12px; height:22px; width:152px; line-height:22px; text-indent:5px; color:#000; text-decoration:none;border:1px solid #bbd37e;}
 #nav li ul.sub li a.fly
 {background:#bbd37e url(arrow.gif) 143px 6px no-repeat;}
 #nav li:hover ul.sub li a:hover 
