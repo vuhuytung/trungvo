@@ -1,0 +1,21 @@
+<root>	
+	<tools>
+		<tool separator="true"/>
+    <tool name="Cut"/>
+		<tool name="Copy"/>
+		<tool name="Paste"/>
+		
+		<tool separator="true"/>
+		<tool name="Undo"/>
+		<tool name="Redo"/>
+		<tool separator="true"/>
+		<tool name="ImageManager"/>	
+		<tool separator="true"/>
+    <tool name="FlashManager"/>
+    <tool name="MediaManager"/>
+      <tool separator="true"/>
+      <tool name="JustifyCenter"/>
+      <tool name="JustifyFull"/>
+	</tools>
+	
+</root>
