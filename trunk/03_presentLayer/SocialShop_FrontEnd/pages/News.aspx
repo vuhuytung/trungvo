@@ -39,9 +39,12 @@
                     </div>
                 </ItemTemplate>
             </asp:Repeater>
+            <center runat="server" id="ctNoRecord">
+                Đang cập nhật
+            </center>
             <div class="clear">
             </div>
-            <div runat="server" id="divListOtherNews">
+            <div runat="server" id="divListOtherNews" visible="false">
                 <div class="box" style="border: none; padding-bottom: 0">
                     <div class="title">
                         <span><a>Các tin khác cùng chuyên mục</a></span>

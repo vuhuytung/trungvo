@@ -20,14 +20,32 @@ public partial class pages_News : System.Web.UI.Page
             Page.Title = "Tin tức - "+ctrCate.GetInfo(CatID).Name;
             CtrNews ctrN = new CtrNews();
             var _data = ctrN.GetListNewsByCategory(CatID, 10);
-            rptContent.DataSource = _data;
-            rptContent.DataBind();
-            foreach (var item in _data)
+
+            if ((_data.Count == 0) || (_data.Count == 1))
             {
-                NewsIDs += item.NewsID + ",";
+                if (_data.Count == 0)
+                {
+                    rptContent.Visible = false;
+                    divListOtherNews.Visible = false;
+                    ctNoRecord.Visible = true;
+                }
+                else
+                {
+                    Response.Redirect("~/news/" + VTCO.Library.Lib.GetUrlText(_data[0].CategoryName) + "-" + _data[0].CategoryID.ToString() + "/" + VTCO.Library.Lib.GetUrlText(_data[0].Title) + "-" + _data[0].NewsID.ToString());
+                }
             }
-            if(NewsIDs.Length>0)
-                NewsIDs = NewsIDs.Substring(0,NewsIDs.LastIndexOf(","));
+            else
+            {
+
+                rptContent.DataSource = _data;
+                rptContent.DataBind();
+                foreach (var item in _data)
+                {
+                    NewsIDs += item.NewsID + ",";
+                }
+                if (NewsIDs.Length > 0)
+                    NewsIDs = NewsIDs.Substring(0, NewsIDs.LastIndexOf(","));
+            }
 
         }
         ucPaging1.PageChange += new UserControls_ucPaging.PagingHandler(ucPaging1_PageChange);
