@@ -117,16 +117,20 @@ namespace WorkFlowBLL
         public void DeleteImage(HttpRequest Request, string urlimg)
         {
             string strImagePath = Request.PhysicalApplicationPath + urlimg;
-            if (File.Exists(strImagePath) && !urlimg.Contains("noimage.jpg"))
+            if (File.Exists(strImagePath) && !urlimg.Contains("noimage"))
             {
                 FileInfo file = new FileInfo(Request.PhysicalApplicationPath + urlimg);
-                file.Attributes = FileAttributes.Archive;
                 if (file.Exists)
+                {
+                    file.Attributes = FileAttributes.Archive;
                     file.Delete();
+                }
                 file = new FileInfo(Request.PhysicalApplicationPath + urlimg+".thumb");
-                file.Attributes = FileAttributes.Archive;
                 if (file.Exists)
+                {
+                    file.Attributes = FileAttributes.Archive;
                     file.Delete();
+                }
             }
         }
     }
