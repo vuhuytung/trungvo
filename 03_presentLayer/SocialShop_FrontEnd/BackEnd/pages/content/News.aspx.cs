@@ -15,10 +15,6 @@ using System.Threading;
 
 public partial class BackEnd_pages_content_News : System.Web.UI.Page
 {
-    //protected void Page_Load(object sender, EventArgs e)
-    //{
-
-    //}
     public int CurrentNewsID
     {
         get
@@ -71,6 +67,11 @@ public partial class BackEnd_pages_content_News : System.Web.UI.Page
             ucPaging1.PageDisplay = 10;
             pageChange(ucPaging1);
             LoadPanel(1);
+
+            if (!System.IO.Directory.Exists(Request.PhysicalApplicationPath+"/images/news/" + DateTime.Now.Year.ToString() + "/" + DateTime.Now.Month.ToString()))
+            {
+                System.IO.Directory.CreateDirectory(Request.PhysicalApplicationPath+"/images/news/" + DateTime.Now.Year.ToString() + "/" + DateTime.Now.Month.ToString());
+            }
         }
         lblMsg.Text = "";
     }
@@ -110,7 +111,6 @@ public partial class BackEnd_pages_content_News : System.Web.UI.Page
 
     protected void pageChange(object sender)
     {
-        Thread.Sleep(1000);
         ucPaging1.Visible = false;
         if ((!rdpFromDate.SelectedDate.HasValue) || (!rdpToDate.SelectedDate.HasValue))
         {
@@ -335,7 +335,7 @@ public partial class BackEnd_pages_content_News : System.Web.UI.Page
         txtAbstract.Text = "";
         imgNews.Src = "~/images/news/noimage.jpg.thumb";        
         radContent.Content = "";
-        ddlIsHotEdit.SelectedValue = "1";
+        ddlIsHotEdit.SelectedValue = "0";
         ddlStatusEdit.SelectedValue = "1";
         rdpPublishDateEdit.SelectedDate = DateTime.Now;
         trAdmin.Visible = false;

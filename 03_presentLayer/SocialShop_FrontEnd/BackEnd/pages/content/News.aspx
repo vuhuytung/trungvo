@@ -349,8 +349,11 @@
                         <td class="tdStyle" style="vertical-align: top; width: 100px">
                             Nội dung:
                         </td>
-                        <td colspan="5" class="tdStyle" style="width: 800px;">
-                            <telerik:RadEditor ID="radContent" runat="server" ContentFilters="FixEnclosingP">
+                        <td colspan="5" class="tdStyle" style="width: 600px;">
+                            <telerik:RadEditor ID="radContent" runat="server" ContentFilters="FixEnclosingP" AutoResizeHeight="True" EnableResize="False" Width="600px" 
+                            ImageManager-DeletePaths="~/images/news" ImageManager-ViewPaths="~/images/news" ImageManager-UploadPaths="~/images/news" ToolsFile="~/App_Data/ToolsFile.xml"
+                            FlashManager-ViewPaths="~/images/news" FlashManager-UploadPaths="~/images/news" FlashManager-DeletePaths="~/images/news" 
+                            MediaManager-ViewPaths="~/images/news" MediaManager-UploadPaths="~/images/news" MediaManager-DeletePaths="~/images/news">
                             </telerik:RadEditor>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="radContent"
                                 ErrorMessage="Chưa nhập nội dung" SetFocusOnError="True" ValidationGroup="news"></asp:RequiredFieldValidator>
