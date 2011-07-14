@@ -10,17 +10,6 @@
       <Column Name="[Order]" Member="Order" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.uspCategoryGetList" Method="uspCategoryGetList">
-    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
-    <ElementType Name="uspCategoryGetListResult">
-      <Column Name="CategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ParentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="URL" Type="System.String" DbType="NVarChar(400)" CanBeNull="true" />
-      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="[Order]" Member="Order" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.uspCategoryGetByParentID" Method="uspCategoryGetByParentID">
     <Parameter Name="ParentID" Parameter="parentID" Type="System.Int32" DbType="Int" />
     <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
@@ -67,5 +56,17 @@
     <Parameter Name="Order" Parameter="order" Type="System.Int32" DbType="Int" />
     <Parameter Name="Type" Parameter="type" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.uspCategoryGetList" Method="uspCategoryGetList">
+    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
+    <ElementType Name="uspCategoryGetListResult">
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ParentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="URL" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[Order]" Member="Order" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
   </Function>
 </Database>

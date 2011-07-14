@@ -126,6 +126,13 @@ namespace DataContext
 			totalRecord = ((System.Nullable<int>)(result.GetParameterValue(4)));
 			return ((ISingleResult<uspNewsGetByCategoryIDOtherResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspNewsDeleteMulti")]
+		public int uspNewsDeleteMulti([global::System.Data.Linq.Mapping.ParameterAttribute(Name="NewsIDs", DbType="NVarChar(100)")] string newsIDs)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), newsIDs);
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	public partial class uspNewsGetListForAdminResult
