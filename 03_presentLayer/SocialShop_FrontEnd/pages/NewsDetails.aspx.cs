@@ -19,7 +19,7 @@ public partial class pages_NewsDetails : System.Web.UI.Page
         }finally{
             CtrNews ctrN = new CtrNews();
             var _data = ctrN.GetInfo(NewsID);
-            if ((_data.Img == null) || (_data.Img.Trim() == ""))
+            if ((_data.Img == null) || (_data.Img.Trim() == "") || (_data.Img.Contains("noimage")))
                 selImage.Visible = false;
             else
                 selImage.Src = _data.Img;
