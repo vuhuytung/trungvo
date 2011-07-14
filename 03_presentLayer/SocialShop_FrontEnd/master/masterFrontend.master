@@ -1,7 +1,7 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="masterFrontend.master.cs" Inherits="master_masterFrontend" %>
 
 <%@ Register Src="~/userControls/ucFooter.ascx" TagName="ucFooter" TagPrefix="uc1" %>
-<%@ Register Src="~/userControls/ucMenu.ascx" TagName="ucMenu" TagPrefix="uc3" %>
+<%@ Register Src="~/userControls/ucMenuTop.ascx" TagName="ucMenu" TagPrefix="uc3" %>
 <%@ Register Src="~/userControls/ucNavigator.ascx" TagName="ucNavigator" TagPrefix="uc2" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -59,7 +59,7 @@
         <!--Begin main-->
         <div class="clear">
         </div>
-        <div class="main png_bg">
+        <div class="main">
             <uc2:ucNavigator ID="ucNavigator1" runat="server" />
             <asp:ContentPlaceHolder ID="plhBody" runat="server">
             </asp:ContentPlaceHolder>
@@ -67,7 +67,7 @@
             <div class="clear">
             </div>
         </div>
-        <div class="shadowBottom png_bg">
+        <div class="shadowBottom">
             <!-- -->
         </div>
         <!--End main-->

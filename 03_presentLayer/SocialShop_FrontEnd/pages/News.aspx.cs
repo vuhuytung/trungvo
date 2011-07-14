@@ -30,12 +30,15 @@ public partial class pages_News : System.Web.UI.Page
                     ctNoRecord.Visible = true;
                 }
                 else
-                {
+                {                    
                     Response.Redirect("~/news/" + VTCO.Library.Lib.GetUrlText(_data[0].CategoryName) + "-" + _data[0].CategoryID.ToString() + "/" + VTCO.Library.Lib.GetUrlText(_data[0].Title) + "-" + _data[0].NewsID.ToString());
                 }
             }
             else
             {
+                rptContent.Visible = true;
+                divListOtherNews.Visible = true;
+                ctNoRecord.Visible = false;
 
                 rptContent.DataSource = _data;
                 rptContent.DataBind();
