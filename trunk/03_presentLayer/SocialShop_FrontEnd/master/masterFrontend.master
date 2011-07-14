@@ -32,7 +32,7 @@
     <form id="form1" runat="server">
     <div class="wrap">
         <!--Begin header-->
-        <div class="header png_bg">
+        <div class="header">
             <div class="banner">
                 <%--<div class="nl" style="width:180px; height:180px; background:url(/images/test.gif)"></div>--%>
                 <%--<img src="/images/test.gif" width="180" height="180" class="nl" style="margin-left:-10px" />--%>
