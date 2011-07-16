@@ -62,11 +62,11 @@ namespace DataContext
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspSlideShowGetGroup")]
-		public ISingleResult<uspSlideShowGetGroupResult> uspSlideShowGetGroup([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Total", DbType="Int")] System.Nullable<int> total)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspSlideShowDeleteByID")]
+		public int uspSlideShowDeleteByID([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] System.Nullable<int> iD)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), total);
-			return ((ISingleResult<uspSlideShowGetGroupResult>)(result.ReturnValue));
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD);
+			return ((int)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspSlideShowGetAll")]
@@ -76,6 +76,13 @@ namespace DataContext
 			return ((ISingleResult<uspSlideShowGetAllResult>)(result.ReturnValue));
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspSlideShowGetGroup")]
+		public ISingleResult<uspSlideShowGetGroupResult> uspSlideShowGetGroup([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Total", DbType="Int")] System.Nullable<int> total)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), total);
+			return ((ISingleResult<uspSlideShowGetGroupResult>)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspSlideShowGetInfoByID")]
 		public ISingleResult<uspSlideShowGetInfoByIDResult> uspSlideShowGetInfoByID([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] System.Nullable<int> iD)
 		{
@@ -83,105 +90,26 @@ namespace DataContext
 			return ((ISingleResult<uspSlideShowGetInfoByIDResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspSlideShowUpdateByID")]
-		public int uspSlideShowUpdateByID([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] System.Nullable<int> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Title", DbType="NVarChar(400)")] string title, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Img", DbType="VarChar(300)")] string img, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Int")] System.Nullable<int> status)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, title, img, status);
-			return ((int)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspSlideShowInsert")]
-		public int uspSlideShowInsert([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Title", DbType="NVarChar(400)")] string title, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Img", DbType="VarChar(300)")] string img, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Int")] System.Nullable<int> status)
+		public int uspSlideShowInsert([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Title", DbType="NVarChar(400)")] string title, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Img", DbType="VarChar(300)")] string img, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ImgThumb", DbType="NVarChar(300)")] string imgThumb, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Int")] System.Nullable<int> status)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), title, img, status);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), title, img, imgThumb, status);
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspSlideShowDeleteByID")]
-		public int uspSlideShowDeleteByID([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] System.Nullable<int> iD)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspSlideShowUpdateByID")]
+		public int uspSlideShowUpdateByID([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] System.Nullable<int> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Title", DbType="NVarChar(400)")] string title, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Img", DbType="VarChar(300)")] string img, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ImgThumb", DbType="NVarChar(300)")] string imgThumb, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Int")] System.Nullable<int> status)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, title, img, imgThumb, status);
 			return ((int)(result.ReturnValue));
 		}
-	}
-	
-	public partial class uspSlideShowGetGroupResult
-	{
 		
-		private int _ID;
-		
-		private string _Title;
-		
-		private string _Img;
-		
-		private int _Status;
-		
-		public uspSlideShowGetGroupResult()
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspSlideShowGetAllForPage")]
+		public ISingleResult<uspSlideShowGetAllForPageResult> uspSlideShowGetAllForPage([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> currPage, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Pagesize", DbType="Int")] System.Nullable<int> pagesize, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TotalRecord", DbType="Int")] ref System.Nullable<int> totalRecord)
 		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this._ID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", DbType="NVarChar(400) NOT NULL", CanBeNull=false)]
-		public string Title
-		{
-			get
-			{
-				return this._Title;
-			}
-			set
-			{
-				if ((this._Title != value))
-				{
-					this._Title = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Img", DbType="VarChar(300)")]
-		public string Img
-		{
-			get
-			{
-				return this._Img;
-			}
-			set
-			{
-				if ((this._Img != value))
-				{
-					this._Img = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Int NOT NULL")]
-		public int Status
-		{
-			get
-			{
-				return this._Status;
-			}
-			set
-			{
-				if ((this._Status != value))
-				{
-					this._Status = value;
-				}
-			}
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), currPage, pagesize, totalRecord);
+			totalRecord = ((System.Nullable<int>)(result.GetParameterValue(2)));
+			return ((ISingleResult<uspSlideShowGetAllForPageResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -195,6 +123,8 @@ namespace DataContext
 		private string _Title;
 		
 		private string _Img;
+		
+		private string _ImgThumb;
 		
 		private int _Status;
 		
@@ -266,6 +196,120 @@ namespace DataContext
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImgThumb", DbType="VarChar(300)")]
+		public string ImgThumb
+		{
+			get
+			{
+				return this._ImgThumb;
+			}
+			set
+			{
+				if ((this._ImgThumb != value))
+				{
+					this._ImgThumb = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Int NOT NULL")]
+		public int Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this._Status = value;
+				}
+			}
+		}
+	}
+	
+	public partial class uspSlideShowGetGroupResult
+	{
+		
+		private int _ID;
+		
+		private string _Title;
+		
+		private string _Img;
+		
+		private string _ImgThumb;
+		
+		private int _Status;
+		
+		public uspSlideShowGetGroupResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", DbType="NVarChar(400) NOT NULL", CanBeNull=false)]
+		public string Title
+		{
+			get
+			{
+				return this._Title;
+			}
+			set
+			{
+				if ((this._Title != value))
+				{
+					this._Title = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Img", DbType="VarChar(300)")]
+		public string Img
+		{
+			get
+			{
+				return this._Img;
+			}
+			set
+			{
+				if ((this._Img != value))
+				{
+					this._Img = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImgThumb", DbType="VarChar(300)")]
+		public string ImgThumb
+		{
+			get
+			{
+				return this._ImgThumb;
+			}
+			set
+			{
+				if ((this._ImgThumb != value))
+				{
+					this._ImgThumb = value;
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Int NOT NULL")]
 		public int Status
 		{
@@ -291,6 +335,8 @@ namespace DataContext
 		private string _Title;
 		
 		private string _Img;
+		
+		private string _ImgThumb;
 		
 		private int _Status;
 		
@@ -342,6 +388,138 @@ namespace DataContext
 				if ((this._Img != value))
 				{
 					this._Img = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImgThumb", DbType="VarChar(300)")]
+		public string ImgThumb
+		{
+			get
+			{
+				return this._ImgThumb;
+			}
+			set
+			{
+				if ((this._ImgThumb != value))
+				{
+					this._ImgThumb = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Int NOT NULL")]
+		public int Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this._Status = value;
+				}
+			}
+		}
+	}
+	
+	public partial class uspSlideShowGetAllForPageResult
+	{
+		
+		private System.Nullable<long> _RowNumber;
+		
+		private int _ID;
+		
+		private string _Title;
+		
+		private string _Img;
+		
+		private string _ImgThumb;
+		
+		private int _Status;
+		
+		public uspSlideShowGetAllForPageResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RowNumber", DbType="BigInt")]
+		public System.Nullable<long> RowNumber
+		{
+			get
+			{
+				return this._RowNumber;
+			}
+			set
+			{
+				if ((this._RowNumber != value))
+				{
+					this._RowNumber = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", DbType="NVarChar(400) NOT NULL", CanBeNull=false)]
+		public string Title
+		{
+			get
+			{
+				return this._Title;
+			}
+			set
+			{
+				if ((this._Title != value))
+				{
+					this._Title = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Img", DbType="VarChar(300)")]
+		public string Img
+		{
+			get
+			{
+				return this._Img;
+			}
+			set
+			{
+				if ((this._Img != value))
+				{
+					this._Img = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImgThumb", DbType="VarChar(300)")]
+		public string ImgThumb
+		{
+			get
+			{
+				return this._ImgThumb;
+			}
+			set
+			{
+				if ((this._ImgThumb != value))
+				{
+					this._ImgThumb = value;
 				}
 			}
 		}

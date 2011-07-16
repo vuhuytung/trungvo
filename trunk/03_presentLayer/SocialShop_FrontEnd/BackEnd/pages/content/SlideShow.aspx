@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/master/masterBackend.master" AutoEventWireup="true"
     CodeFile="SlideShow.aspx.cs" Inherits="BackEnd_pages_content_SlideShow" %>
-
+    <%@ Register Src="~/userControls/ucPaging.ascx" TagName="ucPaging" TagPrefix="uc1" %>
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:Panel ID="Panel2" runat="server" Visible="false">
@@ -40,7 +40,7 @@
                     <tr>
                         <td colspan="2" style="padding: 10px 100px;">
                             <asp:Button ID="btnAdd" runat="server" Text="Thêm mới" OnClick="btnAdd_Click" Width="70" />
-                            <asp:Button ID="btnHuy" runat="server" Text="Hủy" OnClick="btnHuy_Click" Width="70" />
+                            <asp:Button ID="btnHuy" runat="server" Text="Thoát" OnClick="btnHuy_Click" Width="70" />
                         </td>
                     </tr>
                 </table>
@@ -66,7 +66,7 @@
                             </td>
                             <td style="padding: 5px 0;">
                                 <asp:Image ID="Image1" runat="server" Width="250" Height="180" ImageUrl='<%#Eval("Img") %>' />
-                                
+                                <asp:HiddenField ID="ImgThumb" runat="server" Value='<%#Eval("ImgThumb") %>' />
                                 <asp:Label ID="lblID" runat="server" Text='<%#Eval("ID") %>' Visible="false"></asp:Label>
                             </td>
                         </tr>
@@ -114,15 +114,27 @@
             <h1 style="color: Blue;">
                 Quản lý SlideShow ảnh</h1>
         </div>
-        <div class="doc_content" style="float: left; width: 100%;">
-            <div style="padding: 5px 0 10px 100px;">
-                <asp:Button ID="btnThemmoi" runat="server" OnClick="btnThemmoi_Click" Text="Thêm mới hình ảnh" />
+         <div class="box" style="width: 940px; float: left;">
+            <div class="title" style="width: 960px;">
+                <span>Danh sách hình ảnh</span>
+                <asp:LinkButton ID="lbtAddNew" runat="server" CssClass="title-addnew" OnClick="btnThemmoi_Click">
+                <img src="/BackEnd/img/addnew_16.png" style="vertical-align: top" alt='Thêm mới' />
+                Thêm mới
+                </asp:LinkButton>
+                <asp:LinkButton ID="lbtDeleteAll" OnClientClick="return ConfirmDelete();" runat="server"
+                    CssClass="title-addnew" OnClick="lbtDeleteAll_Click">
+                <img src="/BackEnd/img/icon-delete.png" style="vertical-align: top" alt='Xóa' />
+                Xóa
+                </asp:LinkButton>
             </div>
+        <div class="content" style="width: 940px; float: left;">
             <asp:Repeater ID="RptSlide" runat="server" OnItemCommand="RptSlide_ItemCommand">
                 <HeaderTemplate>
-                    <table cellspacing="0" class="tbl_doc">
+                    <table style="width: auto; margin: auto; height: 70px;" class="tbl_doc">
                         <thead>
                             <tr>
+                                <td>
+                                </td>
                                 <td>
                                     TT
                                 </td>
@@ -132,23 +144,26 @@
                                 <td>
                                     Trạng thái hiển thị
                                 </td>
-                                <td class="td1">
-                                    Sửa
-                                </td>
-                                <td class="td1">
-                                    Xóa
+                                <td class="td1" >
+                                    chức năng
                                 </td>
                             </tr>
                         </thead>
                 </HeaderTemplate>
                 <ItemTemplate>
                     <tr>
-                        <td>
+                        <td style=" width:20px; text-align:center;">
+                            <asp:CheckBox ID="chkDeleteAll" runat="server" />
+                        </td>
+                        <td style=" width:40px;">
                             <%#Eval("RowNumber")%>
                         </td>
-                        <td style="width: 500px;">
+                        <td style="width:650px;">
                             <div class="img_thumb">
-                                <img src='<%#Eval("Img")%>' alt="anh" width="50" height="40" />
+                                <img src='<%#Eval("ImgThumb")%>' alt="anh"  width="150" height="100" />
+                                <asp:HiddenField ID="Img" runat="server" Value='<%#Eval("Img")%>' />
+                                <asp:HiddenField ID="ImgThumb" runat="server" Value='<%#Eval("ImgThumb")%>' />
+                                <asp:HiddenField ID="slID" runat="server" Value='<%#Eval("ID")%>' />
                             </div>
                             <div class="title_slide">
                                 <a>
@@ -160,17 +175,15 @@
                             <asp:CheckBox ID="chkStatus" Checked='<%#Convert.ToBoolean(Eval("Status")) %>' runat="server"
                                 Enabled="false" />
                         </td>
-                        <td class="td2">
-                            <asp:LinkButton ID="lbtEdit" runat="server" CommandName="Edit" CommandArgument='<%#Eval("ID") %>'>Sửa</asp:LinkButton>
-                        </td>
-                        <td class="td2">
+                        <td class="td2" style=" width:120px;">
+                            <asp:LinkButton ID="lbtEdit" runat="server" ToolTip="Sửa" CssClass="edit_icon" CommandName="Edit" CommandArgument='<%#Eval("ID") %>'></asp:LinkButton>
                             <script type="text/javascript">
                                 function confirm1() {
                                     return confirm("Bạn có muốn xóa Record này ko ?");
                                 }
                             </script>
-                            <asp:LinkButton ID="lbtDelete" CssClass="xoa" runat="server" CommandName="Delete"
-                                OnClientClick="return confirm1()" CommandArgument='<%#Eval("ID") %>'>Xóa</asp:LinkButton>
+                            <asp:LinkButton ID="lbtDelete" ToolTip="Xóa" CssClass="delete_icon" runat="server" CommandName="Delete"
+                                OnClientClick="return confirm1()" CommandArgument='<%#Eval("ID") %>'></asp:LinkButton>
                         </td>
                     </tr>
                 </ItemTemplate>
@@ -178,6 +191,10 @@
                     </table>
                 </FooterTemplate>
             </asp:Repeater>
+        </div>
+         <div id="divPaging" runat="server" class="paginator2 nr">
+            <uc1:ucPaging ID="ucPaging1" runat="server" />
+        </div>
         </div>
     </div>
 </asp:Content>

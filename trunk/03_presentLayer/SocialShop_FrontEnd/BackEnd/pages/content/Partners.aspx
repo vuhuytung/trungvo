@@ -116,71 +116,78 @@
         </div>
     </asp:Panel>
     <div class="box_body">
-        <div style="text-align: center; width: 100%; float: left;">
+        <div style="text-align: center; width: 900px; float: left;">
             <h1 style="color: Blue;">
                 Quản lý đối tác của công ty</h1>
         </div>
-        <div class="doc_content" style="float: left; width: 100%;">
-            <div style="padding: 5px 0 10px 100px;">
-                <asp:Button ID="btnThemmoi" runat="server" OnClick="btnThemmoi_Click" Text="Thêm mới đối tác của công ty" />
+        <div class="box" style="width: 940px; float: left;">
+            <div class="title" style="width: 960px;">
+                <span>Danh sách đối tác</span>
+                <asp:LinkButton ID="lbtAddNew" runat="server" CssClass="title-addnew" OnClick="btnThemmoi_Click">
+                <img src="/BackEnd/img/addnew_16.png" style="vertical-align: top" alt='Thêm mới' />
+                Thêm mới
+                </asp:LinkButton>
+                <asp:LinkButton ID="lbtDeleteAll" OnClientClick="return ConfirmDelete();" runat="server"
+                    CssClass="title-addnew" OnClick="btnThemmoi_Click">
+                <img src="/BackEnd/img/icon-delete.png" style="vertical-align: top" alt='Xóa' />
+                Xóa
+                </asp:LinkButton>
             </div>
-            <asp:Repeater ID="RptPartner" runat="server" OnItemCommand="RptPartner_ItemCommand">
-                <HeaderTemplate>
-                    <table cellspacing="0" class="tbl_doc">
-                        <thead>
-                            <tr>
-                                <td>
-                                    TT
-                                </td>
-                                <td>
-                                    Tiêu đề
-                                </td>
-                                <td>
-                                    Trạng thái hiển thị
-                                </td>
-                                <td class="td1">
-                                    Sửa
-                                </td>
-                                <td class="td1">
-                                    Xóa
-                                </td>
-                            </tr>
-                        </thead>
-                </HeaderTemplate>
-                <ItemTemplate>
-                    <tr>
-                        <td>
-                        </td>
-                        <td style="width: 500px;">
-                            <div class="img_thumb">
-                                <img src='<%#Eval("Img")%>' alt="anh" width="50" height="40" />
-                            </div>
-                            <div class="title_slide">
-                                <a>
-                                    <%#Eval("Name") %></a>
-                            </div>
-                        </td>
-                        <td>
-                            <asp:CheckBox ID="chkStatus" Checked='<%#Eval("Status") %>' runat="server" Enabled="false" />
-                        </td>
-                        <td class="td2">
-                            <asp:LinkButton ID="lbtEdit" runat="server" CommandName="Edit" CommandArgument='<%#Eval("PartnersID") %>'>Sửa</asp:LinkButton>
-                        </td>
-                        <td class="td2">
-                            <script type="text/javascript">
-                                function confirm1() {
-                                    return confirm("Bạn có muốn xóa Record này ko ?");
-                                }
-                            </script>
-                            <asp:LinkButton ID="lbtDelete" CssClass="xoa" runat="server" CommandName="Delete"
-                                OnClientClick="return confirm1()" CommandArgument='<%#Eval("PartnersID") %>'>Xóa</asp:LinkButton>
-                        </td>
-                    </tr>
-                </ItemTemplate>
-                <FooterTemplate>
-                    </table>
-                </FooterTemplate>
-            </asp:Repeater>
+            <div class="content">
+                <asp:Repeater ID="RptPartner" runat="server" OnItemCommand="RptPartner_ItemCommand">
+                    <HeaderTemplate>
+                        <table style="width: auto; margin: auto; height: 70px;" class="tbl_doc">
+                            <thead>
+                                <tr>
+                                    <td>
+                                        TT
+                                    </td>
+                                    <td>
+                                        Tiêu đề
+                                    </td>
+                                    <td>
+                                        Trạng thái hiển thị
+                                    </td>
+                                    <td class="td1">
+                                        Chức năng
+                                    </td>
+                                </tr>
+                            </thead>
+                    </HeaderTemplate>
+                    <ItemTemplate>
+                        <tr>
+                            <td style=" width:50px;">
+                            </td>
+                            <td style="width: 700px;">
+                                <div class="img_thumb">
+                                    <img src='<%#Eval("Img")%>' alt="anh" width="150" height="100" />
+                                    <asp:HiddenField ID="hdImg" runat="server" Value='<%#Eval("Img")%>' />
+                                </div>
+                                <div class="title_slide">
+                                    <a>
+                                        <%#Eval("Name") %></a>
+                                </div>
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="chkStatus" Checked='<%#Eval("Status") %>' runat="server" Enabled="false" />
+                            </td>
+                            <td class="td2">
+                                <asp:LinkButton ID="lbtEdit" runat="server" CommandName="Edit" CommandArgument='<%#Eval("PartnersID") %>' ToolTip="Sửa" CssClass="edit_icon"></asp:LinkButton>
+                                <script type="text/javascript">
+                                    function confirm1() {
+                                        return confirm("Bạn có muốn xóa Record này ko ?");
+                                    }
+                                </script>
+                                <asp:LinkButton ID="lbtDelete"  runat="server" CommandName="Delete"
+                                    OnClientClick="return confirm1()" CommandArgument='<%#Eval("PartnersID")%>' ToolTip="Xóa" CssClass="delete_icon"></asp:LinkButton>
+                            </td>
+                        </tr>
+                    </ItemTemplate>
+                    <FooterTemplate>
+                        </table>
+                    </FooterTemplate>
+                </asp:Repeater>
+            </div>
         </div>
     </div>
 </asp:Content>

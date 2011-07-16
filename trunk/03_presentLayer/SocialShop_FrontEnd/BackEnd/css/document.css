@@ -1,11 +1,9 @@
-﻿
-        .doc_wrapper
+﻿        .doc_wrapper
         {
             float:left;
         }
         .doc_wrap
         {
-            
             float:left;
             border-bottom:1px dotted #D3B439;
             width:100%;
@@ -40,7 +38,6 @@
         }
         .tbl_doc
         {
-          margin-left:100px;
         }
        .tbl_doc thead tr td
        {
@@ -58,12 +55,14 @@
      }
      .tbl_doc tr  td
      {
-         padding:4px 2px;
-         border:1px solid #CFCFCF;
+         padding:4px 5px;
+         border-bottom:1px solid #CFCFCF;
+         height:30px;
+         text-align:center;
      }
      .doc_content
      {
-         padding:30px 5px 0 5px;
+         padding:10px 0;
      }
      table 
      {
@@ -71,8 +70,6 @@
      }
      .box_search
      {
-         width:100%; 
-         float:left;
          margin-left:10px;
      }
     .box_hide
@@ -93,21 +90,20 @@
     .box_edit
     {
         width:400px;
-        height:300px;
         background:#FFF;
         position:absolute;
         left:330px;
         top:50px;
         padding:20px 20px;
-        
     }
     /*==============css for slideshow==============*/
     .img_thumb
     {
-        width:50px;
-        height:40px;
+        width:150px;
+        height:100px;
         display:block;
         float:left;
+        padding:4px 0;
     }
     .img1
     {
@@ -120,7 +116,7 @@
       {
           float:left;
           height:40px;
-          padding:3px 5px;
+          padding:3px 0 3px 20px;
       }  
     .img_thumb img:hover .img
     {
@@ -128,7 +124,6 @@
     }
     
     /*====css for realtymarket=============*/
-    
       .MK_edit
     {
         width:750px;

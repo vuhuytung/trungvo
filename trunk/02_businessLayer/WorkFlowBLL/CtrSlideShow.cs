@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using DAL;
 using DataContext;
+using System.Web;
+using System.IO;
+using EntityBLL;
+
 namespace WorkFlowBLL
 {
    public class CtrSlideShow
@@ -17,17 +21,27 @@ namespace WorkFlowBLL
        {
            return BDS.SlideShowInstance.uspSlideShowGetAll().ToList();
        }
+
+       public ClassExtend<string, uspSlideShowGetAllForPageResult> GetSlideForPageAll( int cur, int ps)
+       {
+           ClassExtend<string, uspSlideShowGetAllForPageResult> ret = new ClassExtend<string, uspSlideShowGetAllForPageResult>();
+           int? total = 0;
+           ret.Items = BDS.SlideShowInstance.uspSlideShowGetAllForPage(cur, ps, ref total).ToList() ;
+           ret.TotalRecord = total.Value;
+           return ret;
+       }
+
        public List<uspSlideShowGetInfoByIDResult> GetSlideInfo(int ID)
        {
            return BDS.SlideShowInstance.uspSlideShowGetInfoByID(ID).ToList();
        }
-       public void SlideUpdate(int ID,string title, string img, int status)
+       public void SlideUpdate(int ID,string title, string img,string ImgThumb, int status)
        {
-            BDS.SlideShowInstance.uspSlideShowUpdateByID(ID, title, img, status);
+           BDS.SlideShowInstance.uspSlideShowUpdateByID(ID, title, img, ImgThumb, status);
        }
-       public void SlideInsert(string title, string img, int status)
+       public void SlideInsert(string title, string img, string ImgThumb, int status)
        {
-           BDS.SlideShowInstance.uspSlideShowInsert(title, img, status);
+           BDS.SlideShowInstance.uspSlideShowInsert(title, img,ImgThumb,status);
        }
        public void SlideDeleteByID(int ID)
        {
@@ -70,6 +84,26 @@ namespace WorkFlowBLL
            return sb.ToString();
   
        }
-      
+       public void DeleteImg(string Url, HttpRequest request)
+       {
+           try
+           {
+               string newurl = Url.Substring(1);
+               string pathFile = Path.Combine(request.PhysicalApplicationPath, newurl);
+               if (File.Exists(pathFile))
+               {
+                   //lấy thông tin file
+                   FileInfo f = new FileInfo(pathFile);
+                   if (f.Exists)
+                   {
+                       f.Attributes = FileAttributes.Archive;
+                       f.Delete();
+                   }
+               }
+           }
+           catch
+           {
+           }
+       }
     }
 }
