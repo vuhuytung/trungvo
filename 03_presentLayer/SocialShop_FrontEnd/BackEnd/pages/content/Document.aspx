@@ -144,115 +144,135 @@
                 </div>
             </div>
         </asp:Panel>
-        <div style="text-align: center; width: 100%; float: left;">
+        <div style="text-align: center; width: 900px; float: left;">
             <h1 style="color: Blue;">
                 Quản lý tài liệu</h1>
         </div>
-        <div class="box_search">
-            <h3>
-                Tìm kiếm</h3>
-            <table cellspacing="7">
-                <tr>
-                    <td>
-                        Loại tài liệu
-                    </td>
-                    <td style="padding: 4px 5px;">
-                        <asp:DropDownList ID="ddlTypeDoc" runat="server">
-                            <asp:ListItem Text="Bảng giá đất nhà nước" Value="21" />
-                            <asp:ListItem Text="Văn kiện liên quan đến BĐS" Value="22" />
-                        </asp:DropDownList>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="padding: 4px 0;">
-                        Ngày tạo
-                    </td>
-                    <td>
-                        <telerik:RadDatePicker ID="RadDatePicker1" runat="server" Calendar-CultureInfo="vi-VN" DateInput-DateFormat="dd-MM-yyyy">
-                        </telerik:RadDatePicker>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Trạng thái
-                    </td>
-                    <td style="padding: 4px 5px;">
-                        <asp:DropDownList ID="ddlStatus" runat="server" Width="80">
-                            <asp:ListItem Text="Tất cả" Value="2" Selected="True" />
-                            <asp:ListItem Text="Hiển thị" Value="1" />
-                            <asp:ListItem Text="Ẩn" Value="0" />
-                        </asp:DropDownList>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="text-align: center; padding: 4px 0;">
-                        <asp:Button ID="btnSearch" runat="server" Text="Tìm kiếm" OnClick="btnSearch_Click" />
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="doc_content" style="float: left; width: 100%;">
-            <div style="padding: 5px 0 10px 100px;">
-                <asp:Button ID="btnThemmoi" runat="server" OnClick="btnThemmoi_Click" Text="Thêm mới tài liệu" />
+        <div class="box" id="divSearch" style="width: 940px; float: left;">
+            <div class="title" style="width: 960px;">
+                <span>Tìm kiếm tài liệu</span>
             </div>
-            <asp:Repeater ID="RptDocument" runat="server" OnItemCommand="RptDocument_ItemCommand">
-                <HeaderTemplate>
-                    <table cellspacing="0" class="tbl_doc">
-                        <thead>
-                            <tr>
-                                <td>
-                                    TT
-                                </td>
-                                <td>
-                                    Tên tài liệu
-                                </td>
-                                <td>
-                                    Ngày tạo
-                                </td>
-                                <td class="td1">
-                                    Chi tiết
-                                </td>
-                                <td class="td1">
-                                    Sửa
-                                </td>
-                                <td class="td1">
-                                    Xóa
-                                </td>
-                            </tr>
-                        </thead>
-                </HeaderTemplate>
-                <ItemTemplate>
+            <div class="content">
+                <table style="width: auto; margin: auto; height: 70px;">
                     <tr>
                         <td>
-                            <%#Eval("RowNumber")%>
+                            Loại tài liệu
                         </td>
-                        <td style="width: 500px;">
-                            <%#Eval("Title") %>
+                        <td style="padding: 4px 15px;">
+                            <asp:DropDownList ID="ddlTypeDoc" runat="server">
+                                <asp:ListItem Text="Bảng giá đất nhà nước" Value="21" />
+                                <asp:ListItem Text="Văn kiện liên quan đến BĐS" Value="22" />
+                            </asp:DropDownList>
+                        </td>
+                        <td style="padding: 4px 10px;">
+                            Ngày tạo
                         </td>
                         <td>
-                            <%#Convert.ToDateTime(Eval("CreateDate")).ToString("dd-MM-yyyy")%>
+                            <telerik:RadDatePicker ID="RadDatePicker1" runat="server" Calendar-CultureInfo="vi-VN"
+                                DateInput-DateFormat="dd-MM-yyyy" Skin="WebBlue">
+                                <Calendar ID="Calendar1" runat="server" Skin="WebBlue" UseColumnHeadersAsSelectors="False"
+                                    UseRowHeadersAsSelectors="False" ViewSelectorText="x">
+                                </Calendar>
+                                <DateInput ID="DateInput1" runat="server" LabelCssClass="radLabelCss_WebBlue" Skin="WebBlue">
+                                </DateInput>
+                            </telerik:RadDatePicker>
                         </td>
-                        <td class="td2">
-                            <asp:LinkButton ID="lbtDetail" runat="server" CommandName="Detail" CommandArgument='<%#Eval("DocumentID") %>'>Chi tiết</asp:LinkButton>
+                        <td style="padding: 4px 15px;">
+                            Trạng thái
                         </td>
-                        <td class="td2">
-                            <asp:LinkButton ID="lbtEdit" runat="server" CommandName="Edit" CommandArgument='<%#Eval("DocumentID") %>'>Sửa</asp:LinkButton>
+                        <td style="padding: 4px 15px;">
+                            <asp:DropDownList ID="ddlStatus" runat="server" Width="80">
+                                <asp:ListItem Text="Tất cả" Value="2" Selected="True" />
+                                <asp:ListItem Text="Hiển thị" Value="1" />
+                                <asp:ListItem Text="Ẩn" Value="0" />
+                            </asp:DropDownList>
                         </td>
-                        <td class="td2">
-                            <script type="text/javascript">
-                                function confirm1() {
-                                    return confirm("Bạn có muốn xóa Record này ko ?");
-                                }
-                            </script>
-                            <asp:LinkButton ID="lbtDelete" CssClass="xoa" runat="server" CommandName="Delete"
-                                OnClientClick="return confirm1()" CommandArgument='<%#Eval("DocumentID") %>'>Xóa</asp:LinkButton>
+                        <td style="text-align: center; padding: 4px 0;">
+                            <asp:Button ID="btnSearch" runat="server" Text="Tìm kiếm" OnClick="btnSearch_Click" />
                         </td>
                     </tr>
-                </ItemTemplate>
-                <FooterTemplate>
-                    </table>
-                </FooterTemplate>
-            </asp:Repeater>
+                </table>
+            </div>
+        </div>
+        <div class="doc_content" style="float: left; width: 100%;">
+            <div class="box">
+                <div class="title" style="width: 960px;">
+                    <span>Danh sach tài liệu</span>
+                    <asp:LinkButton ID="lbtAddNew" runat="server" CssClass="title-addnew" OnClick="btnThemmoi_Click">
+                <img src="/BackEnd/img/addnew_16.png" style="vertical-align: top" alt='Thêm mới' />
+                Thêm mới
+                    </asp:LinkButton>
+                    <asp:LinkButton ID="lbtDeleteAll" OnClientClick="return ConfirmDelete();" runat="server"
+                        CssClass="title-addnew" OnClick="lbtDeleteAll_Click">
+                <img src="/BackEnd/img/icon-delete.png" style="vertical-align: top" alt='Xóa' />
+                Xóa
+                    </asp:LinkButton>
+                </div>
+                <div class="content">
+                    <asp:Repeater ID="RptDocument" runat="server" OnItemCommand="RptDocument_ItemCommand"
+                        OnItemDataBound="RptDocument_ItemDataBound">
+                        <HeaderTemplate>
+                            <table cellspacing="0" class="tbl_doc" width="100%">
+                                <thead>
+                                    <tr>
+                                        <td style="width: 20px;">
+                                        </td>
+                                        <td style="width: 20px;">
+                                            TT
+                                        </td>
+                                        <td>
+                                            Tên tài liệu
+                                        </td>
+                                        <td>
+                                            Ngày tạo
+                                        </td>
+                                        <td class="td1">
+                                            Trạng thái
+                                        </td>
+                                        <td class="td1">
+                                            Chức năng
+                                        </td>
+                                    </tr>
+                                </thead>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <tr>
+                                <td>
+                                    <asp:CheckBox ID="chkDeleteAll" runat="server" />
+                                    <asp:HiddenField ID="hdID" runat="server" Value='<%#Eval("DocumentID") %>' />
+                                    <asp:HiddenField ID="hdFile" runat="server" Value='<%#Eval("Url") %>' />
+                                </td>
+                                <td>
+                                    <%#Eval("RowNumber")%>
+                                </td>
+                                <td style="width: 500px; text-align: left;">
+                                    <%#Eval("Title") %>
+                                </td>
+                                <td>
+                                    <%#Convert.ToDateTime(Eval("CreateDate")).ToString("dd-MM-yyyy")%>
+                                </td>
+                                <td class="td2">
+                                    <asp:CheckBox ID="chkStatus" runat="server" Checked='<%#Convert.ToBoolean(Eval("Status")) %>' />
+                                </td>
+                                <td class="td2">
+                                    <asp:LinkButton ID="lbtEdit" runat="server" CommandName="Edit" CommandArgument='<%#Eval("DocumentID") %>'
+                                        CssClass="edit_icon" ToolTip="Sửa"></asp:LinkButton>
+                                    <script type="text/javascript">
+                                        function confirm1() {
+                                            return confirm("Bạn có muốn xóa Record này ko ?");
+                                        }
+                                    </script>
+                                    <asp:LinkButton ID="lbtDelete" runat="server" CommandName="Delete" OnClientClick="return confirm1()"
+                                        CommandArgument='<%#Eval("DocumentID") %>' ToolTip="Xóa" CssClass="delete_icon"></asp:LinkButton>
+                                </td>
+                            </tr>
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            </table>
+                        </FooterTemplate>
+                    </asp:Repeater>
+                </div>
+            </div>
         </div>
         <div id="divPaging" runat="server" class="paginator2 nr">
             <uc1:ucPaging ID="ucPaging1" runat="server" />

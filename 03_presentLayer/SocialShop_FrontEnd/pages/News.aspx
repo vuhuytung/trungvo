@@ -59,7 +59,7 @@
                                         <ItemTemplate>
                                             <li><a href='/news/<%#VTCO.Library.Lib.GetUrlText(Eval("CategoryName").ToString()) %>-<%#Eval("CategoryID") %>/<%#VTCO.Library.Lib.GetUrlText(Eval("Title").ToString()) %>-<%#Eval("NewsID") %>'>
                                                 <%#Eval("Title") %></a><span class="spDate">
-                                                <%#Eval("CreateDate","{0:dd/MM/yyyy}") %></span>
+                                                    <%#Eval("CreateDate","{0:dd/MM/yyyy}") %></span>
                                                 <%#(Convert.ToBoolean(Eval("IsHot")))?"<img src='/images/hot.gif' />":"" %>
                                             </li>
                                         </ItemTemplate>
@@ -81,7 +81,12 @@
                     </asp:UpdatePanel>
                 </div>
             </div>
-        </div>        
-    <div class="rightMain nr"> <uc2:ucDoitac runat="server" ID="ucDoitac1" /> </div>
-    <div class="clear"> </div> <!--End body content--> </div>
+        </div>
+        <div class="rightMain nr">
+            <uc2:ucDoitac runat="server" ID="ucDoitac1" />
+        </div>
+        <div class="clear">
+        </div>
+        <!--End body content-->
+    </div>
 </asp:Content>

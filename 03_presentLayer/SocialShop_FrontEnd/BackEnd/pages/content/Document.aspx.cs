@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using WorkFlowBLL;
 using System.IO;
+using System.Web.UI.HtmlControls;
 public partial class BackEnd_pages_content_Document : System.Web.UI.Page
 {
     CtrDocument doc = new CtrDocument();
@@ -39,6 +40,8 @@ public partial class BackEnd_pages_content_Document : System.Web.UI.Page
         RptDocument.DataBind();
         //ucPaging1.TotalRecord = _data.TotalRecord;
     }
+  
+            
     protected void RptDocument_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
         
@@ -60,29 +63,12 @@ public partial class BackEnd_pages_content_Document : System.Web.UI.Page
                     RptDetail.DataBind();
                 }
             }
-            else
-                if (e.CommandName == "Detail")
-                {
-                    Panel1.Visible = true;
-                    RptDetail.DataSource = ctrN.GetInfoDocByID(Int32.Parse(e.CommandArgument.ToString()));
-                    RptDetail.DataBind();
-                    FileUpload fupload = (FileUpload)RptDetail.Controls[1].FindControl("fupload");
-                    CheckBox status = (CheckBox)RptDetail.Controls[1].FindControl("chkstatus");
-                    Label URL = (Label)RptDetail.Controls[1].FindControl("lblUrl");
-                    Label lblTitle = (Label)RptDetail.Controls[1].FindControl("lblTitle");
-                    Button btnUpdate = (Button)RptDetail.Controls[1].FindControl("btnUpdate");
-                    Button btnhuy = (Button)RptDetail.Controls[1].FindControl("Button1");
-                    fupload.Visible = false;
-                    status.Enabled = false;
-                    URL.Visible = true;
-                    btnUpdate.Visible = false;
-                    btnhuy.Text = "Thoát";
-                    lblTitle.Text = "Chi tiết thông tin";
-                }
                 else if (e.CommandName == "Delete")
                 {
+                    Label URL = (Label)RptDetail.Controls[1].FindControl("lblUrl");
                     ctrN.DeleteDocByID(Int32.Parse(e.CommandArgument.ToString()));
-                    ClientScript.RegisterStartupScript(Page.GetType(), "thongbao", "alert('Delete success');", true);
+                    ctrN.DeleteDocument(URL.Text, Request);
+                    ClientScript.RegisterStartupScript(Page.GetType(), "thongbao", "alert('Xóa thành công');", true);
                 }
         }
         finally
@@ -111,17 +97,37 @@ public partial class BackEnd_pages_content_Document : System.Web.UI.Page
                 if (fupload.FileName == "")
                 {
                     string text = HttpUtility.HtmlEncode(desc.Text).Replace("\n", "</br>");
-                    DateTime day=new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,0,0,0);
-                    ctrN.UpdateDocByID(Int32.Parse(docID.Text), title.Text, text, URL.Text, day,21,status.Checked==true?1:0);
-                    ClientScript.RegisterStartupScript(Page.GetType(), "thongbao", "alert('update success');", true);
+                    DateTime day = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
+                    ctrN.UpdateDocByID(Int32.Parse(docID.Text), title.Text, text, URL.Text, day, 21, status.Checked == true ? 1 : 0);
+                    ClientScript.RegisterStartupScript(Page.GetType(), "thongbao", "alert('cập nhật thành công !');", true);
+                }
+                else
+                {
+
+                    string strFile = Path.Combine(Request.PhysicalApplicationPath, "Resource");
+                    strFile += "\\" + fupload.FileName;
+                    fupload.PostedFile.SaveAs(strFile);
+                    string text = HttpUtility.HtmlEncode(desc.Text).Replace("\n", "</br>");
+                    DateTime day = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
+                    ctrN.UpdateDocByID(Int32.Parse(docID.Text), title.Text, text, fupload.FileName, day, 21, status.Checked == true ? 1 : 0);
+                    ClientScript.RegisterStartupScript(Page.GetType(), "thongbao", "alert('Cập nhật thành công !');", true);
                 }
             }
         }
         catch
         {
+            ClientScript.RegisterStartupScript(Page.GetType(), "thongbao", "alert('Cập nhật lỗi !');", true);
         }
         finally
         {
+            if (RadDatePicker1.SelectedDate == null)
+            {
+                BindRpt("n", Int32.Parse(ddlStatus.SelectedValue));
+            }
+            else
+            {
+                BindRpt(RadDatePicker1.SelectedDate.ToString(), Int32.Parse(ddlStatus.SelectedValue));
+            }
             Panel1.Visible = false;
         }
     }
@@ -135,11 +141,11 @@ public partial class BackEnd_pages_content_Document : System.Web.UI.Page
             fupload.PostedFile.SaveAs(strFile);
             ctrN.InsertDoc(txtTitle.Text, txtDesc.Text, fupload.FileName, new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0), Int32.Parse(ddlTypeDoc1.SelectedValue), chkstatus.Checked == true ? 1 : 0);
             Panel2.Visible = false;
-            ClientScript.RegisterStartupScript(Page.GetType(), "thongbao", "alert('Insert success');", true);
+            ClientScript.RegisterStartupScript(Page.GetType(), "thongbao", "alert('Thêm mới thành công !');", true);
         }
         catch
         {
-            ClientScript.RegisterStartupScript(Page.GetType(), "thongbao", "alert('insert fail');", true);
+            ClientScript.RegisterStartupScript(Page.GetType(), "thongbao", "alert('thêm mới lỗi !');", true);
         }
         finally
         {
@@ -166,8 +172,47 @@ public partial class BackEnd_pages_content_Document : System.Web.UI.Page
         {
             BindRpt(RadDatePicker1.SelectedDate.ToString(), Int32.Parse(ddlStatus.SelectedValue));
         }
+    }
+    protected void RptDocument_ItemDataBound(object sender, RepeaterItemEventArgs e)
+    {
+        if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+        {
+            HtmlGenericControl listRow = e.Item.FindControl("listRow") as HtmlGenericControl;
+            if (listRow == null)
+                return;
+            if (e.Item.ItemIndex % 2 == 0)
+            {
+                listRow.Attributes["class"] = "adminListRow-even";
+                
+            }
+        }
+    }
+    protected void lbtDeleteAll_Click(object sender, EventArgs e)
+    {
+        foreach(RepeaterItem item in RptDocument.Items)
+        {
+            CheckBox chkDeleteAll = (CheckBox)item.FindControl("chkDeleteAll");
+            HiddenField hdID = (HiddenField)item.FindControl("hdID");
+            HiddenField hdFile = (HiddenField)item.FindControl("hdFile");
+            if (chkDeleteAll != null && hdID != null)
+            {
+                if (chkDeleteAll.Checked == true)
+                {
+                    doc.DeleteDocByID(Int32.Parse(hdID.Value));
+                    doc.DeleteDocument(hdFile.Value, Request);
+                }
+               
+            }
+        }
+        if (RadDatePicker1.SelectedDate == null)
+        {
+            BindRpt("n", Int32.Parse(ddlStatus.SelectedValue));
+        }
+        else
+        {
+            BindRpt(RadDatePicker1.SelectedDate.ToString(), Int32.Parse(ddlStatus.SelectedValue));
+        }
+        ClientScript.RegisterStartupScript(Page.GetType(), "thongbao", "alert('Xóa thành công !');", true);
 
     }
-
-      
 }

@@ -6,6 +6,7 @@ using System.Text;
 using DAL;
 using DataContext;
 using EntityBLL;
+using System.IO;
 namespace WorkFlowBLL
 {
     public class CtrDocument
@@ -44,6 +45,20 @@ namespace WorkFlowBLL
         public void InsertDoc(string Title, string desc, string Url, DateTime day, int cate, int status)
         {
             BDS.DocumentInstance.uspDocumentInsert(Title, desc, Url, day, cate, status);
+        }
+        public void DeleteDocument(string Url, HttpRequest request)
+        {
+            string pathFile = Path.Combine(request.PhysicalApplicationPath, "Resource\\" + Url);
+            if (File.Exists(pathFile))
+            {
+                //lấy thông tin file
+                FileInfo f=new FileInfo(pathFile);
+                if(f.Exists)
+                {
+                    f.Attributes = FileAttributes.Archive;
+                    f.Delete();
+                }
+            }
         }
     }
 

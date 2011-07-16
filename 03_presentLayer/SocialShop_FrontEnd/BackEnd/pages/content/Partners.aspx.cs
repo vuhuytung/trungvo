@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using WorkFlowBLL;
 using System.IO;
+using System.Drawing;
+using System.Drawing.Imaging;
 public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
 {
     CtrPartner partner = new CtrPartner();
@@ -37,13 +39,15 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
         {
             try
             {
+                HiddenField img = (HiddenField)e.Item.FindControl("hdImg");
                 partner.DeletePartner(Int32.Parse(e.CommandArgument.ToString()));
-                ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Delete thành công !')", true);
+                partner.DeleteImg(img.Value.Replace("/","\\"), Request);
+                ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Xóa thành công !')", true);
                 BindRpt();
             }
             catch
             {
-                ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Delete lỗi !')", true);
+                ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Xóa thất bại !')", true);
             }
         }
     }
@@ -64,11 +68,11 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
                 {
                     partner.UpdatePartner(Int32.Parse(ID.Text), Name.Text, img.Text, web.Text, status.Checked);
                     BindRpt();
-                    ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Update thành công !')", true);
+                    ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Cập nhật thành công !')", true);
                 }
                 catch
                 {
-                    ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Update lỗi !')", true);
+                    ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Cập nhật lỗi !')", true);
                 }
             }
             else
@@ -76,16 +80,21 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
                 try
                 {
 
-                    string strFile = Path.Combine(Request.PhysicalApplicationPath, "images");
-                    strFile += "\\" + fupload.FileName;
-                    fupload.PostedFile.SaveAs(strFile);
-                    partner.UpdatePartner(Int32.Parse(ID.Text), Name.Text,@"/images/"+ fupload.FileName, web.Text, status.Checked);
+                    string strFile = Path.Combine(Request.PhysicalApplicationPath, "images\\partner");
+                    strFile += "\\" + fuploadLogo.FileName;
+                    var EditImage = System.Drawing.Image.FromFile(fuploadLogo.PostedFile.FileName);
+                    VTCO.Library.ImageResize Img = new VTCO.Library.ImageResize();
+                    var newimg = Img.Crop(EditImage, 150, 100, VTCO.Library.ImageResize.AnchorPosition.Center);
+                    newimg.Save(strFile);
+
+                    partner.UpdatePartner(Int32.Parse(ID.Text), Name.Text, @"/images/partner/" + fupload.FileName, web.Text, status.Checked);
+                    partner.DeleteImg(img.Text, Request);
                     BindRpt();
-                    ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Update thành công !')", true);
+                    ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Cập nhật thành công !')", true);
                 }
                 catch
                 {
-                    ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Update lỗi !')", true);
+                    ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Cập nhật lỗi !')", true);
                 }
             }
         }
@@ -101,22 +110,34 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
             if (fuploadLogo.FileName == "")
             {
                 partner.InsertPartner(txtName.Text, "#", txtWeb.Text, chkstatus.Checked);
-                ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Insert thành công !')", true);
+                ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Thêm mới thành công !')", true);
                 BindRpt();
             }
             else
             {
-                string strFile = Path.Combine(Request.PhysicalApplicationPath, "images");
-                strFile += "\\" + fuploadLogo.FileName;
-                fuploadLogo.PostedFile.SaveAs(strFile);
-                partner.InsertPartner(txtName.Text,@"/images/"+fuploadLogo.FileName , txtWeb.Text, chkstatus.Checked);
-                ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Insert thành công !')", true);
-                BindRpt();
+                try
+                {
+                    string strFile = Path.Combine(Request.PhysicalApplicationPath, "images\\partner");
+                    strFile += "\\" + fuploadLogo.FileName;
+                    var EditImage = System.Drawing.Image.FromFile(fuploadLogo.PostedFile.FileName);
+                    VTCO.Library.ImageResize Img = new VTCO.Library.ImageResize();
+                    var newimg = Img.Crop(EditImage, 150, 100, VTCO.Library.ImageResize.AnchorPosition.Center);
+                    newimg.Save(strFile);
+                    //fuploadLogo.PostedFile.SaveAs(strFile);
+
+
+                    partner.InsertPartner(txtName.Text, @"/images/partner/" + fuploadLogo.FileName, txtWeb.Text, chkstatus.Checked);
+                    ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Thêm mới thành công !')", true);
+                    BindRpt();
+                }
+                catch
+                {
+                }
             }
         }
         catch
         {
-            ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Insert lỗi !')", true);
+            ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Thêm mới lỗi !')", true);
         }
     }
     protected void btnHuy1_Click(object sender, EventArgs e)

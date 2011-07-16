@@ -6,6 +6,9 @@ using EntityBLL;
 using DAL;
 using DataContext;
 using VTCO.Config;
+using System.Web;
+using System.IO;
+
 
 namespace WorkFlowBLL
 {
@@ -45,6 +48,27 @@ namespace WorkFlowBLL
        public void InsertPartner(string Name, string Img, string Web, bool status)
        {
            BDS.PartnerInstance.uspPartnersInsert(Name, Img, Web, status);
+       }
+       public void DeleteImg(string Url, HttpRequest request)
+       {
+           try
+           {
+               string newurl = Url.Substring(1);
+               string pathFile = Path.Combine(request.PhysicalApplicationPath, newurl);
+               if (File.Exists(pathFile))
+               {
+                   //lấy thông tin file
+                   FileInfo f = new FileInfo(pathFile);
+                   if (f.Exists)
+                   {
+                       f.Attributes = FileAttributes.Archive;
+                       f.Delete();
+                   }
+               }
+           }
+           catch
+           {
+           }
        }
     }
 }
