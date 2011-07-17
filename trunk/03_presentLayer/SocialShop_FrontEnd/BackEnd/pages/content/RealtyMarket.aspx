@@ -80,6 +80,19 @@
                                 </asp:DropDownList>
                             </td>
                         </tr>
+                          <tr>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td style="padding: 10px 0;">
+                                   số nhà,Đường phố/thôn-xóm:
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="txtStreet" runat="server"></asp:TextBox>
+                                </td>
+
+                            </tr>
                         <tr>
                             <td>
                                 Diện tích:
@@ -273,9 +286,15 @@
                                     </asp:DropDownList>
                                 </td>
                             </tr>
+                            <td>
+                                Địa điểm BĐS 
+                            </td>
+                            <td>
+                                <a><%#Eval("AdressBDS")%></a>
+                            </td>
                             <tr>
                                 <td>
-                                    Địa điểm BĐS
+                                    Địa điểm BĐS mới
                                 </td>
                                 <td style="padding: 5px 0;">
                                     <asp:DropDownList ID="ddlProvince1" runat="server" OnSelectedIndexChanged="ddlProvince1_SelectedIndexChanged"
@@ -294,10 +313,24 @@
                             </tr>
                             <tr>
                                 <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td style="padding: 10px 0;">
+                                   số nhà,Đường phố/thôn-xóm:
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="txtStreet" runat="server"></asp:TextBox>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
                                     Diện tích:
                                 </td>
                                 <td style="padding: 5px 0;">
                                     <asp:TextBox ID="txtDientich" runat="server" Text='<%#Eval("Acreage") %>'></asp:TextBox>
+                                    <asp:HiddenField ID="hdLocation" runat="server" Value='<%#Eval("LocationID") %>' />
                                 </td>
                                 <td>
                                     Tình trạng pháp lý:
@@ -495,7 +528,7 @@
                 Thêm mới
                     </asp:LinkButton>
                     <asp:LinkButton ID="lbtDeleteAll" OnClientClick="return ConfirmDelete();" runat="server"
-                        CssClass="title-addnew" OnClick="btnThemmoi_Click">
+                        CssClass="title-addnew" OnClick="lbtDeleteAll_Click">
                 <img src="/BackEnd/img/icon-delete.png" style="vertical-align: top" alt='Xóa' />
                 Xóa
                     </asp:LinkButton>
@@ -503,7 +536,7 @@
                 <div class="content">
                     <asp:Repeater ID="RptReatyMarket" runat="server" OnItemCommand="RptReatyMarket_ItemCommand">
                         <HeaderTemplate>
-                            <table  class="tbl_doc" width="100%">
+                            <table class="tbl_doc" width="100%">
                                 <thead>
                                     <tr>
                                         <td>
@@ -531,12 +564,13 @@
                         </HeaderTemplate>
                         <ItemTemplate>
                             <tr>
-                                <td style=" width:15px; text-align:center;">
+                                <td style="width: 15px; text-align: center;">
                                     <asp:CheckBox ID="chkDeleteAll" runat="server" />
+                                    <asp:HiddenField ID="hdID" runat="server" Value=' <%#Eval("RealtyMarketID") %>' />
                                 </td>
                                 <td>
                                 </td>
-                                <td style="width: 570px; text-align:left;">
+                                <td style="width: 570px; text-align: left;">
                                     <a>
                                         <%#Eval("Title") %></a>
                                 </td>
@@ -549,17 +583,18 @@
                                         <%#Convert.ToDateTime(Eval("CreateDate")).ToString("dd-MM-yyyy")%></a>
                                 </td>
                                 <td>
-                                    <asp:CheckBox ID="chkStatus" runat="server" Checked='<%#Eval("Status") %>'/>
+                                    <asp:CheckBox ID="chkStatus" runat="server" Checked='<%#Eval("Status") %>' />
                                 </td>
                                 <td class="td2">
-                                    <asp:LinkButton ID="lbtEdit" runat="server" CommandName="Edit" CssClass="edit_icon" CommandArgument='<%#Eval("RealtyMarketID") %>' ToolTip="Sửa"></asp:LinkButton>
+                                    <asp:LinkButton ID="lbtEdit" runat="server" CommandName="Edit" CssClass="edit_icon"
+                                        CommandArgument='<%#Eval("RealtyMarketID") %>' ToolTip="Sửa"></asp:LinkButton>
                                     <script type="text/javascript">
                                         function confirm1() {
                                             return confirm("Bạn có muốn xóa Record này ko ?");
                                         }
                                     </script>
-                                    <asp:LinkButton ID="lbtDelete"  runat="server" CommandName="Delete"
-                                        OnClientClick="return confirm1()" CommandArgument='<%#Eval("RealtyMarketID") %>' ToolTip="Xóa" CssClass="delete_icon"></asp:LinkButton>
+                                    <asp:LinkButton ID="lbtDelete" runat="server" CommandName="Delete" OnClientClick="return confirm1()"
+                                        CommandArgument='<%#Eval("RealtyMarketID") %>' ToolTip="Xóa" CssClass="delete_icon"></asp:LinkButton>
                                 </td>
                             </tr>
                         </ItemTemplate>

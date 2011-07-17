@@ -19,6 +19,14 @@
                         <div class="bds_other">
                             <table cellspacing="8" class="tblDetail">
                                 <tr>
+                                    <td>Địa chỉ</td>
+                                    <td colspan="3">
+                                        <a>
+                                            <%#Eval("AdressBDS")%>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td>
                                         Diện tích
                                     </td>
@@ -163,7 +171,7 @@
                     <div class="bds_img">
                         <h2>
                             Hình ảnh</h2>
-                        <img src='../<%#Eval("Image") %>' width="500" height="300" alt="ảnh" />
+                        <img src='<%#Eval("Image") %>' width="500" height="300" alt="ảnh" />
                     </div>
                 </ItemTemplate>
             </asp:Repeater>

@@ -62,50 +62,19 @@ namespace DataContext
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspRealtyMarketUpdateByRealtyMarketID")]
-		public int uspRealtyMarketUpdateByRealtyMarketID(
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="RealtyMarketID", DbType="Int")] System.Nullable<int> realtyMarketID, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Title", DbType="NVarChar(250)")] string title, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Image", DbType="NVarChar(500)")] string image, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Descrition", DbType="NVarChar(500)")] string descrition, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserPublish", DbType="NVarChar(50)")] string userPublish, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Phone", DbType="NVarChar(50)")] string phone, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="NVarChar(100)")] string email, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Price", DbType="Int")] System.Nullable<int> price, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Type", DbType="Int")] System.Nullable<int> type, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="LegalStatus", DbType="NVarChar(250)")] string legalStatus, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Acreage", DbType="NVarChar(50)")] string acreage, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="ClientRoom", DbType="NVarChar(2)")] string clientRoom, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="BedRoom", DbType="NVarChar(2)")] string bedRoom, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Bathrooms", DbType="NVarChar(2)")] string bathrooms, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Position", DbType="NVarChar(250)")] string position, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Floor", DbType="NVarChar(2)")] string floor, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="NearKindergarten", DbType="Bit")] System.Nullable<bool> nearKindergarten, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="NearHospital", DbType="Bit")] System.Nullable<bool> nearHospital, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="NearlySchool", DbType="Bit")] System.Nullable<bool> nearlySchool, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="NearlyMarket", DbType="Bit")] System.Nullable<bool> nearlyMarket, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="NearlyUniversity", DbType="Bit")] System.Nullable<bool> nearlyUniversity, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="NVarChar(250)")] string address, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="LocationID", DbType="Int")] System.Nullable<int> locationID, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Bit")] System.Nullable<bool> status)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), realtyMarketID, title, image, descrition, userPublish, phone, email, price, type, legalStatus, acreage, clientRoom, bedRoom, bathrooms, position, floor, nearKindergarten, nearHospital, nearlySchool, nearlyMarket, nearlyUniversity, address, locationID, status);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspRealtyMarketGetInfoByRealtyMarketID")]
-		public ISingleResult<uspRealtyMarketGetInfoByRealtyMarketIDResult> uspRealtyMarketGetInfoByRealtyMarketID([global::System.Data.Linq.Mapping.ParameterAttribute(Name="RealtyMarketID", DbType="Int")] System.Nullable<int> realtyMarketID)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), realtyMarketID);
-			return ((ISingleResult<uspRealtyMarketGetInfoByRealtyMarketIDResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspRealtyMarketGetByCondition")]
 		public ISingleResult<uspRealtyMarketGetByConditionResult> uspRealtyMarketGetByCondition([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Code", DbType="Int")] System.Nullable<int> code, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TypeCode", DbType="Int")] System.Nullable<int> typeCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TypeBDS", DbType="Int")] System.Nullable<int> typeBDS, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PriceStart", DbType="Int")] System.Nullable<int> priceStart, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PriceEnd", DbType="Int")] System.Nullable<int> priceEnd, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> currPage, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Pagesize", DbType="Int")] System.Nullable<int> pagesize, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TotalRecord", DbType="Int")] ref System.Nullable<int> totalRecord)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), code, typeCode, typeBDS, priceStart, priceEnd, currPage, pagesize, totalRecord);
 			totalRecord = ((System.Nullable<int>)(result.GetParameterValue(7)));
 			return ((ISingleResult<uspRealtyMarketGetByConditionResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspRealtyMarketDeleteByRealtyMarketID")]
+		public int uspRealtyMarketDeleteByRealtyMarketID([global::System.Data.Linq.Mapping.ParameterAttribute(Name="RealtyMarketID", DbType="Int")] System.Nullable<int> realtyMarketID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), realtyMarketID);
+			return ((int)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspRealtyMarketInsert")]
@@ -132,565 +101,50 @@ namespace DataContext
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="NearlyUniversity", DbType="Bit")] System.Nullable<bool> nearlyUniversity, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="NVarChar(250)")] string address, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="LocationID", DbType="Int")] System.Nullable<int> locationID, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Street", DbType="NVarChar(250)")] string street, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Bit")] System.Nullable<bool> status)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), title, descrition, image, userPublish, phone, email, price, type, legalStatus, acreage, clientRoom, bedRoom, bathrooms, position, floor, nearKindergarten, nearHospital, nearlySchool, nearlyMarket, nearlyUniversity, address, locationID, status);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), title, descrition, image, userPublish, phone, email, price, type, legalStatus, acreage, clientRoom, bedRoom, bathrooms, position, floor, nearKindergarten, nearHospital, nearlySchool, nearlyMarket, nearlyUniversity, address, locationID, street, status);
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspRealtyMarketDeleteByRealtyMarketID")]
-		public int uspRealtyMarketDeleteByRealtyMarketID([global::System.Data.Linq.Mapping.ParameterAttribute(Name="RealtyMarketID", DbType="Int")] System.Nullable<int> realtyMarketID)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspRealtyMarketUpdateByRealtyMarketID")]
+		public int uspRealtyMarketUpdateByRealtyMarketID(
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="RealtyMarketID", DbType="Int")] System.Nullable<int> realtyMarketID, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Title", DbType="NVarChar(250)")] string title, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Image", DbType="NVarChar(500)")] string image, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Descrition", DbType="NVarChar(500)")] string descrition, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserPublish", DbType="NVarChar(50)")] string userPublish, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Phone", DbType="NVarChar(50)")] string phone, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="NVarChar(100)")] string email, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Price", DbType="Int")] System.Nullable<int> price, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Type", DbType="Int")] System.Nullable<int> type, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="LegalStatus", DbType="NVarChar(250)")] string legalStatus, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Acreage", DbType="NVarChar(50)")] string acreage, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="ClientRoom", DbType="NVarChar(2)")] string clientRoom, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="BedRoom", DbType="NVarChar(2)")] string bedRoom, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Bathrooms", DbType="NVarChar(2)")] string bathrooms, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Position", DbType="NVarChar(250)")] string position, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Floor", DbType="NVarChar(2)")] string floor, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="NearKindergarten", DbType="Bit")] System.Nullable<bool> nearKindergarten, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="NearHospital", DbType="Bit")] System.Nullable<bool> nearHospital, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="NearlySchool", DbType="Bit")] System.Nullable<bool> nearlySchool, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="NearlyMarket", DbType="Bit")] System.Nullable<bool> nearlyMarket, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="NearlyUniversity", DbType="Bit")] System.Nullable<bool> nearlyUniversity, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="NVarChar(250)")] string address, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="LocationID", DbType="Int")] System.Nullable<int> locationID, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Street", DbType="NVarChar(250)")] string street, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Bit")] System.Nullable<bool> status)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), realtyMarketID, title, image, descrition, userPublish, phone, email, price, type, legalStatus, acreage, clientRoom, bedRoom, bathrooms, position, floor, nearKindergarten, nearHospital, nearlySchool, nearlyMarket, nearlyUniversity, address, locationID, street, status);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspRealtyMarketGetInfoByRealtyMarketID")]
+		public ISingleResult<uspRealtyMarketGetInfoByRealtyMarketIDResult> uspRealtyMarketGetInfoByRealtyMarketID([global::System.Data.Linq.Mapping.ParameterAttribute(Name="RealtyMarketID", DbType="Int")] System.Nullable<int> realtyMarketID)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), realtyMarketID);
-			return ((int)(result.ReturnValue));
-		}
-	}
-	
-	public partial class uspRealtyMarketGetInfoByRealtyMarketIDResult
-	{
-		
-		private int _RealtyMarketID;
-		
-		private string _Title;
-		
-		private string _Descrition;
-		
-		private string _Image;
-		
-		private string _UserPublish;
-		
-		private string _Phone;
-		
-		private string _Email;
-		
-		private System.Nullable<int> _Price;
-		
-		private System.Nullable<int> _Type;
-		
-		private string _LegalStatus;
-		
-		private string _Acreage;
-		
-		private string _ClientRoom;
-		
-		private string _BedRoom;
-		
-		private string _Bathrooms;
-		
-		private string _Position;
-		
-		private string _Floor;
-		
-		private System.Nullable<bool> _GaraOto;
-		
-		private System.Nullable<bool> _Cooler;
-		
-		private System.Nullable<bool> _CableTv;
-		
-		private System.Nullable<bool> _NearKindergarten;
-		
-		private System.Nullable<bool> _NearHospital;
-		
-		private System.Nullable<bool> _NearlySchool;
-		
-		private System.Nullable<bool> _NearlyMarket;
-		
-		private System.Nullable<bool> _NearlyUniversity;
-		
-		private System.Nullable<bool> _Internet;
-		
-		private System.Nullable<bool> _NearlyPark;
-		
-		private string _Address;
-		
-		private System.Nullable<int> _LocationID;
-		
-		private System.Nullable<System.DateTime> _CreateDate;
-		
-		private System.Nullable<bool> _Status;
-		
-		public uspRealtyMarketGetInfoByRealtyMarketIDResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RealtyMarketID", DbType="Int NOT NULL")]
-		public int RealtyMarketID
-		{
-			get
-			{
-				return this._RealtyMarketID;
-			}
-			set
-			{
-				if ((this._RealtyMarketID != value))
-				{
-					this._RealtyMarketID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", DbType="NVarChar(250) NOT NULL", CanBeNull=false)]
-		public string Title
-		{
-			get
-			{
-				return this._Title;
-			}
-			set
-			{
-				if ((this._Title != value))
-				{
-					this._Title = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descrition", DbType="NVarChar(500)")]
-		public string Descrition
-		{
-			get
-			{
-				return this._Descrition;
-			}
-			set
-			{
-				if ((this._Descrition != value))
-				{
-					this._Descrition = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="NVarChar(500)")]
-		public string Image
-		{
-			get
-			{
-				return this._Image;
-			}
-			set
-			{
-				if ((this._Image != value))
-				{
-					this._Image = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserPublish", DbType="NVarChar(50)")]
-		public string UserPublish
-		{
-			get
-			{
-				return this._UserPublish;
-			}
-			set
-			{
-				if ((this._UserPublish != value))
-				{
-					this._UserPublish = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="NVarChar(50)")]
-		public string Phone
-		{
-			get
-			{
-				return this._Phone;
-			}
-			set
-			{
-				if ((this._Phone != value))
-				{
-					this._Phone = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(100)")]
-		public string Email
-		{
-			get
-			{
-				return this._Email;
-			}
-			set
-			{
-				if ((this._Email != value))
-				{
-					this._Email = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Int")]
-		public System.Nullable<int> Price
-		{
-			get
-			{
-				return this._Price;
-			}
-			set
-			{
-				if ((this._Price != value))
-				{
-					this._Price = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="Int")]
-		public System.Nullable<int> Type
-		{
-			get
-			{
-				return this._Type;
-			}
-			set
-			{
-				if ((this._Type != value))
-				{
-					this._Type = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LegalStatus", DbType="NVarChar(250)")]
-		public string LegalStatus
-		{
-			get
-			{
-				return this._LegalStatus;
-			}
-			set
-			{
-				if ((this._LegalStatus != value))
-				{
-					this._LegalStatus = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Acreage", DbType="NVarChar(50)")]
-		public string Acreage
-		{
-			get
-			{
-				return this._Acreage;
-			}
-			set
-			{
-				if ((this._Acreage != value))
-				{
-					this._Acreage = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientRoom", DbType="VarChar(2)")]
-		public string ClientRoom
-		{
-			get
-			{
-				return this._ClientRoom;
-			}
-			set
-			{
-				if ((this._ClientRoom != value))
-				{
-					this._ClientRoom = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BedRoom", DbType="VarChar(2)")]
-		public string BedRoom
-		{
-			get
-			{
-				return this._BedRoom;
-			}
-			set
-			{
-				if ((this._BedRoom != value))
-				{
-					this._BedRoom = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Bathrooms", DbType="VarChar(2)")]
-		public string Bathrooms
-		{
-			get
-			{
-				return this._Bathrooms;
-			}
-			set
-			{
-				if ((this._Bathrooms != value))
-				{
-					this._Bathrooms = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Position", DbType="NVarChar(250)")]
-		public string Position
-		{
-			get
-			{
-				return this._Position;
-			}
-			set
-			{
-				if ((this._Position != value))
-				{
-					this._Position = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Floor", DbType="VarChar(2)")]
-		public string Floor
-		{
-			get
-			{
-				return this._Floor;
-			}
-			set
-			{
-				if ((this._Floor != value))
-				{
-					this._Floor = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GaraOto", DbType="Bit")]
-		public System.Nullable<bool> GaraOto
-		{
-			get
-			{
-				return this._GaraOto;
-			}
-			set
-			{
-				if ((this._GaraOto != value))
-				{
-					this._GaraOto = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Cooler", DbType="Bit")]
-		public System.Nullable<bool> Cooler
-		{
-			get
-			{
-				return this._Cooler;
-			}
-			set
-			{
-				if ((this._Cooler != value))
-				{
-					this._Cooler = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CableTv", DbType="Bit")]
-		public System.Nullable<bool> CableTv
-		{
-			get
-			{
-				return this._CableTv;
-			}
-			set
-			{
-				if ((this._CableTv != value))
-				{
-					this._CableTv = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NearKindergarten", DbType="Bit")]
-		public System.Nullable<bool> NearKindergarten
-		{
-			get
-			{
-				return this._NearKindergarten;
-			}
-			set
-			{
-				if ((this._NearKindergarten != value))
-				{
-					this._NearKindergarten = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NearHospital", DbType="Bit")]
-		public System.Nullable<bool> NearHospital
-		{
-			get
-			{
-				return this._NearHospital;
-			}
-			set
-			{
-				if ((this._NearHospital != value))
-				{
-					this._NearHospital = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NearlySchool", DbType="Bit")]
-		public System.Nullable<bool> NearlySchool
-		{
-			get
-			{
-				return this._NearlySchool;
-			}
-			set
-			{
-				if ((this._NearlySchool != value))
-				{
-					this._NearlySchool = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NearlyMarket", DbType="Bit")]
-		public System.Nullable<bool> NearlyMarket
-		{
-			get
-			{
-				return this._NearlyMarket;
-			}
-			set
-			{
-				if ((this._NearlyMarket != value))
-				{
-					this._NearlyMarket = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NearlyUniversity", DbType="Bit")]
-		public System.Nullable<bool> NearlyUniversity
-		{
-			get
-			{
-				return this._NearlyUniversity;
-			}
-			set
-			{
-				if ((this._NearlyUniversity != value))
-				{
-					this._NearlyUniversity = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Internet", DbType="Bit")]
-		public System.Nullable<bool> Internet
-		{
-			get
-			{
-				return this._Internet;
-			}
-			set
-			{
-				if ((this._Internet != value))
-				{
-					this._Internet = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NearlyPark", DbType="Bit")]
-		public System.Nullable<bool> NearlyPark
-		{
-			get
-			{
-				return this._NearlyPark;
-			}
-			set
-			{
-				if ((this._NearlyPark != value))
-				{
-					this._NearlyPark = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(250)")]
-		public string Address
-		{
-			get
-			{
-				return this._Address;
-			}
-			set
-			{
-				if ((this._Address != value))
-				{
-					this._Address = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationID", DbType="Int")]
-		public System.Nullable<int> LocationID
-		{
-			get
-			{
-				return this._LocationID;
-			}
-			set
-			{
-				if ((this._LocationID != value))
-				{
-					this._LocationID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> CreateDate
-		{
-			get
-			{
-				return this._CreateDate;
-			}
-			set
-			{
-				if ((this._CreateDate != value))
-				{
-					this._CreateDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Bit")]
-		public System.Nullable<bool> Status
-		{
-			get
-			{
-				return this._Status;
-			}
-			set
-			{
-				if ((this._Status != value))
-				{
-					this._Status = value;
-				}
-			}
+			return ((ISingleResult<uspRealtyMarketGetInfoByRealtyMarketIDResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -1239,6 +693,500 @@ namespace DataContext
 				if ((this._CreateDate != value))
 				{
 					this._CreateDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Bit")]
+		public System.Nullable<bool> Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this._Status = value;
+				}
+			}
+		}
+	}
+	
+	public partial class uspRealtyMarketGetInfoByRealtyMarketIDResult
+	{
+		
+		private int _ID;
+		
+		private System.Nullable<int> _RealtyMarketID;
+		
+		private string _Title;
+		
+		private string _Descrition;
+		
+		private string _Image;
+		
+		private string _ImageThumb;
+		
+		private string _UserPublish;
+		
+		private string _Phone;
+		
+		private string _Email;
+		
+		private System.Nullable<int> _Price;
+		
+		private System.Nullable<int> _Type;
+		
+		private string _LegalStatus;
+		
+		private string _Acreage;
+		
+		private string _ClientRoom;
+		
+		private string _BedRoom;
+		
+		private string _Bathrooms;
+		
+		private string _Position;
+		
+		private string _Floor;
+		
+		private System.Nullable<bool> _NearKindergarten;
+		
+		private System.Nullable<bool> _NearHospital;
+		
+		private System.Nullable<bool> _NearlySchool;
+		
+		private System.Nullable<bool> _NearlyMarket;
+		
+		private System.Nullable<bool> _NearlyUniversity;
+		
+		private string _Address;
+		
+		private string _AdressBDS;
+		
+		private System.Nullable<int> _LocationID;
+		
+		private System.Nullable<bool> _Status;
+		
+		public uspRealtyMarketGetInfoByRealtyMarketIDResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RealtyMarketID", DbType="Int")]
+		public System.Nullable<int> RealtyMarketID
+		{
+			get
+			{
+				return this._RealtyMarketID;
+			}
+			set
+			{
+				if ((this._RealtyMarketID != value))
+				{
+					this._RealtyMarketID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", DbType="NVarChar(250)")]
+		public string Title
+		{
+			get
+			{
+				return this._Title;
+			}
+			set
+			{
+				if ((this._Title != value))
+				{
+					this._Title = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descrition", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		public string Descrition
+		{
+			get
+			{
+				return this._Descrition;
+			}
+			set
+			{
+				if ((this._Descrition != value))
+				{
+					this._Descrition = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="NVarChar(500)")]
+		public string Image
+		{
+			get
+			{
+				return this._Image;
+			}
+			set
+			{
+				if ((this._Image != value))
+				{
+					this._Image = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImageThumb", DbType="NVarChar(500)")]
+		public string ImageThumb
+		{
+			get
+			{
+				return this._ImageThumb;
+			}
+			set
+			{
+				if ((this._ImageThumb != value))
+				{
+					this._ImageThumb = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserPublish", DbType="NVarChar(50)")]
+		public string UserPublish
+		{
+			get
+			{
+				return this._UserPublish;
+			}
+			set
+			{
+				if ((this._UserPublish != value))
+				{
+					this._UserPublish = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="NVarChar(50)")]
+		public string Phone
+		{
+			get
+			{
+				return this._Phone;
+			}
+			set
+			{
+				if ((this._Phone != value))
+				{
+					this._Phone = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(100)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this._Email = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Int")]
+		public System.Nullable<int> Price
+		{
+			get
+			{
+				return this._Price;
+			}
+			set
+			{
+				if ((this._Price != value))
+				{
+					this._Price = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="Int")]
+		public System.Nullable<int> Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this._Type = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LegalStatus", DbType="NVarChar(50)")]
+		public string LegalStatus
+		{
+			get
+			{
+				return this._LegalStatus;
+			}
+			set
+			{
+				if ((this._LegalStatus != value))
+				{
+					this._LegalStatus = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Acreage", DbType="NVarChar(50)")]
+		public string Acreage
+		{
+			get
+			{
+				return this._Acreage;
+			}
+			set
+			{
+				if ((this._Acreage != value))
+				{
+					this._Acreage = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientRoom", DbType="VarChar(2)")]
+		public string ClientRoom
+		{
+			get
+			{
+				return this._ClientRoom;
+			}
+			set
+			{
+				if ((this._ClientRoom != value))
+				{
+					this._ClientRoom = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BedRoom", DbType="VarChar(2)")]
+		public string BedRoom
+		{
+			get
+			{
+				return this._BedRoom;
+			}
+			set
+			{
+				if ((this._BedRoom != value))
+				{
+					this._BedRoom = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Bathrooms", DbType="VarChar(2)")]
+		public string Bathrooms
+		{
+			get
+			{
+				return this._Bathrooms;
+			}
+			set
+			{
+				if ((this._Bathrooms != value))
+				{
+					this._Bathrooms = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Position", DbType="NVarChar(250)")]
+		public string Position
+		{
+			get
+			{
+				return this._Position;
+			}
+			set
+			{
+				if ((this._Position != value))
+				{
+					this._Position = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Floor", DbType="VarChar(2)")]
+		public string Floor
+		{
+			get
+			{
+				return this._Floor;
+			}
+			set
+			{
+				if ((this._Floor != value))
+				{
+					this._Floor = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NearKindergarten", DbType="Bit")]
+		public System.Nullable<bool> NearKindergarten
+		{
+			get
+			{
+				return this._NearKindergarten;
+			}
+			set
+			{
+				if ((this._NearKindergarten != value))
+				{
+					this._NearKindergarten = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NearHospital", DbType="Bit")]
+		public System.Nullable<bool> NearHospital
+		{
+			get
+			{
+				return this._NearHospital;
+			}
+			set
+			{
+				if ((this._NearHospital != value))
+				{
+					this._NearHospital = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NearlySchool", DbType="Bit")]
+		public System.Nullable<bool> NearlySchool
+		{
+			get
+			{
+				return this._NearlySchool;
+			}
+			set
+			{
+				if ((this._NearlySchool != value))
+				{
+					this._NearlySchool = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NearlyMarket", DbType="Bit")]
+		public System.Nullable<bool> NearlyMarket
+		{
+			get
+			{
+				return this._NearlyMarket;
+			}
+			set
+			{
+				if ((this._NearlyMarket != value))
+				{
+					this._NearlyMarket = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NearlyUniversity", DbType="Bit")]
+		public System.Nullable<bool> NearlyUniversity
+		{
+			get
+			{
+				return this._NearlyUniversity;
+			}
+			set
+			{
+				if ((this._NearlyUniversity != value))
+				{
+					this._NearlyUniversity = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(250)")]
+		public string Address
+		{
+			get
+			{
+				return this._Address;
+			}
+			set
+			{
+				if ((this._Address != value))
+				{
+					this._Address = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdressBDS", DbType="NVarChar(400)")]
+		public string AdressBDS
+		{
+			get
+			{
+				return this._AdressBDS;
+			}
+			set
+			{
+				if ((this._AdressBDS != value))
+				{
+					this._AdressBDS = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationID", DbType="Int")]
+		public System.Nullable<int> LocationID
+		{
+			get
+			{
+				return this._LocationID;
+			}
+			set
+			{
+				if ((this._LocationID != value))
+				{
+					this._LocationID = value;
 				}
 			}
 		}
