@@ -61,11 +61,9 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
-                                Ảnh
-                            </td>
+                            
                             <td style="padding: 5px 0;">
-                                <asp:Image ID="Image1" runat="server" Width="250" Height="180" ImageUrl='<%#Eval("Img") %>' />
+                                <asp:Image ID="Image1" runat="server"  ImageUrl='<%#Eval("Img") %>' Visible="false" />
                                 <asp:HiddenField ID="ImgThumb" runat="server" Value='<%#Eval("ImgThumb") %>' />
                                 <asp:Label ID="lblID" runat="server" Text='<%#Eval("ID") %>' Visible="false"></asp:Label>
                             </td>
