@@ -177,22 +177,6 @@ public partial class BackEnd_pages_content_News : System.Web.UI.Page
         }
 
     }
-    protected string GetNameType(int type)
-    {
-        if (type == 1)
-        {
-            return GetLocalResourceObject("rsService").ToString();
-        }
-        if (type == 2)
-        {
-            return GetLocalResourceObject("rsCompany").ToString();
-        }
-        if (type == 3)
-        {
-            return GetLocalResourceObject("rsManualService").ToString();
-        }
-        return "";
-    }
     protected void rptAllNews_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
         CtrNews ctrNews = new CtrNews();
