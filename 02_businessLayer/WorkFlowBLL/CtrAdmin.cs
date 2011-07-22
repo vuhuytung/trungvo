@@ -35,11 +35,45 @@ namespace WorkFlowBLL
         }
         #endregion
 
+        #region Quản lý nhóm quyền
         public List<uspRoleGetAllResult> RoleGetAll()
         {
             return BDS.AdminInstance.uspRoleGetAll().ToList();
         }
-        
+        public int RoleInsert(string name,string description,int status)
+        {
+            return BDS.AdminInstance.uspRoleInsert(name, description, status);
+        }
+        public int RoleUpdate(int roleID, string name, string description, int status)
+        {
+            return BDS.AdminInstance.uspRoleUpdateByRoleID(roleID,name,description,status);
+        }
+        public int RoleDelete(int roleID)
+        {
+            return BDS.AdminInstance.uspRoleDeleteByRoleID(roleID);
+        }
+        public int RoleUpdateStatus(int roleID, int status)
+        {
+            return BDS.AdminInstance.uspRoleUpdateStatus(roleID, status);
+        }
+        public uspRoleGetInfoByRoleIDResult RoleGetInfo(int roleID)
+        {
+            return BDS.AdminInstance.uspRoleGetInfoByRoleID(roleID).FirstOrDefault();
+        }
+        public List<uspRoleGetListByFunctionResult> RoleGetListByFunction(int functionID)
+        {
+            return BDS.AdminInstance.uspRoleGetListByFunction(functionID).ToList();
+        }
+        #endregion
+
+        public List<uspFunctionGetChildInRoleResult> FunctionGetChildInRole(int roleID)
+        {
+            return BDS.AdminInstance.uspFunctionGetChildInRole(roleID).ToList();
+        }
+        public int RoleFunctionUpdate(int roleID,int functionID,int permission)
+        {
+            return BDS.AdminInstance.uspRoleFunctionUpdate(roleID, functionID, permission);
+        }
 
         /*
         /// <summary>
