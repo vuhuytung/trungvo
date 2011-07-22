@@ -10,7 +10,7 @@
                     <table cellspacing="8">
                         <tr>
                             <td colspan="4" style="text-align: center; padding: 5px 0;">
-                                <a style="color: Red; font-size: 16px;">Thêm thông tin</a>
+                                <a style="color: Red; font-size:16px;">Thêm thông tin</a>
                             </td>
                         </tr>
                         <tr>
@@ -242,6 +242,8 @@
                                 <td colspan="3">
                                     <asp:TextBox ID="txtTitle" runat="server" Text='<%#Eval("Title") %>' Width="350"
                                         BorderColor="#ED8080" BorderWidth="1"></asp:TextBox>
+                                    <asp:HiddenField ID="Img" runat="server" Value='<%#Eval("Image") %>' />
+                                    <asp:HiddenField ID="ImgThumb" runat="server"  Value='<%#Eval("ImageThumb") %>'/>
                                 </td>
                             </tr>
                             <tr>
@@ -567,8 +569,11 @@
                                 <td style="width: 15px; text-align: center;">
                                     <asp:CheckBox ID="chkDeleteAll" runat="server" />
                                     <asp:HiddenField ID="hdID" runat="server" Value=' <%#Eval("RealtyMarketID") %>' />
+                                    <asp:HiddenField ID="Img" runat="server" Value='<%#Eval("Image") %>' />
+                                    <asp:HiddenField ID="ImgThumb" runat="server" Value='<%#Eval("ImageThumb") %>' />
                                 </td>
                                 <td>
+                                    <%#Eval("RowNumber")%>
                                 </td>
                                 <td style="width: 570px; text-align: left;">
                                     <a>

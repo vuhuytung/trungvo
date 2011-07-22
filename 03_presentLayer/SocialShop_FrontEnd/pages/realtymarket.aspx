@@ -17,18 +17,17 @@
                 <div class="leftMain nl">
                     <div class="topsearch">
                         <div class="search">
-                            <table>
+                            <table class="tbMarket">
                                 <tr>
                                     <td>
-                                        Tìm tại:
+                                        TP/Tỉnh
                                     </td>
                                     <td>
                                         <asp:DropDownList ID="ddlProvince" runat="server" OnSelectedIndexChanged="ddlProvince_SelectedIndexChanged"
                                             AutoPostBack="true">
                                         </asp:DropDownList>
                                     </td>
-                                </tr>
-                                <tr>
+                               
                                     <td>
                                         Quận/Huyện
                                     </td>
@@ -46,8 +45,7 @@
                                         <asp:DropDownList ID="ddlVillage" runat="server" Width="136px">
                                         </asp:DropDownList>
                                     </td>
-                                </tr>
-                                <tr>
+                                
                                     <td>
                                         Loại BĐS
                                     </td>
@@ -64,9 +62,7 @@
                                         <asp:DropDownList ID="ddlPrice" runat="server">
                                         </asp:DropDownList>
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2" style="text-align: center; padding-top: 7px;">
+                                    <td  style="text-align: center; padding-top: 7px;">
                                         <asp:Button ID="btnSearch" runat="server" Text="Tìm" Width="70px" OnClick="btnSearch_Click" />
                                     </td>
                                 </tr>
@@ -78,10 +74,10 @@
                             <ItemTemplate>
                                 <div class="realty_item">
                                     <div class="img_item">
-                                        <img alt="anh" src="" />
+                                        <img alt="anh" src="<%#Eval("ImageThumb")%>" width="100"  />
                                     </div>
                                     <div class="detail_item">
-                                        <a href="#">
+                                        <a href='RealtyMarketDetails.aspx?ID=<%#Eval("RealtyMarketID")%>'>
                                             <%#Eval("Title")%></a>
                                     </div>
                                 </div>
