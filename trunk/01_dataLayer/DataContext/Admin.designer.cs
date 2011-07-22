@@ -68,6 +68,41 @@ namespace DataContext
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), parentID, status);
 			return ((ISingleResult<uspFunctionByParentIDResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspFunctionGetInfoByFunctionID")]
+		public ISingleResult<uspFunctionGetInfoByFunctionIDResult> uspFunctionGetInfoByFunctionID([global::System.Data.Linq.Mapping.ParameterAttribute(Name="FunctionID", DbType="Int")] System.Nullable<int> functionID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), functionID);
+			return ((ISingleResult<uspFunctionGetInfoByFunctionIDResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspRoleGetAll")]
+		public ISingleResult<uspRoleGetAllResult> uspRoleGetAll()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<uspRoleGetAllResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspFunctionDeleteByFunctionID")]
+		public int uspFunctionDeleteByFunctionID([global::System.Data.Linq.Mapping.ParameterAttribute(Name="FunctionID", DbType="Int")] System.Nullable<int> functionID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), functionID);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspFunctionInsert")]
+		public int uspFunctionInsert([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Name", DbType="NVarChar(100)")] string name, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Url", DbType="NVarChar(255)")] string url, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Order", DbType="Int")] System.Nullable<int> order, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ParrentID", DbType="Int")] System.Nullable<int> parrentID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Int")] System.Nullable<int> status)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), name, url, order, parrentID, status);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspFunctionUpdateByFunctionID")]
+		public int uspFunctionUpdateByFunctionID([global::System.Data.Linq.Mapping.ParameterAttribute(Name="FunctionID", DbType="Int")] System.Nullable<int> functionID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Name", DbType="NVarChar(100)")] string name, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Url", DbType="NVarChar(255)")] string url, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Order", DbType="Int")] System.Nullable<int> order, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ParrentID", DbType="Int")] System.Nullable<int> parrentID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Int")] System.Nullable<int> status)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), functionID, name, url, order, parrentID, status);
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	public partial class uspFunctionByParentIDResult
@@ -171,6 +206,202 @@ namespace DataContext
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Int")]
 		public System.Nullable<int> Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this._Status = value;
+				}
+			}
+		}
+	}
+	
+	public partial class uspFunctionGetInfoByFunctionIDResult
+	{
+		
+		private int _FunctionID;
+		
+		private string _Name;
+		
+		private string _Url;
+		
+		private int _Order;
+		
+		private int _ParrentID;
+		
+		private System.Nullable<int> _Status;
+		
+		public uspFunctionGetInfoByFunctionIDResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FunctionID", DbType="Int NOT NULL")]
+		public int FunctionID
+		{
+			get
+			{
+				return this._FunctionID;
+			}
+			set
+			{
+				if ((this._FunctionID != value))
+				{
+					this._FunctionID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this._Name = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Url", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
+		public string Url
+		{
+			get
+			{
+				return this._Url;
+			}
+			set
+			{
+				if ((this._Url != value))
+				{
+					this._Url = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Order]", Storage="_Order", DbType="Int NOT NULL")]
+		public int Order
+		{
+			get
+			{
+				return this._Order;
+			}
+			set
+			{
+				if ((this._Order != value))
+				{
+					this._Order = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ParrentID", DbType="Int NOT NULL")]
+		public int ParrentID
+		{
+			get
+			{
+				return this._ParrentID;
+			}
+			set
+			{
+				if ((this._ParrentID != value))
+				{
+					this._ParrentID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Int")]
+		public System.Nullable<int> Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this._Status = value;
+				}
+			}
+		}
+	}
+	
+	public partial class uspRoleGetAllResult
+	{
+		
+		private int _RoleID;
+		
+		private string _Name;
+		
+		private string _Description;
+		
+		private int _Status;
+		
+		public uspRoleGetAllResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoleID", DbType="Int NOT NULL")]
+		public int RoleID
+		{
+			get
+			{
+				return this._RoleID;
+			}
+			set
+			{
+				if ((this._RoleID != value))
+				{
+					this._RoleID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this._Name = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(500)")]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this._Description = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Int NOT NULL")]
+		public int Status
 		{
 			get
 			{
