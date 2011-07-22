@@ -10,12 +10,36 @@ namespace WorkFlowBLL
 {
     public class CtrAdmin
     {
-
+        #region Quản lý chức năng
         public List<uspFunctionByParentIDResult> FunctionGetByParentID(int @parentID, int @status)
         {
             return BDS.AdminInstance.uspFunctionByParentID(@parentID, @status).ToList();
         }
 
+        public uspFunctionGetInfoByFunctionIDResult FunctionGetInfo(int functionID)
+        {
+            return BDS.AdminInstance.uspFunctionGetInfoByFunctionID(functionID).FirstOrDefault();
+        }
+        public int FunctionInsert(string name, string url, int order, int parrentID, int status)
+        {
+            return BDS.AdminInstance.uspFunctionInsert(name, url, order, parrentID, status);
+        }
+        public int FunctionUpdate(int functionID, string name, string url, int order, int parrentID, int status)
+        {
+            return BDS.AdminInstance.uspFunctionUpdateByFunctionID(functionID, name, url, order, parrentID, status);
+        }
+
+        public int FunctionDelete(int functionID)
+        {
+            return BDS.AdminInstance.uspFunctionDeleteByFunctionID(functionID);
+        }
+        #endregion
+
+        public List<uspRoleGetAllResult> RoleGetAll()
+        {
+            return BDS.AdminInstance.uspRoleGetAll().ToList();
+        }
+        
 
         /*
         /// <summary>
