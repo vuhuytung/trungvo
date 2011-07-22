@@ -22,7 +22,7 @@
                                     <td>Địa chỉ</td>
                                     <td colspan="3">
                                         <a>
-                                            <%#Eval("AdressBDS")%>
+                                            <%#Eval("AdressBDS").ToString().Substring(0,1)!="-"? Eval("AdressBDS").ToString(): Eval("AdressBDS").ToString().Substring(1)%>
                                         </a>
                                     </td>
                                 </tr>
@@ -124,7 +124,7 @@
                                         Giá bán
                                     </td>
                                     <td>
-                                        <%#Eval("Price") %>
+                                        <%#String.Format("{0:0,0 vnđ}", Eval("Price"))%>
                                     </td>
                                 </tr>
                             </table>
@@ -171,7 +171,8 @@
                     <div class="bds_img">
                         <h2>
                             Hình ảnh</h2>
-                        <img src='<%#Eval("Image") %>' width="500" height="300" alt="ảnh" />
+                        <img src="<%#Eval("Image") %>" width="500" height="300" alt="ảnh" />
+                        
                     </div>
                 </ItemTemplate>
             </asp:Repeater>

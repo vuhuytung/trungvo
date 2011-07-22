@@ -14,7 +14,7 @@ public partial class pages_RealtyMarketDetails : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-                RptDetail.DataSource = market.GetDetailRealtyMarketByID(3);
+                RptDetail.DataSource = market.GetDetailRealtyMarketByID(Int32.Parse(Request.QueryString["ID"]));
                 RptDetail.DataBind();
            
         }

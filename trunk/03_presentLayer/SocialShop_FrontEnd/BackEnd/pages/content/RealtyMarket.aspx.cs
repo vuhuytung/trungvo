@@ -39,18 +39,19 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
 
             //add Type BDS temp
             //ddlTypeBDS.Items.Add(new ListItem("Tất cả","0"));
-            ddlTypeBDS.Items.Add(new ListItem("Bất động sản cần bán","21"));
-            ddlTypeBDS.Items.Add(new ListItem("Bất động sản cần mua","22"));
+            ddlTypeBDS.Items.Add(new ListItem("Bất động sản cần bán", "21"));
+            ddlTypeBDS.Items.Add(new ListItem("Bất động sản cần mua", "22"));
 
             //add Price temp
-            ddlPrice.Items.Add(new ListItem("tất cả"));
-            ddlPrice.Items.Add(new ListItem("dưới 5 triệu"));
-            ddlPrice.Items.Add(new ListItem("5 -20 triệu"));
-            ddlPrice.Items.Add(new ListItem("20-100 triệu"));
-            ddlPrice.Items.Add(new ListItem("100-500 triệu"));
-            ddlPrice.Items.Add(new ListItem("500 triệu-2 tỷ"));
-            ddlPrice.Items.Add(new ListItem("2-3 tỷ"));
-            ddlPrice.Items.Add(new ListItem("trên 3 tỷ"));
+            ddlPrice.Items.Add(new ListItem("tất cả", "0"));
+            ddlPrice.Items.Add(new ListItem("dưới 20 triệu", "1"));
+            ddlPrice.Items.Add(new ListItem("20-100 triệu", "2"));
+            ddlPrice.Items.Add(new ListItem("100-500 triệu", "3"));
+            ddlPrice.Items.Add(new ListItem("500 triệu-2 tỷ", "4"));
+            ddlPrice.Items.Add(new ListItem("2-10 tỷ", "5"));
+            ddlPrice.Items.Add(new ListItem("10-20 tỷ", "6"));
+            ddlPrice.Items.Add(new ListItem("trên 20 tỷ", "7"));
+
 
             //================
 
@@ -84,6 +85,50 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
         ddl2.Items.Insert(0, new ListItem("Quận/Huyện", "-1"));
         ddl3.Items.Insert(0, new ListItem("Phường/Xã", "-1"));
     }
+    private void GetPrice(int type, ref double begin, ref double end)
+    {
+        if (type == 0)
+        {
+            begin = 0;
+            end = double.MaxValue;
+        }
+        else if (type == 1)
+        {
+            begin = 0;
+            end = 20000000;
+        }
+        else if (type == 2)
+        {
+            begin = 20000000;
+            end = 100000000;
+        }
+        else if (type == 3)
+        {
+            begin = 100000000;
+            end = 500000000;
+        }
+        else if (type == 4)
+        {
+            begin = 500000000;
+            end = 2000000000;
+        }
+        else if (type == 5)
+        {
+            begin = 2000000000;
+            end = 10000000000;
+        }
+        else if (type == 6)
+        {
+            begin = 10000000000;
+            end = 20000000000;
+        }
+        else if (type == 7)
+        {
+            begin = 20000000000;
+            end = double.MaxValue;
+        }
+
+    }
     protected void ucPaging1_PageChange(object sender)
     {
         BindRpt();
@@ -105,15 +150,18 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
             }
             else
             {
-               return Int32.Parse(ddlProvince.SelectedValue.Split('_')[0]);
+                return Int32.Parse(ddlProvince.SelectedValue.Split('_')[0]);
             }
         }
-        
+
         return 0;
     }
-            
+
     protected void BindRpt()
     {
+        double begin = 0;
+        double end = 0;
+        GetPrice(Int32.Parse(ddlPrice.SelectedValue), ref begin, ref end);
         if (Int32.Parse(ddlProvince.SelectedValue.Split('_')[0]) != -1) //kiểm tra nếu chọn tỉnh
         {
             if (Int32.Parse(ddlDistrict.SelectedValue.Split('_')[0]) != -1) //nếu chọn huyện
@@ -121,37 +169,37 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
                 if (Int32.Parse(ddlVillage.SelectedValue.Split('_')[0]) != -1)
                 {
                     int Code = Int32.Parse(ddlVillage.SelectedValue.Split('_')[1]);
-                    var _data = ctrN.GetListRealtyMarketByCondition(Code, 3, Int32.Parse(ddlTypeBDS.SelectedValue), 0, 500000, ucPaging1.CurrentPage, ucPaging1.PageSize);
+                    var _data = ctrN.GetListRealtyMarketByCondition(Code, 3, Int32.Parse(ddlTypeBDS.SelectedValue), begin, end, ucPaging1.CurrentPage, ucPaging1.PageSize);
                     RptReatyMarket.DataSource = _data.Items;
                     RptReatyMarket.DataBind();
                     ucPaging1.TotalRecord = _data.TotalRecord;
-                    
+
                 }
                 else
                 {
                     int Code = Int32.Parse(ddlDistrict.SelectedValue.Split('_')[1]);
-                    var _data = ctrN.GetListRealtyMarketByCondition(Code, 2, Int32.Parse(ddlTypeBDS.SelectedValue), 0, 500000, ucPaging1.CurrentPage, ucPaging1.PageSize);
+                    var _data = ctrN.GetListRealtyMarketByCondition(Code, 2, Int32.Parse(ddlTypeBDS.SelectedValue), begin, end, ucPaging1.CurrentPage, ucPaging1.PageSize);
                     RptReatyMarket.DataSource = _data.Items;
                     RptReatyMarket.DataBind();
                     ucPaging1.TotalRecord = _data.TotalRecord;
-                   // return Code;
+                    // return Code;
                 }
 
             }
             else
             {
                 int Code = Int32.Parse(ddlProvince.SelectedValue.Split('_')[1]);
-                var _data = ctrN.GetListRealtyMarketByCondition(Code, 1, Int32.Parse(ddlTypeBDS.SelectedValue), 0, 500000, ucPaging1.CurrentPage, ucPaging1.PageSize);
+                var _data = ctrN.GetListRealtyMarketByCondition(Code, 1, Int32.Parse(ddlTypeBDS.SelectedValue), begin, end, ucPaging1.CurrentPage, ucPaging1.PageSize);
                 RptReatyMarket.DataSource = _data.Items;
                 RptReatyMarket.DataBind();
                 ucPaging1.TotalRecord = _data.TotalRecord;
-               // return Code;
+                // return Code;
             }
-           
+
         }
         else
         {
-            var _data = ctrN.GetListRealtyMarketByCondition(0, 1, Int32.Parse(ddlTypeBDS.SelectedValue), 0, 500000, ucPaging1.CurrentPage, ucPaging1.PageSize);
+            var _data = ctrN.GetListRealtyMarketByCondition(0, 1, Int32.Parse(ddlTypeBDS.SelectedValue), begin, end, ucPaging1.CurrentPage, ucPaging1.PageSize);
             RptReatyMarket.DataSource = _data.Items;
             RptReatyMarket.DataBind();
             ucPaging1.TotalRecord = _data.TotalRecord;
@@ -160,7 +208,7 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
         //RptReatyMarket.DataSource = _data.Items;
         // RptReatyMarket.DataBind();
         //ucPaging1.TotalRecord = _data.TotalRecord;
-       // return 1;
+        // return 1;
     }
 
     protected void ddlProvince_SelectedIndexChanged(object sender, EventArgs e)
@@ -240,7 +288,7 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
     }
     protected void btnThemmoi_Click(object sender, EventArgs e)
     {
-        
+
         try
         {
             Panel2.Visible = true;
@@ -276,7 +324,7 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
             RptDetail.DataSource = ctrN.GetDetailRealtyMarketByID(Int32.Parse(e.CommandArgument.ToString()));
             RptDetail.DataBind();
 
-            DropDownList  ddlProvince1 = (DropDownList)RptDetail.Controls[1].FindControl("ddlProvince1");
+            DropDownList ddlProvince1 = (DropDownList)RptDetail.Controls[1].FindControl("ddlProvince1");
             DropDownList ddlDistrict1 = (DropDownList)RptDetail.Controls[1].FindControl("ddlDistrict1");
             DropDownList ddlVillage1 = (DropDownList)RptDetail.Controls[1].FindControl("ddlVillage1");
             if (ddlProvince1 != null && ddlDistrict1 != null && ddlVillage1 != null)
@@ -296,6 +344,12 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
         {
             try
             {
+                HiddenField Img = (HiddenField)e.Item.FindControl("Img");
+                HiddenField ImgThumb = (HiddenField)e.Item.FindControl("ImgThumb");
+
+                ctrN.DeleteImg(Img.Value.Replace("/", "\\"), Request);
+                ctrN.DeleteImg(ImgThumb.Value.Replace("/", "\\"), Request);
+
                 ctrN.DeleteMarket(Int32.Parse(e.CommandArgument.ToString()));
                 BindRpt();
                 ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('Delete success !')", true);
@@ -332,7 +386,7 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
             TextBox txtPrice = (TextBox)RptDetail.Controls[1].FindControl("txtPrice");
             TextBox txtDesc = (TextBox)RptDetail.Controls[1].FindControl("txtDesc");
             TextBox txtStreet = (TextBox)RptDetail.Controls[1].FindControl("txtStreet");
-           // CheckBox chkCooler = (CheckBox)RptDetail.Controls[1].FindControl("chkCooler");
+            // CheckBox chkCooler = (CheckBox)RptDetail.Controls[1].FindControl("chkCooler");
             //CheckBox chkCable = (CheckBox)RptDetail.Controls[1].FindControl("chkCable");
             CheckBox chkMaugiao = (CheckBox)RptDetail.Controls[1].FindControl("chkMaugiao");
             CheckBox chkschool = (CheckBox)RptDetail.Controls[1].FindControl("chkschool");
@@ -340,31 +394,47 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
             CheckBox chkMarket = (CheckBox)RptDetail.Controls[1].FindControl("chkMarket");
             CheckBox chkUniversity = (CheckBox)RptDetail.Controls[1].FindControl("chkUniversity");
             //CheckBox chkPark = (CheckBox)RptDetail.Controls[1].FindControl("chkPark");
-           // CheckBox chkInternet = (CheckBox)RptDetail.Controls[1].FindControl("chkInternet");
+            // CheckBox chkInternet = (CheckBox)RptDetail.Controls[1].FindControl("chkInternet");
             //CheckBox chkOto = (CheckBox)RptDetail.Controls[1].FindControl("chkOto");
             CheckBox chkStatus = (CheckBox)RptDetail.Controls[1].FindControl("chkStatus");
             FileUpload fupload = (FileUpload)RptDetail.Controls[1].FindControl("fupload");
             HiddenField hdLocation = (HiddenField)RptDetail.Controls[1].FindControl("hdLocation");
             Label lblID = (Label)RptDetail.Controls[1].FindControl("lblID");
+
+
+            HiddenField Img = (HiddenField)RptDetail.Controls[1].FindControl("Img");
+            HiddenField ImgThumb = (HiddenField)RptDetail.Controls[1].FindControl("ImgThumb");
             try
             {
-                int location=GetLocationID(ddlProvince1, ddlDistrict1, ddlVillage1);
+                int location = GetLocationID(ddlProvince1, ddlDistrict1, ddlVillage1);
                 if (fupload.FileName != "")
                 {
-
                     string strFile = Path.Combine(Request.PhysicalApplicationPath, "images\\Market");
                     strFile += "\\" + fupload.FileName;
                     fupload.PostedFile.SaveAs(strFile);
 
+                    int length = fupload.FileName.Length - 4;
+                    string newname = fupload.FileName.Substring(0, length) + "_thumb";
+                    string exp = fupload.FileName.Substring(length);
+                    newname = newname + exp;
+                    string strFile1 = Path.Combine(Request.PhysicalApplicationPath, "images\\Market");
+                    strFile1 += "\\" + newname;
+
+                    var EditImage = System.Drawing.Image.FromFile(fupload.PostedFile.FileName);
+                    VTCO.Library.ImageResize Img1 = new VTCO.Library.ImageResize();
+                    var newimg = Img1.Crop(EditImage, 150, 100, VTCO.Library.ImageResize.AnchorPosition.Center);
+                    newimg.Save(strFile1);
+
+
                     if (location != 0)
                     {
                         string text = HttpUtility.HtmlEncode(txtDesc.Text).Replace("\n", "</br>");
-                        ctrN.UpdateMarket(Int32.Parse(lblID.Text), txtTitle.Text, text, txtUser.Text, txtPhone.Text, txtEmail.Text, Int32.Parse(txtPrice.Text), Int32.Parse(ddlTypeBDS1.SelectedValue), @"/images/Market/" + fupload.FileName, txtLegal.Text, txtDientich.Text, txtClientRoom.Text, txtBedRoom.Text, txtBathrooms.Text, txtPosition.Text, txtAddress.Text, txtFloor.Text, location, txtStreet.Text, chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked, chkUniversity.Checked, chkStatus.Checked);
+                        ctrN.UpdateMarket(Int32.Parse(lblID.Text), txtTitle.Text, text, txtUser.Text, txtPhone.Text, txtEmail.Text, Int32.Parse(txtPrice.Text), Int32.Parse(ddlTypeBDS1.SelectedValue), @"/images/Market/" + fupload.FileName, @"/images/Market/" + newname, txtLegal.Text, txtDientich.Text, txtClientRoom.Text, txtBedRoom.Text, txtBathrooms.Text, txtPosition.Text, txtAddress.Text, txtFloor.Text, location, txtStreet.Text, chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked, chkUniversity.Checked, chkStatus.Checked);
                     }
                     else
                     {
                         string text = HttpUtility.HtmlEncode(txtDesc.Text).Replace("\n", "</br>");
-                        ctrN.UpdateMarket(Int32.Parse(lblID.Text), txtTitle.Text, text, txtUser.Text, txtPhone.Text, txtEmail.Text, Int32.Parse(txtPrice.Text), Int32.Parse(ddlTypeBDS1.SelectedValue), @"/images/Market/" + fupload.FileName, txtLegal.Text, txtDientich.Text, txtClientRoom.Text, txtBedRoom.Text, txtBathrooms.Text, txtPosition.Text, txtAddress.Text, txtFloor.Text, Int32.Parse(hdLocation.Value), txtStreet.Text, chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked, chkUniversity.Checked, chkStatus.Checked);
+                        ctrN.UpdateMarket(Int32.Parse(lblID.Text), txtTitle.Text, text, txtUser.Text, txtPhone.Text, txtEmail.Text, Int32.Parse(txtPrice.Text), Int32.Parse(ddlTypeBDS1.SelectedValue), @"/images/Market/" + fupload.FileName, @"/images/Market/" + newname, txtLegal.Text, txtDientich.Text, txtClientRoom.Text, txtBedRoom.Text, txtBathrooms.Text, txtPosition.Text, txtAddress.Text, txtFloor.Text, Int32.Parse(hdLocation.Value), txtStreet.Text, chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked, chkUniversity.Checked, chkStatus.Checked);
                     }
                 }
                 else
@@ -372,21 +442,21 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
                     if (location != 0)
                     {
                         string text = HttpUtility.HtmlEncode(txtDesc.Text).Replace("\n", "</br>");
-                        ctrN.UpdateMarket(Int32.Parse(lblID.Text), txtTitle.Text, text, txtUser.Text, txtPhone.Text, txtEmail.Text, Int32.Parse(txtPrice.Text), Int32.Parse(ddlTypeBDS1.SelectedValue),"", txtLegal.Text, txtDientich.Text, txtClientRoom.Text, txtBedRoom.Text, txtBathrooms.Text, txtPosition.Text, txtAddress.Text, txtFloor.Text, location, txtStreet.Text, chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked, chkUniversity.Checked, chkStatus.Checked);
+                        ctrN.UpdateMarket(Int32.Parse(lblID.Text), txtTitle.Text, text, txtUser.Text, txtPhone.Text, txtEmail.Text, Int32.Parse(txtPrice.Text), Int32.Parse(ddlTypeBDS1.SelectedValue), Img.Value,ImgThumb.Value, txtLegal.Text, txtDientich.Text, txtClientRoom.Text, txtBedRoom.Text, txtBathrooms.Text, txtPosition.Text, txtAddress.Text, txtFloor.Text, location, txtStreet.Text, chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked, chkUniversity.Checked, chkStatus.Checked);
                     }
                     else
                     {
                         string text = HttpUtility.HtmlEncode(txtDesc.Text).Replace("\n", "</br>");
-                        ctrN.UpdateMarket(Int32.Parse(lblID.Text), txtTitle.Text, text, txtUser.Text, txtPhone.Text, txtEmail.Text, Int32.Parse(txtPrice.Text), Int32.Parse(ddlTypeBDS1.SelectedValue),"", txtLegal.Text, txtDientich.Text, txtClientRoom.Text, txtBedRoom.Text, txtBathrooms.Text, txtPosition.Text, txtAddress.Text, txtFloor.Text, Int32.Parse(hdLocation.Value), txtStreet.Text, chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked, chkUniversity.Checked, chkStatus.Checked);
+                        ctrN.UpdateMarket(Int32.Parse(lblID.Text), txtTitle.Text, text, txtUser.Text, txtPhone.Text, txtEmail.Text, Int32.Parse(txtPrice.Text), Int32.Parse(ddlTypeBDS1.SelectedValue), Img.Value,ImgThumb.Value, txtLegal.Text, txtDientich.Text, txtClientRoom.Text, txtBedRoom.Text, txtBathrooms.Text, txtPosition.Text, txtAddress.Text, txtFloor.Text, Int32.Parse(hdLocation.Value), txtStreet.Text, chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked, chkUniversity.Checked, chkStatus.Checked);
                     }
                 }
                 BindRpt();
-                ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('Update success !')",true);
+                ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('Update success !')", true);
 
             }
             catch
             {
-                ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('Update fail !')",true);
+                ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('Update fail !')", true);
             }
         }
         catch
@@ -443,33 +513,38 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
     }
     protected void ddlDistrict1_SelectedIndexChanged(object sender, EventArgs e)
     {
-
-        DropDownList ddlProvince1 = (DropDownList)RptDetail.Controls[1].FindControl("ddlProvince1");
-        DropDownList ddlDistrict1 = (DropDownList)RptDetail.Controls[1].FindControl("ddlDistrict1");
-        DropDownList ddlVillage1 = (DropDownList)RptDetail.Controls[1].FindControl("ddlVillage1");
-        if (ddlDistrict1.SelectedValue.Trim() != "-1")
+        try
         {
-            int index = Int32.Parse(ddlDistrict1.SelectedValue.Split('_')[1]);
-            var _data = Location.GetVillage(index);
-            List<LocationInfoSearch> _source = new List<LocationInfoSearch>();
-            foreach (var item in _data)
+            DropDownList ddlProvince1 = (DropDownList)RptDetail.Controls[1].FindControl("ddlProvince1");
+            DropDownList ddlDistrict1 = (DropDownList)RptDetail.Controls[1].FindControl("ddlDistrict1");
+            DropDownList ddlVillage1 = (DropDownList)RptDetail.Controls[1].FindControl("ddlVillage1");
+            if (ddlDistrict1.SelectedValue.Trim() != "-1")
             {
-                LocationInfoSearch lInfo = new LocationInfoSearch();
-                lInfo.LocationValue = item.LocationID + "_" + item.VillageCode;
-                lInfo.LocationText = item.Name;
-                _source.Add(lInfo);
+                int index = Int32.Parse(ddlDistrict1.SelectedValue.Split('_')[1]);
+                var _data = Location.GetVillage(index);
+                List<LocationInfoSearch> _source = new List<LocationInfoSearch>();
+                foreach (var item in _data)
+                {
+                    LocationInfoSearch lInfo = new LocationInfoSearch();
+                    lInfo.LocationValue = item.LocationID + "_" + item.VillageCode;
+                    lInfo.LocationText = item.Name;
+                    _source.Add(lInfo);
+                }
+                ddlVillage1.DataSource = _source;
+                ddlVillage1.DataTextField = "LocationText";
+                ddlVillage1.DataValueField = "LocationValue";
+                ddlVillage1.DataBind();
+                ddlVillage1.Items.Insert(0, new ListItem("Phường/Xã", "-1"));
+                ddlVillage1.SelectedIndex = 0;
             }
-            ddlVillage1.DataSource = _source;
-            ddlVillage1.DataTextField = "LocationText";
-            ddlVillage1.DataValueField = "LocationValue";
-            ddlVillage1.DataBind();
-            ddlVillage1.Items.Insert(0, new ListItem("Phường/Xã", "-1"));
-            ddlVillage1.SelectedIndex = 0;
+            else
+            {
+                ddlVillage1.Items.Clear();
+                ddlVillage1.Items.Insert(0, new ListItem("Phường/Xã", "-1"));
+            }
         }
-        else
+        catch
         {
-            ddlVillage1.Items.Clear();
-            ddlVillage1.Items.Insert(0, new ListItem("Phường/Xã", "-1"));
         }
     }
     //=========================phan xu ly viec insert du lieu mới==================
@@ -477,14 +552,28 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
     {
         try
         {
-            
 
-                string strFile = Path.Combine(Request.PhysicalApplicationPath, "images\\Market");
-                strFile += "\\" + fupload.FileName;
-                fupload.PostedFile.SaveAs(strFile);
-                int locationID = GetLocationID(ddlProvince2, ddlDistrict2, ddlVillage2);
-                ctrN.InsertMarket(txtTitle.Text, txtDesc.Text, txtUser.Text, txtPhone.Text, txtEmail.Text, Int32.Parse(txtPrice.Text), Int32.Parse(ddlTypeBDSs2.SelectedValue), @"/images/Market/" + fupload.FileName, txtLegal.Text, txtDientich.Text, txtClientRoom.Text, txtBedRoom.Text, txtBathrooms.Text, txtPosition.Text, txtAddress.Text, txtFloor.Text, locationID, txtStreet.Text, chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked, chkUniversity.Checked, chkStatus.Checked);
-           
+            string strFile = Path.Combine(Request.PhysicalApplicationPath, "images\\Market");
+            strFile += "\\" + fupload.FileName;
+            fupload.PostedFile.SaveAs(strFile);
+
+
+            int length = fupload.FileName.Length - 4;
+            string newname = fupload.FileName.Substring(0, length) + "_thumb";
+            string exp = fupload.FileName.Substring(length);
+            newname = newname + exp;
+            string strFile1 = Path.Combine(Request.PhysicalApplicationPath, "images\\Market");
+            strFile1 += "\\" + newname;
+
+            var EditImage = System.Drawing.Image.FromFile(fupload.PostedFile.FileName);
+            VTCO.Library.ImageResize Img = new VTCO.Library.ImageResize();
+            var newimg = Img.Crop(EditImage, 150, 100, VTCO.Library.ImageResize.AnchorPosition.Center);
+            newimg.Save(strFile1);
+
+            int locationID = GetLocationID(ddlProvince2, ddlDistrict2, ddlVillage2);
+
+            ctrN.InsertMarket(txtTitle.Text, txtDesc.Text, txtUser.Text, txtPhone.Text, txtEmail.Text, Int32.Parse(txtPrice.Text), Int32.Parse(ddlTypeBDSs2.SelectedValue), @"/images/Market/" + fupload.FileName,@"/images/Market/"+newname, txtLegal.Text, txtDientich.Text, txtClientRoom.Text, txtBedRoom.Text, txtBathrooms.Text, txtPosition.Text, txtAddress.Text, txtFloor.Text, locationID, txtStreet.Text, chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked, chkUniversity.Checked, chkStatus.Checked);
+
             BindRpt();
             ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('Insert success !')", true);
         }
@@ -497,7 +586,6 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
     {
         Panel2.Visible = false;
     }
-
     protected void ddlProvince2_SelectedIndexChanged(object sender, EventArgs e)
     {
         try
@@ -540,48 +628,64 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
     }
     protected void ddlDistrict2_SelectedIndexChanged(object sender, EventArgs e)
     {
-
-        if (ddlDistrict2.SelectedValue.Trim() != "-1")
+        try
         {
-            int index = Int32.Parse(ddlDistrict2.SelectedValue.Split('_')[1]);
-            var _data = Location.GetVillage(index);
-            List<LocationInfoSearch> _source = new List<LocationInfoSearch>();
-            foreach (var item in _data)
+            if (ddlDistrict2.SelectedValue.Trim() != "-1")
             {
-                LocationInfoSearch lInfo = new LocationInfoSearch();
-                lInfo.LocationValue = item.LocationID + "_" + item.VillageCode;
-                lInfo.LocationText = item.Name;
-                _source.Add(lInfo);
+                int index = Int32.Parse(ddlDistrict2.SelectedValue.Split('_')[1]);
+                var _data = Location.GetVillage(index);
+                List<LocationInfoSearch> _source = new List<LocationInfoSearch>();
+                foreach (var item in _data)
+                {
+                    LocationInfoSearch lInfo = new LocationInfoSearch();
+                    lInfo.LocationValue = item.LocationID + "_" + item.VillageCode;
+                    lInfo.LocationText = item.Name;
+                    _source.Add(lInfo);
+                }
+                ddlVillage2.DataSource = _source;
+                ddlVillage2.DataTextField = "LocationText";
+                ddlVillage2.DataValueField = "LocationValue";
+                ddlVillage2.DataBind();
+                ddlVillage2.Items.Insert(0, new ListItem("Phường/Xã", "-1"));
+                ddlVillage2.SelectedIndex = 0;
             }
-            ddlVillage2.DataSource = _source;
-            ddlVillage2.DataTextField = "LocationText";
-            ddlVillage2.DataValueField = "LocationValue";
-            ddlVillage2.DataBind();
-            ddlVillage2.Items.Insert(0, new ListItem("Phường/Xã", "-1"));
-            ddlVillage2.SelectedIndex = 0;
+            else
+            {
+                ddlVillage2.Items.Clear();
+                ddlVillage2.Items.Insert(0, new ListItem("Phường/Xã", "-1"));
+            }
         }
-        else
+        catch
         {
-            ddlVillage2.Items.Clear();
-            ddlVillage2.Items.Insert(0, new ListItem("Phường/Xã", "-1"));
         }
     }
     protected void lbtDeleteAll_Click(object sender, EventArgs e)
     {
-
-        foreach (RepeaterItem item in RptReatyMarket.Items)
+        try
         {
-            CheckBox chkDeleteAll = (CheckBox)item.FindControl("chkDeleteAll");
-            HiddenField hdID = (HiddenField)item.FindControl("hdID");
-            if (chkDeleteAll != null && hdID != null)
+            foreach (RepeaterItem item in RptReatyMarket.Items)
             {
-                if (chkDeleteAll.Checked == true)
+                CheckBox chkDeleteAll = (CheckBox)item.FindControl("chkDeleteAll");
+                HiddenField hdID = (HiddenField)item.FindControl("hdID");
+                if (chkDeleteAll != null && hdID != null)
                 {
-                    ctrN.DeleteMarket(Int32.Parse(hdID.Value));
-                }
+                    if (chkDeleteAll.Checked == true)
+                    {
+                        HiddenField Img = (HiddenField)item.FindControl("Img");
+                        HiddenField ImgThumb = (HiddenField)item.FindControl("ImgThumb");
 
+                        ctrN.DeleteImg(Img.Value.Replace("/", "\\"), Request);
+                        ctrN.DeleteImg(ImgThumb.Value.Replace("/", "\\"), Request);
+
+                        ctrN.DeleteMarket(Int32.Parse(hdID.Value));
+                    }
+
+                }
             }
+            BindRpt();
         }
-        BindRpt();
+        catch
+        {
+        }
     }
 }
