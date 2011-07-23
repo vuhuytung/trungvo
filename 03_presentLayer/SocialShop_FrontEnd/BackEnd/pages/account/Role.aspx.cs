@@ -155,6 +155,14 @@ public partial class BackEnd_pages_account_Role : System.Web.UI.Page
 
             rptRoleFunction.DataSource = ctrAdmin.FunctionGetChildInRole(CurrentNewsID);
             rptRoleFunction.DataBind();
+
+            divListAdmin.Visible = true;
+            rptAdminInRole.DataSource = ctrAdmin.AdminGetListByRole(CurrentNewsID);
+            rptAdminInRole.DataBind();
+
+            rptAdminNotInRole.DataSource = ctrAdmin.AdminGetListNotInRole(CurrentNewsID);
+            rptAdminNotInRole.DataBind();
+            divPopupAddAdmin.Visible = false;
         }
 
         if (e.CommandName == "delete")
@@ -172,6 +180,40 @@ public partial class BackEnd_pages_account_Role : System.Web.UI.Page
             }
             rptRole.DataSource = ctrAdmin.RoleGetAll();
             rptRole.DataBind();
+        }
+    }
+
+
+    protected void rptAdminInRole_ItemCommand(object source, RepeaterCommandEventArgs e)
+    {
+        CtrAdmin ctrAdmin = new CtrAdmin();
+        if (e.CommandArgument == null) return;
+        if (e.CommandName == "delete")
+        {
+            if (ctrAdmin.PermissionDelete(Convert.ToInt32(e.CommandArgument)) > 0)
+            {
+                rptAdminInRole.DataSource = ctrAdmin.AdminGetListByRole(CurrentNewsID);
+                rptAdminInRole.DataBind();
+
+                rptAdminNotInRole.DataSource = ctrAdmin.AdminGetListNotInRole(CurrentNewsID);
+                rptAdminNotInRole.DataBind();
+            }
+        }
+    }
+    protected void rptAdminNotInRole_ItemCommand(object source, RepeaterCommandEventArgs e)
+    {
+        CtrAdmin ctrAdmin = new CtrAdmin();
+        if (e.CommandArgument == null) return;
+        if (e.CommandName == "add")
+        {
+            if (ctrAdmin.PermissionInsert(CurrentNewsID, Convert.ToInt32(e.CommandArgument)) > 0)
+            {
+                rptAdminInRole.DataSource = ctrAdmin.AdminGetListByRole(CurrentNewsID);
+                rptAdminInRole.DataBind();
+
+                rptAdminNotInRole.DataSource = ctrAdmin.AdminGetListNotInRole(CurrentNewsID);
+                rptAdminNotInRole.DataBind();
+            }
         }
     }
 
@@ -210,6 +252,19 @@ public partial class BackEnd_pages_account_Role : System.Web.UI.Page
         CtrAdmin ctrAdmin = new CtrAdmin();
         rptRoleFunction.DataSource = ctrAdmin.FunctionGetChildInRole(CurrentNewsID);
         rptRoleFunction.DataBind();
+        divListAdmin.Visible = false;
+    }
+    protected void lbtAddAdmin_Click(object sender, EventArgs e)
+    {
+        if (rptAdminNotInRole.Items.Count == 0)
+            ClientScript.RegisterStartupScript(Page.GetType(), "thong bao", "alert('Tất cả các quản trị đã được thêm vào'", true);
+        else
+            divPopupAddAdmin.Visible = true;
+        
+    }
+    protected void linkClose_Click(object sender, EventArgs e)
+    {
+        divPopupAddAdmin.Visible = false;
     }
     protected void lbtSave_Click(object sender, EventArgs e)
     {
