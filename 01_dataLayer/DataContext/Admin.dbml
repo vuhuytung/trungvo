@@ -120,4 +120,79 @@
     <Parameter Name="Permission" Parameter="permission" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="dbo.uspAdminGetList" Method="uspAdminGetList">
+    <Parameter Name="Keyword" Parameter="keyword" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="RoleID" Parameter="roleID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
+    <Parameter Name="cur" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ps" Type="System.Int32" DbType="Int" />
+    <Parameter Name="total" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <ElementType Name="uspAdminGetListResult">
+      <Column Name="RowNumber" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="AdminID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FullName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Birthday" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Telephone" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="DateCreate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="[Level]" Member="Level" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.uspAdminUpdateStatus" Method="uspAdminUpdateStatus">
+    <Parameter Name="AdminID" Parameter="adminID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.uspAdminDeleteByAdminID" Method="uspAdminDeleteByAdminID">
+    <Parameter Name="AdminID" Parameter="adminID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.uspAdminGetInfoByAdminID" Method="uspAdminGetInfoByAdminID">
+    <Parameter Name="AdminID" Parameter="adminID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="uspAdminGetInfoByAdminIDResult">
+      <Column Name="AdminID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FullName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Birthday" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Telephone" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="DateCreate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="[Level]" Member="Level" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.uspAdminInsert" Method="uspAdminInsert">
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Password" Parameter="password" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FullName" Parameter="fullName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Birthday" Parameter="birthday" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Telephone" Parameter="telephone" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="DateCreate" Parameter="dateCreate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Level" Parameter="level" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.uspAdminUpdate" Method="uspAdminUpdate">
+    <Parameter Name="AdminID" Parameter="adminID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FullName" Parameter="fullName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Birthday" Parameter="birthday" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Telephone" Parameter="telephone" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="NVarChar(500)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.uspAdminUpdatePassword" Method="uspAdminUpdatePassword">
+    <Parameter Name="AdminID" Parameter="adminID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Password" Parameter="password" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
 </Database>
