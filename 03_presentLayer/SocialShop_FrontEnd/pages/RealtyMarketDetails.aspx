@@ -146,7 +146,7 @@
                                 <td>
                                     Địa chỉ
                                 </td>
-                                <td>
+                                <td style=" width:350px;">
                                     <%#Eval("Address")%>
                                 </td>
                             </tr>
