@@ -75,6 +75,37 @@ namespace WorkFlowBLL
             return BDS.AdminInstance.uspRoleFunctionUpdate(roleID, functionID, permission);
         }
 
+        #region Quản lý admin
+        public ClassExtend<int, uspAdminGetListResult> AdminGetList(string keyword,int roleID,int status, int cur, int ps)
+        {
+            ClassExtend<int, uspAdminGetListResult> ret = new ClassExtend<int, uspAdminGetListResult>();
+            int? total=0;
+            ret.Items = BDS.AdminInstance.uspAdminGetList(keyword, roleID, status,cur,ps, ref total).ToList();
+            ret.TotalRecord = total.Value;
+            return ret;
+        }
+        public int AdminUpdateStatus(int adminID, int status)
+        {
+            return BDS.AdminInstance.uspAdminUpdateStatus(adminID, status);
+        }
+        public int AdminDelete(int adminID)
+        {
+            return BDS.AdminInstance.uspAdminDeleteByAdminID(adminID);
+        }
+        public uspAdminGetInfoByAdminIDResult AdminGetInfo(int adminID)
+        {
+            return BDS.AdminInstance.uspAdminGetInfoByAdminID(adminID).FirstOrDefault();
+        }
+        public int AdminInsert(string userName,string password,string fullName,DateTime birthday,string email,string telephone,string description,int status)
+        {
+            return BDS.AdminInstance.uspAdminInsert(userName, password, status, fullName, birthday, email, telephone, description, DateTime.Now, 2);
+        }
+        public int AdminUpdate(int adminID,string fullName,DateTime birthday,string email,string telephone,string description,int status)
+        {
+            return BDS.AdminInstance.uspAdminUpdate(adminID, status, fullName, birthday, email, telephone, description);
+        }
+        #endregion
+
         /*
         /// <summary>
         /// Check Login BackEnd
