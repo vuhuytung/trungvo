@@ -16,6 +16,11 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
         if (!IsPostBack)
         {
             BindRpt();
+
+            if (!System.IO.Directory.Exists(Request.PhysicalApplicationPath + "/images/partner"))
+            {
+                System.IO.Directory.CreateDirectory(Request.PhysicalApplicationPath + "/images/partner");
+            }
         }
     }
     protected void btnThemmoi_Click(object sender, EventArgs e)
@@ -59,45 +64,53 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
         TextBox Name = (TextBox)RptDetail.Controls[1].FindControl("txtName");
         TextBox web = (TextBox)RptDetail.Controls[1].FindControl("txtWeb");
         CheckBox status = (CheckBox)RptDetail.Controls[1].FindControl("chkstatus");
-
-        if (fupload != null && img != null && ID != null && Name != null && web != null && status != null)
+        try
         {
-            if (fupload.FileName == "")
-            {
-                try
-                {
-                    partner.UpdatePartner(Int32.Parse(ID.Text), Name.Text, img.Text, web.Text, status.Checked);
-                    BindRpt();
-                    ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Cập nhật thành công !')", true);
-                }
-                catch
-                {
-                    ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Cập nhật lỗi !')", true);
-                }
-            }
-            else
-            {
-                try
-                {
 
-                    string strFile = Path.Combine(Request.PhysicalApplicationPath, "images\\partner");
-                    strFile += "\\" + fuploadLogo.FileName;
-                    var EditImage = System.Drawing.Image.FromFile(fuploadLogo.PostedFile.FileName);
-                    VTCO.Library.ImageResize Img = new VTCO.Library.ImageResize();
-                    var newimg = Img.Crop(EditImage, 150, 100, VTCO.Library.ImageResize.AnchorPosition.Center);
-                    newimg.Save(strFile);
-
-                    partner.UpdatePartner(Int32.Parse(ID.Text), Name.Text, @"/images/partner/" + fupload.FileName, web.Text, status.Checked);
-                    partner.DeleteImg(img.Text, Request);
-                    BindRpt();
-                    ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Cập nhật thành công !')", true);
-                }
-                catch
+            if (fupload != null && img != null && ID != null && Name != null && web != null && status != null)
+            {
+                if (fupload.FileName == "")
                 {
-                    ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Cập nhật lỗi !')", true);
+                    try
+                    {
+                        partner.UpdatePartner(Int32.Parse(ID.Text), Name.Text, img.Text, web.Text, status.Checked);
+                        BindRpt();
+                        ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Cập nhật thành công !')", true);
+                    }
+                    catch
+                    {
+                        ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Cập nhật lỗi !')", true);
+                    }
+                }
+                else
+                {
+                    try
+                    {
+
+                        string strFile = Path.Combine(Request.PhysicalApplicationPath, "images\\partner");
+                        strFile += "\\" + fuploadLogo.FileName;
+                        var EditImage = System.Drawing.Image.FromFile(fuploadLogo.PostedFile.FileName);
+                        VTCO.Library.ImageResize Img = new VTCO.Library.ImageResize();
+                        var newimg = Img.Crop(EditImage, 150, 100, VTCO.Library.ImageResize.AnchorPosition.Center);
+                        newimg.Save(strFile);
+
+                        partner.UpdatePartner(Int32.Parse(ID.Text), Name.Text, @"/images/partner/" + fupload.FileName, web.Text, status.Checked);
+                        partner.DeleteImg(img.Text, Request);
+                        BindRpt();
+                        ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Cập nhật thành công !')", true);
+                    }
+                    catch
+                    {
+                        ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Cập nhật lỗi !')", true);
+                    }
                 }
             }
         }
+        catch 
+        { 
+        }
+
+
     }
     protected void btnHuy_Click(object sender, EventArgs e)
     {

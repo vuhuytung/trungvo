@@ -1,15 +1,18 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/master/masterFrontend.master" AutoEventWireup="true"
     CodeFile="Default.aspx.cs" Inherits="pages_Default" %>
-
+ <%@ Register Src="~/userControls/ucSlide.ascx" TagName="slide" TagPrefix="uc" %>
 <%@ Register Src="~/userControls/ucDoitac.ascx" TagName="ucDoitac" TagPrefix="uc2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <link href="../css/main.css" rel="stylesheet" type="text/css" />
+    <script src="../csript/slide.js" type="text/javascript"></script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="plhBody" runat="Server">
     <div class="topSearch">
         <div class="containSubmenu">
         </div>
         <div class="leftTopSearch">
-            <div class="showImage">
+           <!-- <div class="showImage">
                 <div>
                     <div style="height: 185px;">
                         <img src="/images/duan.png" width="427" height="185" />
@@ -44,7 +47,8 @@
                         </td>
                     </tr>
                 </table>
-            </div>
+            </div>-->
+            <uc:slide  runat="server"/>
             <div class="clear">
             </div>
         </div>

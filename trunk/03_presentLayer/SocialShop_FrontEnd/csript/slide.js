@@ -2,8 +2,8 @@
 	    var currentIndex = -1;
 	    var interval;
 	    function showImage(index) {
-	        if (index < $('#bigPic .box').length) {
-	            var indexImage = $('#bigPic .box')[index]
+	        if (index < $('#bigPic .mybox').length) {
+	            var indexImage = $('#bigPic .mybox')[index]
 	            if (currentImage) {
 	                if (currentImage != indexImage) {
 	                    $(currentImage).css('z-index', 2);
@@ -23,7 +23,7 @@
 	    }
 
 	    function showNext() {
-	        var len = $('#bigPic .box').length;
+	        var len = $('#bigPic .mybox').length;
 	        var next = currentIndex < (len - 1) ? currentIndex + 1 : 0;
 	        showImage(next);
 	    }

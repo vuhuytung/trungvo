@@ -214,7 +214,65 @@
                         </tr>
                         <tr>
                             <td colspan="4" style="padding: 10px 300px;">
-                                <asp:Button ID="btnAdd" runat="server" Text="Thêm mới" OnClick="btnAdd_Click" Width="70" />
+                                <script type="text/javascript">
+                                    function checkAdd() {
+                                        var txtTitle = document.getElementById("ContentPlaceHolder1_txtTitle");
+                                        var txtName = document.getElementById("ContentPlaceHolder1_txtUser");
+                                        var txtPhone = document.getElementById("ContentPlaceHolder1_txtPhone");
+                                        var txtAddress = document.getElementById("ContentPlaceHolder1_txtAddress");
+                                        var txtPrice = document.getElementById("ContentPlaceHolder1_txtPrice");
+                                        var txtEmail = document.getElementById("ContentPlaceHolder1_txtEmail");
+                                        var ddlLocation = document.getElementById("ContentPlaceHolder1_ddlProvince2");
+                                        if (txtTitle.value == "") {
+                                            alert('Tiêu đề không được để trống !');
+                                            return false;
+                                        }
+                                        else if (txtName.value == "") {
+                                            alert('Họ tên không được để trống !');
+                                            return false;
+                                        }
+                                        else if (txtPhone.value == "") {
+                                            alert('Số điện thoại không được để trống !');
+                                            return false;
+                                        }
+                                        else if (txtAddress.value == "") {
+                                            alert('Địa chỉ không được để trống !');
+                                            return false;
+                                        }
+                                        else if (txtPrice.value == "") {
+                                            alert('Giá bán không được để trống !');
+                                            return false;
+                                        }
+                                        else if (ddlLocation.value == -1) {
+                                            alert('Bạn chưa chọn TP/Tỉnh !');
+                                            return false;
+                                        }
+                                        else {
+                                            if (isNaN(txtPrice.value)) {
+                                                alert('Giá bất động sản phải là kiểu số !');
+                                                return false;
+                                            }
+                                            if (isNaN(txtPhone.value)) {
+                                                alert('Số điện thoại phải là kiểu số !');
+                                                return false;
+                                            }
+                                            if (txtEmail.value != "") {
+                                                if (!CheckMail(txtEmail.value)) {
+                                                    alert('Email không đúng định dạng !');
+                                                    return false;
+                                                }
+                                            }
+                                            
+                                        }
+                                        return true;
+                                    }
+
+                                    function CheckMail(str) {
+                                        var RegExEmail = new RegExp("^[0-9a-z\\._]+@[0-9a-z]+\\..+$", "i");
+                                        return RegExEmail.test(str);
+                                    }
+                                </script>
+                                <asp:Button ID="btnAdd" runat="server" Text="Thêm mới" OnClick="btnAdd_Click" OnClientClick="return checkAdd()" Width="70" />
                                 <asp:Button ID="btnThoat" runat="server" Text="Thoát" OnClick="btnThoat_Click" Width="70" />
                             </td>
                         </tr>
@@ -292,7 +350,7 @@
                                 Địa điểm BĐS 
                             </td>
                             <td>
-                                <a><%#Eval("AdressBDS")%></a>
+                                <%#Eval("AdressBDS").ToString().Substring(0,1)!="-"? Eval("AdressBDS").ToString(): Eval("AdressBDS").ToString().Substring(1)%>
                             </td>
                             <tr>
                                 <td>
@@ -449,7 +507,58 @@
                             </tr>
                             <tr>
                                 <td colspan="4" style="padding: 10px 300px;">
-                                    <asp:Button ID="btnUpdate1" runat="server" Text="Cập nhật" OnClick="btnUpdate_Click"
+                                <script type="text/javascript">
+                                    function checkAdd1() {
+                                        var txtTitle = document.getElementById("ContentPlaceHolder1_RptDetail_txtTitle_0");
+                                        var txtName = document.getElementById("ContentPlaceHolder1_RptDetail_txtUser_0");
+                                        var txtPhone = document.getElementById("ContentPlaceHolder1_RptDetail_txtPhone_0");
+                                        var txtAddress = document.getElementById("ContentPlaceHolder1_RptDetail_txtAddress_0");
+                                        var txtPrice = document.getElementById("ContentPlaceHolder1_RptDetail_txtPrice_0");
+                                        var txtEmail = document.getElementById("ContentPlaceHolder1_RptDetail_txtEmail_0");
+                                        if (txtTitle.value == "") {
+                                            alert('Tiêu đề không được để trống !');
+                                            return false;
+                                        }
+                                        else if (txtName.value == "") {
+                                            alert('Họ tên không được để trống !');
+                                            return false;
+                                        }
+                                        else if (txtPhone.value == "") {
+                                            alert('Số điện thoại không được để trống !');
+                                            return false;
+                                        }
+                                        else if (txtAddress.value == "") {
+                                            alert('Địa chỉ không được để trống !');
+                                            return false;
+                                        }
+                                        else if (txtPrice.value == "") {
+                                            alert('Giá bán không được để trống !');
+                                            return false;
+                                        }
+                                        else {
+                                            if (isNaN(txtPrice.value)) {
+                                                alert('Giá bất động sản phải là kiểu số !');
+                                                return false;
+                                            }
+                                            if (isNaN(txtPhone.value)) {
+                                                alert('Số điện thoại phải là kiểu số !');
+                                                return false;
+                                            }
+                                            if (txtEmail.value != "") {
+                                                if (!CheckMail(txtEmail.value)) {
+                                                    alert('Email không đúng định dạng !');
+                                                    return false;
+                                                }
+                                            }
+                                        }
+                                        return true;
+                                    }
+                                    function CheckMail(str) {
+                                        var RegExEmail = new RegExp("^[0-9a-z\\._]+@[0-9a-z]+\\..+$", "i");
+                                        return RegExEmail.test(str);
+                                    }
+                                </script>
+                                    <asp:Button ID="btnUpdate1" runat="server" Text="Cập nhật" OnClick="btnUpdate_Click" OnClientClick="return checkAdd1()"
                                         Width="70" />
                                     <asp:Button ID="btnHuy1" runat="server" Text="Thoát" OnClick="btnHuy_Click" Width="70" />
                                 </td>
@@ -523,7 +632,7 @@
         </div>
         <div class="doc_content" style="float: left; width: 100%;">
             <div class="box">
-                <div class="title" style="width: 960px;">
+                <div class="title" style="width: 978px;">
                     <span>Danh sách tin BĐS</span>
                     <asp:LinkButton ID="lbtAddNew" runat="server" CssClass="title-addnew" OnClick="btnThemmoi_Click">
                 <img src="/BackEnd/img/addnew_16.png" style="vertical-align: top" alt='Thêm mới' />

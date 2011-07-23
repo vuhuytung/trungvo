@@ -19,6 +19,11 @@ public partial class BackEnd_pages_content_SlideShow : System.Web.UI.Page
             ucPaging1.PageDisplay = 5;
             ucPaging1.CurrentPage = 1;
             ucPaging1_PageChange(ucPaging1);
+
+            if (!System.IO.Directory.Exists(Request.PhysicalApplicationPath + "/images/slideshow"))
+            {
+                System.IO.Directory.CreateDirectory(Request.PhysicalApplicationPath + "/images/slideshow");
+            }
         }
     }
     protected void btnThemmoi_Click(object sender, EventArgs e)
@@ -147,7 +152,12 @@ public partial class BackEnd_pages_content_SlideShow : System.Web.UI.Page
             //up anh
             string strFile = Path.Combine(Request.PhysicalApplicationPath, "images\\slideshow");
             strFile += "\\" + FileUpload1.FileName;
-            FileUpload1.PostedFile.SaveAs(strFile);
+           // FileUpload1.PostedFile.SaveAs(strFile);
+
+            var EditImage1 = System.Drawing.Image.FromFile(FileUpload1.PostedFile.FileName);
+            VTCO.Library.ImageResize Img1 = new VTCO.Library.ImageResize();
+            var newimg1 = Img1.Crop(EditImage1, 380, 200, VTCO.Library.ImageResize.AnchorPosition.Center);
+            newimg1.Save(strFile);
             //create thumb img
             //doi ten file anh
 
