@@ -35,6 +35,7 @@ public partial class userControls_ucMenuTop : System.Web.UI.UserControl
             str = "<ul id='nav'>";
             tb = new List<uspCategoryGetListResult>();
             tb = menuMgr.GetListCategory(1);
+            str += "<li class='top'><div class='leftMenu'></div></li>";
             str += "<li class='top'><a href='/index.htm' class='top_link' ><span>Trang chủ</span></a></li>";
         }
         //Lấy các menu trong bảng tb có trạng thái hoạt động và có menu cha là parentID sắp xếp theo Order
@@ -73,6 +74,10 @@ public partial class userControls_ucMenuTop : System.Web.UI.UserControl
 
             str += GetMenuTop(tb, row.CategoryID, level + 1);
             str += "</li>";
+        }
+        if (level == 0)
+        {
+            str += "<li class='top'><div class='rightMenu'></div></li>";
         }
         str += "</ul>";
         return str;
