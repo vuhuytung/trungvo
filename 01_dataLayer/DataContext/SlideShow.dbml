@@ -14,16 +14,6 @@
       <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
-  <Function Name="dbo.uspSlideShowGetGroup" Method="uspSlideShowGetGroup">
-    <Parameter Name="Total" Parameter="total" Type="System.Int32" DbType="Int" />
-    <ElementType Name="uspSlideShowGetGroupResult">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Title" Type="System.String" DbType="NVarChar(400) NOT NULL" CanBeNull="false" />
-      <Column Name="Img" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
-      <Column Name="ImgThumb" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
-      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.uspSlideShowGetInfoByID" Method="uspSlideShowGetInfoByID">
     <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
     <ElementType Name="uspSlideShowGetInfoByIDResult">
@@ -55,6 +45,15 @@
     <Parameter Name="TotalRecord" Parameter="totalRecord" Type="System.Int32" DbType="Int" Direction="InOut" />
     <ElementType Name="uspSlideShowGetAllForPageResult">
       <Column Name="RowNumber" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(400) NOT NULL" CanBeNull="false" />
+      <Column Name="Img" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="ImgThumb" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.uspSlideShowGetGroup" Method="uspSlideShowGetGroup">
+    <ElementType Name="uspSlideShowGetGroupResult">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Title" Type="System.String" DbType="NVarChar(400) NOT NULL" CanBeNull="false" />
       <Column Name="Img" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />

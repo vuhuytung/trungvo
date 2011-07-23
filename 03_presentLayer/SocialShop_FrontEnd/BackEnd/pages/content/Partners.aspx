@@ -45,7 +45,25 @@
                     </tr>
                     <tr>
                         <td colspan="2" style="padding: 10px 100px;">
-                            <asp:Button ID="btnAdd" runat="server" Text="Thêm mới" OnClick="btnAdd_Click" Width="70" />
+                            <script type="text/javascript">
+                                function checkAdd() {
+                                    var txtTitle = document.getElementById("ContentPlaceHolder1_txtName");
+                                    var fupload = document.getElementById("ContentPlaceHolder1_fuploadLogo");
+
+                                    if (txtTitle.value == "") {
+                                        alert('Tên không được để trống !');
+                                        return false;
+                                    }
+                                    else if (fupload.value == "") {
+                                        alert('bạn chưa chọn đường dẩn ảnh !');
+                                        return false;
+                                    }
+
+                                    return true;
+                                }
+                            </script>
+                            <asp:Button ID="btnAdd" runat="server" Text="Thêm mới" OnClick="btnAdd_Click" OnClientClick="return checkAdd()"
+                                Width="70" />
                             <asp:Button ID="btnHuy" runat="server" Text="Thoát" OnClick="btnHuy1_Click" Width="70" />
                         </td>
                     </tr>
@@ -102,7 +120,18 @@
                         </tr>
                         <tr>
                             <td colspan="2" style="padding: 10px 100px;">
-                                <asp:Button ID="btnUpdate" runat="server" Text="Cập nhật" OnClick="btnUpdate_Click"
+                                <script type="text/javascript">
+                                    function checkAdd1() {
+                                        var txtTitle = document.getElementById("ContentPlaceHolder1_RptDetail_txtName_0");
+                                        if (txtTitle.value == "") {
+                                            alert('Tên không được để trống !');
+                                            return false;
+                                        }
+
+                                        return true;
+                                    }
+                                </script>
+                                <asp:Button ID="btnUpdate" runat="server" Text="Cập nhật" OnClick="btnUpdate_Click" OnClientClick="return checkAdd1()"
                                     Width="70" />
                                 <asp:Button ID="btnHuy" runat="server" Text="Thoát" OnClick="btnHuy_Click" Width="70" />
                             </td>
@@ -156,7 +185,7 @@
                     </HeaderTemplate>
                     <ItemTemplate>
                         <tr>
-                            <td style=" width:50px;">
+                            <td style="width: 50px;">
                             </td>
                             <td style="width: 700px;">
                                 <div class="img_thumb">
@@ -172,14 +201,15 @@
                                 <asp:CheckBox ID="chkStatus" Checked='<%#Eval("Status") %>' runat="server" Enabled="false" />
                             </td>
                             <td class="td2">
-                                <asp:LinkButton ID="lbtEdit" runat="server" CommandName="Edit" CommandArgument='<%#Eval("PartnersID") %>' ToolTip="Sửa" CssClass="edit_icon"></asp:LinkButton>
+                                <asp:LinkButton ID="lbtEdit" runat="server" CommandName="Edit" CommandArgument='<%#Eval("PartnersID") %>'
+                                    ToolTip="Sửa" CssClass="edit_icon"></asp:LinkButton>
                                 <script type="text/javascript">
                                     function confirm1() {
                                         return confirm("Bạn có muốn xóa Record này ko ?");
                                     }
                                 </script>
-                                <asp:LinkButton ID="lbtDelete"  runat="server" CommandName="Delete"
-                                    OnClientClick="return confirm1()" CommandArgument='<%#Eval("PartnersID")%>' ToolTip="Xóa" CssClass="delete_icon"></asp:LinkButton>
+                                <asp:LinkButton ID="lbtDelete" runat="server" CommandName="Delete" OnClientClick="return confirm1()"
+                                    CommandArgument='<%#Eval("PartnersID")%>' ToolTip="Xóa" CssClass="delete_icon"></asp:LinkButton>
                             </td>
                         </tr>
                     </ItemTemplate>

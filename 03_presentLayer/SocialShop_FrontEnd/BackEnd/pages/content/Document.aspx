@@ -62,7 +62,24 @@
                         </tr>
                         <tr>
                             <td colspan="2" style="padding: 10px 100px;">
-                                <asp:Button ID="btnAdd" runat="server" Text="Thêm mới" OnClick="btnAdd_Click" Width="70" />
+                                <script type="text/javascript">
+                                    function checkAdd() {
+                                        var txtTitle = document.getElementById("ContentPlaceHolder1_txtTitle");
+                                        var fupload = document.getElementById("ContentPlaceHolder1_fupload");
+                                        if (txtTitle.value == "") {
+                                            alert('Tiêu đề không được để trống !');
+                                            return false;
+                                        }
+                                        else if (fupload.value == "") {
+                                            alert('bạn chưa chọn đường dẩn tài liệu !');
+                                            return false;
+                                        }
+
+                                        return true;
+                                    }
+                                </script>
+                                <asp:Button ID="btnAdd" runat="server" Text="Thêm mới" OnClick="btnAdd_Click" OnClientClick="return checkAdd()"
+                                    Width="70" />
                                 <asp:Button ID="btnHuy" runat="server" Text="Hủy" OnClick="btnHuy_Click" Width="70" />
                             </td>
                         </tr>
@@ -131,7 +148,18 @@
                             </tr>
                             <tr>
                                 <td colspan="2" style="padding: 10px 100px;">
-                                    <asp:Button ID="btnUpdate" runat="server" Text="Cập nhật" OnClick="btnUpdate_Click"
+                                    <script type="text/javascript">
+                                        function checkAdd1() {
+                                            var txtTitle = document.getElementById("ContentPlaceHolder1_RptDetail_txtTitle_0");
+                                            if (txtTitle.value == "") {
+                                                alert('Tiêu đề không được để trống !');
+                                                return false;
+                                            }
+
+                                            return true;
+                                        }
+                                    </script>
+                                    <asp:Button ID="btnUpdate" runat="server" Text="Cập nhật" OnClick="btnUpdate_Click" OnClientClick="return checkAdd1()"
                                         Width="70" />
                                     <asp:Button ID="Button1" runat="server" Text="Hủy" OnClick="Button1_Click" Width="70" />
                                 </td>
@@ -197,7 +225,7 @@
         <div class="doc_content" style="float: left; width: 100%;">
             <div class="box">
                 <div class="title" style="width: 960px;">
-                    <span>Danh sach tài liệu</span>
+                    <span>Danh sách tài liệu</span>
                     <asp:LinkButton ID="lbtAddNew" runat="server" CssClass="title-addnew" OnClick="btnThemmoi_Click">
                 <img src="/BackEnd/img/addnew_16.png" style="vertical-align: top" alt='Thêm mới' />
                 Thêm mới

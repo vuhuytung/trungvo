@@ -15,7 +15,7 @@ namespace WorkFlowBLL
 
        private List<uspSlideShowGetGroupResult> SlideGetGroup()
        {
-           return BDS.SlideShowInstance.uspSlideShowGetGroup(3).ToList();
+           return BDS.SlideShowInstance.uspSlideShowGetGroup().ToList();
        }
        public List<uspSlideShowGetAllResult> SlideGetAll()
        {
@@ -56,11 +56,11 @@ namespace WorkFlowBLL
            sb.Append("<div id='bigPic'>");
            foreach (uspSlideShowGetGroupResult item in a)
            {
-               sb.Append("<div class='box'>");
-               sb.Append("<div class='box_img'>");
-               sb.Append("<img alt='anh' src='" + item.Img + "'/></div>");
+               sb.Append("<div class='mybox'>");
+               sb.Append("<div class='mybox_img'>");
+               sb.Append("<img alt='anh'  src='" + item.Img + "'/></div>");
 
-               sb.Append("<div class='box_title'>"+ item.Title + " </div>");
+               sb.Append("<div class='mybox_title'>"+ item.Title + " </div>");
                sb.Append("</div>");
            }
            sb.Append("</div>");
@@ -72,9 +72,9 @@ namespace WorkFlowBLL
            {
 
                sb.Append("<li rel='" + rel.ToString() + "'>");
-               sb.Append("<div class='my_Title'>" + item.Title + "</div>");
+               sb.Append("<div class='my_li'><div class='my_Title'>" + item.Title + "</div>");
                sb.Append("<div class='my_Img'><img src='" + item.Img + "' alt='anh'/></div>");
-               sb.Append("</li>");
+               sb.Append("</div></li>");
                rel++;
            }
 
