@@ -124,3 +124,9 @@ ul#thumbs li{
 	top:11px;
 	left:9px;
 }
+/*==========style for TopSearch=========*/
+
+.tbSearch tr td
+{
+    padding:3px 2px;
+}

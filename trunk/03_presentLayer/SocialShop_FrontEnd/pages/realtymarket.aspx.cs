@@ -62,7 +62,22 @@ public partial class pages_realtymarket : System.Web.UI.Page
     }
     protected void ucPaging1_PageChange(object sender)
     {
-        BindRpt();
+        if (Request.QueryString["code"] != null && Request.QueryString["typecode"] != null)
+        {
+            double begin = 0;
+            double end = 0;
+            GetPrice(Int32.Parse(Request.QueryString["price"]), ref begin, ref end);
+            CtrRealtyMarket ctrN = new CtrRealtyMarket();
+            var _data = ctrN.GetListRealtyMarketByCondition(Convert.ToInt32(Request.QueryString["code"]), Convert.ToInt32(Request.QueryString["typecode"]), Convert.ToInt32(Request.QueryString["typebds"]), begin, end, ucPaging1.CurrentPage, ucPaging1.PageSize);
+            RptReatyMarket.DataSource = _data.Items;
+            RptReatyMarket.DataBind();
+            ucPaging1.TotalRecord = _data.TotalRecord;
+
+        }
+        else
+        {
+            BindRpt();
+        }
        /* CtrRealtyMarket ctrN = new CtrRealtyMarket();
         var _data = ctrN.GetListRealtyMarketByCondition(1, 1, 1, 0, 50000, ucPaging1.CurrentPage, ucPaging1.PageSize);
         RptReatyMarket.DataSource = _data.Items;
@@ -126,7 +141,7 @@ public partial class pages_realtymarket : System.Web.UI.Page
             {
                 if (Int32.Parse(ddlVillage.SelectedValue.Split('_')[0]) != -1)
                 {
-                    int Code = Int32.Parse(ddlVillage.SelectedValue.Split('_')[0]);
+                    int Code = Int32.Parse(ddlVillage.SelectedValue.Split('_')[1]);
                     var _data = ctrN.GetListRealtyMarketByCondition(Code, 3, Int32.Parse(ddlTypeBDS.SelectedValue), begin, end, ucPaging1.CurrentPage, ucPaging1.PageSize);
                     RptReatyMarket.DataSource = _data.Items;
                     RptReatyMarket.DataBind();
@@ -134,7 +149,7 @@ public partial class pages_realtymarket : System.Web.UI.Page
                 }
                 else
                 {
-                    int Code = Int32.Parse(ddlDistrict.SelectedValue.Split('_')[0]);
+                    int Code = Int32.Parse(ddlDistrict.SelectedValue.Split('_')[1]);
                     var _data = ctrN.GetListRealtyMarketByCondition(Code, 2, Int32.Parse(ddlTypeBDS.SelectedValue), begin, end, ucPaging1.CurrentPage, ucPaging1.PageSize);
                     RptReatyMarket.DataSource = _data.Items;
                     RptReatyMarket.DataBind();
@@ -144,7 +159,7 @@ public partial class pages_realtymarket : System.Web.UI.Page
             }
             else
             {
-                int Code = Int32.Parse(ddlProvince.SelectedValue.Split('_')[0]);
+                int Code = Int32.Parse(ddlProvince.SelectedValue.Split('_')[1]);
                 var _data = ctrN.GetListRealtyMarketByCondition(Code, 1, Int32.Parse(ddlTypeBDS.SelectedValue), begin, end, ucPaging1.CurrentPage, ucPaging1.PageSize);
                 RptReatyMarket.DataSource = _data.Items;
                 RptReatyMarket.DataBind();
