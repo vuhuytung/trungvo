@@ -104,6 +104,22 @@ namespace WorkFlowBLL
         {
             return BDS.AdminInstance.uspAdminUpdate(adminID, status, fullName, birthday, email, telephone, description);
         }
+        public List<uspAdminGetListByRoleResult> AdminGetListByRole(int roleID)
+        {
+            return BDS.AdminInstance.uspAdminGetListByRole(roleID).ToList();
+        }
+        public List<uspAdminGetListNotInRoleResult> AdminGetListNotInRole(int roleID)
+        {
+            return BDS.AdminInstance.uspAdminGetListNotInRole(roleID).ToList();
+        }
+        public int PermissionDelete(int permissionID)
+        {
+            return BDS.AdminInstance.uspPermissionDeleteByPermissionID(permissionID);
+        }
+        public int PermissionInsert(int roleID, int adminID)
+        {
+            return BDS.AdminInstance.uspPermissionInsert(adminID, roleID);
+        }
         #endregion
 
         /*
