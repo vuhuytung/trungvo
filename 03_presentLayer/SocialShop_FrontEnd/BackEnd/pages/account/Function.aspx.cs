@@ -208,7 +208,6 @@ public partial class BackEnd_pages_account_Function : System.Web.UI.Page
     protected void btnSave_Click(object sender, EventArgs e)
     {
         string name = "";
-        int type = 1;
         int order = 1;
         int parentId = 1;
         string link = "";
@@ -218,10 +217,7 @@ public partial class BackEnd_pages_account_Function : System.Web.UI.Page
             name = HtmlUtility.HtmlEncode(txtMenuName.Text.Trim());
             order = Convert.ToInt32(txtOrder.Text);
             parentId = Convert.ToInt32(ddlParentID.SelectedValue);
-            if (type == 6)
-            {
-                link = HtmlUtility.HtmlEncode(txtUrl.Text.Trim());
-            }
+            link = HtmlUtility.HtmlEncode(txtUrl.Text.Trim());
             status = Convert.ToInt32(ddlStatus.SelectedValue);
             MyMenu.FunctionInsert(name, link, order, parentId,status);
             Response.Redirect("~/admin/function");
@@ -231,10 +227,7 @@ public partial class BackEnd_pages_account_Function : System.Web.UI.Page
             name = HtmlUtility.HtmlEncode(txtMenuName.Text.Trim());
             order = Convert.ToInt32(txtOrder.Text);
             parentId = Convert.ToInt32(ddlParentID.SelectedValue);
-            if (type == 6)
-            {
-                link = HtmlUtility.HtmlEncode(txtUrl.Text.Trim());
-            }
+            link = HtmlUtility.HtmlEncode(txtUrl.Text.Trim());
             status = Convert.ToInt32(ddlStatus.SelectedValue);
             MyMenu.FunctionUpdate(MenuID, name, link, order, parentId, status);
             Response.Redirect("~/admin/function");
