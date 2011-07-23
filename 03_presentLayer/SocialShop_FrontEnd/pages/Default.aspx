@@ -2,6 +2,7 @@
     CodeFile="Default.aspx.cs" Inherits="pages_Default" %>
  <%@ Register Src="~/userControls/ucSlide.ascx" TagName="slide" TagPrefix="uc" %>
 <%@ Register Src="~/userControls/ucDoitac.ascx" TagName="ucDoitac" TagPrefix="uc2" %>
+<%@ Register Src="~/userControls/ucTopSearch.ascx" TagName="Search" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <link href="../css/main.css" rel="stylesheet" type="text/css" />
     <script src="../csript/slide.js" type="text/javascript"></script>
@@ -56,7 +57,8 @@
             <div class="titleSearch png_bg">
                 TÌM KIẾM NÂNG CAO
             </div>
-            <div>
+
+           <!-- <div>
                 <div class="label nl">
                     Tìm tại</div>
                 <div class="value nr">
@@ -89,11 +91,8 @@
                     </select></div>
                 <div class="clear">
                 </div>
-            </div>
-            <div style="text-align: center; padding: 10px;">
-                <a href="#">
-                    <img src="/images/btnSearch.png" /></a>
-            </div>
+            </div>-->
+            <uc1:Search runat="server" />
         </div>
         <div class="clear">
         </div>
