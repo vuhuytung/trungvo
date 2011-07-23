@@ -253,6 +253,7 @@ public partial class BackEnd_pages_account_Role : System.Web.UI.Page
         rptRoleFunction.DataSource = ctrAdmin.FunctionGetChildInRole(CurrentNewsID);
         rptRoleFunction.DataBind();
         divListAdmin.Visible = false;
+        divPopupAddAdmin.Visible = false;
     }
     protected void lbtAddAdmin_Click(object sender, EventArgs e)
     {
