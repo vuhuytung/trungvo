@@ -36,8 +36,8 @@ public partial class pages_realtymarket : System.Web.UI.Page
             ddlVillage.Items.Insert(0, new ListItem("Tất cả", "-1"));
 
             //add Type BDS temp
-            ddlTypeBDS.Items.Add(new ListItem("Bất động sản cần bán","21"));
-            ddlTypeBDS.Items.Add(new ListItem("Bất động sản cần mua","22"));
+            ddlTypeBDS.Items.Add(new ListItem("Bất động sản cần bán", "21"));
+            ddlTypeBDS.Items.Add(new ListItem("Bất động sản cần mua", "22"));
 
             //add Price temp
             ddlPrice.Items.Add(new ListItem("tất cả", "0"));
@@ -50,15 +50,15 @@ public partial class pages_realtymarket : System.Web.UI.Page
             ddlPrice.Items.Add(new ListItem("trên 20 tỷ", "7"));
 
             //================
-            
+
             ucPaging1.PageSize = 10;
             ucPaging1.PageDisplay = 5;
 
             ucPaging1.CurrentPage = 1;
             ucPaging1_PageChange(ucPaging1);
-            
+
         }
-        
+
     }
     protected void ucPaging1_PageChange(object sender)
     {
@@ -74,15 +74,23 @@ public partial class pages_realtymarket : System.Web.UI.Page
             ucPaging1.TotalRecord = _data.TotalRecord;
 
         }
+        else if (Request.QueryString["CategoryID "] != null)
+        {
+            CtrRealtyMarket ctrN = new CtrRealtyMarket();
+            var _data = ctrN.GetListRealtyMarketByCondition(0, 1, Convert.ToInt32(Request.QueryString["CategoryID "]), 0, double.MaxValue, ucPaging1.CurrentPage, ucPaging1.PageSize);
+            RptReatyMarket.DataSource = _data.Items;
+            RptReatyMarket.DataBind();
+            ucPaging1.TotalRecord = _data.TotalRecord;
+        }
         else
         {
             BindRpt();
         }
-       /* CtrRealtyMarket ctrN = new CtrRealtyMarket();
-        var _data = ctrN.GetListRealtyMarketByCondition(1, 1, 1, 0, 50000, ucPaging1.CurrentPage, ucPaging1.PageSize);
-        RptReatyMarket.DataSource = _data.Items;
-        RptReatyMarket.DataBind();
-        ucPaging1.TotalRecord = _data.TotalRecord;*/
+        /* CtrRealtyMarket ctrN = new CtrRealtyMarket();
+         var _data = ctrN.GetListRealtyMarketByCondition(1, 1, 1, 0, 50000, ucPaging1.CurrentPage, ucPaging1.PageSize);
+         RptReatyMarket.DataSource = _data.Items;
+         RptReatyMarket.DataBind();
+         ucPaging1.TotalRecord = _data.TotalRecord;*/
     }
     private void GetPrice(int type, ref double begin, ref double end)
     {
@@ -169,14 +177,14 @@ public partial class pages_realtymarket : System.Web.UI.Page
         }
         else
         {
-           // var _data = ctrN.GetListRealtyMarketByCondition(0,1, 21, begin, end, ucPaging1.CurrentPage, ucPaging1.PageSize);
+            // var _data = ctrN.GetListRealtyMarketByCondition(0,1, 21, begin, end, ucPaging1.CurrentPage, ucPaging1.PageSize);
             var _data = ctrN.GetListRealtyMarketByCondition(0, 1, Convert.ToInt32(ddlTypeBDS.SelectedValue), begin, end, ucPaging1.CurrentPage, ucPaging1.PageSize);
             RptReatyMarket.DataSource = _data.Items;
             RptReatyMarket.DataBind();
             ucPaging1.TotalRecord = _data.TotalRecord;
         }
     }
-            
+
     protected void ddlProvince_SelectedIndexChanged(object sender, EventArgs e)
     {
         //int index = Int32.Parse(ddlProvince.SelectedValue.Split('_')[1]);
