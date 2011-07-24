@@ -192,7 +192,7 @@
                                         </div>
                                         <div class="adminColumn" style="width: 30px; text-align: left;">
                                             <asp:LinkButton ID="lbtDelete" runat="server" CssClass="delete_icon" ToolTip="Xóa"
-                                                OnClientClick="return ConfirmDelete()" CommandName="delete" CommandArgument='<%#Eval("AdminID") %>'>
+                                                OnClientClick="return ConfirmDelete()" CommandName="delete" CommandArgument='<%#Eval("PermissionID") %>'>
                                             </asp:LinkButton>&nbsp;
                                         </div>
                                     </div>
