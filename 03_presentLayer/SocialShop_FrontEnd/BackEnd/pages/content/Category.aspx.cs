@@ -195,9 +195,9 @@ public partial class BackEnd_pages_content_Category : System.Web.UI.Page
                     }
                     else
                     {
-                        SetControls(true);
-                        txtUrl.Text = HtmlUtility.HtmlDecode(MyMenuInfo.URL);
+                        SetControls(true);                        
                     }
+                    txtUrl.Text = HtmlUtility.HtmlDecode(MyMenuInfo.URL);
                     ddlMenuType.SelectedValue = MyMenuInfo.Type.ToString();
                     ddlParentID.SelectedValue = MyMenuInfo.ParentID.ToString();
 
