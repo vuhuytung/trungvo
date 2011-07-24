@@ -61,14 +61,35 @@ public partial class userControls_ucMenuTop : System.Web.UI.UserControl
 
             switch (row.Type.Value)
             {
+                case 1:
+                    if (level == 0)
+                        str += "<a href='#' class='top_link'><span " + down + ">" + row.Name + "</span></a>";
+                    else
+                        str += "<a href='#' " + fly + ">" + row.Name + "</a>";
+                    break;
                 case 2:
                     if (level == 0)
                         str += "<a href='/news/" + VTCO.Library.Lib.GetUrlText(row.Name) + "-" + row.CategoryID + "' class='top_link'><span " + down + ">" + row.Name + "</span></a>";
                     else
                         str += "<a href='/news/" + VTCO.Library.Lib.GetUrlText(row.Name) + "-" + row.CategoryID + "' " + fly + ">" + row.Name + "</a>";
                     break;
+                case 3:
+                    if (level == 0)
+                        str += "<a href='/document/" + VTCO.Library.Lib.GetUrlText(row.Name) + "-" + row.CategoryID + "' class='top_link'><span " + down + ">" + row.Name + "</span></a>";
+                    else
+                        str += "<a href='/document/" + VTCO.Library.Lib.GetUrlText(row.Name) + "-" + row.CategoryID + "' " + fly + ">" + row.Name + "</a>";
+                    break;
+                case 4:
+                    if (level == 0)
+                        str += "<a href='/realtymarket/" + VTCO.Library.Lib.GetUrlText(row.Name) + "-" + row.CategoryID + "' class='top_link'><span " + down + ">" + row.Name + "</span></a>";
+                    else
+                        str += "<a href='/realtymarket/" + VTCO.Library.Lib.GetUrlText(row.Name) + "-" + row.CategoryID + "' " + fly + ">" + row.Name + "</a>";
+                    break;
                 default:
-                    str += "<a href='#" + row.CategoryID + ".html' class='top_link'><span>" + row.Name + "</span></a>";
+                    if (level == 0)
+                        str += "<a href='" + row.URL + "' class='top_link'><span " + down + ">" + row.Name + "</span></a>";
+                    else
+                        str += "<a href='" + row.URL + "' " + fly + ">" + row.Name + "</a>";
                     break;
             }
 
