@@ -68,7 +68,7 @@ public partial class userControls_ucMenuTop : System.Web.UI.UserControl
                         str += "<a href='/news/" + VTCO.Library.Lib.GetUrlText(row.Name) + "-" + row.CategoryID + "' " + fly + ">" + row.Name + "</a>";
                     break;
                 default:
-                    str += "<a href='#" + row.CategoryID + ".html' class='top_link'>" + row.Name + "</a>";
+                    str += "<a href='#" + row.CategoryID + ".html' class='top_link'><span>" + row.Name + "</span></a>";
                     break;
             }
 
