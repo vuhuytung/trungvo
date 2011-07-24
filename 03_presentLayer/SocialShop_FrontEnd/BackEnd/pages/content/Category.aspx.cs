@@ -189,7 +189,7 @@ public partial class BackEnd_pages_content_Category : System.Web.UI.Page
                     {
                         SetControlsRdb(false);
                     }
-                    if (MyMenuInfo.Type != 4)//Convert.ToInt32(EnumMenuType.Link))
+                    if (MyMenuInfo.Type != 5)//Convert.ToInt32(EnumMenuType.Link))
                     {
                         SetControls(false);
                     }
@@ -284,7 +284,7 @@ public partial class BackEnd_pages_content_Category : System.Web.UI.Page
             }
             status = Convert.ToInt32(ddlStatus.SelectedValue);
             MyMenu.Update(MenuID, parentId, name, link, status, order, type);
-            Response.Redirect("~/admin/category");
+            SetControlsEdit(false, " Cập nhật ");
         }
     }
 
