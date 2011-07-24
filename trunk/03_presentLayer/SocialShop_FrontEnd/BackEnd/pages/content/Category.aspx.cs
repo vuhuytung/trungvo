@@ -200,6 +200,15 @@ public partial class BackEnd_pages_content_Category : System.Web.UI.Page
                     }
                     ddlMenuType.SelectedValue = MyMenuInfo.Type.ToString();
                     ddlParentID.SelectedValue = MyMenuInfo.ParentID.ToString();
+
+                    if (ddlMenuType.SelectedValue == "5")
+                    {
+                        SetControls(true);
+                    }
+                    else
+                    {
+                        SetControls(false);
+                    }
                 }
                 //else
                 //{
@@ -255,7 +264,7 @@ public partial class BackEnd_pages_content_Category : System.Web.UI.Page
             type = Convert.ToInt32(ddlMenuType.SelectedValue);
             order= Convert.ToInt32(txtOrder.Text);
             parentId = Convert.ToInt32(ddlParentID.SelectedValue);
-            if (type == 6)
+            if (type == 5)
             {
                 link = HtmlUtility.HtmlEncode(txtUrl.Text.Trim());
             }
@@ -269,7 +278,7 @@ public partial class BackEnd_pages_content_Category : System.Web.UI.Page
             type = Convert.ToInt32(ddlMenuType.SelectedValue);
             order = Convert.ToInt32(txtOrder.Text);
             parentId = Convert.ToInt32(ddlParentID.SelectedValue);
-            if (type == 6)
+            if (type == 5)
             {
                 link = HtmlUtility.HtmlEncode(txtUrl.Text.Trim());
             }
