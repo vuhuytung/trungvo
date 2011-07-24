@@ -126,8 +126,6 @@ ul.menu .sub {background:#d1d1d1 url(/images/arrow.gif) 170px 8px no-repeat}
     text-align:left;    
 }
 
-
-
 .topSearch
 {
     height:250px;
@@ -138,16 +136,16 @@ ul.menu .sub {background:#d1d1d1 url(/images/arrow.gif) 170px 8px no-repeat}
 .topSearch .leftTopSearch
 {
     float:left;
-    width:700px;
+    width:680px;
     height:250px;
 }
 .topSearch .rightTopSearch
 {
-    float:right;
-    width:225px;
+    float:left;
+    width:280px;
     height:210px;
     background:#FFF;
-    padding:20px;
+    padding:20px 10px;
 }
 .topSearch .showImage
 {

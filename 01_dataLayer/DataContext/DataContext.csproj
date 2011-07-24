@@ -64,6 +64,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Document.dbml</DependentUpon>
     </Compile>
+    <Compile Include="EmailContact.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmailContact.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Location.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -116,6 +121,11 @@
     <None Include="Document.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>Document.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="EmailContact.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>EmailContact.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
     <None Include="Location.dbml">
@@ -199,6 +209,11 @@
   <ItemGroup>
     <None Include="User.dbml.layout">
       <DependentUpon>User.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="EmailContact.dbml.layout">
+      <DependentUpon>EmailContact.dbml</DependentUpon>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
