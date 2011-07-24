@@ -11,10 +11,10 @@ public partial class userControls_ucDocument : System.Web.UI.UserControl
     protected int CatID = -1;
     protected void Page_Load(object sender, EventArgs e)
     {
-        CatID = 21;// Int32.Parse(Request.QueryString["CategoryID"]);
+        
         ucPaging1.PageChange += new UserControls_ucPaging.PagingHandler(ucPaging1_PageChange);
         if (!IsPostBack)
-        {            
+        {
             ucPaging1.PageSize = 3;
             ucPaging1.PageDisplay = 5;
 
@@ -25,10 +25,21 @@ public partial class userControls_ucDocument : System.Web.UI.UserControl
 
     protected void ucPaging1_PageChange(object sender)
     {
-        CtrDocument ctrN = new CtrDocument();
-        var _data = ctrN.GetListDocByCategory(CatID, ucPaging1.CurrentPage, ucPaging1.PageSize);
-        RptDocument.DataSource = _data.Items;
-        RptDocument.DataBind();
-        ucPaging1.TotalRecord = _data.TotalRecord;
+        try
+        {
+            if (Request.QueryString["CategoryID "] != null)
+            {
+                CtrDocument ctrN = new CtrDocument();
+                var _data = ctrN.GetListDocByCategory(Convert.ToInt32(Request.QueryString["CategoryID "]), ucPaging1.CurrentPage, ucPaging1.PageSize);
+                RptDocument.DataSource = _data.Items;
+                RptDocument.DataBind();
+                ucPaging1.TotalRecord = _data.TotalRecord;
+            }
+        }
+        catch
+        {
+                
+        }
+        
     }
 }
