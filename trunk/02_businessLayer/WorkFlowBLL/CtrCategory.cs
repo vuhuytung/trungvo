@@ -82,6 +82,11 @@ namespace WorkFlowBLL
             return BDS.CategoryInstance.uspCategoryDeleteByCategoryID(categoryID);
         }
 
+        public List<uspCategoryGetNavigatorResult> GetNavigator(int categoryID)
+        {
+            return BDS.CategoryInstance.uspCategoryGetNavigator(categoryID).ToList();
+        }
+
         //private void GenHtmlMenu(List<uspCategoryGetAllResult> menu, int ParentID,int y)
         //{
         //    try
