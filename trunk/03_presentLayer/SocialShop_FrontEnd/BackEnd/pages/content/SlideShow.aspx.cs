@@ -32,7 +32,7 @@ public partial class BackEnd_pages_content_SlideShow : System.Web.UI.Page
     }
     protected void ucPaging1_PageChange(object sender)
     {
-        
+
         //var _data = ctrN.GetAllDoc(Int32.Parse(ddlTypeDoc.SelectedValue), ucPaging1.CurrentPage, ucPaging1.PageSize, "n", 2);
         BindRpt(); ;
         //ucPaging1.TotalRecord = _data.TotalRecord;
@@ -73,10 +73,21 @@ public partial class BackEnd_pages_content_SlideShow : System.Web.UI.Page
             {
                 try
                 {
+                    //delete old images 
 
+                    slide.DeleteImg(img.ImageUrl.Replace("/", "\\"), Request);
+                    slide.DeleteImg(imgThumb.Value.Replace("/", "\\"), Request);
+
+                    //=======================
                     string strFile = Path.Combine(Request.PhysicalApplicationPath, "images\\slideshow");
                     strFile += "\\" + fupload.FileName;
-                    fupload.PostedFile.SaveAs(strFile);
+                    //fupload.PostedFile.SaveAs(strFile);
+                    // FileUpload1.PostedFile.SaveAs(strFile);
+
+                    var EditImage1 = System.Drawing.Image.FromFile(fupload.PostedFile.FileName);
+                    VTCO.Library.ImageResize Img1 = new VTCO.Library.ImageResize();
+                    var newimg1 = Img1.Crop(EditImage1, 370, 210, VTCO.Library.ImageResize.AnchorPosition.Center);
+                    newimg1.Save(strFile);
                     //create Image Thumb
 
                     int length = fupload.FileName.Length - 4;
@@ -86,7 +97,7 @@ public partial class BackEnd_pages_content_SlideShow : System.Web.UI.Page
                     string strFile1 = Path.Combine(Request.PhysicalApplicationPath, "images\\slideshow");
                     strFile1 += "\\" + newname;
 
-                    var EditImage = System.Drawing.Image.FromFile(FileUpload1.PostedFile.FileName);
+                    var EditImage = System.Drawing.Image.FromFile(fupload.PostedFile.FileName);
                     VTCO.Library.ImageResize Img = new VTCO.Library.ImageResize();
                     var newimg = Img.Crop(EditImage, 150, 100, VTCO.Library.ImageResize.AnchorPosition.Center);
                     newimg.Save(strFile1);
@@ -126,9 +137,9 @@ public partial class BackEnd_pages_content_SlideShow : System.Web.UI.Page
                 HiddenField Img = (HiddenField)e.Item.FindControl("Img");
                 HiddenField ImgThumb = (HiddenField)e.Item.FindControl("ImgThumb");
                 //delete img
-                slide.DeleteImg(Img.Value.Replace("/","\\"),Request);
+                slide.DeleteImg(Img.Value.Replace("/", "\\"), Request);
                 slide.DeleteImg(ImgThumb.Value.Replace("/", "\\"), Request);
-                
+
                 slide.SlideDeleteByID(Int32.Parse(e.CommandArgument.ToString()));
                 ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Delete thành công !')", true);
             }
@@ -140,33 +151,32 @@ public partial class BackEnd_pages_content_SlideShow : System.Web.UI.Page
             {
                 BindRpt();
             }
-                
+
 
         }
     }
     protected void btnAdd_Click(object sender, EventArgs e)
     {
         try
-        
         {
             //up anh
             string strFile = Path.Combine(Request.PhysicalApplicationPath, "images\\slideshow");
             strFile += "\\" + FileUpload1.FileName;
-           // FileUpload1.PostedFile.SaveAs(strFile);
+            // FileUpload1.PostedFile.SaveAs(strFile);
 
             var EditImage1 = System.Drawing.Image.FromFile(FileUpload1.PostedFile.FileName);
             VTCO.Library.ImageResize Img1 = new VTCO.Library.ImageResize();
-            var newimg1 = Img1.Crop(EditImage1, 380, 200, VTCO.Library.ImageResize.AnchorPosition.Center);
+            var newimg1 = Img1.Crop(EditImage1, 370, 210, VTCO.Library.ImageResize.AnchorPosition.Center);
             newimg1.Save(strFile);
             //create thumb img
             //doi ten file anh
 
-            int length = FileUpload1.FileName.Length-4;
-            string newname = FileUpload1.FileName.Substring(0, length)+"_thumb";
+            int length = FileUpload1.FileName.Length - 4;
+            string newname = FileUpload1.FileName.Substring(0, length) + "_thumb";
             string exp = FileUpload1.FileName.Substring(length);
             newname = newname + exp;
             string strFile1 = Path.Combine(Request.PhysicalApplicationPath, "images\\slideshow");
-            strFile1 +="\\" + newname;
+            strFile1 += "\\" + newname;
 
             var EditImage = System.Drawing.Image.FromFile(FileUpload1.PostedFile.FileName);
             VTCO.Library.ImageResize Img = new VTCO.Library.ImageResize();
@@ -175,7 +185,7 @@ public partial class BackEnd_pages_content_SlideShow : System.Web.UI.Page
             //
 
             //========
-            slide.SlideInsert(txtTitle.Text, @"/images/slideshow/" + FileUpload1.FileName, @"/images/slideshow/" +newname, chkstatus.Checked == true ? 1 : 0);
+            slide.SlideInsert(txtTitle.Text, @"/images/slideshow/" + FileUpload1.FileName, @"/images/slideshow/" + newname, chkstatus.Checked == true ? 1 : 0);
             BindRpt();
             ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Thêm mới thành công !')", true);
         }

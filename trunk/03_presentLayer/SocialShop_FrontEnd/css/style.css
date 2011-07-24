@@ -206,13 +206,13 @@ ul.menu .sub {background:#d1d1d1 url(/images/arrow.gif) 136px 8px no-repeat}
 .topSearch .leftTopSearch
 {
     float:left;
-    width:705px;
+    width:680px;
     height:250px;
 }
 .topSearch .rightTopSearch
 {
-    float:right;
-    width:225px;
+    float:left;
+    width:235px;
     height:210px;
     background:#FFF;
     padding:20px;

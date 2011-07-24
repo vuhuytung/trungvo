@@ -25,6 +25,7 @@ public partial class userControls_ucContact : System.Web.UI.UserControl
         {
             content.Append(txtPhone.Text + "\n");
         }
+        content.Append(txtContent.Text + "\n");
         if (mail.Send_Email(txtEmail.Text, txtTitle.Text, content.ToString()))
         {
             //do somethings is here

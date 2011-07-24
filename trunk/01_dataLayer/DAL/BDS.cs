@@ -76,6 +76,13 @@ namespace DAL
                return VTCO.Config.Pattern.Singleton<DBUser>.Instance.CreateInstance();
            }
        }
+       public static DataContext.EmailContactDataContext EmailInstance
+       {
+           get
+           {
+               return VTCO.Config.Pattern.Singleton<DBEmail>.Instance.CreateInstance();
+           }
+       }
     }
 }
 
