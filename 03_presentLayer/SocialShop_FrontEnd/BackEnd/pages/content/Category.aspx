@@ -25,7 +25,7 @@
     </script>
     <div class="box" style="width: 920px">
         <div class="title">
-            Hệ thống quản lý Menu
+            <span> Hệ thống quản lý Menu</span>
         </div>
         <div class="content" style="width: 918px">
             <div id="divContentMenuAdmin">

@@ -113,7 +113,9 @@ public partial class BackEnd_pages_content_Category : System.Web.UI.Page
         ddlMenuType.Items.Add(new ListItem("Tin tức", "2"));
         ddlMenuType.Items.Add(new ListItem("Tài nguyên", "3"));
         ddlMenuType.Items.Add(new ListItem("Bất động sản", "4"));
-        ddlMenuType.Items.Add(new ListItem("Liên kết ngoài", "5"));
+        ddlMenuType.Items.Add(new ListItem("Liên kết", "5"));
+        ddlMenuType.Items.Add(new ListItem("Đăng tin bất động sản", "6"));
+        ddlMenuType.Items.Add(new ListItem("Liên hệ", "7"));
     }
 
     private void BinDataForDropDllPrentID()
@@ -201,13 +203,18 @@ public partial class BackEnd_pages_content_Category : System.Web.UI.Page
                     ddlMenuType.SelectedValue = MyMenuInfo.Type.ToString();
                     ddlParentID.SelectedValue = MyMenuInfo.ParentID.ToString();
 
-                    if (ddlMenuType.SelectedValue == "5")
+                    if ((ddlMenuType.SelectedValue == "5") && (MyMenuInfo.URL.Trim() != "/contact") && (MyMenuInfo.URL.Trim() != "/addrealtymarket"))
                     {
                         SetControls(true);
                     }
                     else
                     {
                         SetControls(false);
+
+                        if (MyMenuInfo.URL.Trim() == "/contact")
+                            ddlMenuType.SelectedValue = "7";
+                        else
+                            ddlMenuType.SelectedValue = "6";
                     }
                 }
                 //else
@@ -281,6 +288,16 @@ public partial class BackEnd_pages_content_Category : System.Web.UI.Page
             if (type == 5)
             {
                 link = HtmlUtility.HtmlEncode(txtUrl.Text.Trim());
+            }
+            if(type==6)
+            {
+                type = 5;
+                link = "/addrealtymarket";
+            }
+            if (type == 7)
+            {
+                type = 5;
+                link = "/contact";
             }
             status = Convert.ToInt32(ddlStatus.SelectedValue);
             MyMenu.Update(MenuID, parentId, name, link, status, order, type);
