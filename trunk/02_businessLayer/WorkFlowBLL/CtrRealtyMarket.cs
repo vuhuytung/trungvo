@@ -20,10 +20,25 @@ namespace WorkFlowBLL
           ret.TotalRecord = total.Value;
           return ret;
       }
+
+      public ClassExtend<string, uspRealtyMarketGetAllByCatIDResult> GetListRealtyMarketByCatID(int CatID, int Cur, int ps)
+      {
+
+          ClassExtend<string, uspRealtyMarketGetAllByCatIDResult> ret = new ClassExtend<string, uspRealtyMarketGetAllByCatIDResult>();
+          int? total = 0;
+          ret.Items = BDS.RealtymarketInstance.uspRealtyMarketGetAllByCatID(CatID, Cur, ps, ref total).ToList();
+          ret.TotalRecord = total.Value;
+          return ret;
+      }
       public List<uspRealtyMarketGetInfoByRealtyMarketIDResult> GetDetailRealtyMarketByID(int id)
       {
           return BDS.RealtymarketInstance.uspRealtyMarketGetInfoByRealtyMarketID(id).ToList();
       }
+      public List<uspRealtyMarketGetCatIdByTypeResult> GetCatByType()
+      {
+          return BDS.RealtymarketInstance.uspRealtyMarketGetCatIdByType(4).ToList();
+      }
+
       public void UpdateMarket(int ID, string Title, string Desc, string user, string phone, string email, double price, int TypeBDS, string Img, string ImgThumb,string Legal, string Acreage, string ClientRoom, string bedRoom, string bathroom, string Position,string address, string Floor, int Location,string Street,  bool maugiao, bool hospital, bool school, bool market, bool university, bool Status)
       {
           BDS.RealtymarketInstance.uspRealtyMarketUpdateByRealtyMarketID(ID, Title, Img, ImgThumb, Desc, user, phone, email, price, TypeBDS, Legal, Acreage, ClientRoom, bedRoom, bathroom, Position, Floor, maugiao, hospital, school, market, university, address, Location, Street, Status);

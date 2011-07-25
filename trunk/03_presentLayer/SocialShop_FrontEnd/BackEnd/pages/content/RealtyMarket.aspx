@@ -56,8 +56,6 @@
                             </td>
                             <td style="padding: 5px 0px;">
                                 <asp:DropDownList ID="ddlTypeBDSs2" runat="server">
-                                    <asp:ListItem Text="Bất động sản cần bán" Value="21" />
-                                    <asp:ListItem Text="Bất động sản cần mua" Value="22" />
                                 </asp:DropDownList>
                             </td>
                         </tr>
@@ -341,8 +339,6 @@
                                 </td>
                                 <td style="padding: 5px 0px;">
                                     <asp:DropDownList ID="ddlTypeBDS" runat="server">
-                                        <asp:ListItem Text="Bất động sản cần bán" Value="21" />
-                                        <asp:ListItem Text="Bất động sản cần mua" Value="22" />
                                     </asp:DropDownList>
                                 </td>
                             </tr>

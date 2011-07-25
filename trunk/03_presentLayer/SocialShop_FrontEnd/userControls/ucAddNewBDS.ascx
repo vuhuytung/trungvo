@@ -19,7 +19,7 @@
         return true;
     }
 </script>
-<table cellspacing="8" style=" margin-left:80px;">
+<table cellspacing="8" style="margin-left: 80px;">
     <tr>
         <td colspan="4" style="text-align: center; padding: 5px 0;">
             <a style="color: Red; font-size: 16px;">Nhập thông tin</a>
@@ -45,7 +45,8 @@
             Địa chỉ
         </td>
         <td style="padding: 5px 0;">
-            <asp:TextBox ID="txtAddress" runat="server" Text="" BorderColor="#ED8080" BorderWidth="1" Width="200"></asp:TextBox>
+            <asp:TextBox ID="txtAddress" runat="server" Text="" BorderColor="#ED8080" BorderWidth="1"
+                Width="200"></asp:TextBox>
         </td>
     </tr>
     <tr>
@@ -88,6 +89,18 @@
         <td style="padding: 5px 0;">
             <asp:DropDownList ID="ddlVillage" runat="server">
             </asp:DropDownList>
+        </td>
+    </tr>
+    <tr>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td style="padding: 10px 0;">
+            số nhà,Đường phố/thôn-xóm:
+        </td>
+        <td>
+            <asp:TextBox ID="txtStreet" runat="server"></asp:TextBox>
         </td>
     </tr>
     <tr>
@@ -204,7 +217,7 @@
     <tr>
         <td colspan="4" style="padding: 10px 300px;">
             <asp:Button ID="btnAdd" runat="server" Text="Thêm mới" OnClick="btnAdd_Click" Width="70" />
-            <asp:Button ID="btnThoat" runat="server" Text="Thoát"  Width="70" />
+            <asp:Button ID="btnThoat" runat="server" Text="Thoát" Width="70" />
         </td>
     </tr>
 </table>
