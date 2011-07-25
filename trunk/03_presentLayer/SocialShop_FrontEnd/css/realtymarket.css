@@ -1,6 +1,5 @@
 ﻿body 
 {
-    font-family:Arial;
 }
  .realty_item
         {
@@ -8,39 +7,91 @@
             width:100%;
             border-bottom:1px dotted #E8DC5C;
             padding:3px;
+            font-family:Arial,Tahoma,Verdana;
+            font-size:12px;
         }
         .img_item
         {
-            width:100px;
+            width:120px;
             height:100px;
             float:left;
             margin-right:10px;
             border:1px dotted #CFCFCF;
+            font-family:Arial,Tahoma,Verdana;
         }
         .detail_item
         {
             float:left;
             height:70px;
+            font-family:Arial,Tahoma,Verdana;
+            font-size:12px;
+        }
+        .detail_item_title
+        {
+             width:100%;
+             float:left;
+             padding:2px;
+        }
+        .detail_item_title a
+        {
+            color:#0564A7;
+            font-weight:bold;
+        }
+        .detail_item_price
+        {
+            width:100%;
+            float:left;
+            padding:2px;
+        }
+        .detail_item_price a
+        {
+            color:Black;
+        }
+        .detail_item_date
+        {
+            float:left;
+            width:100%;
+            padding:2px;
+        }
+        .detail_item_date a
+        {
+            color:#44C2FA;
         }
         .topsearch
         {
             width:100%;
-            background:#C2C63D;
+            background:#EFEDED;
             margin-bottom:10px;
             padding-bottom:10px;
+            font-family:Arial,Tahoma,Verdana;
         }
         a
         {
             text-decoration:none;
             color:Blue;
+            font-family:Arial,Tahoma,Verdana;
+            font-size:12px;
         }
         .tbMarket tr td
         {
             padding:5px;
-            
+            font-family:Arial,Tahoma,Verdana;
+            font-size:12px;
         }
         .tbMarket
         {
             margin-left:50px;
+            font-family:Arial,Tahoma,Verdana;
+        }
+        .btnButton
+        {
+            font-family:Arial,Tahoma,Verdana;
+            font-size:12px;
+        }
+        .ddl
+        {
+            
+            font-family:Arial,Tahoma,Verdana;
+            font-size:12px;
         }
         

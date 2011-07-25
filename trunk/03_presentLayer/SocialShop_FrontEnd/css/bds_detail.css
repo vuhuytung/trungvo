@@ -1,70 +1,81 @@
-﻿body 
+﻿body
 {
-    font-size:16px;
+    font-size: 16px;
 }
 
 .bds_info
 {
-    width:100%;
-    float:left;
+    width: 100%;
+    float: left;
 }
 h2
 {
-    font-size:18px;
-    color:Red;
-    padding-bottom:5px;
-    border-bottom:1px solid #CFCFCF;
+    font-size: 18px;
+    color: Red;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #CFCFCF;
 }
 .bds_desc
 {
-    float:left;
-    padding:5px 5px;
-    width:100%;
- 
+    float: left;
+    padding: 5px 5px;
+    width: 100%;
 }
 .bds_other
 {
-    float:left;
-    width:100%;
-    padding-top:20px;
+    float: left;
+    width: 100%;
+    padding-top: 20px;
 }
 .bds_contact
 {
-    float:left;
-    width:100%;
-    padding:5px 5px;
+    float: left;
+    width: 100%;
+    padding: 5px 5px;
 }
-.tblDetail tr td 
+.tblDetail tr td
 {
-    width:170px;
+    width: 170px;
 }
 .tblDetail a
 {
-     color:Red;
-     font-weight:bold;
+    color: Red;
+    font-weight: bold;
 }
 .tblDetail a:hover
 {
-    text-decoration:none;
+    text-decoration: none;
 }
 .bds_img img
 {
-    padding-left:60px;
-    padding-top:20px;
-    padding-bottom:100px;
-    
+    padding-left: 60px;
+    padding-top: 20px;
+    padding-bottom: 100px;
 }
 .tbl_contact tr td
 {
-     width:120px;
+    width: 120px;
 }
 .tbl_addnewbds tr td a
 {
-    color:Red;
+    color: Red;
 }
-.tbl_addnewbds 
+.tbl_addnewbds
 {
-    margin-left:10px;
-} 
+    margin-left: 10px;
+}
+.myTable
+{
+    margin-left: 80px;
+}
+.myTable tr td
+{
+    font-family: Arial,Tahoma,Verdana;
+    font-size: 12px;
+}
+.btnButton
+{
+    font-family: Arial,Tahoma,Verdana;
+    font-size: 12px;
+}
 
- 

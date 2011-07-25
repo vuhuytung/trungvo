@@ -6,7 +6,7 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="plhBody" Runat="Server">
-<div style=" padding-left:200px;">
+<div style=" padding-left:200px; font:12px Arial;">
     <uc1:ucContact ID="ucContact1" runat="server" />
 </div>
 </asp:Content>

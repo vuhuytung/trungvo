@@ -79,10 +79,11 @@ public partial class pages_realtymarket : System.Web.UI.Page
             ucPaging1.TotalRecord = _data.TotalRecord;
 
         }
-        else if (Request.QueryString["CategoryID "] != null)
+        else if (!string.IsNullOrEmpty(Request.QueryString["CategoryID"]))
         {
+            
             CtrRealtyMarket ctrN = new CtrRealtyMarket();
-            var _data = ctrN.GetListRealtyMarketByCatID(Convert.ToInt32(Request.QueryString["CategoryID "]),ucPaging1.CurrentPage, ucPaging1.PageSize);
+            var _data = ctrN.GetListRealtyMarketByCatID(Convert.ToInt32(Request.QueryString["CategoryID"]),ucPaging1.CurrentPage, ucPaging1.PageSize);
             RptReatyMarket.DataSource = _data.Items;
             RptReatyMarket.DataBind();
             ucPaging1.TotalRecord = _data.TotalRecord;

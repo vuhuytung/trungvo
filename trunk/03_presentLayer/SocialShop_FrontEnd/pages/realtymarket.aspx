@@ -23,16 +23,15 @@
                                         TP/Tỉnh
                                     </td>
                                     <td>
-                                        <asp:DropDownList ID="ddlProvince" runat="server" OnSelectedIndexChanged="ddlProvince_SelectedIndexChanged"
+                                        <asp:DropDownList ID="ddlProvince" CssClass="ddl" runat="server" OnSelectedIndexChanged="ddlProvince_SelectedIndexChanged"
                                             AutoPostBack="true">
                                         </asp:DropDownList>
                                     </td>
-                               
                                     <td>
                                         Quận/Huyện
                                     </td>
                                     <td>
-                                        <asp:DropDownList ID="ddlDistrict" runat="server" AutoPostBack="true" Height="22px"
+                                        <asp:DropDownList ID="ddlDistrict" CssClass="ddl"  runat="server" AutoPostBack="true" Height="22px"
                                             OnSelectedIndexChanged="ddlDistrict_SelectedIndexChanged" Width="136px">
                                         </asp:DropDownList>
                                     </td>
@@ -42,15 +41,14 @@
                                         Phường/Xã
                                     </td>
                                     <td>
-                                        <asp:DropDownList ID="ddlVillage" runat="server" Width="136px">
+                                        <asp:DropDownList ID="ddlVillage" CssClass="ddl"  runat="server" Width="136px">
                                         </asp:DropDownList>
                                     </td>
-                                
                                     <td>
                                         Loại BĐS
                                     </td>
                                     <td>
-                                        <asp:DropDownList ID="ddlTypeBDS" runat="server">
+                                        <asp:DropDownList ID="ddlTypeBDS" CssClass="ddl"  runat="server">
                                         </asp:DropDownList>
                                     </td>
                                 </tr>
@@ -59,11 +57,11 @@
                                         Khoảng Giá
                                     </td>
                                     <td>
-                                        <asp:DropDownList ID="ddlPrice" runat="server">
+                                        <asp:DropDownList ID="ddlPrice" CssClass="ddl" runat="server">
                                         </asp:DropDownList>
                                     </td>
-                                    <td  style="text-align: center; padding-top: 7px;">
-                                        <asp:Button ID="btnSearch" runat="server" Text="Tìm" Width="70px" OnClick="btnSearch_Click" />
+                                    <td style="text-align: center; padding-top: 7px;">
+                                        <asp:Button ID="btnSearch" CssClass="btnButton" runat="server" Text="Tìm" Width="70px" OnClick="btnSearch_Click" />
                                     </td>
                                 </tr>
                             </table>
@@ -74,11 +72,20 @@
                             <ItemTemplate>
                                 <div class="realty_item">
                                     <div class="img_item">
-                                        <img alt="anh" src="<%#Eval("ImageThumb")%>" width="100"  />
+                                        <img alt="anh" src="<%#Eval("ImageThumb")%>" />
                                     </div>
                                     <div class="detail_item">
-                                        <a href='RealtyMarketDetails.aspx?ID=<%#Eval("RealtyMarketID")%>'>
-                                            <%#Eval("Title")%></a>
+                                        <div class="detail_item_title">
+                                            <a href='RealtyMarketDetails.aspx?ID=<%#Eval("RealtyMarketID")%>'>
+                                                <%#Eval("Title")%></a>
+                                        </div>
+                                        <div class="detail_item_price">
+                                            <a>Giá: <%#string.Format("{0:0,0 vnđ}", Eval("Price"))%></a>
+                                        </div>
+                                        <div class="detail_item_date">
+                                            <a><%#Convert.ToDateTime(Eval("CreateDate")).ToString("dd-MM-yyyy")%></a>
+                                        </div>
+
                                     </div>
                                 </div>
                             </ItemTemplate>
