@@ -39,9 +39,12 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
 
             //add Type BDS temp
             //ddlTypeBDS.Items.Add(new ListItem("Tất cả","0"));
-            ddlTypeBDS.Items.Add(new ListItem("Bất động sản cần bán", "21"));
-            ddlTypeBDS.Items.Add(new ListItem("Bất động sản cần mua", "22"));
-
+            //ddlTypeBDS.Items.Add(new ListItem("Bất động sản cần bán", "21"));
+            //ddlTypeBDS.Items.Add(new ListItem("Bất động sản cần mua", "22"));
+            ddlTypeBDS.DataSource = ctrN.GetCatByType();
+            ddlTypeBDS.DataTextField = "Name";
+            ddlTypeBDS.DataValueField = "CategoryID";
+            ddlTypeBDS.DataBind();
             //add Price temp
             ddlPrice.Items.Add(new ListItem("tất cả", "0"));
             ddlPrice.Items.Add(new ListItem("dưới 20 triệu", "1"));
@@ -51,7 +54,6 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
             ddlPrice.Items.Add(new ListItem("2-10 tỷ", "5"));
             ddlPrice.Items.Add(new ListItem("10-20 tỷ", "6"));
             ddlPrice.Items.Add(new ListItem("trên 20 tỷ", "7"));
-
 
             //================
 
@@ -66,7 +68,6 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
                 System.IO.Directory.CreateDirectory(Request.PhysicalApplicationPath + "/images/Market");
             }
         }
-
     }
     private void BindDrop(ref DropDownList ddl1, ref DropDownList ddl2, ref DropDownList ddl3)
     {
@@ -178,7 +179,6 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
                     RptReatyMarket.DataSource = _data.Items;
                     RptReatyMarket.DataBind();
                     ucPaging1.TotalRecord = _data.TotalRecord;
-
                 }
                 else
                 {
@@ -375,7 +375,13 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
             DropDownList ddlDistrict1 = (DropDownList)RptDetail.Controls[1].FindControl("ddlDistrict1");
             DropDownList ddlVillage1 = (DropDownList)RptDetail.Controls[1].FindControl("ddlVillage1");
             DropDownList ddlTypeBDS1 = (DropDownList)RptDetail.Controls[1].FindControl("ddlTypeBDS");
+           //=================================================
+            ddlTypeBDS1.DataSource = ctrN.GetCatByType();
+            ddlTypeBDS1.DataTextField = "Name";
+            ddlTypeBDS1.DataValueField = "CategoryID";
+            ddlTypeBDS1.DataBind();
 
+            //===============================================
             TextBox txtTitle = (TextBox)RptDetail.Controls[1].FindControl("txtTitle");
             TextBox txtUser = (TextBox)RptDetail.Controls[1].FindControl("txtUser");
             TextBox txtAddress = (TextBox)RptDetail.Controls[1].FindControl("txtAddress");
@@ -557,6 +563,11 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
     {
         try
         {
+
+            ddlTypeBDSs2.DataSource = ctrN.GetCatByType();
+            ddlTypeBDSs2.DataTextField = "Name";
+            ddlTypeBDSs2.DataValueField = "CategoryID";
+            ddlTypeBDSs2.DataBind();
             if (fupload.FileName != "")
             {
                 string strFile = Path.Combine(Request.PhysicalApplicationPath, "images\\Market");

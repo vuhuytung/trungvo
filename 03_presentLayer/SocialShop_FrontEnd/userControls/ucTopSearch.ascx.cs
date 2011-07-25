@@ -8,6 +8,7 @@ using WorkFlowBLL;
 public partial class userControls_ucTopSearch : System.Web.UI.UserControl
 {
     CtrLocation Location = new CtrLocation();
+    CtrRealtyMarket market = new CtrRealtyMarket();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -35,8 +36,13 @@ public partial class userControls_ucTopSearch : System.Web.UI.UserControl
             ddlVillage.Items.Insert(0, new ListItem("Tất cả", "-1"));
 
             //add Type BDS temp
-            ddlTypeBDS.Items.Add(new ListItem("Bất động sản cần bán","21"));
-            ddlTypeBDS.Items.Add(new ListItem("Bất động sản cần mua","22"));
+            //ddlTypeBDS.Items.Add(new ListItem("Bất động sản cần bán","21"));
+            //ddlTypeBDS.Items.Add(new ListItem("Bất động sản cần mua","22"));
+
+            ddlTypeBDS.DataSource = market.GetCatByType();
+            ddlTypeBDS.DataTextField = "Name";
+            ddlTypeBDS.DataValueField = "CategoryID";
+            ddlTypeBDS.DataBind();
 
             //add Price temp
 

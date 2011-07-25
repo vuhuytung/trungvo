@@ -8,6 +8,7 @@ using WorkFlowBLL;
 public partial class pages_realtymarket : System.Web.UI.Page
 {
     CtrLocation Location = new CtrLocation();
+    CtrRealtyMarket market = new CtrRealtyMarket();
     protected void Page_Load(object sender, EventArgs e)
     {
         ucPaging1.PageChange += new UserControls_ucPaging.PagingHandler(ucPaging1_PageChange);
@@ -36,8 +37,12 @@ public partial class pages_realtymarket : System.Web.UI.Page
             ddlVillage.Items.Insert(0, new ListItem("Tất cả", "-1"));
 
             //add Type BDS temp
-            ddlTypeBDS.Items.Add(new ListItem("Bất động sản cần bán", "21"));
-            ddlTypeBDS.Items.Add(new ListItem("Bất động sản cần mua", "22"));
+            //ddlTypeBDS.Items.Add(new ListItem("Bất động sản cần bán", "21"));
+            //ddlTypeBDS.Items.Add(new ListItem("Bất động sản cần mua", "22"));
+            ddlTypeBDS.DataSource = market.GetCatByType();
+            ddlTypeBDS.DataTextField = "Name";
+            ddlTypeBDS.DataValueField = "CategoryID";
+            ddlTypeBDS.DataBind();
 
             //add Price temp
             ddlPrice.Items.Add(new ListItem("tất cả", "0"));
@@ -77,7 +82,7 @@ public partial class pages_realtymarket : System.Web.UI.Page
         else if (Request.QueryString["CategoryID "] != null)
         {
             CtrRealtyMarket ctrN = new CtrRealtyMarket();
-            var _data = ctrN.GetListRealtyMarketByCondition(0, 1, Convert.ToInt32(Request.QueryString["CategoryID "]), 0, double.MaxValue, ucPaging1.CurrentPage, ucPaging1.PageSize);
+            var _data = ctrN.GetListRealtyMarketByCatID(Convert.ToInt32(Request.QueryString["CategoryID "]),ucPaging1.CurrentPage, ucPaging1.PageSize);
             RptReatyMarket.DataSource = _data.Items;
             RptReatyMarket.DataBind();
             ucPaging1.TotalRecord = _data.TotalRecord;
