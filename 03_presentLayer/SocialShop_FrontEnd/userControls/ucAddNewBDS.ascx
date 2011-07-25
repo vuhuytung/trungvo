@@ -19,7 +19,7 @@
         return true;
     }
 </script>
-<table cellspacing="8" style="margin-left: 80px;">
+<table cellspacing="8" style="margin-left: 80px; font:12px Arial;">
     <tr>
         <td colspan="4" style="text-align: center; padding: 5px 0;">
             <a style="color: Red; font-size: 16px;">Nhập thông tin</a>

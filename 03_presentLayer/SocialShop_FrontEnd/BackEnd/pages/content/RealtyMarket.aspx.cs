@@ -433,7 +433,7 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
 
                     var EditImage = System.Drawing.Image.FromFile(fupload.PostedFile.FileName);
                     VTCO.Library.ImageResize Img1 = new VTCO.Library.ImageResize();
-                    var newimg = Img1.Crop(EditImage, 150, 100, VTCO.Library.ImageResize.AnchorPosition.Center);
+                    var newimg = Img1.Crop(EditImage, 120, 100, VTCO.Library.ImageResize.AnchorPosition.Center);
                     newimg.Save(strFile1);
 
 
@@ -584,7 +584,7 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
 
                 var EditImage = System.Drawing.Image.FromFile(fupload.PostedFile.FileName);
                 VTCO.Library.ImageResize Img = new VTCO.Library.ImageResize();
-                var newimg = Img.Crop(EditImage, 150, 100, VTCO.Library.ImageResize.AnchorPosition.Center);
+                var newimg = Img.Crop(EditImage, 120, 100, VTCO.Library.ImageResize.AnchorPosition.Center);
                 newimg.Save(strFile1);
 
 

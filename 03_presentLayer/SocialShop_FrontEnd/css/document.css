@@ -9,13 +9,22 @@
             float:left;
             border-bottom:1px dotted #D3B439;
             width:100%;
+            font-family:Arial,Tahoma,Verdana;
+            font-size:12px;
         }
         .doc_title
         {
+            font-family:Arial,Tahoma,Verdana;
+            font-size:12px;
             float:left;
             text-align:justify;
             padding:5px 5px;
             width:100%;
+        }
+        .doc_title a
+        {
+            color:#2F6B87;
+            font-weight:bold;
         }
         .doc_desc
         {
@@ -23,18 +32,27 @@
             padding:5px 5px;
             text-align:justify;
             width:100%;
+            
+            font-family:Arial,Tahoma,Verdana;
+            font-size:12px;
+            
         }
        
         .doc_download
         {
              padding:5px 5px;
              float:left;
+             
+            font-family:Arial,Tahoma,Verdana;
+            font-size:12px;
         }
         .doc_download a
         {
             color:Red;
             text-decoration:none;
             
+            font-family:Arial,Tahoma,Verdana;
+            font-size:12px;
         }
       
      

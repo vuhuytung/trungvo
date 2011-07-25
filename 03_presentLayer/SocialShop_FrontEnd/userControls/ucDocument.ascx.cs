@@ -27,10 +27,10 @@ public partial class userControls_ucDocument : System.Web.UI.UserControl
     {
         try
         {
-            if (Request.QueryString["CategoryID "] != null)
+            if (Request.QueryString["CategoryID"] != null)
             {
                 CtrDocument ctrN = new CtrDocument();
-                var _data = ctrN.GetListDocByCategory(Convert.ToInt32(Request.QueryString["CategoryID "]), ucPaging1.CurrentPage, ucPaging1.PageSize);
+                var _data = ctrN.GetListDocByCategory(Convert.ToInt32(Request.QueryString["CategoryID"]), ucPaging1.CurrentPage, ucPaging1.PageSize);
                 RptDocument.DataSource = _data.Items;
                 RptDocument.DataBind();
                 ucPaging1.TotalRecord = _data.TotalRecord;

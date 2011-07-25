@@ -10,7 +10,7 @@
                         Tìm tại:
                     </td>
                     <td>
-                        <asp:DropDownList ID="ddlProvince" runat="server" OnSelectedIndexChanged="ddlProvince_SelectedIndexChanged"
+                        <asp:DropDownList ID="ddlProvince" runat="server" CssClass="ddl" OnSelectedIndexChanged="ddlProvince_SelectedIndexChanged"
                             AutoPostBack="true">
                         </asp:DropDownList>
                     </td>
@@ -20,7 +20,7 @@
                         Quận/Huyện
                     </td>
                     <td>
-                        <asp:DropDownList ID="ddlDistrict" runat="server" AutoPostBack="true" Height="22px"
+                        <asp:DropDownList ID="ddlDistrict" CssClass="ddl" runat="server" AutoPostBack="true" Height="22px"
                             OnSelectedIndexChanged="ddlDistrict_SelectedIndexChanged" Width="136px">
                         </asp:DropDownList>
                     </td>
@@ -30,7 +30,7 @@
                         Phường/Xã
                     </td>
                     <td>
-                        <asp:DropDownList ID="ddlVillage" runat="server" Width="136px">
+                        <asp:DropDownList ID="ddlVillage" CssClass="ddl" runat="server" Width="136px">
                         </asp:DropDownList>
                     </td>
                 </tr>
@@ -39,7 +39,7 @@
                         Loại BĐS
                     </td>
                     <td>
-                        <asp:DropDownList ID="ddlTypeBDS" runat="server">
+                        <asp:DropDownList ID="ddlTypeBDS" CssClass="ddl" runat="server">
                         </asp:DropDownList>
                     </td>
                 </tr>
@@ -48,7 +48,7 @@
                         Khoảng Giá
                     </td>
                     <td>
-                        <asp:DropDownList ID="ddlPrice" runat="server">
+                        <asp:DropDownList ID="ddlPrice" CssClass="ddl" runat="server">
                         </asp:DropDownList>
                     </td>
                 </tr>

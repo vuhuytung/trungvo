@@ -215,7 +215,7 @@ public partial class userControls_ucTopSearch : System.Web.UI.UserControl
                 Code = 0;
                 typeCode = 1;
             }
-            string str = "realtymarket.aspx?code=" +Code.ToString()+"&typecode="+typeCode.ToString()+"&typebds="+typeBDS.ToString()+"&price="+ddlPrice.SelectedValue;
+            string str = "~/pages/realtymarket.aspx?code=" + Code.ToString() + "&typecode=" + typeCode.ToString() + "&typebds=" + typeBDS.ToString() + "&price=" + ddlPrice.SelectedValue;
             Response.Redirect(str);
         //}
         //catch(Exception ex)

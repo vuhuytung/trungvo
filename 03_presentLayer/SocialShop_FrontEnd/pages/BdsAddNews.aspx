@@ -9,10 +9,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="plhBody" runat="Server">
     <div class="bodyContent">
         <div class="clear">
-            <table cellspacing="8" style="margin-left: 80px;">
+            <table cellspacing="8" style="margin-left: 80px;" class="myTable">
                 <tr>
                     <td colspan="4" style="text-align: center; padding: 5px 0;">
-                        <a style="color: Red; font-size: 16px;">Nhập thông tin</a>
+                        <a style="color:Blue; font-size: 16px;">Nhập thông tin</a>
                     </td>
                 </tr>
                 <tr>
@@ -263,8 +263,8 @@
                                 return RegExEmail.test(str);
                             }
                         </script>
-                        <asp:Button ID="btnAdd" runat="server" Text="Thêm mới" OnClick="btnAdd_Click" Width="70" OnClientClick="return checkAdd()" />
-                        <asp:Button ID="btnThoat" runat="server" Text="Thoát" Width="70" />
+                        <asp:Button ID="btnAdd" CssClass="btnButton" runat="server" Text="Thêm mới" OnClick="btnAdd_Click" Width="70" OnClientClick="return checkAdd()" />
+                        <asp:Button ID="btnThoat" runat="server" CssClass="btnButton" Text="Thoát" Width="70" />
                     </td>
                 </tr>
             </table>

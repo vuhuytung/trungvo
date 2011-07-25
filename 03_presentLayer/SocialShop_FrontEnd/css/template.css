@@ -1,106 +1,115 @@
-﻿body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
-	margin:0;
-	padding:0;
-	font-family:"Times New Roman", Arial ;
-	font-size:12pt;
+﻿body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td
+{
+    margin: 0;
+    padding: 0;
+    font-family: "Times New Roman" , Arial;
+    font-size: 12pt;
 }
-a{
-text-decoration:none;
-color:#000;
+a
+{
+    text-decoration: none;
+    color: #000;
 }
-img{
-border:0 none;
-max-width:550px !important;
-width: expression(this.width > 550 ? 550: true);
-height:auto !important;
-
-}
-
-
-a:hover{
-text-decoration:underline;
-}
-ol,ul {
-	list-style:none;
-	font-size:12px;
-}
-h1,h2,h3,h4,h5,h6 {
-	font-size:100%;
-	font-weight:normal;
+img
+{
+    border: 0 none;
+    max-width: 550px !important;
+    width: expression(this.width > 550 ? 550: true);
+    height: auto !important;
 }
 
-.text_pink{
-color:#f00c67;
+
+a:hover
+{
+    text-decoration: underline;
 }
-.nl{
-float:left;
+ol, ul
+{
+    list-style: none;
+    font-size: 12px;
 }
-.nr{
-float:right;
+h1, h2, h3, h4, h5, h6
+{
+    font-size: 100%;
+    font-weight: normal;
 }
-.clear{
-clear:both;
+
+.text_pink
+{
+    color: #f00c67;
+}
+.nl
+{
+    float: left;
+}
+.nr
+{
+    float: right;
+}
+.clear
+{
+    clear: both;
 }
 
 .inputText
 {
-    padding:2px;
-    margin:0;
-    border:solid 1px #CCC;
-    
+    padding: 2px;
+    margin: 0;
+    border: solid 1px #CCC;
 }
 
-body{
-background:#459b30 url(/images/background.png) no-repeat top center;
-text-align:center;
+body
+{
+    background: #459b30 url(/images/background.png) no-repeat top center;
+    text-align: center;
 }
 .wrap
 {
-    margin:0 auto;
-    text-align:center;
-    width:1002px;
+    margin: 0 auto;
+    text-align: center;
+    width: 1002px;
 }
 .header
 {
-    background:url(/images/banner.png) no-repeat top left;
-    height:230px;
-    margin:0 auto;
-    margin-left:6px;
-    position:relative;
-    z-index:9999;
+    background: url(/images/banner.png) no-repeat top left;
+    height: 230px;
+    margin: 0 auto;
+    margin-left: 6px;
+    position: relative;
+    z-index: 9999;
 }
 .banner
 {
-    height:195px;
+    height: 195px;
 }
 .menutop
 {
-    text-align:left;
-    margin-right:6px;
+    text-align: left;
+    margin-right: 6px;
 }
 .menutop .leftMenutop
 {
-    background:url(/images/left-topmenu.png) no-repeat top left;
-    height:40px;
-    width:9px;
-    float:left;
+    background: url(/images/left-topmenu.png) no-repeat top left;
+    height: 40px;
+    width: 9px;
+    float: left;
 }
 .menutop .centerMenutop
 {
-    background:url(/images/center-topmenu.png) repeat-x top left;
-    height:40px;
-    float:left;
-    z-index:9999;
-    position:relative;
+    background: url(/images/center-topmenu.png) repeat-x top left;
+    height: 40px;
+    float: left;
+    z-index: 9999;
+    position: relative;
 }
 .menutop .rightMenutop
 {
-    background:url(/images/right-topmenu.png) no-repeat top right;
-    height:40px;
-    width:9px;
-    float:left;
-    z-index:9998;
-    position:relative;
+    background: url(/images/right-topmenu.png) no-repeat top right;
+    height: 40px;
+    width: 9px;
+    float: left;
+    z-index: 9998;
+    position: relative;
 }
 /*
 ul.menu {list-style:none; margin:0; padding:0; margin-top:5px; }
@@ -121,95 +130,101 @@ ul.menu .sub {background:#d1d1d1 url(/images/arrow.gif) 170px 8px no-repeat}
 
 .main
 {
-    background:url(/images/back-centerbody.png) repeat-y top left;
-    padding:0 6px;
-    text-align:left;    
+    background: url(/images/back-centerbody.png) repeat-y top left;
+    padding: 0 6px;
+    text-align: left;
 }
 
 .topSearch
 {
-    height:250px;
-    padding:5px;
-    background:#EEEEEE;
+    height: 250px;
+    padding: 5px;
+    background: #EEEEEE;
 }
 
 .topSearch .leftTopSearch
 {
-    float:left;
-    width:680px;
-    height:250px;
+    float: left;
+    width: 680px;
+    height: 250px;
 }
 .topSearch .rightTopSearch
 {
-    float:left;
-    width:280px;
-    height:210px;
-    background:#FFF;
-    padding:20px 10px;
+    float: left;
+    width: 280px;
+    height: 210px;
+    background: #FFF;
+    padding: 20px 10px;
 }
 .topSearch .showImage
 {
-    background:#FFF;
-    width:430px;
-    float:left;
-    height:240px;
-    padding:5px;
+    background: #FFF;
+    width: 430px;
+    float: left;
+    height: 240px;
+    padding: 5px;
 }
 .topSearch .listImage
 {
-    width:250px;
-    float:right;
-    height:250px;
+    width: 250px;
+    float: right;
+    height: 250px;
 }
 .listImage .frameListImage
 {
-    background:url(/images/frame.png) no-repeat top left;
-    width:130px;
-    height:94px;
+    background: url(/images/frame.png) no-repeat top left;
+    width: 130px;
+    height: 94px;
 }
 .listImage .titleListImage
 {
-    color:#459b30;
-    width:120px;
-    text-align:left;
-    font-weight:bold;
-    font-family:Tahoma;
-    font-size:12px;
+    color: #459b30;
+    width: 120px;
+    text-align: left;
+    font-weight: bold;
+    font-family: Tahoma;
+    font-size: 12px;
 }
 .rightTopSearch .titleSearch
 {
-    font-weight:bold;
-    height:35px;
-    line-height:30px;
-    text-align:center;
-    background:url(/images/Search.png) 10px no-repeat;
+    font-weight: bold;
+    height: 35px;
+    line-height: 30px;
+    text-align: center;
+    background: url(/images/Search.png) 10px no-repeat;
+    font-family: Arial,Tahoma,Verdana;
 }
 .rightTopSearch .label
 {
-    width:100px;
-    height:30px;
-    line-height:30px;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
 }
 .rightTopSearch .value
 {
-    width:125px;
-    height:30px;
-    padding-top:5px;
+    width: 125px;
+    height: 30px;
+    padding-top: 5px;
 }
 .navigator
 {
-    color:#666;
-    font-size:11px;
-    font-weight:bold;
+    color: #666;
+    font-size: 11px;
+    font-weight: bold;
 }
 a.navigator
 {
-    padding:0 5px;
+    padding: 0 5px;
 }
 a.navigator:hover
 {
-    color:#000;
-    text-decoration:none;    
+    color: #000;
+    text-decoration: none;
+}
+.ddl
+{
+    font-family: Arial,Tahoma,Verdana;
+    font-size: 12px;
 }
 
 
@@ -225,41 +240,41 @@ a.navigator:hover
 
 .shadowBottom
 {
-    background:url(/images/back-bottombody.png) no-repeat top left;
-    height:12px;    
+    background: url(/images/back-bottombody.png) no-repeat top left;
+    height: 12px;
 }
 .footer
 {
-    text-align:center;
+    text-align: center;
 }
 .topFooter
 {
-    height:50px;
-    text-align:center;
-    background:url(/images/lineFooterH.png) no-repeat bottom center;
+    height: 50px;
+    text-align: center;
+    background: url(/images/lineFooterH.png) no-repeat bottom center;
 }
 
 
 .topFooter .menuItem
 {
-    height:40px;
-    line-height:30px;
-    font-weight:bold;
-    font-size:11px;
-    padding:15px;
-    color:#FFF;
-    background:url(/images/line-bottom.gif) no-repeat 0 20px;
-    display:inline-block;
+    height: 40px;
+    line-height: 30px;
+    font-weight: bold;
+    font-size: 11px;
+    padding: 15px;
+    color: #FFF;
+    background: url(/images/line-bottom.gif) no-repeat 0 20px;
+    display: inline-block;
 }
 .bottomFooter
 {
-    margin:0 auto;
-    width:300px;
-    text-align:left;
-    font-size:11px;
-    color:#FFF;
-    line-height:20px;
-    padding-top:10px;
+    margin: 0 auto;
+    width: 300px;
+    text-align: left;
+    font-size: 11px;
+    color: #FFF;
+    line-height: 20px;
+    padding-top: 10px;
 }
 
 
@@ -282,63 +297,63 @@ a.navigator:hover
 
 .bodyContent
 {
-    padding-top:5px;
-    background-color:#FFF;
+    padding-top: 5px;
+    background-color: #FFF;
 }
 .bodyContent .leftMain
 {
-    width:620px;
-    padding-left:10px;
+    width: 620px;
+    padding-left: 10px;
 }
 .bodyContent .rightMain
 {
-    width:350px;
-    margin-right:5px;
+    width: 350px;
+    margin-right: 5px;
 }
 .box
 {
-    border:solid 1px #EEE;
-    border-bottom-width:2px;
-    font-family:Arial;
+    border: solid 1px #EEE;
+    border-bottom-width: 2px;
+    font-family: Arial;
 }
 .box *
 {
-    font-family:Arial;
-    font-size:12px;
+    font-family: Arial;
+    font-size: 12px;
 }
 .rightMain .box
 {
-    background:#EEE;
-    border:solid 2px #EEE;
+    background: #EEE;
+    border: solid 2px #EEE;
 }
 
 .leftMain .box
 {
-    padding:5px;
-    margin-bottom:10px;    
+    padding: 5px;
+    margin-bottom: 10px;
 }
 .box .topNews
 {
-    width:360px;    
+    width: 360px;
 }
 
 .spDate
 {
-    color:#AAA; 
-    font-style:italic;
-    font-size:11px;
+    color: #AAA;
+    font-style: italic;
+    font-size: 11px;
 }
 .box .otherTopNews
 {
-    width:235px;
+    width: 235px;
 }
 .box .title
 {
-    color:#ff8040;
-    font-weight:bold;    
-    border-bottom:2px solid #459B30;
-    margin-bottom:10px;
-    padding-bottom:1px;
+    color: #ff8040;
+    font-weight: bold;
+    border-bottom: 2px solid #459B30;
+    margin-bottom: 10px;
+    padding-bottom: 1px;
 }
 .box .title span
 {
@@ -349,42 +364,42 @@ a.navigator:hover
 }
 .box .title span a
 {
-    color:#FFF;
+    color: #FFF;
 }
-    
+
 .box .spTitle
 {
-    font-weight:bold;  
-    font-size:12px;  
+    font-weight: bold;
+    font-size: 12px;
 }
 .otherTopNews ul li a
 {
-    font-size:12px;
-    font-family:Arial;
-    background:url("/images/icon-square.jpg") no-repeat 3px 5px;
-    padding-left:17px;
+    font-size: 12px;
+    font-family: Arial;
+    background: url("/images/icon-square.jpg") no-repeat 3px 5px;
+    padding-left: 17px;
 }
 .otherTopNews li.listHome
 {
-    display:block;
-    margin-top:10px;
+    display: block;
+    margin-top: 10px;
 }
 .otherTopNews ul li a:hover
 {
-    text-decoration:none;
-    color:#ff8040;
+    text-decoration: none;
+    color: #ff8040;
 }
 a:active
 {
-    color:#ff8040;
-    text-decoration:underline;
+    color: #ff8040;
+    text-decoration: underline;
 }
 .listOtherNews
 {
-    padding:15px 5px 5px 20px; 
-    margin: 10px; 
-    text-decoration: underline; 
-    border-top:solid 1px #AAA; 
-    font-weight:bold; 
-    color:#ff8040
+    padding: 15px 5px 5px 20px;
+    margin: 10px;
+    text-decoration: underline;
+    border-top: solid 1px #AAA;
+    font-weight: bold;
+    color: #ff8040;
 }
