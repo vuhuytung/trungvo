@@ -117,6 +117,13 @@ namespace DataContext
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), categoryID);
 			return ((ISingleResult<uspCategoryGetNavigatorResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspCategoryGetNewsMenu")]
+		public ISingleResult<uspCategoryGetNewsMenuResult> uspCategoryGetNewsMenu()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<uspCategoryGetNewsMenuResult>)(result.ReturnValue));
+		}
 	}
 	
 	public partial class uspCategoryGetAllResult
@@ -712,6 +719,86 @@ namespace DataContext
 				if ((this._Order != value))
 				{
 					this._Order = value;
+				}
+			}
+		}
+	}
+	
+	public partial class uspCategoryGetNewsMenuResult
+	{
+		
+		private System.Nullable<int> _CategoryID;
+		
+		private System.Nullable<int> _ParentID;
+		
+		private System.Nullable<int> _Type;
+		
+		private string _Name;
+		
+		public uspCategoryGetNewsMenuResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategoryID", DbType="Int")]
+		public System.Nullable<int> CategoryID
+		{
+			get
+			{
+				return this._CategoryID;
+			}
+			set
+			{
+				if ((this._CategoryID != value))
+				{
+					this._CategoryID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ParentID", DbType="Int")]
+		public System.Nullable<int> ParentID
+		{
+			get
+			{
+				return this._ParentID;
+			}
+			set
+			{
+				if ((this._ParentID != value))
+				{
+					this._ParentID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="Int")]
+		public System.Nullable<int> Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this._Type = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(250)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this._Name = value;
 				}
 			}
 		}
