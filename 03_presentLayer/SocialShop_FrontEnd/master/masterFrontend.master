@@ -9,22 +9,13 @@
     <title></title>
     <link href="/css/template.css" rel="stylesheet" type="text/css" />
     <script src="/js/framework/jquery-1.4.1.min.js" type="text/javascript"></script>
-    <!--[if lte IE 6]>  
+    <!--[if lte IE 6]>
     <script type="text/javascript">  
         $(function(){
             $("*:first-child").addClass("firstChild")  
         });
-    </script>  
-    <script src="/js/framework/DD_belatedPNG_0.0.8a.js" type="text/javascript"></script>
-    <script>
-      /* EXAMPLE */
-      DD_belatedPNG.fix('.png_bg');
-  
-      /* string argument can be any CSS selector */
-      /* .png_bg example is unnecessary */
-      /* change it to what suits you! */
-    </script>
-    <![endif]-->
+    </script> 
+    <![endif]--> 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
