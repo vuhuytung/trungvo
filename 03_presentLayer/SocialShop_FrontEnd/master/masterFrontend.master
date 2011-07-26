@@ -27,7 +27,8 @@
             <div class="banner">
                 <%--<div class="nl" style="width:180px; height:180px; background:url(/images/test.gif)"></div>--%>
                 <%--<img src="/images/test.gif" width="180" height="180" class="nl" style="margin-left:-10px" />--%>
-                <div class="nl" style="margin-left:-10px">
+                <div class="nl" style="margin-left:-10px; position:relative;">
+                    <div style="position:absolute; z-index:1;">
                     <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" 
                     codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0" width="170" height="170" id="mymoviename">
                         <param name="movie" value="/images/a.swf" />
@@ -39,17 +40,20 @@
                             pluginspage="http://www.macromedia.com/go/getflashplayer"> 
                         </embed>
                     </object>
+                    </div>
+                    <div style="position:absolute; z-index:2; left:-50px; right:-50px">
                     <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" 
-                    codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0" width="800" height="170" id="Object1">
-                        <param name="movie" value="/images/star.swf" />
+                    codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0" width="1080" height="170" id="Object1">
+                        <param name="movie" value="/images/14.swf" />
                         <param name="quality" value="high" />
                         <param name="wmode" value="transparent" />
                         <param name="bgcolor" value="transparent" />
-                        <embed src="/images/star.swf" quality="high" bgcolor="transparent" width="800" height="170" wmode="transparent" 
+                        <embed src="/images/14.swf" quality="high" bgcolor="transparent" width="1000" height="170" wmode="transparent" 
                             name="mymoviename" align="" type="application/x-shockwave-flash" 
                             pluginspage="http://www.macromedia.com/go/getflashplayer"> 
                         </embed>
                     </object>
+                    </div>
                 </div>
                 <div class="clear">
                 </div>
