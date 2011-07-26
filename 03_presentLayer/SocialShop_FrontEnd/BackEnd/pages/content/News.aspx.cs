@@ -60,7 +60,14 @@ public partial class BackEnd_pages_content_News : System.Web.UI.Page
         {
             rdpFromDate.SelectedDate = DateTime.Now.AddMonths(-12);
             rdpToDate.SelectedDate = DateTime.Now;
-            GetMenuTop(null, 0, "", 0);
+
+            CtrCategory ctrCat = new CtrCategory();
+            var tb = ctrCat.GetNewsMenu();
+
+            ddlCategory.Items.Add(new ListItem("Trang chủ", "0"));
+            GetMenuTop(tb, 0, "");
+            ddlNewsMenu.Items.Clear();
+            GetMenuNewsAdd(tb, 0, "");
 
             ucPaging1.PageSize = 10;
             ucPaging1.CurrentPage = 1;
@@ -91,21 +98,26 @@ public partial class BackEnd_pages_content_News : System.Web.UI.Page
         pnlDetail.Visible = (panel == 3);
     }
 
-    public void GetMenuTop(List<uspCategoryGetListResult> tb, int parentID, string space, int currentMenuID)
+    public void GetMenuTop(List<uspCategoryGetNewsMenuResult> tb, int parentID, string space)
     {
-        if (tb == null)
-        {
-            CtrCategory ctrCat = new CtrCategory();
-            tb = ctrCat.GetListCategory(-1);
-            ddlCategory.Items.Add(new ListItem("Trang chủ", "0"));
-        }
         var rows = tb.Where(x => x.ParentID == parentID);
         foreach (var row in rows)
         {
-            if (row.CategoryID == currentMenuID) continue;
             ddlCategory.Items.Add(new ListItem(space + ". . . " + row.Name, row.CategoryID.ToString()));
-            ddlNewsMenu.Items.Add(new ListItem(space + ". . . " + row.Name, row.CategoryID.ToString()));
-            GetMenuTop(tb, row.CategoryID, space + ". . . ", currentMenuID);
+            GetMenuTop(tb, row.CategoryID.Value, space + ". . . ");
+        }
+    }
+    public void GetMenuNewsAdd(List<uspCategoryGetNewsMenuResult> tb, int parentID, string space)
+    {
+        var rows = tb.Where(x => x.ParentID == parentID);
+        foreach (var row in rows)
+        {
+            if (row.Type == 2)
+            {
+                ListItem item = new ListItem(space + " ○ " + row.Name, row.CategoryID.ToString());
+                ddlNewsMenu.Items.Add(item);
+            }
+            GetMenuNewsAdd(tb, row.CategoryID.Value, space + " ○ " + row.Name);
         }
     }
 
