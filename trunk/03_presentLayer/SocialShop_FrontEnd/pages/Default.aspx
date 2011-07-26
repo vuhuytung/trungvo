@@ -110,8 +110,7 @@
                             <span><a href='/news/<%#VTCO.Library.Lib.GetUrlText(Eval("Info.Name").ToString()) %>-<%#Eval("Info.CategoryID") %>'><%#Eval("Info.Name") %></a></span>
                         </div>
                         <div class="topNews nl">
-                            <img src="<%#Eval("Items[0].Img") %>.thumb" width="140" class="nl" style="border: solid 1px #AAA;
-                                margin: 10px; margin-top:0;" />
+                            <%#Eval("Items[0].Img").ToString().Contains("noimage.jpg") ? "" : "<img src='" + Eval("Items[0].Img") + ".thumb' width='140' class='nl' style='border: solid 1px #AAA; margin: 10px; margin-top: 0' />"%>
                             <p>
                                 <span class="spTitle"><a href='/news/<%#VTCO.Library.Lib.GetUrlText(Eval("Items[0].CategoryName").ToString()) %>-<%#Eval("Items[0].CategoryID") %>/<%#VTCO.Library.Lib.GetUrlText(Eval("Items[0].Title").ToString()) %>-<%#Eval("Items[0].NewsID") %>'><%#Eval("Items[0].Title") %></a></span>
                                 <span class="spDate"><%#Eval("Items[0].CreateDate","{0:dd/MM/yyyy}") %></span>

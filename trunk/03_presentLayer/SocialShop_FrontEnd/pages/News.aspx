@@ -18,8 +18,7 @@
                             <span><a href="#"><%#Eval("Info.Name") %></a></span>
                         </div>--%>
                         <div class="topNews nl" style="width: 100%">
-                            <img src="<%#Eval("Img") %>.thumb" width="120" class="nl" style="border: solid 1px #AAA;
-                                margin: 10px; margin-top: 0" />
+                            <%#Eval("Img").ToString().Contains("noimage.jpg")?"":"<img src='"+Eval("Img")+".thumb' width='120' class='nl' style='border: solid 1px #AAA; margin: 10px; margin-top: 0' />" %>
                             <p>
                                 <span class="spTitle"><a href='/news/<%#VTCO.Library.Lib.GetUrlText(Eval("CategoryName").ToString()) %>-<%#Eval("CategoryID") %>/<%#VTCO.Library.Lib.GetUrlText(Eval("Title").ToString()) %>-<%#Eval("NewsID") %>'>
                                     <%#Eval("Title") %></a></span> <span class="spDate">
