@@ -63,10 +63,31 @@ namespace DataContext
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspEmailContactGetAll")]
-		public ISingleResult<uspEmailContactGetAllResult> uspEmailContactGetAll()
+		public ISingleResult<uspEmailContactGetAllResult> uspEmailContactGetAll([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Int")] System.Nullable<int> status)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), status);
 			return ((ISingleResult<uspEmailContactGetAllResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspEmailContactDeleteByID")]
+		public int uspEmailContactDeleteByID([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] System.Nullable<int> iD)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspEmailContactUpdateByID")]
+		public int uspEmailContactUpdateByID([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] System.Nullable<int> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="VarChar(300)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Int")] System.Nullable<int> status)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, email, status);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspEmailContactInsert")]
+		public int uspEmailContactInsert([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="VarChar(300)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Int")] System.Nullable<int> status)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), email, status);
+			return ((int)(result.ReturnValue));
 		}
 	}
 	

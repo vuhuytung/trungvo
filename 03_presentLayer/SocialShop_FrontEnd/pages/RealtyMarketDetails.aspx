@@ -128,7 +128,7 @@
                                         Giá bán
                                     </td>
                                     <td>
-                                        <%#String.Format("{0:0,0 vnđ}", Eval("Price"))%>
+                                        <a><%#String.Format("{0:0,0 VNĐ}", Eval("Price"))%></a>
                                     </td>
                                 </tr>
                             </table>
@@ -175,7 +175,7 @@
                     <div class="bds_img">
                         <h2>
                             Hình ảnh</h2>
-                        <img src="<%#Eval("Image") %>" width="500" height="300" alt="ảnh" />
+                        <img src="<%#Eval("Image") %>" alt="noImage" />
                         
                     </div>
                 </ItemTemplate>

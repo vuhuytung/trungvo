@@ -15,7 +15,7 @@ public partial class userControls_ucDocument : System.Web.UI.UserControl
         ucPaging1.PageChange += new UserControls_ucPaging.PagingHandler(ucPaging1_PageChange);
         if (!IsPostBack)
         {
-            ucPaging1.PageSize = 3;
+            ucPaging1.PageSize = 15;
             ucPaging1.PageDisplay = 5;
 
             ucPaging1.CurrentPage = 1;

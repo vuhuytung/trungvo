@@ -404,7 +404,27 @@ a:hover
     float: right;
     width: 60px;
 }
-
+.update_icon
+{
+    -moz-background-clip: border;
+    -moz-background-inline-policy: continuous;
+    -moz-background-origin: padding;
+    background: transparent url(../img/icon_update.gif) no-repeat scroll left top;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    margin-right:3px;
+}
+.cancel_icon
+{
+    -moz-background-clip: border;
+    -moz-background-inline-policy: continuous;
+    -moz-background-origin: padding;
+    background: transparent url(../img/IconCancel.png) no-repeat scroll left top;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+}
 .delete_icon
 {
     -moz-background-clip: border;
@@ -414,6 +434,9 @@ a:hover
     display: inline-block;
     height: 16px;
     width: 16px;
+    margin-left:3px;
+    margin-right:3px;
+    
 }
 .add_icon
 {

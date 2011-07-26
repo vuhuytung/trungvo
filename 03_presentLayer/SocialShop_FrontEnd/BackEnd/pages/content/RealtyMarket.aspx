@@ -7,10 +7,10 @@
         <asp:Panel ID="Panel2" runat="server" Visible="false">
             <div class="box_hide">
                 <div class="MK_edit">
-                    <table cellspacing="8">
+                    <table cellspacing="8" class="tbEdit">
                         <tr>
                             <td colspan="4" style="text-align: center; padding: 5px 0;">
-                                <a style="color: Red; font-size:16px;">Thêm thông tin</a>
+                                <a style="color: blue; font-size: 16px;">Thêm thông tin</a>
                             </td>
                         </tr>
                         <tr>
@@ -18,8 +18,8 @@
                                 Tiêu đề:
                             </td>
                             <td colspan="3">
-                                <asp:TextBox ID="txtTitle" runat="server" Text="" Width="350" BorderColor="#ED8080"
-                                    BorderWidth="1"></asp:TextBox>
+                                <asp:TextBox ID="txtTitle" runat="server" Text="" Width="350"> 
+                                </asp:TextBox><a>*</a>
                             </td>
                         </tr>
                         <tr>
@@ -27,13 +27,13 @@
                                 Họ tên người đăng:
                             </td>
                             <td style="padding: 5px 0;">
-                                <asp:TextBox ID="txtUser" runat="server" Text="" BorderColor="#ED8080" BorderWidth="1"></asp:TextBox>
+                                <asp:TextBox ID="txtUser" runat="server" Text=""></asp:TextBox><a>*</a>
                             </td>
                             <td>
                                 Địa chỉ
                             </td>
                             <td style="padding: 5px 0;">
-                                <asp:TextBox ID="txtAddress" runat="server" Text="" BorderColor="#ED8080" BorderWidth="1"></asp:TextBox>
+                                <asp:TextBox ID="txtAddress" runat="server" Text=""></asp:TextBox><a>*</a>
                             </td>
                         </tr>
                         <tr>
@@ -41,7 +41,7 @@
                                 Điện thoại
                             </td>
                             <td style="padding: 5px 0;">
-                                <asp:TextBox ID="txtPhone" runat="server" Text="" BorderColor="#ED8080" BorderWidth="1"></asp:TextBox>
+                                <asp:TextBox ID="txtPhone" runat="server" Text=""></asp:TextBox><a>*</a>
                             </td>
                             <td>
                                 Email
@@ -78,19 +78,18 @@
                                 </asp:DropDownList>
                             </td>
                         </tr>
-                          <tr>
-                                <td>
-                                </td>
-                                <td>
-                                </td>
-                                <td style="padding: 10px 0;">
-                                   số nhà,Đường phố/thôn-xóm:
-                                </td>
-                                <td>
-                                    <asp:TextBox ID="txtStreet" runat="server"></asp:TextBox>
-                                </td>
-
-                            </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td style="padding: 10px 0;">
+                                số nhà,Đường phố/thôn-xóm:
+                            </td>
+                            <td>
+                                <asp:TextBox ID="txtStreet" runat="server"></asp:TextBox>
+                            </td>
+                        </tr>
                         <tr>
                             <td>
                                 Diện tích:
@@ -182,7 +181,7 @@
                                 Giá BĐS
                             </td>
                             <td style="padding: 5px 0;">
-                                <asp:TextBox ID="txtPrice" runat="server" Text=""></asp:TextBox>vnđ
+                                <asp:TextBox ID="txtPrice" runat="server" Text=""></asp:TextBox><a>*</a>vnđ
                             </td>
                         </tr>
                         <tr>
@@ -260,7 +259,7 @@
                                                     return false;
                                                 }
                                             }
-                                            
+
                                         }
                                         return true;
                                     }
@@ -270,7 +269,8 @@
                                         return RegExEmail.test(str);
                                     }
                                 </script>
-                                <asp:Button ID="btnAdd" runat="server" Text="Thêm mới" OnClick="btnAdd_Click" OnClientClick="return checkAdd()" Width="70" />
+                                <asp:Button ID="btnAdd" runat="server" Text="Thêm mới" OnClick="btnAdd_Click" OnClientClick="return checkAdd()"
+                                    Width="70" />
                                 <asp:Button ID="btnThoat" runat="server" Text="Thoát" OnClick="btnThoat_Click" Width="70" />
                             </td>
                         </tr>
@@ -283,12 +283,12 @@
                 <div class="MK_edit">
                     <asp:Repeater ID="RptDetail" runat="server">
                         <HeaderTemplate>
-                            <table cellspacing="8">
+                            <table cellspacing="8" class="tbEdit">
                         </HeaderTemplate>
                         <ItemTemplate>
                             <tr>
                                 <td colspan="4" style="text-align: center; padding: 5px 0;">
-                                    <a style="color: Red; font-size: 16px;">Sửa thông tin</a>
+                                    <a style="color: blue; font-size: 16px;">Sửa thông tin</a>
                                 </td>
                             </tr>
                             <tr>
@@ -296,11 +296,10 @@
                                     Tiêu đề:
                                 </td>
                                 <td colspan="3">
-                                    <asp:TextBox ID="txtTitle" runat="server" Text='<%#Eval("Title") %>' Width="350"
-                                        BorderColor="#ED8080" BorderWidth="1"></asp:TextBox>
+                                    <asp:TextBox ID="txtTitle" runat="server" Text='<%#Eval("Title") %>' Width="350"></asp:TextBox><a>*</a>
                                     <asp:HiddenField ID="Img" runat="server" Value='<%#Eval("Image") %>' />
-                                    <asp:HiddenField ID="ImgThumb" runat="server"  Value='<%#Eval("ImageThumb") %>'/>
-                                    <asp:HiddenField ID="fullAdd" runat="server"  Value='<%#Eval("Street") %>'/>
+                                    <asp:HiddenField ID="ImgThumb" runat="server" Value='<%#Eval("ImageThumb") %>' />
+                                    <asp:HiddenField ID="fullAdd" runat="server" Value='<%#Eval("Street") %>' />
                                 </td>
                             </tr>
                             <tr>
@@ -308,15 +307,13 @@
                                     Họ tên người đăng:
                                 </td>
                                 <td style="padding: 5px 0;">
-                                    <asp:TextBox ID="txtUser" runat="server" Text='<%#Eval("UserPublish") %>' BorderColor="#ED8080"
-                                        BorderWidth="1"></asp:TextBox>
+                                    <asp:TextBox ID="txtUser" runat="server" Text='<%#Eval("UserPublish") %>'></asp:TextBox><a>*</a>
                                 </td>
                                 <td>
                                     Địa chỉ
                                 </td>
                                 <td style="padding: 5px 0;">
-                                    <asp:TextBox ID="txtAddress" runat="server" Text='<%#Eval("Address") %>' BorderColor="#ED8080"
-                                        BorderWidth="1"></asp:TextBox>
+                                    <asp:TextBox ID="txtAddress" runat="server" Text='<%#Eval("Address") %>'></asp:TextBox><a>*</a>
                                 </td>
                             </tr>
                             <tr>
@@ -324,8 +321,7 @@
                                     Điện thoại
                                 </td>
                                 <td style="padding: 5px 0;">
-                                    <asp:TextBox ID="txtPhone" runat="server" Text='<%#Eval("Phone") %>' BorderColor="#ED8080"
-                                        BorderWidth="1"></asp:TextBox>
+                                    <asp:TextBox ID="txtPhone" runat="server" Text='<%#Eval("Phone") %>'></asp:TextBox><a>*</a>
                                 </td>
                                 <td>
                                     Email
@@ -344,7 +340,7 @@
                                 </td>
                             </tr>
                             <td>
-                                Địa điểm BĐS 
+                                Địa điểm BĐS
                             </td>
                             <td>
                                 <%#Eval("Street").ToString().Substring(0, 1) != "-" ? Eval("Street").ToString() : Eval("Street").ToString().Substring(1)%>
@@ -374,12 +370,11 @@
                                 <td>
                                 </td>
                                 <td style="padding: 10px 0;">
-                                   số nhà,Đường phố/thôn-xóm:
+                                    số nhà,Đường phố/thôn-xóm:
                                 </td>
                                 <td>
                                     <asp:TextBox ID="txtStreet" runat="server"></asp:TextBox>
                                 </td>
-
                             </tr>
                             <tr>
                                 <td>
@@ -474,7 +469,7 @@
                                     Giá BĐS
                                 </td>
                                 <td style="padding: 5px 0;">
-                                    <asp:TextBox ID="txtPrice" runat="server" Text='<%#Eval("Price") %>'></asp:TextBox>vnđ
+                                    <asp:TextBox ID="txtPrice" runat="server" Text='<%#Eval("Price") %>'></asp:TextBox><a>*</a>vnđ
                                 </td>
                             </tr>
                             <tr>
@@ -504,59 +499,59 @@
                             </tr>
                             <tr>
                                 <td colspan="4" style="padding: 10px 300px;">
-                                <script type="text/javascript">
-                                    function checkAdd1() {
-                                        var txtTitle = document.getElementById("ContentPlaceHolder1_RptDetail_txtTitle_0");
-                                        var txtName = document.getElementById("ContentPlaceHolder1_RptDetail_txtUser_0");
-                                        var txtPhone = document.getElementById("ContentPlaceHolder1_RptDetail_txtPhone_0");
-                                        var txtAddress = document.getElementById("ContentPlaceHolder1_RptDetail_txtAddress_0");
-                                        var txtPrice = document.getElementById("ContentPlaceHolder1_RptDetail_txtPrice_0");
-                                        var txtEmail = document.getElementById("ContentPlaceHolder1_RptDetail_txtEmail_0");
-                                        if (txtTitle.value == "") {
-                                            alert('Tiêu đề không được để trống !');
-                                            return false;
-                                        }
-                                        else if (txtName.value == "") {
-                                            alert('Họ tên không được để trống !');
-                                            return false;
-                                        }
-                                        else if (txtPhone.value == "") {
-                                            alert('Số điện thoại không được để trống !');
-                                            return false;
-                                        }
-                                        else if (txtAddress.value == "") {
-                                            alert('Địa chỉ không được để trống !');
-                                            return false;
-                                        }
-                                        else if (txtPrice.value == "") {
-                                            alert('Giá bán không được để trống !');
-                                            return false;
-                                        }
-                                        else {
-                                            if (isNaN(txtPrice.value)) {
-                                                alert('Giá bất động sản phải là kiểu số !');
+                                    <script type="text/javascript">
+                                        function checkAdd1() {
+                                            var txtTitle = document.getElementById("ContentPlaceHolder1_RptDetail_txtTitle_0");
+                                            var txtName = document.getElementById("ContentPlaceHolder1_RptDetail_txtUser_0");
+                                            var txtPhone = document.getElementById("ContentPlaceHolder1_RptDetail_txtPhone_0");
+                                            var txtAddress = document.getElementById("ContentPlaceHolder1_RptDetail_txtAddress_0");
+                                            var txtPrice = document.getElementById("ContentPlaceHolder1_RptDetail_txtPrice_0");
+                                            var txtEmail = document.getElementById("ContentPlaceHolder1_RptDetail_txtEmail_0");
+                                            if (txtTitle.value == "") {
+                                                alert('Tiêu đề không được để trống !');
                                                 return false;
                                             }
-                                            if (isNaN(txtPhone.value)) {
-                                                alert('Số điện thoại phải là kiểu số !');
+                                            else if (txtName.value == "") {
+                                                alert('Họ tên không được để trống !');
                                                 return false;
                                             }
-                                            if (txtEmail.value != "") {
-                                                if (!CheckMail(txtEmail.value)) {
-                                                    alert('Email không đúng định dạng !');
+                                            else if (txtPhone.value == "") {
+                                                alert('Số điện thoại không được để trống !');
+                                                return false;
+                                            }
+                                            else if (txtAddress.value == "") {
+                                                alert('Địa chỉ không được để trống !');
+                                                return false;
+                                            }
+                                            else if (txtPrice.value == "") {
+                                                alert('Giá bán không được để trống !');
+                                                return false;
+                                            }
+                                            else {
+                                                if (isNaN(txtPrice.value)) {
+                                                    alert('Giá bất động sản phải là kiểu số !');
                                                     return false;
                                                 }
+                                                if (isNaN(txtPhone.value)) {
+                                                    alert('Số điện thoại phải là kiểu số !');
+                                                    return false;
+                                                }
+                                                if (txtEmail.value != "") {
+                                                    if (!CheckMail(txtEmail.value)) {
+                                                        alert('Email không đúng định dạng !');
+                                                        return false;
+                                                    }
+                                                }
                                             }
+                                            return true;
                                         }
-                                        return true;
-                                    }
-                                    function CheckMail(str) {
-                                        var RegExEmail = new RegExp("^[0-9a-z\\._]+@[0-9a-z]+\\..+$", "i");
-                                        return RegExEmail.test(str);
-                                    }
-                                </script>
-                                    <asp:Button ID="btnUpdate1" runat="server" Text="Cập nhật" OnClick="btnUpdate_Click" OnClientClick="return checkAdd1()"
-                                        Width="70" />
+                                        function CheckMail(str) {
+                                            var RegExEmail = new RegExp("^[0-9a-z\\._]+@[0-9a-z]+\\..+$", "i");
+                                            return RegExEmail.test(str);
+                                        }
+                                    </script>
+                                    <asp:Button ID="btnUpdate1" runat="server" Text="Cập nhật" OnClick="btnUpdate_Click"
+                                        OnClientClick="return checkAdd1()" Width="70" />
                                     <asp:Button ID="btnHuy1" runat="server" Text="Thoát" OnClick="btnHuy_Click" Width="70" />
                                 </td>
                             </tr>
