@@ -130,7 +130,7 @@ ul.menu .sub {background:#d1d1d1 url(/images/arrow.gif) 170px 8px no-repeat}
 
 .main
 {
-    background: url(/images/back-centerbody.png) repeat-y top left;
+    background: url(/images/back-centerbody.gif) repeat-y top left;
     padding: 0 6px;
     text-align: left;
 }
@@ -240,7 +240,7 @@ a.navigator:hover
 
 .shadowBottom
 {
-    background: url(/images/back-bottombody.png) no-repeat top left;
+    background: url(/images/back-bottombody.gif) no-repeat top left;
     height: 12px;
 }
 .footer
@@ -249,27 +249,28 @@ a.navigator:hover
 }
 .topFooter
 {
-    height: 50px;
+    height: 35px;
+    padding-right:30px;
     text-align: center;
-    background: url(/images/lineFooterH.png) no-repeat bottom center;
+    background: url(/images/lineFooterH.gif) no-repeat bottom center;
 }
 
 
 .topFooter .menuItem
 {
-    height: 40px;
-    line-height: 30px;
+    height: 21px;
+    line-height: 21px;
     font-weight: bold;
     font-size: 11px;
-    padding: 15px;
+    padding: 0 13px;
     color: #FFF;
-    background: url(/images/line-bottom.gif) no-repeat 0 20px;
+    background: url(/images/line-bottom.gif) no-repeat top left;
     display: inline-block;
 }
 .bottomFooter
 {
     margin: 0 auto;
-    width: 300px;
+    width: 550px;
     text-align: left;
     font-size: 11px;
     color: #FFF;
