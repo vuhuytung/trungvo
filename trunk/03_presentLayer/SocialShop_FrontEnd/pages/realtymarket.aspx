@@ -31,8 +31,8 @@
                                         Quận/Huyện
                                     </td>
                                     <td>
-                                        <asp:DropDownList ID="ddlDistrict" CssClass="ddl"  runat="server" AutoPostBack="true" Height="22px"
-                                            OnSelectedIndexChanged="ddlDistrict_SelectedIndexChanged" Width="136px">
+                                        <asp:DropDownList ID="ddlDistrict" CssClass="ddl" runat="server" AutoPostBack="true"
+                                            Height="22px" OnSelectedIndexChanged="ddlDistrict_SelectedIndexChanged" Width="136px">
                                         </asp:DropDownList>
                                     </td>
                                 </tr>
@@ -41,14 +41,14 @@
                                         Phường/Xã
                                     </td>
                                     <td>
-                                        <asp:DropDownList ID="ddlVillage" CssClass="ddl"  runat="server" Width="136px">
+                                        <asp:DropDownList ID="ddlVillage" CssClass="ddl" runat="server" Width="136px">
                                         </asp:DropDownList>
                                     </td>
                                     <td>
                                         Loại BĐS
                                     </td>
                                     <td>
-                                        <asp:DropDownList ID="ddlTypeBDS" CssClass="ddl"  runat="server">
+                                        <asp:DropDownList ID="ddlTypeBDS" CssClass="ddl" runat="server">
                                         </asp:DropDownList>
                                     </td>
                                 </tr>
@@ -60,9 +60,9 @@
                                         <asp:DropDownList ID="ddlPrice" CssClass="ddl" runat="server">
                                         </asp:DropDownList>
                                     </td>
-                                   
                                     <td style="text-align: center; padding-top: 7px;">
-                                        <asp:Button ID="btnSearch" CssClass="btnButton" runat="server" Text="Tìm" Width="70px" OnClick="btnSearch_Click" />
+                                        <asp:Button ID="btnSearch" CssClass="btnButton" runat="server" Text="Tìm" Width="70px"
+                                            OnClick="btnSearch_Click" />
                                     </td>
                                 </tr>
                             </table>
@@ -83,12 +83,13 @@
                                         <div class="detail_item_add">
                                             <a>Địa chỉ:&nbsp;&nbsp;<%#Eval("Street").ToString().Substring(0, 1) != "-" ? Eval("Street").ToString() : Eval("Street").ToString().Substring(1)%></a></div>
                                         <div class="detail_item_price">
-                                            <a>Giá:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%#string.Format("{0:0,0 vnđ}", Eval("Price"))%></a>
+                                            <a>Giá:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <%#string.Format("{0:0,0 VNĐ}", Eval("Price"))%></a>
                                         </div>
                                         <div class="detail_item_date">
-                                            <a><%#Convert.ToDateTime(Eval("CreateDate")).ToString("dd-MM-yyyy")%></a>
+                                            <a>
+                                                <%#Convert.ToDateTime(Eval("CreateDate")).ToString("dd-MM-yyyy")%></a>
                                         </div>
-
                                     </div>
                                 </div>
                             </ItemTemplate>
@@ -105,7 +106,7 @@
                     <uc2:ucDoitac ID="ucDoitac1" runat="server" />
                 </div>
                 <div class="clear">
-                    </div>
+                </div>
                 <!--End body content-->
             </div>
         </ContentTemplate>

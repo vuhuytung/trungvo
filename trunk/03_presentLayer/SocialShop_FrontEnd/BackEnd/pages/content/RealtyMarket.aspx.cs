@@ -437,7 +437,13 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
                 {
                     string strFile = Path.Combine(Request.PhysicalApplicationPath, "images\\Market");
                     strFile += "\\" + fupload.FileName;
-                    fupload.PostedFile.SaveAs(strFile);
+
+                    var EditImage1 = System.Drawing.Image.FromFile(fupload.PostedFile.FileName);
+                    VTCO.Library.ImageResize Img2 = new VTCO.Library.ImageResize();
+                    var newimg1 = Img2.Crop(EditImage1, 500, 300, VTCO.Library.ImageResize.AnchorPosition.Center);
+                    newimg1.Save(strFile);
+
+                   // fupload.PostedFile.SaveAs(strFile);
 
                     int length = fupload.FileName.Length - 4;
                     string newname = fupload.FileName.Substring(0, length) + "_thumb";
@@ -591,7 +597,13 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
             {
                 string strFile = Path.Combine(Request.PhysicalApplicationPath, "images\\Market");
                 strFile += "\\" + fupload.FileName;
-                fupload.PostedFile.SaveAs(strFile);
+               
+                var EditImage1 = System.Drawing.Image.FromFile(fupload.PostedFile.FileName);
+                VTCO.Library.ImageResize Img2 = new VTCO.Library.ImageResize();
+                var newimg1 = Img2.Crop(EditImage1, 500, 300, VTCO.Library.ImageResize.AnchorPosition.Center);
+                newimg1.Save(strFile);
+
+                //fupload.PostedFile.SaveAs(strFile);
 
 
                 int length = fupload.FileName.Length - 4;

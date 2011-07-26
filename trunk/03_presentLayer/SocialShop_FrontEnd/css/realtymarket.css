@@ -25,6 +25,7 @@
             height:70px;
             font-family:Arial,Tahoma,Verdana;
             font-size:12px;
+            width:480px;
         }
         .detail_item_title
         {
@@ -37,6 +38,10 @@
             color:#0564A7;
             font-weight:bold;
         }
+        .detail_item_title a:hover
+        {
+            text-decoration:underline;
+        }
         .detail_item_price
         {
             width:100%;
@@ -47,6 +52,13 @@
         {
             color:Black;
         }
+        a:hover
+        {
+            text-decoration:none;
+            
+        }
+        
+       
         .detail_item_date
         {
             float:left;

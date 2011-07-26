@@ -14,7 +14,7 @@
                         <tr>
                             <td colspan="2" style="text-align: center; padding: 5px 0;">
                                 <asp:Label ID="lblTitle" runat="server" Text="Thêm mới tài liệu" Font-Size="18px"
-                                    ForeColor="red"></asp:Label>
+                                    ForeColor="blue"></asp:Label>
                             </td>
                         </tr>
                         <tr>
@@ -97,7 +97,7 @@
                         <ItemTemplate>
                             <tr>
                                 <td colspan="2" style="text-align: center; padding: 5px 0;">
-                                    <asp:Label ID="lblTitle" runat="server" Text="Sửa thông tin" Font-Size="18px" ForeColor="red"></asp:Label>
+                                    <asp:Label ID="lblTitle" runat="server" Text="Sửa thông tin" Font-Size="18px" ForeColor="blue"></asp:Label>
                                 </td>
                             </tr>
                             <tr>
