@@ -300,6 +300,7 @@
                                         BorderColor="#ED8080" BorderWidth="1"></asp:TextBox>
                                     <asp:HiddenField ID="Img" runat="server" Value='<%#Eval("Image") %>' />
                                     <asp:HiddenField ID="ImgThumb" runat="server"  Value='<%#Eval("ImageThumb") %>'/>
+                                    <asp:HiddenField ID="fullAdd" runat="server"  Value='<%#Eval("Street") %>'/>
                                 </td>
                             </tr>
                             <tr>
@@ -338,7 +339,7 @@
                                     Loại BĐS
                                 </td>
                                 <td style="padding: 5px 0px;">
-                                    <asp:DropDownList ID="ddlTypeBDS" runat="server">
+                                    <asp:DropDownList ID="ddlTypeBDSs" runat="server">
                                     </asp:DropDownList>
                                 </td>
                             </tr>
@@ -346,7 +347,7 @@
                                 Địa điểm BĐS 
                             </td>
                             <td>
-                                <%#Eval("AdressBDS").ToString().Substring(0,1)!="-"? Eval("AdressBDS").ToString(): Eval("AdressBDS").ToString().Substring(1)%>
+                                <%#Eval("Street").ToString().Substring(0, 1) != "-" ? Eval("Street").ToString() : Eval("Street").ToString().Substring(1)%>
                             </td>
                             <tr>
                                 <td>

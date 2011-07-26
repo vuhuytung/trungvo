@@ -10,11 +10,11 @@
     }
 
 </script>
-<table cellspacing="6">
+<table cellspacing="6" class="tbContact">
     <tr>
         <td>Họ tên</td>
         <td>
-            <asp:TextBox ID="txtName" runat="server" Width="198px"></asp:TextBox>*</td>
+            <asp:TextBox ID="txtName" runat="server" Width="198px"></asp:TextBox><a>*</a></td>
     </tr>
     <tr>
         <td>Địa chỉ</td>
@@ -24,7 +24,7 @@
     <tr>
         <td>Email</td>
         <td>
-            <asp:TextBox ID="txtEmail" runat="server" Width="341px"></asp:TextBox>*
+            <asp:TextBox ID="txtEmail" runat="server" Width="341px"></asp:TextBox><a>*</a>
         </td>
     </tr>
     <tr>
@@ -36,20 +36,20 @@
     <tr>
         <td>Tiêu đề</td>
         <td>
-            <asp:TextBox ID="txtTitle" runat="server" Width="342px"></asp:TextBox>*
+            <asp:TextBox ID="txtTitle" runat="server" Width="342px"></asp:TextBox><a>*</a>
         </td>
     </tr>
     <tr>
         <td>Nội dung</td>
         <td>
-            <asp:TextBox ID="txtContent" runat="server" Height="160px" Width="342px" TextMode="MultiLine"></asp:TextBox>*
+            <asp:TextBox ID="txtContent" runat="server" Height="160px" Width="342px" TextMode="MultiLine"></asp:TextBox><a>*</a>
         </td>
     </tr>
     <tr>
         <td colspan="2" style=" padding-left:150px; padding-top:20px;">
-            <asp:Button ID="btnSend" runat="server" Text="Gửi" Width="66px"  
+            <asp:Button ID="btnSend" CssClass="btnButton" runat="server" Text="Gửi" Width="66px"  
                 OnClientClick="return Validate()" onclick="btnSend_Click"/>
-            <asp:Button ID="btnCancel" runat="server" Text="hủy" Width="70px" 
+            <asp:Button ID="btnCancel" CssClass="btnButton" runat="server" Text="hủy" Width="70px" 
                 onclick="btnCancel_Click" />
         </td>
     </tr>
