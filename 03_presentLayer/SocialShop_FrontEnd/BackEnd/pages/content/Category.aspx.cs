@@ -301,8 +301,15 @@ public partial class BackEnd_pages_content_Category : System.Web.UI.Page
                 link = "/contact";
             }
             status = Convert.ToInt32(ddlStatus.SelectedValue);
-            MyMenu.Update(MenuID, parentId, name, link, status, order, type);
-            SetControlsEdit(false, " Cập nhật ");
+            if (MyMenu.Update(MenuID, parentId, name, link, status, order, type) > 0)
+            {
+                SetControlsEdit(false, " Cập nhật ");
+                RadAjaxManager1.ResponseScripts.Add("alert('Cập nhật thành công!')");
+            }
+            else
+            {
+                RadAjaxManager1.ResponseScripts.Add("alert('Cập nhật thất bại!')");
+            }
         }
     }
 
