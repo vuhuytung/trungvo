@@ -117,24 +117,41 @@ public partial class BackEnd_pages_account_Function : System.Web.UI.Page
 
     protected void RadTreeViewMenu_ContextMenuItemClick(object sender, Telerik.Web.UI.RadTreeViewContextMenuEventArgs e)
     {
-        var MyMenuInfo = MyMenu.FunctionGetInfo(Convert.ToInt32(e.Node.Value));
+        var FunctionID=Convert.ToInt32(e.Node.Value);
+        uspFunctionGetInfoByFunctionIDResult MyMenuInfo = new uspFunctionGetInfoByFunctionIDResult();
+        if (FunctionID > 0)
+        {
+            MyMenuInfo = MyMenu.FunctionGetInfo(FunctionID);
+        }
 
         switch (e.MenuItem.Value)
         {
             case "Add":
                 //if (Convert.ToInt32(MyAccount.GetInfo(Convert.ToInt32(Session[Constants.SESSION_ACCOUNTID])).Type) == Convert.ToInt32(EnumAccountType.RootAdmin) || Convert.ToInt32(MyAccount.GetInfo(Convert.ToInt32(Session[Constants.SESSION_ACCOUNTID])).Type) == Convert.ToInt32(EnumAccountType.Admin))
                 {
+                    ddlParentID.Items.Clear();
+                    GetMenuTop(null, 0, "", 0);
+                    var ktra = false;
+                    foreach (ListItem item in ddlParentID.Items)
+                    {
+                        if (item.Value == FunctionID.ToString())
+                            ktra = true;
+                    }
+                    if (!ktra)
+                    {
+                        RadAjaxManager1.ResponseScripts.Add("alert('Không thể thêm chức năng mới vào chức năng này!')");
+                        return;
+                    }
                     CheckAddOrEdit = 1;
                     txtMenuName.Focus();
                     SetControlsEdit(true, " Lưu lại ");
-                    Clear();
-                    MenuID = Convert.ToInt32(e.Node.Value);
-                    BinDataForDropDllPrentID();
-                    var listItemAdd = new ListItem(e.Node.Text, e.Node.Value);
-                    listItemAdd.Selected = true;
-                    ddlParentID.Items.Add(listItemAdd);
-                    ddlParentID.Enabled = false;
-                    SetControlsRdb(false);
+                    MenuID = FunctionID;
+                    ddlParentID.Enabled = false;                    
+                    txtMenuName.Text = "";
+                    txtOrder.Text = "";
+                    txtUrl.Text = "";
+                    SetControlsRdb(true);
+                    ddlParentID.SelectedValue = FunctionID.ToString();
                 }
                 //else
                 //{
@@ -148,7 +165,7 @@ public partial class BackEnd_pages_account_Function : System.Web.UI.Page
                     CheckAddOrEdit = 0;
                     txtMenuName.Focus();
                     SetControlsEdit(true, " Cập nhật ");
-                    MenuID = Convert.ToInt32(e.Node.Value);
+                    MenuID = FunctionID;
                     ddlParentID.Enabled = true;
                     ddlParentID.Items.Clear();
                     GetMenuTop(null, 0, "", MenuID);
@@ -192,7 +209,7 @@ public partial class BackEnd_pages_account_Function : System.Web.UI.Page
                     }
                     else
                     {
-                        lblMsg1.Text = "  <img src='/Backend/images/attention.ico' width='20px' height='20px' /> Bạn không được xóa chức năng này  ";
+                        lblMsg1.Text = "  <img src='/Backend/images/attention.ico' width='20px' height='20px' /> Chức năng này đang tồn tại chức năng con!";
                         lblMsg1.Visible = true;
                     }
                 }
