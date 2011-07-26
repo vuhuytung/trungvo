@@ -214,7 +214,8 @@ public partial class BackEnd_pages_content_Category : System.Web.UI.Page
                         if (MyMenuInfo.URL.Trim() == "/contact")
                             ddlMenuType.SelectedValue = "7";
                         else
-                            ddlMenuType.SelectedValue = "6";
+                            if(MyMenuInfo.URL.Trim()=="/addrealtymarket")
+                                ddlMenuType.SelectedValue = "6";
                     }
                 }
                 //else
