@@ -40,7 +40,8 @@ public partial class userControls_ucNavigator : System.Web.UI.UserControl
                 }
                 
             }
-            ltrNavigator.Text = Link;
+            if(data.Count>0)
+                ltrNavigator.Text = Link;
         }
     }
 }
