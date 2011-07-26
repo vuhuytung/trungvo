@@ -150,6 +150,16 @@ public partial class BackEnd_pages_account_Function : System.Web.UI.Page
                     txtMenuName.Text = "";
                     txtOrder.Text = "";
                     txtUrl.Text = "";
+                    if (FunctionID == 0)
+                    {
+                        trUrl.Visible = false;
+                        lblTitleDetails.Text = "Thêm mới nhóm chức năng";
+                    }
+                    else
+                    {
+                        trUrl.Visible = true;
+                        lblTitleDetails.Text = "Thêm chức năng mới";
+                    }
                     SetControlsRdb(true);
                     ddlParentID.SelectedValue = FunctionID.ToString();
                 }
@@ -181,6 +191,7 @@ public partial class BackEnd_pages_account_Function : System.Web.UI.Page
                         SetControlsRdb(false);
                     }                    
                     ddlParentID.SelectedValue = MyMenuInfo.ParrentID.ToString();
+                    lblTitleDetails.Text = "Chỉnh sửa chức năng";
                 }
     //            //else
     //            //{
@@ -229,23 +240,33 @@ public partial class BackEnd_pages_account_Function : System.Web.UI.Page
         int parentId = 1;
         string link = "";
         int status = 1;
-        if (CheckAddOrEdit == 1)
+
+                
+        name = HtmlUtility.HtmlEncode(txtMenuName.Text.Trim());
+        parentId = Convert.ToInt32(ddlParentID.SelectedValue);
+        link = HtmlUtility.HtmlEncode(txtUrl.Text.Trim());
+        status = Convert.ToInt32(ddlStatus.SelectedValue);
+
+        if(name=="")            
         {
-            name = HtmlUtility.HtmlEncode(txtMenuName.Text.Trim());
-            order = Convert.ToInt32(txtOrder.Text);
-            parentId = Convert.ToInt32(ddlParentID.SelectedValue);
-            link = HtmlUtility.HtmlEncode(txtUrl.Text.Trim());
-            status = Convert.ToInt32(ddlStatus.SelectedValue);
+            RadAjaxManager1.ResponseScripts.Add("alert('Tên không được rỗng!')");
+            txtMenuName.Focus();
+            return;
+        }
+        if (!int.TryParse(txtOrder.Text, out order))
+        {
+            RadAjaxManager1.ResponseScripts.Add("alert('Số thứ tự không hợp lệ!')");
+            txtOrder.Focus();
+            return;
+        }
+
+        if (CheckAddOrEdit == 1)
+        {            
             MyMenu.FunctionInsert(name, link, order, parentId,status);
             Response.Redirect("~/admin/function");
         }
         else
-        {
-            name = HtmlUtility.HtmlEncode(txtMenuName.Text.Trim());
-            order = Convert.ToInt32(txtOrder.Text);
-            parentId = Convert.ToInt32(ddlParentID.SelectedValue);
-            link = HtmlUtility.HtmlEncode(txtUrl.Text.Trim());
-            status = Convert.ToInt32(ddlStatus.SelectedValue);
+        {            
             MyMenu.FunctionUpdate(MenuID, name, link, order, parentId, status);
             Response.Redirect("~/admin/function");
         }

@@ -97,14 +97,14 @@
                 </div>
 
                 <div id="CtrEdit" class="divframe" runat="server" visible="false" style="width:49%; float:left;">
-                    <div class="divSubHeader" style="font-weight:bold; padding:10px;">
-                        Chi tiết Menu
+                    <div class="divSubHeader" style="font-weight:bold; padding:20px; padding-left:100px;">
+                        <asp:Label runat="server" ID="lblTitleDetails" Text="Chi tiết chức năng" Font-Size="14px"></asp:Label>
                     </div>
                     <div class="divDetailMenu">
                         <div style="margin-left: 45px; font-size: 12px;">
                             <table>
                                 <tr>
-                                    <td style="padding-top: 10px;">
+                                    <td style="padding: 10px;">
                                         Menu cha:
                                     </td>
                                     <td>
@@ -114,15 +114,15 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="padding-top: 10px;">
+                                    <td style="padding: 10px;">
                                         Tên Menu:
                                     </td>
                                     <td>
                                         <asp:TextBox ID="txtMenuName" MaxLength="50" Width="180px" runat="server" CssClass="inputText"></asp:TextBox>
                                     </td>
                                 </tr>
-                                <tr id="Url">
-                                    <td>
+                                <tr id="trUrl" runat="server">
+                                    <td style="padding: 10px;">
                                         Đường dẫn
                                     </td>
                                     <td colspan="2">
@@ -130,7 +130,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="padding-top: 10px">
+                                    <td style="padding: 10px;">
                                         Thứ tự:
                                     </td>
                                     <td>
@@ -138,7 +138,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="padding-top: 10px; padding-bottom: 15px">
+                                    <td style="padding: 10px;">
                                         Trạng thái:
                                     </td>
                                     <td>
@@ -163,10 +163,6 @@
                                 <asp:RangeValidator ID="RangeValidator2" ControlToValidate="txtOrder" Display="Dynamic"
                                     MinimumValue="1" MaximumValue="20" Type="Integer" runat="server" ValidationGroup="Error"
                                     ErrorMessage="(*) Thứ tự phải kiểu số từ 1-->20"></asp:RangeValidator>
-                            </div>
-                            <div>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="(*) Bạn chưa nhập đường dẫn"
-                                    ControlToValidate="txtUrl" ValidationGroup="Error" Display="Dynamic"></asp:RequiredFieldValidator>
                             </div>
                         </div>
                         <br />
