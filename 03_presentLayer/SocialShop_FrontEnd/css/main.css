@@ -122,7 +122,6 @@ ul#thumbs li{
     background:url("../images/frame.png") no-repeat;
     width:130px;
     height:95px;
-    position:relative;
 }
 .my_Img img
 {
@@ -132,9 +131,8 @@ ul#thumbs li{
 	line-height:80px;
 	overflow:hidden;
 	z-index:1;
-	position:absolute;
-	top:11px;
-	left:9px;
+	margin-top:15px;
+	margin-left:9px;
 }
 /*==========style for TopSearch=========*/
 
