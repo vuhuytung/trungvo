@@ -60,6 +60,7 @@
                                         <asp:DropDownList ID="ddlPrice" CssClass="ddl" runat="server">
                                         </asp:DropDownList>
                                     </td>
+                                   
                                     <td style="text-align: center; padding-top: 7px;">
                                         <asp:Button ID="btnSearch" CssClass="btnButton" runat="server" Text="Tìm" Width="70px" OnClick="btnSearch_Click" />
                                     </td>
@@ -72,15 +73,17 @@
                             <ItemTemplate>
                                 <div class="realty_item">
                                     <div class="img_item">
-                                        <img alt="anh" src="<%#Eval("ImageThumb")%>" />
+                                        <img alt="noImage" src="<%#Eval("ImageThumb")%>" />
                                     </div>
                                     <div class="detail_item">
                                         <div class="detail_item_title">
-                                            <a href='RealtyMarketDetails.aspx?ID=<%#Eval("RealtyMarketID")%>'>
+                                            <a href='../pages/RealtyMarketDetails.aspx?ID=<%#Eval("RealtyMarketID")%>'>
                                                 <%#Eval("Title")%></a>
                                         </div>
+                                        <div class="detail_item_add">
+                                            <a>Địa chỉ:&nbsp;&nbsp;<%#Eval("Street").ToString().Substring(0, 1) != "-" ? Eval("Street").ToString() : Eval("Street").ToString().Substring(1)%></a></div>
                                         <div class="detail_item_price">
-                                            <a>Giá: <%#string.Format("{0:0,0 vnđ}", Eval("Price"))%></a>
+                                            <a>Giá:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%#string.Format("{0:0,0 vnđ}", Eval("Price"))%></a>
                                         </div>
                                         <div class="detail_item_date">
                                             <a><%#Convert.ToDateTime(Eval("CreateDate")).ToString("dd-MM-yyyy")%></a>
@@ -102,7 +105,7 @@
                     <uc2:ucDoitac ID="ucDoitac1" runat="server" />
                 </div>
                 <div class="clear">
-                </div>
+                    </div>
                 <!--End body content-->
             </div>
         </ContentTemplate>

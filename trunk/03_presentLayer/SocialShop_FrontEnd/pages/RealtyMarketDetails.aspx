@@ -22,7 +22,7 @@
                                     <td>Địa chỉ</td>
                                     <td colspan="3">
                                         <a>
-                                            <%#Eval("AdressBDS").ToString().Substring(0,1)!="-"? Eval("AdressBDS").ToString(): Eval("AdressBDS").ToString().Substring(1)%>
+                                            <%#Eval("Street").ToString().Substring(0, 1) != "-" ? Eval("Street").ToString() : Eval("Street").ToString().Substring(1)%>
                                         </a>
                                     </td>
                                 </tr>
@@ -35,7 +35,7 @@
                                             <%#Eval("Acreage") %></a>
                                     </td>
                                     <td>
-                                        Hướng bds
+                                        Hướng bất động sản
                                     </td>
                                     <td>
                                         <a>
@@ -88,7 +88,7 @@
                                         Gần trường mẫu giáo
                                     </td>
                                     <td>
-                                        <asp:CheckBox ID="CheckBox2" runat="server" Enabled="false" Checked='<%#Eval("NearKindergarten") %>' />
+                                        <%#(Convert.ToBoolean(Eval("NearKindergarten"))) ? "<img src='/images/check1.gif' />" : ""%>
                                     </td>
                                 </tr>
                                 <tr>
@@ -96,13 +96,15 @@
                                         Gần trường trung học
                                     </td>
                                     <td>
-                                        <asp:CheckBox ID="CheckBox3" runat="server" Enabled="false" Checked='<%#Eval("NearlySchool") %>' />
+                                        
+                                         <%#(Convert.ToBoolean(Eval("NearlySchool"))) ? "<img src='/images/check1.gif' />" : ""%>
                                     </td>
                                     <td>
                                         Gần bệnh viện
                                     </td>
                                     <td>
-                                        <asp:CheckBox ID="CheckBox4" runat="server" Enabled="false" Checked='<%#Eval("NearHospital") %>' />
+                                        
+                                        <%#(Convert.ToBoolean(Eval("NearHospital"))) ? "<img src='/images/check1.gif' />" : ""%>
                                     </td>
                                 </tr>
                                 <tr>
@@ -110,13 +112,15 @@
                                         Gần trường Đại Học
                                     </td>
                                     <td>
-                                        <asp:CheckBox ID="CheckBox5" runat="server" Enabled="false" Checked='<%#Eval("NearlyUniversity") %>' />
+                                       
+                                        <%#(Convert.ToBoolean(Eval("NearlyUniversity"))) ? "<img src='/images/check1.gif' />" : ""%>
                                     </td>
                                     <td>
                                         Gần chợ
                                     </td>
                                     <td>
-                                        <asp:CheckBox ID="CheckBox6" runat="server" Enabled="false" Checked='<%#Eval("NearlyMarket") %>' />
+                                        <%#(Convert.ToBoolean(Eval("NearlyMarket"))) ? "<img src='/images/check1.gif' />" : ""%>
+
                                     </td>
                                 </tr>
                                 <tr>
@@ -139,7 +143,7 @@
                                     Người liên hệ
                                 </td>
                                 <td>
-                                    <%#Eval("UserPublish")%>
+                                    <a><%#Eval("UserPublish")%></a>
                                 </td>
                             </tr>
                             <tr>
@@ -147,7 +151,7 @@
                                     Địa chỉ
                                 </td>
                                 <td style=" width:350px;">
-                                    <%#Eval("Address")%>
+                                    <a><%#Eval("Address")%></a>
                                 </td>
                             </tr>
                             <tr>
@@ -155,7 +159,7 @@
                                     Điện thoại
                                 </td>
                                 <td>
-                                    <%#Eval("Phone")%>
+                                   <a> <%#Eval("Phone")%></a>
                                 </td>
                             </tr>
                             <tr>
@@ -163,7 +167,7 @@
                                     Email
                                 </td>
                                 <td>
-                                    <%#Eval("Email")%>
+                                   <a> <%#Eval("Email")%></a>
                                 </td>
                             </tr>
                         </table>

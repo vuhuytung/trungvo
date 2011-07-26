@@ -191,7 +191,7 @@
                         Ảnh BĐS
                     </td>
                     <td>
-                        <asp:FileUpload ID="fupload" runat="server" />
+                        <asp:FileUpload ID="fupload" runat="server" CssClass="fupload" />
                     </td>
                 </tr>
                 <tr>

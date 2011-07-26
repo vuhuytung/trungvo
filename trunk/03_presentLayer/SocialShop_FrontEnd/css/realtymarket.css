@@ -57,6 +57,16 @@
         {
             color:#44C2FA;
         }
+        .detail_item_add
+        {
+           float:left;
+            width:100%;
+            padding:2px; 
+        }
+        .detail_item_add a
+        {
+             color:Black;
+        }
         .topsearch
         {
             width:100%;
