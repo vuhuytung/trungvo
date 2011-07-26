@@ -142,7 +142,11 @@ public partial class pages_Bds_AddNews : System.Web.UI.Page
             {
                 string strFile = Path.Combine(Request.PhysicalApplicationPath, "images\\Market");
                 strFile += "\\" + fupload.FileName;
-                fupload.PostedFile.SaveAs(strFile);
+                var EditImage1 = System.Drawing.Image.FromFile(fupload.PostedFile.FileName);
+                VTCO.Library.ImageResize Img2 = new VTCO.Library.ImageResize();
+                var newimg1 = Img2.Crop(EditImage1, 500, 300, VTCO.Library.ImageResize.AnchorPosition.Center);
+                newimg1.Save(strFile);
+                //fupload.PostedFile.SaveAs(strFile);
 
 
                 int length = fupload.FileName.Length - 4;
@@ -159,14 +163,17 @@ public partial class pages_Bds_AddNews : System.Web.UI.Page
 
 
                 int locationID = GetLocationID(ddlProvince, ddlDistrict, ddlVillage);
-
-                ctrN.InsertMarket(txtTitle.Text, txtDesc.Text, txtUser.Text, txtPhone.Text, txtEmail.Text, Int32.Parse(txtPrice.Text), Int32.Parse(ddlTypeBDS.SelectedValue), @"/images/Market/" + fupload.FileName, @"/images/Market/" + newname, txtLegal.Text, txtDientich.Text, txtClientRoom.Text, txtBedRoom.Text, txtBathrooms.Text, txtPosition.Text, txtAddress.Text, txtFloor.Text, locationID, txtStreet.Text, chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked, chkUniversity.Checked, false);
+                string address = ctrN.GetFullAddressbyLocationID(locationID);
+                string str = txtStreet.Text + "-" + address;
+                ctrN.InsertMarket(txtTitle.Text, txtDesc.Text, txtUser.Text, txtPhone.Text, txtEmail.Text, Int32.Parse(txtPrice.Text), Int32.Parse(ddlTypeBDS.SelectedValue), @"/images/Market/" + fupload.FileName, @"/images/Market/" + newname, txtLegal.Text, txtDientich.Text, txtClientRoom.Text, txtBedRoom.Text, txtBathrooms.Text, txtPosition.Text, txtAddress.Text, txtFloor.Text, locationID, str, chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked, chkUniversity.Checked, false);
             }
             else
             {
 
                 int locationID = GetLocationID(ddlProvince, ddlDistrict, ddlVillage);
-                ctrN.InsertMarket(txtTitle.Text, txtDesc.Text, txtUser.Text, txtPhone.Text, txtEmail.Text, Int32.Parse(txtPrice.Text), Int32.Parse(ddlTypeBDS.SelectedValue), @"/images/Market/", @"/images/Market/", txtLegal.Text, txtDientich.Text, txtClientRoom.Text, txtBedRoom.Text, txtBathrooms.Text, txtPosition.Text, txtAddress.Text, txtFloor.Text, locationID, txtStreet.Text, chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked, chkUniversity.Checked, false);
+                string address = ctrN.GetFullAddressbyLocationID(locationID);
+                string str = txtStreet.Text + "-" + address;
+                ctrN.InsertMarket(txtTitle.Text, txtDesc.Text, txtUser.Text, txtPhone.Text, txtEmail.Text, Int32.Parse(txtPrice.Text), Int32.Parse(ddlTypeBDS.SelectedValue), @"/images/Market/", @"/images/Market/", txtLegal.Text, txtDientich.Text, txtClientRoom.Text, txtBedRoom.Text, txtBathrooms.Text, txtPosition.Text, txtAddress.Text, txtFloor.Text, locationID, str, chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked, chkUniversity.Checked, false);
             }
             ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('Insert success !')", true);
         }
