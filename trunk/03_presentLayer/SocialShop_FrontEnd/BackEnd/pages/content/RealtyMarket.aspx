@@ -619,8 +619,8 @@
                         <td >
                             <asp:DropDownList ID="ddlTypeUser" runat="server">
                                 <asp:ListItem Text="Tất cả" Value="2" Selected="True"/>
-                                <asp:ListItem Text="Ban quản trị" Value="1"/>
-                                <asp:ListItem Text="Người dùng" Value="0"/>
+                                <asp:ListItem Text="Admin" Value="1"/>
+                                <asp:ListItem Text="User" Value="0"/>
                             </asp:DropDownList>
                         </td>
                         <td style="text-align: center; padding-top: 7px;">
