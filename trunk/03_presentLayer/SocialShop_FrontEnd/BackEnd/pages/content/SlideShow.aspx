@@ -141,7 +141,7 @@
                 Quản lý SlideShow ảnh</h1>
         </div>
          <div class="box" style="width: 940px; float: left;">
-            <div class="title" style="width: 960px;">
+            <div class="title1" style="width: 960px;">
                 <span>Danh sách hình ảnh</span>
                 <asp:LinkButton ID="lbtAddNew" runat="server" CssClass="title-addnew" OnClick="btnThemmoi_Click">
                 <img src="/BackEnd/img/addnew_16.png" style="vertical-align: top" alt='Thêm mới' />
@@ -153,7 +153,7 @@
                 Xóa
                 </asp:LinkButton>
             </div>
-        <div class="content" style="width: 940px; float: left;">
+        <div class="content1" style="width: 960px; float: left;">
             <asp:Repeater ID="RptSlide" runat="server" OnItemCommand="RptSlide_ItemCommand">
                 <HeaderTemplate>
                     <table style="width: auto; margin: auto; height: 70px;" class="tbl_doc">

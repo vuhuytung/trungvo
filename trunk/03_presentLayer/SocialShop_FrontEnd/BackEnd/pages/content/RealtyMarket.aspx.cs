@@ -175,7 +175,7 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
                 if (Int32.Parse(ddlVillage.SelectedValue.Split('_')[0]) != -1)
                 {
                     int Code = Int32.Parse(ddlVillage.SelectedValue.Split('_')[1]);
-                    var _data = ctrN.GetListRealtyMarketByCondition(Code, 3, Int32.Parse(ddlTypeBDS.SelectedValue), begin, end, ucPaging1.CurrentPage, ucPaging1.PageSize);
+                    var _data = ctrN.GetListRealtyMarketByCondition( Int32.Parse(ddlTypeUser.SelectedValue),Code, 3, Int32.Parse(ddlTypeBDS.SelectedValue), begin, end, ucPaging1.CurrentPage, ucPaging1.PageSize);
                     RptReatyMarket.DataSource = _data.Items;
                     RptReatyMarket.DataBind();
                     ucPaging1.TotalRecord = _data.TotalRecord;
@@ -183,7 +183,7 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
                 else
                 {
                     int Code = Int32.Parse(ddlDistrict.SelectedValue.Split('_')[1]);
-                    var _data = ctrN.GetListRealtyMarketByCondition(Code, 2, Int32.Parse(ddlTypeBDS.SelectedValue), begin, end, ucPaging1.CurrentPage, ucPaging1.PageSize);
+                    var _data = ctrN.GetListRealtyMarketByCondition(Int32.Parse(ddlTypeUser.SelectedValue),Code, 2, Int32.Parse(ddlTypeBDS.SelectedValue), begin, end, ucPaging1.CurrentPage, ucPaging1.PageSize);
                     RptReatyMarket.DataSource = _data.Items;
                     RptReatyMarket.DataBind();
                     ucPaging1.TotalRecord = _data.TotalRecord;
@@ -194,7 +194,7 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
             else
             {
                 int Code = Int32.Parse(ddlProvince.SelectedValue.Split('_')[1]);
-                var _data = ctrN.GetListRealtyMarketByCondition(Code, 1, Int32.Parse(ddlTypeBDS.SelectedValue), begin, end, ucPaging1.CurrentPage, ucPaging1.PageSize);
+                var _data = ctrN.GetListRealtyMarketByCondition(Int32.Parse(ddlTypeUser.SelectedValue),Code, 1, Int32.Parse(ddlTypeBDS.SelectedValue), begin, end, ucPaging1.CurrentPage, ucPaging1.PageSize);
                 RptReatyMarket.DataSource = _data.Items;
                 RptReatyMarket.DataBind();
                 ucPaging1.TotalRecord = _data.TotalRecord;
@@ -204,7 +204,7 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
         }
         else
         {
-            var _data = ctrN.GetListRealtyMarketByCondition(0, 1, Int32.Parse(ddlTypeBDS.SelectedValue), begin, end, ucPaging1.CurrentPage, ucPaging1.PageSize);
+            var _data = ctrN.GetListRealtyMarketByCondition(Int32.Parse(ddlTypeUser.SelectedValue),0, 1, Int32.Parse(ddlTypeBDS.SelectedValue), begin, end, ucPaging1.CurrentPage, ucPaging1.PageSize);
             RptReatyMarket.DataSource = _data.Items;
             RptReatyMarket.DataBind();
             ucPaging1.TotalRecord = _data.TotalRecord;
@@ -341,6 +341,64 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
             DropDownList ddlVillage1 = (DropDownList)RptDetail.Controls[1].FindControl("ddlVillage1");
 
             DropDownList ddlTypeBDS1 = (DropDownList)RptDetail.Controls[1].FindControl("ddlTypeBDSs");
+            if (ctrN.GetShower(Int32.Parse(e.CommandArgument.ToString())) == 0)
+            {
+                TextBox txtTitle = (TextBox)RptDetail.Controls[1].FindControl("txtTitle");
+                TextBox txtUser = (TextBox)RptDetail.Controls[1].FindControl("txtUser");
+                TextBox txtAddress = (TextBox)RptDetail.Controls[1].FindControl("txtAddress");
+                TextBox txtPhone = (TextBox)RptDetail.Controls[1].FindControl("txtPhone");
+                TextBox txtEmail = (TextBox)RptDetail.Controls[1].FindControl("txtEmail");
+                TextBox txtDientich = (TextBox)RptDetail.Controls[1].FindControl("txtDientich");
+                TextBox txtLegal = (TextBox)RptDetail.Controls[1].FindControl("txtLegal");
+                TextBox txtPosition = (TextBox)RptDetail.Controls[1].FindControl("txtPosition");
+                TextBox txtFloor = (TextBox)RptDetail.Controls[1].FindControl("txtFloor");
+                TextBox txtClientRoom = (TextBox)RptDetail.Controls[1].FindControl("txtClientRoom");
+                TextBox txtBedRoom = (TextBox)RptDetail.Controls[1].FindControl("txtBedRoom");
+                TextBox txtBathrooms = (TextBox)RptDetail.Controls[1].FindControl("txtBathrooms");
+                TextBox txtPrice = (TextBox)RptDetail.Controls[1].FindControl("txtPrice");
+                TextBox txtDesc = (TextBox)RptDetail.Controls[1].FindControl("txtDesc");
+                TextBox txtStreet = (TextBox)RptDetail.Controls[1].FindControl("txtStreet");
+                // CheckBox chkCooler = (CheckBox)RptDetail.Controls[1].FindControl("chkCooler");
+                //CheckBox chkCable = (CheckBox)RptDetail.Controls[1].FindControl("chkCable");
+                CheckBox chkMaugiao = (CheckBox)RptDetail.Controls[1].FindControl("chkMaugiao");
+                CheckBox chkschool = (CheckBox)RptDetail.Controls[1].FindControl("chkschool");
+                CheckBox chkHospital = (CheckBox)RptDetail.Controls[1].FindControl("chkHospital");
+                CheckBox chkMarket = (CheckBox)RptDetail.Controls[1].FindControl("chkMarket");
+                CheckBox chkUniversity = (CheckBox)RptDetail.Controls[1].FindControl("chkUniversity");
+                //CheckBox chkPark = (CheckBox)RptDetail.Controls[1].FindControl("chkPark");
+                // CheckBox chkInternet = (CheckBox)RptDetail.Controls[1].FindControl("chkInternet");
+                //CheckBox chkOto = (CheckBox)RptDetail.Controls[1].FindControl("chkOto");
+                CheckBox chkStatus = (CheckBox)RptDetail.Controls[1].FindControl("chkStatus");
+                FileUpload fupload = (FileUpload)RptDetail.Controls[1].FindControl("fupload");
+                fupload.Enabled = false;
+                txtAddress.Enabled = false;
+                txtBathrooms.Enabled = false;
+                txtBedRoom.Enabled = false;
+                txtClientRoom.Enabled = false;
+                txtDesc.Enabled = false;
+                txtDientich.Enabled = false;
+                txtEmail.Enabled = false;
+                txtFloor.Enabled = false;
+                txtLegal.Enabled = false;
+                txtPhone.Enabled = false;
+                txtPosition.Enabled = false;
+                txtPrice.Enabled = false;
+                txtStreet.Enabled = false;
+                txtTitle.Enabled = false;
+                txtUser.Enabled = false;
+                chkHospital.Enabled = false;
+                chkMarket.Enabled = false;
+                chkMaugiao.Enabled = false;
+                chkschool.Enabled = false;
+                chkUniversity.Enabled = false;
+                ddlDistrict1.Enabled = false;
+                ddlProvince1.Enabled = false;
+                ddlVillage1.Enabled = false;
+                ddlTypeBDS1.Enabled = false;
+
+            }
+           
+
             //=================================================
             ddlTypeBDS1.DataSource = ctrN.GetCatByType();
             ddlTypeBDS1.DataTextField = "Name";
@@ -430,70 +488,87 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
 
             HiddenField Img = (HiddenField)RptDetail.Controls[1].FindControl("Img");
             HiddenField ImgThumb = (HiddenField)RptDetail.Controls[1].FindControl("ImgThumb");
-            try
+            if (ctrN.GetShower(Int32.Parse(lblID.Text)) == 1)
             {
-                int location = GetLocationID(ddlProvince1, ddlDistrict1, ddlVillage1);
-                if (fupload.FileName != "")
+                try
                 {
-                    string strFile = Path.Combine(Request.PhysicalApplicationPath, "images\\Market");
-                    strFile += "\\" + fupload.FileName;
-
-                    var EditImage1 = System.Drawing.Image.FromFile(fupload.PostedFile.FileName);
-                    VTCO.Library.ImageResize Img2 = new VTCO.Library.ImageResize();
-                    var newimg1 = Img2.Crop(EditImage1, 500, 300, VTCO.Library.ImageResize.AnchorPosition.Center);
-                    newimg1.Save(strFile);
-
-                   // fupload.PostedFile.SaveAs(strFile);
-
-                    int length = fupload.FileName.Length - 4;
-                    string newname = fupload.FileName.Substring(0, length) + "_thumb";
-                    string exp = fupload.FileName.Substring(length);
-                    newname = newname + exp;
-                    string strFile1 = Path.Combine(Request.PhysicalApplicationPath, "images\\Market");
-                    strFile1 += "\\" + newname;
-
-                    var EditImage = System.Drawing.Image.FromFile(fupload.PostedFile.FileName);
-                    VTCO.Library.ImageResize Img1 = new VTCO.Library.ImageResize();
-                    var newimg = Img1.Crop(EditImage, 120, 100, VTCO.Library.ImageResize.AnchorPosition.Center);
-                    newimg.Save(strFile1);
-
-
-                    if (location != 0)
+                    int location = GetLocationID(ddlProvince1, ddlDistrict1, ddlVillage1);
+                    if (fupload.FileName != "")
                     {
-                        string text = HttpUtility.HtmlEncode(txtDesc.Text).Replace("\n", "</br>");
-                        string address = ctrN.GetFullAddressbyLocationID(location);
-                        string str = txtStreet.Text + "-" + address;
-                        ctrN.UpdateMarket(Int32.Parse(lblID.Text), txtTitle.Text, text, txtUser.Text, txtPhone.Text, txtEmail.Text, Int32.Parse(txtPrice.Text), Int32.Parse(ddlTypeBDS1.SelectedValue), @"/images/Market/" + fupload.FileName, @"/images/Market/" + newname, txtLegal.Text, txtDientich.Text, txtClientRoom.Text, txtBedRoom.Text, txtBathrooms.Text, txtPosition.Text, txtAddress.Text, txtFloor.Text, location, str, chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked, chkUniversity.Checked, chkStatus.Checked);
+                        string strFile = Path.Combine(Request.PhysicalApplicationPath, "images\\Market");
+                        strFile += "\\" + fupload.FileName;
+
+                        var EditImage1 = System.Drawing.Image.FromFile(fupload.PostedFile.FileName);
+                        VTCO.Library.ImageResize Img2 = new VTCO.Library.ImageResize();
+                        var newimg1 = Img2.Crop(EditImage1, 500, 300, VTCO.Library.ImageResize.AnchorPosition.Center);
+                        newimg1.Save(strFile);
+
+                        // fupload.PostedFile.SaveAs(strFile);
+
+                        int length = fupload.FileName.Length - 4;
+                        string newname = fupload.FileName.Substring(0, length) + "_thumb";
+                        string exp = fupload.FileName.Substring(length);
+                        newname = newname + exp;
+                        string strFile1 = Path.Combine(Request.PhysicalApplicationPath, "images\\Market");
+                        strFile1 += "\\" + newname;
+
+                        var EditImage = System.Drawing.Image.FromFile(fupload.PostedFile.FileName);
+                        VTCO.Library.ImageResize Img1 = new VTCO.Library.ImageResize();
+                        var newimg = Img1.Crop(EditImage, 120, 100, VTCO.Library.ImageResize.AnchorPosition.Center);
+                        newimg.Save(strFile1);
+
+
+                        if (location != 0)
+                        {
+                            string text = HttpUtility.HtmlEncode(txtDesc.Text).Replace("\n", "</br>");
+                            string address = ctrN.GetFullAddressbyLocationID(location);
+                            string str = txtStreet.Text + "-" + address;
+                            ctrN.UpdateMarket(Int32.Parse(lblID.Text), txtTitle.Text, text, txtUser.Text, txtPhone.Text, txtEmail.Text, Int32.Parse(txtPrice.Text), Int32.Parse(ddlTypeBDS1.SelectedValue), @"/images/Market/" + fupload.FileName, @"/images/Market/" + newname, txtLegal.Text, txtDientich.Text, txtClientRoom.Text, txtBedRoom.Text, txtBathrooms.Text, txtPosition.Text, txtAddress.Text, txtFloor.Text, location, str, chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked, chkUniversity.Checked, chkStatus.Checked);
+                        }
+                        else
+                        {
+                            string text = HttpUtility.HtmlEncode(txtDesc.Text).Replace("\n", "</br>");
+                            ctrN.UpdateMarket(Int32.Parse(lblID.Text), txtTitle.Text, text, txtUser.Text, txtPhone.Text, txtEmail.Text, Int32.Parse(txtPrice.Text), Int32.Parse(ddlTypeBDS1.SelectedValue), @"/images/Market/" + fupload.FileName, @"/images/Market/" + newname, txtLegal.Text, txtDientich.Text, txtClientRoom.Text, txtBedRoom.Text, txtBathrooms.Text, txtPosition.Text, txtAddress.Text, txtFloor.Text, Int32.Parse(hdLocation.Value), fullAdd.Value, chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked, chkUniversity.Checked, chkStatus.Checked);
+                        }
                     }
                     else
                     {
-                        string text = HttpUtility.HtmlEncode(txtDesc.Text).Replace("\n", "</br>");
-                        ctrN.UpdateMarket(Int32.Parse(lblID.Text), txtTitle.Text, text, txtUser.Text, txtPhone.Text, txtEmail.Text, Int32.Parse(txtPrice.Text), Int32.Parse(ddlTypeBDS1.SelectedValue), @"/images/Market/" + fupload.FileName, @"/images/Market/" + newname, txtLegal.Text, txtDientich.Text, txtClientRoom.Text, txtBedRoom.Text, txtBathrooms.Text, txtPosition.Text, txtAddress.Text, txtFloor.Text, Int32.Parse(hdLocation.Value), fullAdd.Value, chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked, chkUniversity.Checked, chkStatus.Checked);
+                        if (location != 0)
+                        {
+                            string text = HttpUtility.HtmlEncode(txtDesc.Text).Replace("\n", "</br>");
+                            string address = ctrN.GetFullAddressbyLocationID(location);
+                            string str = txtStreet.Text + "-" + address;
+                            ctrN.UpdateMarket(Int32.Parse(lblID.Text), txtTitle.Text, text, txtUser.Text, txtPhone.Text, txtEmail.Text, Int32.Parse(txtPrice.Text), Int32.Parse(ddlTypeBDS1.SelectedValue), Img.Value, ImgThumb.Value, txtLegal.Text, txtDientich.Text, txtClientRoom.Text, txtBedRoom.Text, txtBathrooms.Text, txtPosition.Text, txtAddress.Text, txtFloor.Text, location, str, chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked, chkUniversity.Checked, chkStatus.Checked);
+                        }
+                        else
+                        {
+                            string text = HttpUtility.HtmlEncode(txtDesc.Text).Replace("\n", "</br>");
+                            ctrN.UpdateMarket(Int32.Parse(lblID.Text), txtTitle.Text, text, txtUser.Text, txtPhone.Text, txtEmail.Text, Int32.Parse(txtPrice.Text), Int32.Parse(ddlTypeBDS1.SelectedValue), Img.Value, ImgThumb.Value, txtLegal.Text, txtDientich.Text, txtClientRoom.Text, txtBedRoom.Text, txtBathrooms.Text, txtPosition.Text, txtAddress.Text, txtFloor.Text, Int32.Parse(hdLocation.Value), fullAdd.Value, chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked, chkUniversity.Checked, chkStatus.Checked);
+                        }
                     }
+                    BindRpt();
+                    ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('Cập nhật thành công !')", true);
+
+                }
+                catch
+                {
+                    ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('Cập nhật thất bại !')", true);
+                }
+            }
+            else
+            {
+                
+                if (ctrN.UpdateStatus(Int32.Parse(lblID.Text), chkStatus.Checked) > 0)
+                {
+                    BindRpt();
+                    ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('Cập nhật thành công !')", true);
                 }
                 else
                 {
-                    if (location != 0)
-                    {
-                        string text = HttpUtility.HtmlEncode(txtDesc.Text).Replace("\n", "</br>");
-                        string address = ctrN.GetFullAddressbyLocationID(location);
-                        string str = txtStreet.Text + "-" + address;
-                        ctrN.UpdateMarket(Int32.Parse(lblID.Text), txtTitle.Text, text, txtUser.Text, txtPhone.Text, txtEmail.Text, Int32.Parse(txtPrice.Text), Int32.Parse(ddlTypeBDS1.SelectedValue), Img.Value,ImgThumb.Value, txtLegal.Text, txtDientich.Text, txtClientRoom.Text, txtBedRoom.Text, txtBathrooms.Text, txtPosition.Text, txtAddress.Text, txtFloor.Text, location, str, chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked, chkUniversity.Checked, chkStatus.Checked);
-                    }
-                    else
-                    {
-                        string text = HttpUtility.HtmlEncode(txtDesc.Text).Replace("\n", "</br>");
-                        ctrN.UpdateMarket(Int32.Parse(lblID.Text), txtTitle.Text, text, txtUser.Text, txtPhone.Text, txtEmail.Text, Int32.Parse(txtPrice.Text), Int32.Parse(ddlTypeBDS1.SelectedValue), Img.Value, ImgThumb.Value, txtLegal.Text, txtDientich.Text, txtClientRoom.Text, txtBedRoom.Text, txtBathrooms.Text, txtPosition.Text, txtAddress.Text, txtFloor.Text, Int32.Parse(hdLocation.Value), fullAdd.Value, chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked, chkUniversity.Checked, chkStatus.Checked);
-                    }
+                    ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('Cập nhật thất bại !')", true);
                 }
-                BindRpt();
-                ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('Cập nhật thành công !')", true);
-
             }
-            catch
-            {
-                ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('Cập nhật thất bại !')", true);
-            }
+           
         }
         catch
         {
@@ -622,7 +697,7 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
                 int locationID = GetLocationID(ddlProvince2, ddlDistrict2, ddlVillage2);
                 string address = ctrN.GetFullAddressbyLocationID(locationID);
                 string str = txtStreet.Text + "-" + address;
-                ctrN.InsertMarket(txtTitle.Text, txtDesc.Text, txtUser.Text, txtPhone.Text, txtEmail.Text, Int32.Parse(txtPrice.Text), Int32.Parse(ddlTypeBDSs2.SelectedValue), @"/images/Market/" + fupload.FileName, @"/images/Market/" + newname, txtLegal.Text, txtDientich.Text, txtClientRoom.Text, txtBedRoom.Text, txtBathrooms.Text, txtPosition.Text, txtAddress.Text, txtFloor.Text, locationID, str, chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked, chkUniversity.Checked, chkStatus.Checked);
+                ctrN.InsertMarket(txtTitle.Text, txtDesc.Text, txtUser.Text, txtPhone.Text, txtEmail.Text, Int32.Parse(txtPrice.Text), Int32.Parse(ddlTypeBDSs2.SelectedValue), @"/images/Market/" + fupload.FileName, @"/images/Market/" + newname, txtLegal.Text, txtDientich.Text, txtClientRoom.Text, txtBedRoom.Text, txtBathrooms.Text, txtPosition.Text, txtAddress.Text, txtFloor.Text, locationID, str, chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked, chkUniversity.Checked, chkStatus.Checked,1);
             }
             else
             {
@@ -630,7 +705,7 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
                 int locationID = GetLocationID(ddlProvince2, ddlDistrict2, ddlVillage2);
                 string address = ctrN.GetFullAddressbyLocationID(locationID);
                 string str = txtStreet.Text + "-" + address;
-                ctrN.InsertMarket(txtTitle.Text, txtDesc.Text, txtUser.Text, txtPhone.Text, txtEmail.Text, Int32.Parse(txtPrice.Text), Int32.Parse(ddlTypeBDSs2.SelectedValue), @"/images/Market/", @"/images/Market/", txtLegal.Text, txtDientich.Text, txtClientRoom.Text, txtBedRoom.Text, txtBathrooms.Text, txtPosition.Text, txtAddress.Text, txtFloor.Text, locationID, str, chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked, chkUniversity.Checked, chkStatus.Checked);
+                ctrN.InsertMarket(txtTitle.Text, txtDesc.Text, txtUser.Text, txtPhone.Text, txtEmail.Text, Int32.Parse(txtPrice.Text), Int32.Parse(ddlTypeBDSs2.SelectedValue), @"/images/Market/", @"/images/Market/", txtLegal.Text, txtDientich.Text, txtClientRoom.Text, txtBedRoom.Text, txtBathrooms.Text, txtPosition.Text, txtAddress.Text, txtFloor.Text, locationID, str, chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked, chkUniversity.Checked, chkStatus.Checked,1);
             }
             BindRpt();
             ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('Insert success !')", true);

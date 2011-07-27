@@ -571,7 +571,7 @@
             <div class="title" style="width: 960px;">
                 <span>Tìm kiếm BĐS</span>
             </div>
-            <div class=" content">
+            <div class="content1" style="width: 960px;">
                 <table style="width: auto; margin: auto; height: 70px;">
                     <tr>
                         <td>
@@ -614,6 +614,14 @@
                             </asp:DropDownList>
                         </td>
                         <td>
+                            người đăng
+                        </td>
+                        <td >
+                            <asp:DropDownList ID="ddlTypeUser" runat="server">
+                                <asp:ListItem Text="Tất cả" Value="2" Selected="True"/>
+                                <asp:ListItem Text="Ban quản trị" Value="1"/>
+                                <asp:ListItem Text="Người dùng" Value="0"/>
+                            </asp:DropDownList>
                         </td>
                         <td style="text-align: center; padding-top: 7px;">
                             <asp:Button ID="btnSearch" runat="server" Text="Tìm" Width="70px" OnClick="btnSearch_Click" />
@@ -622,24 +630,24 @@
                 </table>
             </div>
         </div>
-        <div class="doc_content" style="float: left; width: 100%;">
+        <div class="doc_content" style="float: left; width: 978px;">
             <div class="box">
-                <div class="title" style="width: 978px;">
+                <div class="title1" style="width: 978px;">
                     <span>Danh sách tin BĐS</span>
-                    <asp:LinkButton ID="lbtAddNew" runat="server" CssClass="title-addnew" OnClick="btnThemmoi_Click">
+                    <asp:LinkButton ID="lbtAddNew" runat="server" CssClass="title-addnew1" OnClick="btnThemmoi_Click">
                 <img src="/BackEnd/img/addnew_16.png" style="vertical-align: top" alt='Thêm mới' />
                 Thêm mới
                     </asp:LinkButton>
                     <asp:LinkButton ID="lbtDeleteAll" OnClientClick="return ConfirmDelete();" runat="server"
-                        CssClass="title-addnew" OnClick="lbtDeleteAll_Click">
-                <img src="/BackEnd/img/icon-delete.png" style="vertical-align: top" alt='Xóa' />
-                Xóa
+                        CssClass="title-addnew1" OnClick="lbtDeleteAll_Click">
+                        <img src="/BackEnd/img/icon-delete.png" style="vertical-align: top" alt='Xóa' />
+                         Xóa
                     </asp:LinkButton>
                 </div>
-                <div class="content">
+                <div class="content1" style="width: 978px; float: left;">
                     <asp:Repeater ID="RptReatyMarket" runat="server" OnItemCommand="RptReatyMarket_ItemCommand">
                         <HeaderTemplate>
-                            <table class="tbl_doc" width="100%">
+                            <table class="tbl_doc" width="978">
                                 <thead>
                                     <tr>
                                         <td>
@@ -649,6 +657,9 @@
                                         </td>
                                         <td>
                                             Tiêu đề
+                                        </td>
+                                        <td>
+                                            phân quyền
                                         </td>
                                         <td>
                                             Người tạo
@@ -676,9 +687,13 @@
                                 <td>
                                     <%#Eval("RowNumber")%>
                                 </td>
-                                <td style="width: 570px; text-align: left;">
+                                <td style="width: 500px; text-align: left;">
                                     <a>
                                         <%#Eval("Title") %></a>
+                                </td>
+                                <td>
+                                    <a>
+                                        <%#(Convert.ToInt32(Eval("Shower")) == 1) ? "Admin" : "User"%></a>
                                 </td>
                                 <td>
                                     <a>

@@ -22,7 +22,7 @@ public partial class userControls_ucRealtyMarket : System.Web.UI.UserControl
     protected void ucPaging1_PageChange(object sender)
     {
         CtrRealtyMarket ctrN = new CtrRealtyMarket();
-        var _data = ctrN.GetListRealtyMarketByCondition(1,1,1,100,500, ucPaging1.CurrentPage, ucPaging1.PageSize);
+        var _data = ctrN.GetListRealtyMarketByCondition(2,1,1,1,100,500, ucPaging1.CurrentPage, ucPaging1.PageSize);
         RptReatyMarket.DataSource = _data.Items;
          RptReatyMarket.DataBind();
         ucPaging1.TotalRecord = _data.TotalRecord;

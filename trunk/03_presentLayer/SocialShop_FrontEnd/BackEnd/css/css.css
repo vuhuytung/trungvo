@@ -173,6 +173,24 @@ a:hover
     padding:4px 0;
     height: 20px;
     line-height:20px;
+    float:left;
+}
+.box .title1
+{
+    -moz-border-radius-topleft: 4px;
+    -moz-border-radius-topright: 4px;
+    background: #CCCCCC url(../img/box_title_bg.png) repeat-x scroll 50% 50%;
+    border: 1px solid #AAAAAA;
+    color: #222222;
+    font-weight: bold;
+    padding:4px 0;
+    height: 20px;
+    line-height:20px;
+    float:left;
+}
+.box .title1 span
+{
+    margin-left:20px;
 }
 .box .title span
 {
@@ -184,10 +202,28 @@ a:hover
     text-decoration: none;
     margin:0 10px;
 }
+.box .title-addnew1
+{
+    float: right;
+    text-decoration: none;
+    margin:0 10px;
+}
+.box .content1
+{
+     -moz-border-radius-bottomleft: 4px;
+    -moz-border-radius-bottomright: 4px;
+    border-left: 1px solid #999999;
+    border-right: 1px solid #999999;
+    border-bottom: 1px solid #999999;
+    color: #333333;
+    padding:0px;
+    min-height:80px;
+   overflow:auto;
+   float:left;
+}
 
 .box .content
 {
-    
     -moz-border-radius-bottomleft: 4px;
     -moz-border-radius-bottomright: 4px;
     border-left: 1px solid #999999;
@@ -197,7 +233,8 @@ a:hover
     padding:0px;
     min-height:80px;
     width:auto!important;
-    overflow:auto;
+   overflow:auto;
+   float:left;
 }
 
 .box .content .caption-login

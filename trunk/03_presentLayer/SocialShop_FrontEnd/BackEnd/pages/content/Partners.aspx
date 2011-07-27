@@ -150,7 +150,7 @@
                 Quản lý đối tác của công ty</h1>
         </div>
         <div class="box" style="width: 940px; float: left;">
-            <div class="title" style="width: 960px;">
+            <div class="title" style="width: 980px;">
                 <span>Danh sách đối tác</span>
                 <asp:LinkButton ID="lbtAddNew" runat="server" CssClass="title-addnew" OnClick="btnThemmoi_Click">
                 <img src="/BackEnd/img/addnew_16.png" style="vertical-align: top" alt='Thêm mới' />
