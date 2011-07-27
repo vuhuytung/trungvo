@@ -37,6 +37,7 @@
 }
 .tbl_doc
 {
+    float:left;
 }
 .tbl_doc thead tr td
 {
