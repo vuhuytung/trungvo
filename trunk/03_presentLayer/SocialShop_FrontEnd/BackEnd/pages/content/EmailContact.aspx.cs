@@ -18,6 +18,7 @@ public partial class BackEnd_pages_content_EmailContact : System.Web.UI.Page
     protected void btnThemmoi_Click(object sender, EventArgs e)
     {
         Panel2.Visible = true;
+        Panel1.Visible = false;
     }
     protected void btnAdd_Click(object sender, EventArgs e)
     {
@@ -39,6 +40,7 @@ public partial class BackEnd_pages_content_EmailContact : System.Web.UI.Page
     protected void btnHuy1_Click(object sender, EventArgs e)
     {
         Panel2.Visible = false;
+        Panel1.Visible = true;
     }
 
             

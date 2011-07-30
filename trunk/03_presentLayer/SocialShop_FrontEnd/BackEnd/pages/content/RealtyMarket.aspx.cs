@@ -297,7 +297,8 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
         try
         {
             Panel2.Visible = true;
-
+            Panel1.Visible = false;
+            Panel3.Visible = false;
             //DropDownList ddlTypeBDS1 = (DropDownList)RptDetail.Controls[1].FindControl("ddlTypeBDS");
             //=================================================
             ddlTypeBDSs2.DataSource = ctrN.GetCatByType();
@@ -333,6 +334,8 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
         if (e.CommandName == "Edit")
         {
             Panel1.Visible = true;
+            Panel2.Visible = false;
+            Panel3.Visible = false;
             RptDetail.DataSource = ctrN.GetDetailRealtyMarketByID(Int32.Parse(e.CommandArgument.ToString()));
             RptDetail.DataBind();
 
@@ -341,6 +344,7 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
             DropDownList ddlVillage1 = (DropDownList)RptDetail.Controls[1].FindControl("ddlVillage1");
 
             DropDownList ddlTypeBDS1 = (DropDownList)RptDetail.Controls[1].FindControl("ddlTypeBDSs");
+            lblAlert.Text = "";
             if (ctrN.GetShower(Int32.Parse(e.CommandArgument.ToString())) == 0)
             {
                 TextBox txtTitle = (TextBox)RptDetail.Controls[1].FindControl("txtTitle");
@@ -395,7 +399,7 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
                 ddlProvince1.Enabled = false;
                 ddlVillage1.Enabled = false;
                 ddlTypeBDS1.Enabled = false;
-
+                lblAlert.Text = "Thông tin này do người dùng cung cấp, bạn chỉ được cho phép đăng tải lên mà không được sửa đổi !";
             }
            
 
@@ -578,6 +582,8 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
     protected void btnHuy_Click(object sender, EventArgs e)
     {
         Panel1.Visible = false;
+        Panel3.Visible = true;
+        Panel2.Visible = false;
     }
     protected void ddlProvince1_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -718,6 +724,8 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
     protected void btnThoat_Click(object sender, EventArgs e)
     {
         Panel2.Visible = false;
+        Panel3.Visible = true;
+        Panel1.Visible = false;
     }
     protected void ddlProvince2_SelectedIndexChanged(object sender, EventArgs e)
     {

@@ -26,6 +26,8 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
     protected void btnThemmoi_Click(object sender, EventArgs e)
     {
         Panel2.Visible = true;
+        Panel1.Visible = false;
+        Panel3.Visible = false;
     }
     void BindRpt()
     {
@@ -37,6 +39,8 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
         if (e.CommandName == "Edit")
         {
             Panel1.Visible = true;
+            Panel2.Visible = false;
+            Panel3.Visible = false;
             RptDetail.DataSource = partner.GetInfoByID(Int32.Parse(e.CommandArgument.ToString()));
             RptDetail.DataBind();
         }
@@ -115,6 +119,8 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
     protected void btnHuy_Click(object sender, EventArgs e)
     {
         Panel1.Visible = false;
+        Panel2.Visible = false;
+        Panel3.Visible = true;
     }
     protected void btnAdd_Click(object sender, EventArgs e)
     {
@@ -156,6 +162,8 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
     protected void btnHuy1_Click(object sender, EventArgs e)
     {
         Panel2.Visible = false;
+        Panel1.Visible = false;
+        Panel3.Visible = true;
     }
             
 }

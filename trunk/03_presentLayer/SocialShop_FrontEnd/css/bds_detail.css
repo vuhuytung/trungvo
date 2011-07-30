@@ -2,7 +2,22 @@
 {
     font-size: 16px;
 }
-
+.contact_title
+{
+    float:left;
+    width:90%;
+    padding:20px 0;
+}
+.contact_title a
+{
+    font-family:Arial;
+    font-size:12px;
+    line-height:20px;
+}
+.contact_title a:hover
+{
+     text-decoration:none;
+}
 .bds_info
 {
     width: 100%;

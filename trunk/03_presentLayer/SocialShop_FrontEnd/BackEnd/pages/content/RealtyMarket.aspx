@@ -4,15 +4,19 @@
 <%@ Register Src="~/userControls/ucPaging.ascx" TagName="ucpaging" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="box_body">
+        <div style="text-align: center; width: 100%; float: left; padding-top:10px;">
+                <a style=" font-size:24px;">Quản lý thông tin Bất Động Sản</a>
+        </div>
         <asp:Panel ID="Panel2" runat="server" Visible="false">
             <div class="box_hide">
                 <div class="MK_edit">
+                    <div class="Edit_Title">
+                        <a>Thêm mới thông tin</a>
+                    </div>
+                    <div class="box_alert">
+                        <asp:Label ID="Label1" runat="server" Text="" ForeColor="red"></asp:Label>
+                    </div>
                     <table cellspacing="8" class="tbEdit">
-                        <tr>
-                            <td colspan="4" style="text-align: center; padding: 5px 0;">
-                                <a style="color: blue; font-size: 16px;">Thêm thông tin</a>
-                            </td>
-                        </tr>
                         <tr>
                             <td>
                                 Tiêu đề:
@@ -281,16 +285,17 @@
         <asp:Panel ID="Panel1" runat="server" Visible="false">
             <div class="box_hide">
                 <div class="MK_edit">
+                    <div class="Edit_Title">
+                        <a>Sửa thông tin</a>
+                    </div>
+                    <div class="box_alert">
+                        <asp:Label ID="lblAlert" runat="server" Text="" ForeColor="red"></asp:Label>
+                    </div>
                     <asp:Repeater ID="RptDetail" runat="server">
                         <HeaderTemplate>
                             <table cellspacing="8" class="tbEdit">
                         </HeaderTemplate>
                         <ItemTemplate>
-                            <tr>
-                                <td colspan="4" style="text-align: center; padding: 5px 0;">
-                                    <a style="color: blue; font-size: 16px;">Sửa thông tin</a>
-                                </td>
-                            </tr>
                             <tr>
                                 <td>
                                     Tiêu đề:
@@ -563,171 +568,169 @@
                 </div>
             </div>
         </asp:Panel>
-        <div style="text-align: center; width: 100%; float: left;">
-            <h1 style="color: Blue;">
-                Quản lý thông tin Bất Động Sản</h1>
-        </div>
-        <div class="box" id="divSearch" style="width: 940px; float: left;">
-            <div class="title" style="width: 960px;">
-                <span>Tìm kiếm BĐS</span>
+        <asp:Panel ID="Panel3" runat="server">
+            <div class="box" id="divSearch" style="width: 940px; float: left;">
+                <div class="title" style="width: 960px;">
+                    <span>Tìm kiếm BĐS</span>
+                </div>
+                <div class="content1" style="width: 960px;">
+                    <table style="width: auto; margin: auto; height: 70px;">
+                        <tr>
+                            <td>
+                                Tp/Tỉnh
+                            </td>
+                            <td style="padding: 5px 5px;">
+                                <asp:DropDownList ID="ddlProvince" runat="server" OnSelectedIndexChanged="ddlProvince_SelectedIndexChanged"
+                                    AutoPostBack="true">
+                                </asp:DropDownList>
+                            </td>
+                            <td style="padding: 5px 5px;">
+                                Quận/Huyện
+                            </td>
+                            <td style="padding: 5px 5px;">
+                                <asp:DropDownList ID="ddlDistrict" runat="server" AutoPostBack="true" Height="22px"
+                                    OnSelectedIndexChanged="ddlDistrict_SelectedIndexChanged" Width="136px">
+                                </asp:DropDownList>
+                            </td>
+                            <td style="padding: 5px 5px;">
+                                Phường/Xã
+                            </td>
+                            <td style="padding: 5px 5px;">
+                                <asp:DropDownList ID="ddlVillage" runat="server" Width="136px">
+                                </asp:DropDownList>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Loại BĐS
+                            </td>
+                            <td style="padding: 5px 5px;">
+                                <asp:DropDownList ID="ddlTypeBDS" runat="server">
+                                </asp:DropDownList>
+                            </td>
+                            <td style="padding: 5px 5px;">
+                                Khoảng Giá
+                            </td>
+                            <td style="padding: 5px 5px;">
+                                <asp:DropDownList ID="ddlPrice" runat="server">
+                                </asp:DropDownList>
+                            </td>
+                            <td>
+                                người đăng
+                            </td>
+                            <td>
+                                <asp:DropDownList ID="ddlTypeUser" runat="server">
+                                    <asp:ListItem Text="Tất cả" Value="2" Selected="True" />
+                                    <asp:ListItem Text="Admin" Value="1" />
+                                    <asp:ListItem Text="User" Value="0" />
+                                </asp:DropDownList>
+                            </td>
+                            <td style="text-align: center; padding-top: 7px;">
+                                <asp:Button ID="btnSearch" runat="server" Text="Tìm" Width="70px" OnClick="btnSearch_Click" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
-            <div class="content1" style="width: 960px;">
-                <table style="width: auto; margin: auto; height: 70px;">
-                    <tr>
-                        <td>
-                            Tp/Tỉnh
-                        </td>
-                        <td style="padding: 5px 5px;">
-                            <asp:DropDownList ID="ddlProvince" runat="server" OnSelectedIndexChanged="ddlProvince_SelectedIndexChanged"
-                                AutoPostBack="true">
-                            </asp:DropDownList>
-                        </td>
-                        <td style="padding: 5px 5px;">
-                            Quận/Huyện
-                        </td>
-                        <td style="padding: 5px 5px;">
-                            <asp:DropDownList ID="ddlDistrict" runat="server" AutoPostBack="true" Height="22px"
-                                OnSelectedIndexChanged="ddlDistrict_SelectedIndexChanged" Width="136px">
-                            </asp:DropDownList>
-                        </td>
-                        <td style="padding: 5px 5px;">
-                            Phường/Xã
-                        </td>
-                        <td style="padding: 5px 5px;">
-                            <asp:DropDownList ID="ddlVillage" runat="server" Width="136px">
-                            </asp:DropDownList>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Loại BĐS
-                        </td>
-                        <td style="padding: 5px 5px;">
-                            <asp:DropDownList ID="ddlTypeBDS" runat="server">
-                            </asp:DropDownList>
-                        </td>
-                        <td style="padding: 5px 5px;">
-                            Khoảng Giá
-                        </td>
-                        <td style="padding: 5px 5px;">
-                            <asp:DropDownList ID="ddlPrice" runat="server">
-                            </asp:DropDownList>
-                        </td>
-                        <td>
-                            người đăng
-                        </td>
-                        <td >
-                            <asp:DropDownList ID="ddlTypeUser" runat="server">
-                                <asp:ListItem Text="Tất cả" Value="2" Selected="True"/>
-                                <asp:ListItem Text="Admin" Value="1"/>
-                                <asp:ListItem Text="User" Value="0"/>
-                            </asp:DropDownList>
-                        </td>
-                        <td style="text-align: center; padding-top: 7px;">
-                            <asp:Button ID="btnSearch" runat="server" Text="Tìm" Width="70px" OnClick="btnSearch_Click" />
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <div class="doc_content" style="float: left; width: 978px;">
-            <div class="box">
-                <div class="title1" style="width: 978px;">
-                    <span>Danh sách tin BĐS</span>
-                    <asp:LinkButton ID="lbtAddNew" runat="server" CssClass="title-addnew1" OnClick="btnThemmoi_Click">
+            <div class="doc_content" style="float: left; width: 978px;">
+                <div class="box">
+                    <div class="title1" style="width: 978px;">
+                        <span>Danh sách tin BĐS</span>
+                        <asp:LinkButton ID="lbtAddNew" runat="server" CssClass="title-addnew1" OnClick="btnThemmoi_Click">
                 <img src="/BackEnd/img/addnew_16.png" style="vertical-align: top" alt='Thêm mới' />
                 Thêm mới
-                    </asp:LinkButton>
-                    <asp:LinkButton ID="lbtDeleteAll" OnClientClick="return ConfirmDelete();" runat="server"
-                        CssClass="title-addnew1" OnClick="lbtDeleteAll_Click">
+                        </asp:LinkButton>
+                        <asp:LinkButton ID="lbtDeleteAll" OnClientClick="return ConfirmDelete();" runat="server"
+                            CssClass="title-addnew1" OnClick="lbtDeleteAll_Click">
                         <img src="/BackEnd/img/icon-delete.png" style="vertical-align: top" alt='Xóa' />
                          Xóa
-                    </asp:LinkButton>
-                </div>
-                <div class="content1" style="width: 978px; float: left;">
-                    <asp:Repeater ID="RptReatyMarket" runat="server" OnItemCommand="RptReatyMarket_ItemCommand">
-                        <HeaderTemplate>
-                            <table class="tbl_doc" width="978">
-                                <thead>
-                                    <tr>
-                                        <td>
-                                        </td>
-                                        <td>
-                                            TT
-                                        </td>
-                                        <td>
-                                            Tiêu đề
-                                        </td>
-                                        <td>
-                                            phân quyền
-                                        </td>
-                                        <td>
-                                            Người tạo
-                                        </td>
-                                        <td>
-                                            Ngày tạo
-                                        </td>
-                                        <td class="td1">
-                                            Trạng thái
-                                        </td>
-                                        <td class="td1">
-                                            Chức năng
-                                        </td>
-                                    </tr>
-                                </thead>
-                        </HeaderTemplate>
-                        <ItemTemplate>
-                            <tr>
-                                <td style="width: 15px; text-align: center;">
-                                    <asp:CheckBox ID="chkDeleteAll" runat="server" />
-                                    <asp:HiddenField ID="hdID" runat="server" Value=' <%#Eval("RealtyMarketID") %>' />
-                                    <asp:HiddenField ID="Img" runat="server" Value='<%#Eval("Image") %>' />
-                                    <asp:HiddenField ID="ImgThumb" runat="server" Value='<%#Eval("ImageThumb") %>' />
-                                </td>
-                                <td>
-                                    <%#Eval("RowNumber")%>
-                                </td>
-                                <td style="width: 500px; text-align: left;">
-                                    <a>
-                                        <%#Eval("Title") %></a>
-                                </td>
-                                <td>
-                                    <a>
-                                        <%#(Convert.ToInt32(Eval("Shower")) == 1) ? "Admin" : "User"%></a>
-                                </td>
-                                <td>
-                                    <a>
-                                        <%#Eval("UserPublish")%></a>
-                                </td>
-                                <td>
-                                    <a>
-                                        <%#Convert.ToDateTime(Eval("CreateDate")).ToString("dd-MM-yyyy")%></a>
-                                </td>
-                                <td>
-                                    <asp:CheckBox ID="chkStatus" runat="server" Checked='<%#Eval("Status") %>' />
-                                </td>
-                                <td class="td2">
-                                    <asp:LinkButton ID="lbtEdit" runat="server" CommandName="Edit" CssClass="edit_icon"
-                                        CommandArgument='<%#Eval("RealtyMarketID") %>' ToolTip="Sửa"></asp:LinkButton>
-                                    <script type="text/javascript">
-                                        function confirm1() {
-                                            return confirm("Bạn có muốn xóa Record này ko ?");
-                                        }
-                                    </script>
-                                    <asp:LinkButton ID="lbtDelete" runat="server" CommandName="Delete" OnClientClick="return confirm1()"
-                                        CommandArgument='<%#Eval("RealtyMarketID") %>' ToolTip="Xóa" CssClass="delete_icon"></asp:LinkButton>
-                                </td>
-                            </tr>
-                        </ItemTemplate>
-                        <FooterTemplate>
-                            </table>
-                        </FooterTemplate>
-                    </asp:Repeater>
+                        </asp:LinkButton>
+                    </div>
+                    <div class="content1" style="width: 978px; float: left;">
+                        <asp:Repeater ID="RptReatyMarket" runat="server" OnItemCommand="RptReatyMarket_ItemCommand">
+                            <HeaderTemplate>
+                                <table class="tbl_doc" width="978">
+                                    <thead>
+                                        <tr>
+                                            <td>
+                                            </td>
+                                            <td>
+                                                TT
+                                            </td>
+                                            <td>
+                                                Tiêu đề
+                                            </td>
+                                            <td>
+                                                phân quyền
+                                            </td>
+                                            <td>
+                                                Người tạo
+                                            </td>
+                                            <td>
+                                                Ngày tạo
+                                            </td>
+                                            <td class="td1">
+                                                Trạng thái
+                                            </td>
+                                            <td class="td1">
+                                                Chức năng
+                                            </td>
+                                        </tr>
+                                    </thead>
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <tr>
+                                    <td style="width: 15px; text-align: center;">
+                                        <asp:CheckBox ID="chkDeleteAll" runat="server" />
+                                        <asp:HiddenField ID="hdID" runat="server" Value=' <%#Eval("RealtyMarketID") %>' />
+                                        <asp:HiddenField ID="Img" runat="server" Value='<%#Eval("Image") %>' />
+                                        <asp:HiddenField ID="ImgThumb" runat="server" Value='<%#Eval("ImageThumb") %>' />
+                                    </td>
+                                    <td>
+                                        <%#Eval("RowNumber")%>
+                                    </td>
+                                    <td style="width: 500px; text-align: left;">
+                                        <a>
+                                            <%#Eval("Title") %></a>
+                                    </td>
+                                    <td>
+                                        <a>
+                                            <%#(Convert.ToInt32(Eval("Shower")) == 1) ? "Admin" : "User"%></a>
+                                    </td>
+                                    <td>
+                                        <a>
+                                            <%#Eval("UserPublish")%></a>
+                                    </td>
+                                    <td>
+                                        <a>
+                                            <%#Convert.ToDateTime(Eval("CreateDate")).ToString("dd-MM-yyyy")%></a>
+                                    </td>
+                                    <td>
+                                        <asp:CheckBox ID="chkStatus" runat="server" Checked='<%#Eval("Status") %>' />
+                                    </td>
+                                    <td class="td2">
+                                        <asp:LinkButton ID="lbtEdit" runat="server" CommandName="Edit" CssClass="edit_icon"
+                                            CommandArgument='<%#Eval("RealtyMarketID") %>' ToolTip="Sửa"></asp:LinkButton>
+                                        <script type="text/javascript">
+                                            function confirm1() {
+                                                return confirm("Bạn có muốn xóa Record này ko ?");
+                                            }
+                                        </script>
+                                        <asp:LinkButton ID="lbtDelete" runat="server" CommandName="Delete" OnClientClick="return confirm1()"
+                                            CommandArgument='<%#Eval("RealtyMarketID") %>' ToolTip="Xóa" CssClass="delete_icon"></asp:LinkButton>
+                                    </td>
+                                </tr>
+                            </ItemTemplate>
+                            <FooterTemplate>
+                                </table>
+                            </FooterTemplate>
+                        </asp:Repeater>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div id="divPaging" runat="server" class="paginator2 nr">
-        <uc1:ucpaging ID="ucPaging1" runat="server" />
+            <div id="divPaging" runat="server" class="paginator2 nr">
+                <uc1:ucpaging ID="ucPaging1" runat="server" />
+            </div>
+        </asp:Panel>
     </div>
 </asp:Content>
