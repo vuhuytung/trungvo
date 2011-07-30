@@ -58,10 +58,11 @@ public partial class BackEnd_pages_content_Document : System.Web.UI.Page
 
                 //Repeater RptDetail = (Repeater)Panel1.Controls[0].FindControl("RptDetail");
                 //DropDownList ddlTypeDoc = (DropDownList)Panel1.Controls[0].FindControl("ddlTypeDoc");
-
                 if (RptDetail != null && ddlTypeDoc != null)
                 {
                     Panel1.Visible = true;
+                    Panel2.Visible = false;
+                    Panel3.Visible = false;
                     RptDetail.DataSource = ctrN.GetInfoDocByID(Int32.Parse(e.CommandArgument.ToString()));
                     RptDetail.DataBind();
                 }
@@ -82,6 +83,8 @@ public partial class BackEnd_pages_content_Document : System.Web.UI.Page
     protected void Button1_Click(object sender, EventArgs e)
     {
         Panel1.Visible = false;
+        Panel3.Visible = true;
+        Panel2.Visible = false;
     }
     protected void btnUpdate_Click(object sender, EventArgs e)
     {
@@ -160,11 +163,15 @@ public partial class BackEnd_pages_content_Document : System.Web.UI.Page
     protected void btnThemmoi_Click(object sender, EventArgs e)
     {
         Panel2.Visible = true;
+        Panel1.Visible = false;
+        Panel3.Visible = false;
 
     }
     protected void btnHuy_Click(object sender, EventArgs e)
     {
         Panel2.Visible = false;
+        Panel3.Visible = true;
+        Panel1.Visible = false;
     }
     protected void btnSearch_Click(object sender, EventArgs e)
     {
