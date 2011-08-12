@@ -181,6 +181,13 @@ public partial class BackEnd_pages_content_Category : System.Web.UI.Page
                     txtMenuName.Focus();
                     SetControlsEdit(true, " Cập nhật ");
                     MenuID = Convert.ToInt32(e.Node.Value);
+                    if (MenuID <= 0)
+                    {
+                        SetControlsEdit(false, "");
+                        lblMsg1.Text = "  <img src='/images/attention.ico' width='20px' height='20px' /> Không thể sửa danh mục này! ";
+                        lblMsg1.Visible = true;
+                        return;
+                    }
                     ddlParentID.Enabled = true;
                     ddlParentID.Items.Clear();
                     GetMenuTop(null, 0, "", MenuID);
@@ -248,7 +255,7 @@ public partial class BackEnd_pages_content_Category : System.Web.UI.Page
                     }
                     else
                     {
-                        lblMsg1.Text = "  <img src='/images/attention.ico' width='20px' height='20px' /> Bạn không được xóa Menu này  ";
+                        lblMsg1.Text = "  <img src='/images/attention.ico' width='20px' height='20px' /> Bạn không được xóa danh mục này  ";
                         lblMsg1.Visible = true;
                     }
                 }

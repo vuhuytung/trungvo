@@ -16,24 +16,24 @@
                 case "Add":
                     <%if ((permission & VTCO.Config.Constants.PERMISSION_ADD) != VTCO.Config.Constants.PERMISSION_ADD)
                     { %>
-                        alert("Bạn không có quyền thêm mới chuyên mục!");
+                        alert("Bạn không có quyền thêm mới danh mục!");
                         args.set_cancel(true);
                     <%} %>
                     break;
                 case "Edit":
                      <%if ((permission & VTCO.Config.Constants.PERMISSION_EDIT) != VTCO.Config.Constants.PERMISSION_EDIT)
                     { %>
-                        alert("Bạn không có quyền sửa chuyên mục!");
+                        alert("Bạn không có quyền sửa danh mục!");
                         args.set_cancel(true);
                     <%} %>
                     break;
                 case "Delete":
                     <%if ((permission & VTCO.Config.Constants.PERMISSION_DELETE) != VTCO.Config.Constants.PERMISSION_DELETE)
                     { %>
-                            alert("Bạn không có quyền xóa chuyên mục!");
+                            alert("Bạn không có quyền xóa danh mục!");
                             args.set_cancel(true);
                     <%}else{ %>
-                            var result = confirm("Bạn có muốn xóa chuyên mục: " + treeNode.get_text() + " hay không ? ");
+                            var result = confirm("Bạn có muốn xóa danh mục: " + treeNode.get_text() + " hay không ? ");
                             args.set_cancel(!result)
                     <%} %>
                     break;
