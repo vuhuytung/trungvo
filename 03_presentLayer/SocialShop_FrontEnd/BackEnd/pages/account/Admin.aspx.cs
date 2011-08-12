@@ -12,6 +12,7 @@ using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Threading;
+using VTCO.Config;
 
 public partial class BackEnd_pages_account_Admin : System.Web.UI.Page
 {
@@ -53,11 +54,16 @@ public partial class BackEnd_pages_account_Admin : System.Web.UI.Page
             ViewState["isNew"] = value;
         }
     }
+    protected int permission = 0;
     protected void Page_Load(object sender, EventArgs e)
     {
         ucPaging1.PageChange += new UserControls_ucPaging.PagingHandler(pageChange);
+        permission = Convert.ToInt32(Session[Constants.SESSION_ADMIN_PERMISSION] ?? 0);
         if (!IsPostBack)
-        {
+        {            
+            if ((permission & Constants.PERMISSION_ADD) == Constants.PERMISSION_ADD)
+                lbtAddNew.Visible = false;
+
             CtrAdmin ctrAdmin = new CtrAdmin();
             ddlRole.DataSource = ctrAdmin.RoleGetAll();
             ddlRole.DataTextField = "Name";
@@ -95,7 +101,7 @@ public partial class BackEnd_pages_account_Admin : System.Web.UI.Page
         rptAdmin.DataSource = dt.Items;
         ucPaging1.TotalRecord = dt.TotalRecord;
         rptAdmin.DataBind();
-        ucPaging1.Visible = ucPaging1.TotalPage > 1;
+        divPaging.Visible = ucPaging1.TotalPage > 1;
         if (dt.TotalRecord > 0)
         {
             rptAdmin.Visible = true;
@@ -123,12 +129,15 @@ public partial class BackEnd_pages_account_Admin : System.Web.UI.Page
 
             if (Convert.ToBoolean(DataBinder.Eval(e.Item.DataItem, "Status")))
             {
-                (e.Item.FindControl("lbtLock") as LinkButton).Visible = false;
+                if ((permission & VTCO.Config.Constants.PERMISSION_EDIT) == VTCO.Config.Constants.PERMISSION_EDIT)
+                    (e.Item.FindControl("lbtUnLock") as LinkButton).Visible = false;               
             }
             else
             {
-                (e.Item.FindControl("lbtUnLock") as LinkButton).Visible = false;
+                if ((permission & VTCO.Config.Constants.PERMISSION_EDIT) == VTCO.Config.Constants.PERMISSION_EDIT)
+                    (e.Item.FindControl("lbtLock") as LinkButton).Visible = false;               
             }
+            
         }
 
     }

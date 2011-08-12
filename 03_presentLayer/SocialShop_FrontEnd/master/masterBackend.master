@@ -34,6 +34,17 @@
     function ConfirmDelete() {
         return confirm("Bạn có chắc chắn xóa không?");
     }
+
+    $("#aContextMenu").live('click', function () {
+        $('.context-menu').hide();
+        $(this).next().slideToggle(100);
+    });
+
+    $(document).click(function (event) {
+        if ($('.context-menu').is(':visible') && !$(event.target).closest(".context-menu").size() && !$(event.target).closest("#aContextMenu").size()) {
+            $('.context-menu').hide();
+        }
+    });
     </script>
     <asp:ContentPlaceHolder ID="Header" runat="server">
             

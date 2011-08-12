@@ -6,8 +6,8 @@
 <asp:Content ID="contentHead" runat="server" ContentPlaceHolderID="Header">
     <script type="text/javascript">
         $(function () {
-            $("#chkAll").click(function () { 
-                $(".adminListRow-odd, .adminListRow-even").find("input:checkbox").attr("checked",$(this).attr("checked"));
+            $("#chkAll").click(function () {
+                $(".adminListRow-odd, .adminListRow-even").find("input:checkbox").attr("checked", $(this).attr("checked"));
             });
         });
     </script>
@@ -37,7 +37,7 @@
                         <td>
                             <asp:DropDownList ID="ddlRole" runat="server" Width="150px">
                             </asp:DropDownList>
-                        </td>   
+                        </td>
                         <td style="width: 80px">
                             Trạng thái:
                         </td>
@@ -47,13 +47,13 @@
                                 <asp:ListItem Text="Kích hoạt" Value="1"></asp:ListItem>
                                 <asp:ListItem Text="Khóa" Value="0"></asp:ListItem>
                             </asp:DropDownList>
-                        </td>  
+                        </td>
                         <td style="width: 80px">
                             <div style="float: right; padding-left: 20px">
                                 <asp:Button ID="btnSearch" runat="server" Text=" Tìm kiếm " ToolTip="Tìm kiếm" OnClick="btnSearch_Click" />
                             </div>
-                        </td>                      
-                    </tr>                    
+                        </td>
+                    </tr>
                 </table>
             </div>
         </div>
@@ -69,32 +69,31 @@
             <div class="clearn">
             </div>
             <div class="content" style="width: 100% !important">
-                <asp:Repeater ID="rptAdmin" runat="server" OnItemCommand="rptAdmin_ItemCommand"
-                    OnItemDataBound="rptAdmin_ItemDataBound">
+                <asp:Repeater ID="rptAdmin" runat="server" OnItemCommand="rptAdmin_ItemCommand" OnItemDataBound="rptAdmin_ItemDataBound">
                     <HeaderTemplate>
                         <div class="adminListRow-Header">
                             <div class="adminColumn" style="width: 30px">
                                 STT
                             </div>
-                            <div class="adminColumn" style="width: 180px; text-align:left;">
+                            <div class="adminColumn" style="width: 150px; text-align: left;">
                                 Tài khoản
                             </div>
-                            <div class="adminColumn" style="width: 180px; text-align:left;">
+                            <div class="adminColumn" style="width: 180px; text-align: left;">
                                 Họ và tên
                             </div>
-                            <div class="adminColumn" style="width: 80px; text-align:left;">
+                            <div class="adminColumn" style="width: 80px; text-align: left;">
                                 Ngày sinh
                             </div>
-                            <div class="adminColumn" style="width: 180px; text-align:left;">
+                            <div class="adminColumn" style="width: 180px; text-align: left;">
                                 Email
                             </div>
-                            <div class="adminColumn" style="width: 100px; text-align:left;">
+                            <div class="adminColumn" style="width: 100px; text-align: left;">
                                 Điện thoại
                             </div>
                             <div class="adminColumn" style="width: 70px;">
                                 Trạng thái
                             </div>
-                            <div class="adminColumn" style="width: 70px; float: right">
+                            <div class="adminColumn" style="width: 92px; float: right">
                                 Chức năng
                             </div>
                             <div class="clearn">
@@ -106,36 +105,62 @@
                             <div class="adminColumn" style="width: 30px; text-align: left; padding-left: 15px;">
                                 <%#Eval("RowNumber")%>&nbsp;
                             </div>
-                            <div class="adminColumn" style="width: 180px;  text-align:left;">
+                            <div class="adminColumn" style="width: 150px; text-align: left;">
                                 <%#Eval("UserName")%>&nbsp;
                             </div>
-                            <div class="adminColumn" style="width: 180px;  text-align:left;">
+                            <div class="adminColumn" style="width: 180px; text-align: left;">
                                 <%#Eval("FullName")%>&nbsp;
                             </div>
-                            <div class="adminColumn" style="width: 80px; text-align:left;"  >
+                            <div class="adminColumn" style="width: 80px; text-align: left;">
                                 <%#Convert.ToDateTime(Eval("Birthday")).ToString("dd/MM/yyyy")%>&nbsp;
                             </div>
-                            <div class="adminColumn" style="width: 180px;  text-align:left;">
+                            <div class="adminColumn" style="width: 180px; text-align: left;">
                                 <%#Eval("Email") %>&nbsp;
                             </div>
-                            <div class="adminColumn" style="width: 100px;  text-align:left;">
+                            <div class="adminColumn" style="width: 100px; text-align: left;">
                                 <%#Eval("Telephone") %>&nbsp;
                             </div>
                             <div class="adminColumn" style="width: 70px; text-align: center;">
-                                <asp:LinkButton ID="lbtLock" runat="server" CssClass='lock_icon' ToolTip='Bị khóa'
-                                    CommandName="unlockNews" CommandArgument='<%#Eval("AdminID") %>'>
-                                </asp:LinkButton>
-                                <asp:LinkButton ID="lbtUnLock" runat="server" CssClass='checked_icon' ToolTip='Đang hoạt động'
-                                    CommandName="lockNews" CommandArgument='<%#Eval("AdminID") %>'>
-                                </asp:LinkButton>
+                                <%#Convert.ToBoolean(Eval("Status")??false)?"Hoạt động":"Bị khóa" %>
                             </div>
-                            <div class="adminColumn" style="width: 70px; float: right">
-                                <asp:LinkButton ID="lbtEdit" runat="server" CssClass="edit_icon" ToolTip="Sửa" CommandName="edit"
-                                    CommandArgument='<%#Eval("AdminID") %>'>
-                                </asp:LinkButton>
-                                <asp:LinkButton ID="lbtDelete" runat="server" CssClass="delete_icon" ToolTip="Xóa"
-                                    OnClientClick="return ConfirmDelete()" CommandName="delete" CommandArgument='<%#Eval("AdminID") %>'>
-                                </asp:LinkButton>&nbsp;
+                            <div class="adminColumn" style="width: 92px; float: right">
+                                <div class="function">
+                                    <ul>
+                                        <li><a id="aContextMenu" href="javascript:;"><span style="float: left;">Chức năng</span>
+                                            <span class="drop">
+                                                <img src="/BackEnd/img/down.gif" /></span>
+                                            <div class="clear">
+                                            </div>
+                                        </a>
+                                            <ul class="context-menu">
+                                                <%if ((permission & VTCO.Config.Constants.PERMISSION_EDIT) == VTCO.Config.Constants.PERMISSION_EDIT)
+                                                  { %>
+                                                <li>
+                                                    <asp:LinkButton ID="lbtEdit" runat="server" CssClass="edit_icon" ToolTip="Sửa" CommandName="edit"
+                                                        CommandArgument='<%#Eval("AdminID") %>' Text="Sửa">
+                                                    </asp:LinkButton>
+                                                </li>
+                                                <li>
+                                                    <asp:LinkButton ID="lbtLock" runat="server" CssClass='lock_icon' ToolTip='Khóa'
+                                                        CommandName="lockNews" CommandArgument='<%#Eval("AdminID") %>' Text="Khóa">
+                                                    </asp:LinkButton>
+                                                    <asp:LinkButton ID="lbtUnLock" runat="server" CssClass='checked_icon' ToolTip='Kích hoạt'
+                                                        CommandName="unlockNews" CommandArgument='<%#Eval("AdminID") %>' Text="Kích hoạt">
+                                                    </asp:LinkButton>
+                                                </li>
+                                                <%}%>
+                                                <%if ((permission & VTCO.Config.Constants.PERMISSION_DELETE) == VTCO.Config.Constants.PERMISSION_DELETE)
+                                                  { %>
+                                                <li>
+                                                    <asp:LinkButton ID="lbtDelete" runat="server" CssClass="delete_icon" ToolTip="Xóa"
+                                                        OnClientClick="return ConfirmDelete()" CommandName="delete" CommandArgument='<%#Eval("AdminID") %>' Text="Xóa">
+                                                    </asp:LinkButton>
+                                                </li>
+                                                <%} %>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="clearn">
                             </div>
@@ -175,16 +200,18 @@
                         <td style="width: 160px" class="tdStyle" colspan="2">
                             <asp:TextBox ID="txtUserName" runat="server" Width="200px" MaxLength="100" CssClass="inputText"></asp:TextBox>
                             <asp:Label runat="server" ID="lblUserName"></asp:Label>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ValidationGroup="news" ForeColor="Red" ErrorMessage="*" ControlToValidate="txtUserName"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ValidationGroup="news"
+                                ForeColor="Red" ErrorMessage="*" ControlToValidate="txtUserName"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr>
                         <td style="width: 100px" class="tdStyle">
                             Tên đầy đủ:
                         </td>
-                        <td style="padding-top:12px;" class="tdStyle" colspan="2">
+                        <td style="padding-top: 12px;" class="tdStyle" colspan="2">
                             <asp:TextBox ID="txtFullName" runat="server" Width="200px" MaxLength="100" CssClass="inputText"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ValidationGroup="news" ForeColor="Red" ErrorMessage="*" ControlToValidate="txtFullName"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ValidationGroup="news"
+                                ForeColor="Red" ErrorMessage="*" ControlToValidate="txtFullName"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr runat="server" id="trPass">
@@ -193,12 +220,12 @@
                         </td>
                         <td class="tdStyle">
                             <asp:TextBox ID="txtPassword" runat="server" Width="200px" MaxLength="100" CssClass="inputText"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ValidationGroup="news" ForeColor="Red" ErrorMessage="*" ControlToValidate="txtPassword"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ValidationGroup="news"
+                                ForeColor="Red" ErrorMessage="*" ControlToValidate="txtPassword"></asp:RequiredFieldValidator>
                         </td>
                         <td class="tdStyle" colspan="2">
                             &nbsp;
                         </td>
-                        
                     </tr>
                     <tr>
                         <td class="tdStyle">
@@ -206,7 +233,8 @@
                         </td>
                         <td class="tdStyle">
                             <asp:TextBox ID="txtEmail" runat="server" Width="200px" MaxLength="100" CssClass="inputText"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ValidationGroup="news" ForeColor="Red" ErrorMessage="*" ControlToValidate="txtEmail"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ValidationGroup="news"
+                                ForeColor="Red" ErrorMessage="*" ControlToValidate="txtEmail"></asp:RequiredFieldValidator>
                         </td>
                         <td style="" class="tdStyle" colspan="2">
                             &nbsp;
@@ -218,7 +246,8 @@
                         </td>
                         <td class="tdStyle">
                             <asp:TextBox ID="txtTelephone" runat="server" Width="200px" MaxLength="100" CssClass="inputText"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ValidationGroup="news" ForeColor="Red" ErrorMessage="*" ControlToValidate="txtTelephone"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ValidationGroup="news"
+                                ForeColor="Red" ErrorMessage="*" ControlToValidate="txtTelephone"></asp:RequiredFieldValidator>
                         </td>
                         <td class="tdStyle">
                             Ngày tạo:
@@ -240,7 +269,8 @@
                                     <DateInput LabelCssClass="radLabelCss_WebBlue" Skin="WebBlue">
                                     </DateInput>
                                 </telerik:RadDatePicker>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ForeColor="Red" ErrorMessage="*" ValidationGroup="news" ControlToValidate="rdpBirthday"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ForeColor="Red"
+                                    ErrorMessage="*" ValidationGroup="news" ControlToValidate="rdpBirthday"></asp:RequiredFieldValidator>
                             </div>
                         </td>
                         <td class="tdStyle">
@@ -252,7 +282,7 @@
                                 <asp:ListItem Value="0" Text="Khóa"></asp:ListItem>
                             </asp:DropDownList>
                         </td>
-                    </tr>                    
+                    </tr>
                     <tr>
                         <td class="tdStyle">
                             Mô tả
@@ -260,11 +290,12 @@
                         <td colspan="3" class="tdStyle">
                             <asp:TextBox ID="txtAbstract" runat="server" Width="500px" MaxLength="250" Height="100px"
                                 CssClass="inputText" TextMode="MultiLine" Rows="2" Font-Names="Arial" Font-Size="13px"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ValidationGroup="news" ForeColor="Red" ErrorMessage="*" ControlToValidate="txtAbstract"></asp:RequiredFieldValidator>
-                        </td>                        
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ValidationGroup="news"
+                                ForeColor="Red" ErrorMessage="*" ControlToValidate="txtAbstract"></asp:RequiredFieldValidator>
+                        </td>
                     </tr>
                 </table>
             </div>
         </div>
-    </asp:Panel>    
+    </asp:Panel>
 </asp:Content>

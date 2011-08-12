@@ -16,9 +16,9 @@ using ComponentBLL;
 
 public partial class master_masterBackend : System.Web.UI.MasterPage
 {
-    protected void Page_Load(object sender, EventArgs e)
+    protected void Page_Init(object sender, EventArgs e)
     {
-        Session.Timeout = 1;
+        Session.Timeout = 10;
         bool islogin = Convert.ToBoolean(Session[Constants.SESSION_ADMIN_ISLOGIN] ?? false);
         if (!islogin)
             Response.Redirect("~/admin/login");

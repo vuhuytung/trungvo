@@ -161,6 +161,7 @@ a:hover
 	width:auto!important;
     margin: 10px !important;
     margin: 5px;
+    border: 1px solid #AAAAAA;
 }
 .box .title
 {
@@ -189,10 +190,7 @@ a:hover
 {
     
     -moz-border-radius-bottomleft: 4px;
-    -moz-border-radius-bottomright: 4px;
-    border-left: 1px solid #999999;
-    border-right: 1px solid #999999;
-    border-bottom: 1px solid #999999;
+    -moz-border-radius-bottomright: 4px;    
     color: #333333;
     padding:0px;
     min-height:80px;
@@ -785,3 +783,94 @@ p .txtEditCate
 	padding:0 0 0 6px;
 	font-size:15px;
      }
+     
+/*Function*/
+.function
+{
+    width: 116px;
+    text-align:left;
+}
+.function ul
+{
+    margin: 0px;
+    padding: 0px;
+}
+.function ul li
+{
+    font-size: 11px;
+    list-style-type: none;
+    font-family: Tahoma;
+    height: 20px;
+    line-height: 18px;    
+    cursor:pointer;    
+}
+.function ul li a
+{
+    background-color: #00ADEF;
+    color: #FFFFFF;
+    display: block;
+    text-decoration: none;
+    height: 20px;
+    line-height: 18px;
+    width: 85px;
+    padding-left: 3px;
+    border: 1px solid #0075A2;
+    font-weight: bold;
+    overflow:hidden;
+    cursor:pointer;
+}
+.function ul.context-menu li a
+{
+    width:116px;
+    _width:96px;
+}
+.function ul li a:hover
+{
+    background-color: #585858;
+    color: #FFFFFF;
+}
+.function ul li .drop
+{
+    float: right;
+    border: none;
+    height: 20px;
+    width: 21px;
+}
+.function ul li .drop img
+{
+    border: none;
+    padding: 6px 0px 0px 5px;
+}
+.function ul.context-menu
+{
+    position: absolute;
+    display: block;
+    border: 1px solid #0075A2;
+    width: 116px;    
+    background: #00ADEF;
+    border-top: none;
+    display:none;
+    right:10px;
+    _right:8px;
+}
+.function ul.context-menu li
+{
+    margin: 0px;
+    overflow:hidden;
+    height: 20px;
+    line-height: 18px;
+    color: #FFFFFF;
+    font-weight: bold;
+    
+}
+.function ul.context-menu li:hover
+{
+    background: #585858;
+    cursor: pointer;
+}
+.function ul.context-menu li a
+{
+    padding-left:20px;
+    
+}
+/*End Function*/

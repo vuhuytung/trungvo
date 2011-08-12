@@ -39,13 +39,13 @@
                             <div class="adminColumn" style="width: 200px; padding-left: 20px; text-align: left;">
                                 Tên
                             </div>
-                            <div class="adminColumn" style="width: 525px; text-align: left">
+                            <div class="adminColumn" style="width: 500px; text-align: left">
                                 Mô tả
                             </div>
                             <div class="adminColumn" style="width: 80px;">
                                 Trạng thái
                             </div>
-                            <div class="adminColumn" style="width: 80px; float: right">
+                            <div class="adminColumn" style="width: 92px; float: right">
                                 Chức năng
                             </div>
                             <div class="clearn">
@@ -61,24 +61,50 @@
                             <div class="adminColumn" style="width: 200px; text-align: left;">
                                 <%#Eval("Name")%>&nbsp;
                             </div>
-                            <div class="adminColumn" style="width: 525px; text-align: left">
+                            <div class="adminColumn" style="width: 500px; text-align: left">
                                 <%#Eval("Description")%>&nbsp;
                             </div>
                             <div class="adminColumn" style="width: 80px; text-align: center;">
-                                <asp:LinkButton ID="lbtLock" runat="server" CssClass='lock_icon' ToolTip='Bị khóa'
-                                    CommandName="unlockNews" CommandArgument='<%#Eval("RoleID") %>'>
-                                </asp:LinkButton>
-                                <asp:LinkButton ID="lbtUnLock" runat="server" CssClass='checked_icon' ToolTip='Đang hoạt động'
-                                    CommandName="lockNews" CommandArgument='<%#Eval("RoleID") %>'>
-                                </asp:LinkButton>
+                                <%#Convert.ToBoolean(Eval("Status")??false)?"Hoạt động":"Bị khóa" %>
                             </div>
-                            <div class="adminColumn" style="width: 80px; float: right">
-                                <asp:LinkButton ID="lbtEdit" runat="server" CssClass="edit_icon" ToolTip="Sửa" CommandName="edit"
-                                    CommandArgument='<%#Eval("RoleID") %>'>
-                                </asp:LinkButton>
-                                <asp:LinkButton ID="lbtDelete" runat="server" CssClass="delete_icon" ToolTip="Xóa"
-                                    OnClientClick="return ConfirmDelete()" CommandName="delete" CommandArgument='<%#Eval("RoleID") %>'>
-                                </asp:LinkButton>&nbsp;
+                            <div class="adminColumn" style="width: 92px; float: right">
+                                <div class="function">
+                                    <ul>
+                                        <li><a id="aContextMenu" href="javascript:;"><span style="float: left;">Chức năng</span>
+                                            <span class="drop">
+                                                <img src="/BackEnd/img/down.gif" /></span>
+                                            <div class="clear">
+                                            </div>
+                                        </a>
+                                            <ul class="context-menu">
+                                                <%if ((permission & VTCO.Config.Constants.PERMISSION_EDIT) == VTCO.Config.Constants.PERMISSION_EDIT)
+                                                  { %>
+                                                <li>
+                                                    <asp:LinkButton ID="lbtEdit" runat="server" CssClass="edit_icon" ToolTip="Sửa" CommandName="edit"
+                                                        CommandArgument='<%#Eval("RoleID") %>' Text="Sửa">
+                                                    </asp:LinkButton>
+                                                </li>
+                                                <li>
+                                                    <asp:LinkButton ID="lbtLock" runat="server" CssClass='lock_icon' ToolTip='Khóa'
+                                                        CommandName="lockNews" CommandArgument='<%#Eval("RoleID") %>' Text="Khóa">
+                                                    </asp:LinkButton>
+                                                    <asp:LinkButton ID="lbtUnLock" runat="server" CssClass='checked_icon' ToolTip='Kích hoạt'
+                                                        CommandName="unlockNews" CommandArgument='<%#Eval("RoleID") %>' Text="Kích hoạt">
+                                                    </asp:LinkButton>
+                                                </li>
+                                                <%}%>
+                                                <%if ((permission & VTCO.Config.Constants.PERMISSION_DELETE) == VTCO.Config.Constants.PERMISSION_DELETE)
+                                                  { %>
+                                                <li>
+                                                    <asp:LinkButton ID="lbtDelete" runat="server" CssClass="delete_icon" ToolTip="Xóa"
+                                                        OnClientClick="return ConfirmDelete()" CommandName="delete" CommandArgument='<%#Eval("RoleID") %>' Text="Xóa">
+                                                    </asp:LinkButton>
+                                                </li>
+                                                <%} %>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="clearn">
                             </div>
