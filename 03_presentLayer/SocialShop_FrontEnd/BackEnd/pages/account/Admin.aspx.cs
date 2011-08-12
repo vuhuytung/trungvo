@@ -60,9 +60,8 @@ public partial class BackEnd_pages_account_Admin : System.Web.UI.Page
         ucPaging1.PageChange += new UserControls_ucPaging.PagingHandler(pageChange);
         permission = Convert.ToInt32(Session[Constants.SESSION_ADMIN_PERMISSION] ?? 0);
         if (!IsPostBack)
-        {            
-            if ((permission & Constants.PERMISSION_ADD) == Constants.PERMISSION_ADD)
-                lbtAddNew.Visible = false;
+        {
+            lbtAddNew.Visible = ((permission & VTCO.Config.Constants.PERMISSION_ADD) == VTCO.Config.Constants.PERMISSION_ADD);
 
             CtrAdmin ctrAdmin = new CtrAdmin();
             ddlRole.DataSource = ctrAdmin.RoleGetAll();

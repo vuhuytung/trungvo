@@ -106,13 +106,13 @@ namespace WorkFlowBLL
         {
             return BDS.NewsInstance.uspNewsDeleteMulti(newsIDs);
         }
-        public int Insert(string title,string description,string content,string img, DateTime publishDate, int categoryID,string resource,bool status,bool isHot)
+        public int Insert(string title,string description,string content,string img, DateTime publishDate, int categoryID,string resource,bool status,bool isHot, int adminID)
         {
-            return BDS.NewsInstance.uspNewsInsert(title, description, content, img,publishDate, 7,categoryID, resource, status, isHot);
+            return BDS.NewsInstance.uspNewsInsert(title, description, content, img,publishDate, adminID,categoryID, resource, status, isHot);
         }
-        public int Update(int newsID, string title,string description,string content,string img,DateTime publishDate, int categoryID,string resource,bool status,bool isHot)
+        public int Update(int newsID, string title, string description, string content, string img, DateTime publishDate, int categoryID, string resource, bool status, bool isHot, int lastModifyAdminID)
         {
-            return BDS.NewsInstance.uspNewsUpdateByNewsID(newsID, title, description, content, img, publishDate, 7, categoryID, resource, status, isHot);
+            return BDS.NewsInstance.uspNewsUpdateByNewsID(newsID, title, description, content, img, publishDate,lastModifyAdminID, categoryID, resource, status, isHot);
         }
         public void DeleteImage(HttpRequest Request, string urlimg)
         {
