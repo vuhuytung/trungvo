@@ -5,6 +5,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">    
     <telerik:RadScriptManager ID="RadScriptManager1" runat="server">
     </telerik:RadScriptManager>
+    <telerik:RadScriptBlock runat="server" ID="RadScriptBlock1">
     <script type="text/javascript">
         function onClientContextMenuItemClicking(sender, args) {
             var menuItem = args.get_menuItem();
@@ -13,16 +14,33 @@
 
             switch (menuItem.get_value()) {
                 case "Add":
+                    <%if ((permission & VTCO.Config.Constants.PERMISSION_ADD) != VTCO.Config.Constants.PERMISSION_ADD)
+                    { %>
+                        alert("Bạn không có quyền thêm mới chuyên mục!");
+                        args.set_cancel(true);
+                    <%} %>
                     break;
                 case "Edit":
+                     <%if ((permission & VTCO.Config.Constants.PERMISSION_EDIT) != VTCO.Config.Constants.PERMISSION_EDIT)
+                    { %>
+                        alert("Bạn không có quyền sửa chuyên mục!");
+                        args.set_cancel(true);
+                    <%} %>
                     break;
                 case "Delete":
-                    var result = confirm("Bạn có muốn xóa Menu: " + treeNode.get_text() + " hay không ? ");
-                    args.set_cancel(!result)
+                    <%if ((permission & VTCO.Config.Constants.PERMISSION_DELETE) != VTCO.Config.Constants.PERMISSION_DELETE)
+                    { %>
+                            alert("Bạn không có quyền xóa chuyên mục!");
+                            args.set_cancel(true);
+                    <%}else{ %>
+                            var result = confirm("Bạn có muốn xóa chuyên mục: " + treeNode.get_text() + " hay không ? ");
+                            args.set_cancel(!result)
+                    <%} %>
                     break;
             }
         }
     </script>
+    </telerik:RadScriptBlock>
     <div class="box" style="width: 920px">
         <div class="title">
             <span> Hệ thống quản lý Menu</span>

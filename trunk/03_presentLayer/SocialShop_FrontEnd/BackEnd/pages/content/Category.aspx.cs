@@ -45,8 +45,10 @@ public partial class BackEnd_pages_content_Category : System.Web.UI.Page
     }
 
     CtrCategory MyMenu = new CtrCategory();
+    protected int permission = 0;
     protected void Page_Load(object sender, EventArgs e)
     {
+        permission = Convert.ToInt32(Session[Constants.SESSION_ADMIN_PERMISSION] ?? 0);
         if (!IsPostBack)
         {
             LoadTreeMenu();

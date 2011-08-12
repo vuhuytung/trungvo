@@ -5,6 +5,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">    
     <telerik:RadScriptManager ID="RadScriptManager1" runat="server">
     </telerik:RadScriptManager>
+    <telerik:RadScriptBlock ID="RadScriptBlock1" runat="server">
     <script type="text/javascript">
         function onClientContextMenuItemClicking(sender, args) {
             var menuItem = args.get_menuItem();
@@ -13,7 +14,7 @@
 
             switch (menuItem.get_value()) {
                 case "Add":
-                    <%if ((permission & VTCO.Config.Constants.PERMISSION_ADD) == VTCO.Config.Constants.PERMISSION_ADD)
+                    <%if ((permission & VTCO.Config.Constants.PERMISSION_ADD) != VTCO.Config.Constants.PERMISSION_ADD)
                     { %>
                         alert("Bạn không có quyền thêm mới chức năng!");
                         args.set_cancel(true);
@@ -25,7 +26,7 @@
                         args.set_cancel(true);
                     }
 
-                     <%if ((permission & VTCO.Config.Constants.PERMISSION_EDIT) == VTCO.Config.Constants.PERMISSION_EDIT)
+                     <%if ((permission & VTCO.Config.Constants.PERMISSION_EDIT) != VTCO.Config.Constants.PERMISSION_EDIT)
                     { %>
                         alert("Bạn không có quyền sửa chức năng!");
                         args.set_cancel(true);
@@ -35,8 +36,9 @@
                     if (parseInt(treeNode.get_value()) == 0) {
                         alert("Bạn không thể xóa menu này!");
                         args.set_cancel(true);
-                    } else {                        
-                        <%if ((permission & VTCO.Config.Constants.PERMISSION_DELETE) == VTCO.Config.Constants.PERMISSION_DELETE)
+                    } else {  
+                                          
+                        <%if ((permission & VTCO.Config.Constants.PERMISSION_DELETE) != VTCO.Config.Constants.PERMISSION_DELETE)
                         { %>
                             alert("Bạn không có quyền xóa chức năng!");
                             args.set_cancel(true);
@@ -50,6 +52,7 @@
             }
         }
     </script>
+    </telerik:RadScriptBlock>
     <div class="box" style="width: 920px">
         <div class="title">
            <span>Quản lý chức năng</span>
