@@ -173,24 +173,6 @@ a:hover
     padding:4px 0;
     height: 20px;
     line-height:20px;
-    float:left;
-}
-.box .title1
-{
-    -moz-border-radius-topleft: 4px;
-    -moz-border-radius-topright: 4px;
-    background: #CCCCCC url(../img/box_title_bg.png) repeat-x scroll 50% 50%;
-    border: 1px solid #AAAAAA;
-    color: #222222;
-    font-weight: bold;
-    padding:4px 0;
-    height: 20px;
-    line-height:20px;
-    float:left;
-}
-.box .title1 span
-{
-    margin-left:20px;
 }
 .box .title span
 {
@@ -202,28 +184,10 @@ a:hover
     text-decoration: none;
     margin:0 10px;
 }
-.box .title-addnew1
-{
-    float: right;
-    text-decoration: none;
-    margin:0 10px;
-}
-.box .content1
-{
-     -moz-border-radius-bottomleft: 4px;
-    -moz-border-radius-bottomright: 4px;
-    border-left: 1px solid #999999;
-    border-right: 1px solid #999999;
-    border-bottom: 1px solid #999999;
-    color: #333333;
-    padding:0px;
-    min-height:80px;
-   overflow:auto;
-   float:left;
-}
 
 .box .content
 {
+    
     -moz-border-radius-bottomleft: 4px;
     -moz-border-radius-bottomright: 4px;
     border-left: 1px solid #999999;
@@ -233,8 +197,7 @@ a:hover
     padding:0px;
     min-height:80px;
     width:auto!important;
-   overflow:auto;
-   float:left;
+    overflow:auto;
 }
 
 .box .content .caption-login
@@ -441,27 +404,7 @@ a:hover
     float: right;
     width: 60px;
 }
-.update_icon
-{
-    -moz-background-clip: border;
-    -moz-background-inline-policy: continuous;
-    -moz-background-origin: padding;
-    background: transparent url(../img/icon_update.gif) no-repeat scroll left top;
-    display: inline-block;
-    height: 16px;
-    width: 16px;
-    margin-right:3px;
-}
-.cancel_icon
-{
-    -moz-background-clip: border;
-    -moz-background-inline-policy: continuous;
-    -moz-background-origin: padding;
-    background: transparent url(../img/IconCancel.png) no-repeat scroll left top;
-    display: inline-block;
-    height: 16px;
-    width: 16px;
-}
+
 .delete_icon
 {
     -moz-background-clip: border;
@@ -471,9 +414,6 @@ a:hover
     display: inline-block;
     height: 16px;
     width: 16px;
-    margin-left:3px;
-    margin-right:3px;
-    
 }
 .add_icon
 {
