@@ -37,8 +37,6 @@ public partial class backend_UserControls_ucMenu : System.Web.UI.UserControl
     }
     private int m_STT;
     private int m_RowCount;
-    private DataTable tblMenuParent;
-    private int m_LanguageID;
     private int m_AccountID;
     CtrAdmin _menu = new CtrAdmin();
     public string getHover(string _currentPage)

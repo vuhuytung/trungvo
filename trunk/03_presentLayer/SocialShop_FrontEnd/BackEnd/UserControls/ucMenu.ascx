@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="ucMenu.ascx.cs" Inherits="backend_UserControls_ucMenu" %>
 <ul class="group">
-    <li class="first"><a id="0" href="#" class='<%=getHover("0")%>'>
+    <li class="first"><a id="0" href="/admin" class='<%=getHover("0")%>'>
         <div style="position: relative;">
             <span class="outer"><span style="background-image: url(/img/icon_dashboard.png);
                 background-repeat: no-repeat;" class="inner homepage">Trang chủ</span> </span>
