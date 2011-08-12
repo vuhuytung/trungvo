@@ -129,7 +129,7 @@
                                 Trạng thái
                             </div>
                             <div class="adminColumn" style="width: 92px; float: right">
-                                Chức năng
+                                &nbsp;
                             </div>
                             <div class="clearn">
                             </div>
@@ -159,6 +159,8 @@
                                 <%#Convert.ToBoolean(Eval("IsHot")??false)?"<img src='/BackEnd/img/hot.gif' style='position:absolute' alt='Hot' />":"" %>
                             </div>
                             <div class="adminColumn" style="width: 92px; float: right">
+                            <%if ((permission | VTCO.Config.Constants.PERMISSION_READ) != VTCO.Config.Constants.PERMISSION_READ)
+                              { %>
                                  <div class="function">
                                     <ul>
                                         <li><a id="aContextMenu" href="javascript:;"><span style="float: left;">Chức năng</span>
@@ -204,6 +206,7 @@
                                         </li>
                                     </ul>
                                 </div>
+                            <%} %>
                             </div>
                             <div class="clearn">
                             </div>
