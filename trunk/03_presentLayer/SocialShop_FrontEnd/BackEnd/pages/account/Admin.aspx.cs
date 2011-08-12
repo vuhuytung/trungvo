@@ -230,7 +230,8 @@ public partial class BackEnd_pages_account_Admin : System.Web.UI.Page
             return;
         }
         CtrAdmin ctrAdmin = new CtrAdmin();
-        var ret = ctrAdmin.AdminInsert(txtUserName.Text, txtPassword.Text, txtFullName.Text, rdpBirthday.SelectedDate.Value, txtEmail.Text, txtTelephone.Text, txtAbstract.Text, Convert.ToInt32(ddlStatusEdit.SelectedValue));
+        var pass = VTCO.Utils.Encryption.GetMD5(txtPassword.Text);
+        var ret = ctrAdmin.AdminInsert(txtUserName.Text, pass, txtFullName.Text, rdpBirthday.SelectedDate.Value, txtEmail.Text, txtTelephone.Text, txtAbstract.Text, Convert.ToInt32(ddlStatusEdit.SelectedValue));
         if (ret > 0)
         {
             lblMsg.Text = "Thêm mới thành công!";
