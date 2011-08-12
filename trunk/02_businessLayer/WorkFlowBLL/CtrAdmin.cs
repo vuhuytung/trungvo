@@ -134,7 +134,7 @@ namespace WorkFlowBLL
             return BDS.AdminInstance.uspPermissionInsert(adminID, roleID);
         }
         #endregion
-
+        /*
         /// <summary>
         /// Thêm mới Log
         /// </summary>
