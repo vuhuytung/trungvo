@@ -133,6 +133,10 @@ namespace WorkFlowBLL
         {
             return BDS.AdminInstance.uspPermissionInsert(adminID, roleID);
         }
+        public uspAdminLoginResult AdminLogin(string userName,string password)
+        {
+            return BDS.AdminInstance.uspAdminLogin(userName, password).FirstOrDefault();
+        }
         #endregion
         /*
         /// <summary>
