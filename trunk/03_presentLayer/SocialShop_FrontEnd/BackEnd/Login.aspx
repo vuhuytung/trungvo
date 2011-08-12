@@ -25,18 +25,15 @@
                     <div style="padding:5px 0px;">
                         <label style="float:left; width:100px; text-align:right;padding-right:5px;">Password:</label> 
                         <asp:TextBox ID="txtpassword" runat="server" TextMode="Password" Width="150px"/>  
-                    </div>
-                    <div style="padding:5px 0px 5px 30px; margin-left:20px;">
-                        <asp:CheckBox ID="ckremember" runat="server" /> Nhớ khi đăng nhập  
-                    </div>
-                    <div style="text-align:center;">
+                    </div>                    
+                    <div style="text-align:center; padding-top:10px">
                         <asp:Button Text="Đăng nhập" ID="btnclick" runat="server" 
                             onclick="btnclick_Click"/>
                     </div>
                     <div style="text-align:center;height:30px; padding-top:10px;">
                         <asp:Label ID="lblmsg" ForeColor="Red" runat="server" />
                     </div>
-                    <div style="padding-left:20px; padding-top:40px;">
+                    <div style="padding-left:20px; padding-top:20px;">
                         <a href="/index.htm" style="text-decoration:none">Trở về trang chủ</a>
                     </div>
                 </div>

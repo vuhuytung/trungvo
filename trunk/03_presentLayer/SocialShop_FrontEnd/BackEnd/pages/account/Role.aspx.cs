@@ -12,6 +12,7 @@ using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Threading;
+using VTCO.Config;
 
 public partial class BackEnd_pages_account_Role : System.Web.UI.Page
 {
@@ -53,8 +54,10 @@ public partial class BackEnd_pages_account_Role : System.Web.UI.Page
             ViewState["isNew"] = value;
         }
     }
+    protected int permission = 0;
     protected void Page_Load(object sender, EventArgs e)
     {
+        permission = Convert.ToInt32(Session[Constants.SESSION_ADMIN_PERMISSION] ?? 0);
         if (!IsPostBack)
         {
             LoadPanel(1);
@@ -94,11 +97,13 @@ public partial class BackEnd_pages_account_Role : System.Web.UI.Page
 
             if (Convert.ToBoolean(DataBinder.Eval(e.Item.DataItem, "Status")))
             {
-                (e.Item.FindControl("lbtLock") as LinkButton).Visible = false;
+                if ((permission & VTCO.Config.Constants.PERMISSION_EDIT) == VTCO.Config.Constants.PERMISSION_EDIT)
+                    (e.Item.FindControl("lbtUnLock") as LinkButton).Visible = false;
             }
             else
             {
-                (e.Item.FindControl("lbtUnLock") as LinkButton).Visible = false;
+                if ((permission & VTCO.Config.Constants.PERMISSION_EDIT) == VTCO.Config.Constants.PERMISSION_EDIT)
+                    (e.Item.FindControl("lbtLock") as LinkButton).Visible = false;
             }
             HtmlGenericControl spSTT = e.Item.FindControl("spSTT") as HtmlGenericControl;
             spSTT.InnerText = (e.Item.ItemIndex+1).ToString();            
