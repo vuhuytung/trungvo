@@ -15,19 +15,17 @@ using VTCO.Config;
 
 public partial class UserControls_ucHeader : System.Web.UI.UserControl
 {
-   
-    //AccountManagement m_accmgr = new AccountManagement();
-    //protected void Page_Load(object sender, EventArgs e)
-    //{
-    //    if (!Page.IsPostBack)
-    //    {
-    //        m_accmgr.LoginAuthentication();    
-    //    }
-    //}
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
     protected void linkLogout_Click(object sender, EventArgs e)
     {
-        //Session[Constants.SESSION_USERNAME] = null;
-        //m_accmgr.LoginAuthentication();
-        //Session["MyCulture"] = "th";
+        Session[Constants.SESSION_ADMIN_NAME] = null;
+        Session[Constants.SESSION_ADMIN_ID] = null;
+        Session[Constants.SESSION_ADMIN_FULLNAME] = null;
+        Session[Constants.SESSION_ADMIN_LEVEL] = null;
+        Session[Constants.SESSION_ADMIN_ISLOGIN] = false;
     }
 }
