@@ -372,12 +372,9 @@ namespace VTCO.Config
         // Các hằng số cho Session của User
         #region SESSION cho User
         public const string SESSION_USER_ID = "SESSION_USER_ID";
-        public const string SESSION_PAYGATE_NAME = "SESSION_PAYGATE_NAME";
-        public const string SESSION_PUBLIC_NAME = "SESSION_PUBLIC_NAME";
-        public const string SESSION_PAYGATE_ID = "SESSION_PAYGATE_ID";
-        public const string SESSION_LOGIN_TYPE = "SESSION_LOGIN_TYPE";
-        public const string SESSION_SHOP_ID = "SESSION_SHOP_ID";
-        public const string SESSION_SHOP_NAME = "SESSION_SHOP_NAME";
+        public const string SESSION_USERT_NAME = "SESSION_USER_NAME";
+        public const string SESSION_FULL_NAME = "SESSION_FULL_NAME";
+        public const string SESSION_LOGIN_LEVEL = "SESSION_LOGIN_LEVEL";
         #endregion
 
         public const string SESSION_CURRENT_PAGE = "SESSION_CURRENT_PAGE";
