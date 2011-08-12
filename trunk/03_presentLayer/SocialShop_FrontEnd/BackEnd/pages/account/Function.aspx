@@ -13,21 +13,39 @@
 
             switch (menuItem.get_value()) {
                 case "Add":
+                    <%if ((permission & VTCO.Config.Constants.PERMISSION_ADD) == VTCO.Config.Constants.PERMISSION_ADD)
+                    { %>
+                        alert("Bạn không có quyền thêm mới chức năng!");
+                        args.set_cancel(true);
+                    <%} %>
                     break;
                 case "Edit":
                     if (parseInt(treeNode.get_value()) == 0) {
-                        alert("Bạn không thể sửa menu này!");
+                        alert("Bạn không thể sửa chức năng này!");
                         args.set_cancel(true);
                     }
+
+                     <%if ((permission & VTCO.Config.Constants.PERMISSION_EDIT) == VTCO.Config.Constants.PERMISSION_EDIT)
+                    { %>
+                        alert("Bạn không có quyền sửa chức năng!");
+                        args.set_cancel(true);
+                    <%} %>
                     break;
                 case "Delete":
                     if (parseInt(treeNode.get_value()) == 0) {
                         alert("Bạn không thể xóa menu này!");
                         args.set_cancel(true);
-                    } else {
-                        var result = confirm("Bạn có muốn xóa Menu: " + treeNode.get_text() + " hay không ? ");
-                        args.set_cancel(!result)
-                    }
+                    } else {                        
+                        <%if ((permission & VTCO.Config.Constants.PERMISSION_DELETE) == VTCO.Config.Constants.PERMISSION_DELETE)
+                        { %>
+                            alert("Bạn không có quyền xóa chức năng!");
+                            args.set_cancel(true);
+                        <%}else{ %>
+                            var result = confirm("Bạn có muốn xóa Menu: " + treeNode.get_text() + " hay không ? ");
+                            args.set_cancel(!result)
+                        <%} %>
+                        
+                    }                    
                     break;
             }
         }
@@ -73,7 +91,7 @@
                                 Font-Size="11px" Font-Names="Times New Roman">
                                 <ContextMenus>
                                     <telerik:RadTreeViewContextMenu Skin="WebBlue">
-                                        <Items>
+                                        <Items>                                                                                    
                                             <telerik:RadMenuItem runat="server" Font-Size="13px" ImageUrl="~/BackEnd/img/action_add.gif"
                                                 Text="Thêm mới" Value="Add">
                                             </telerik:RadMenuItem>

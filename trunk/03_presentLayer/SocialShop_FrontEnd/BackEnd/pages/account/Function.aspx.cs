@@ -45,8 +45,10 @@ public partial class BackEnd_pages_account_Function : System.Web.UI.Page
     }
 
     CtrAdmin MyMenu = new CtrAdmin();
+    protected int permission = 0;
     protected void Page_Load(object sender, EventArgs e)
     {
+        permission = Convert.ToInt32(Session[Constants.SESSION_ADMIN_PERMISSION] ?? 0);
         if (!IsPostBack)
         {
             LoadTreeMenu();

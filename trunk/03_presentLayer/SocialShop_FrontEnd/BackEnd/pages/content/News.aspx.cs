@@ -12,6 +12,7 @@ using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Threading;
+using VTCO.Config;
 
 public partial class BackEnd_pages_content_News : System.Web.UI.Page
 {
@@ -53,11 +54,16 @@ public partial class BackEnd_pages_content_News : System.Web.UI.Page
             ViewState["isNew"] = value;
         }
     }
+    protected int permission = 0;
     protected void Page_Load(object sender, EventArgs e)
     {
+        permission = Convert.ToInt32(Session[Constants.SESSION_ADMIN_PERMISSION] ?? 0);
         ucPaging1.PageChange += new UserControls_ucPaging.PagingHandler(pageChange);
         if (!IsPostBack)
         {
+
+            lbtAddNew.Visible = ((permission & VTCO.Config.Constants.PERMISSION_ADD) == VTCO.Config.Constants.PERMISSION_ADD);
+
             rdpFromDate.SelectedDate = DateTime.Now.AddMonths(-12);
             rdpToDate.SelectedDate = DateTime.Now;
 
@@ -171,20 +177,24 @@ public partial class BackEnd_pages_content_News : System.Web.UI.Page
 
             if (Convert.ToBoolean(DataBinder.Eval(e.Item.DataItem, "Status")))
             {
-                (e.Item.FindControl("lbtLock") as LinkButton).Visible = false;
+                if ((permission & VTCO.Config.Constants.PERMISSION_EDIT) == VTCO.Config.Constants.PERMISSION_EDIT)
+                    (e.Item.FindControl("lbtUnLock") as LinkButton).Visible = false;
             }
             else
             {
-                (e.Item.FindControl("lbtUnLock") as LinkButton).Visible = false;
+                if ((permission & VTCO.Config.Constants.PERMISSION_EDIT) == VTCO.Config.Constants.PERMISSION_EDIT)
+                    (e.Item.FindControl("lbtLock") as LinkButton).Visible = false;
             }
 
             if (Convert.ToBoolean(DataBinder.Eval(e.Item.DataItem, "IsHot")))
             {
-                (e.Item.FindControl("lbtUnHot") as LinkButton).Visible = false;
+                if ((permission & VTCO.Config.Constants.PERMISSION_EDIT) == VTCO.Config.Constants.PERMISSION_EDIT)
+                    (e.Item.FindControl("lbtHot") as LinkButton).Visible = false;
             }
             else
             {
-                (e.Item.FindControl("lbtHot") as LinkButton).Visible = false;
+                if ((permission & VTCO.Config.Constants.PERMISSION_EDIT) == VTCO.Config.Constants.PERMISSION_EDIT)
+                    (e.Item.FindControl("lbtUnHot") as LinkButton).Visible = false;
             }
         }
 
@@ -356,7 +366,9 @@ public partial class BackEnd_pages_content_News : System.Web.UI.Page
             string strNewImage = DateTime.Now.ToString("yyyyMMddHHmmssfff") + Path.GetExtension(UploadImage.FileName);
             image = "/images/news/" + strNewImage;
         }
-        var ret = ctrNews.Insert(HtmlUtility.HtmlEncode(txtTitle.Text), HtmlUtility.HtmlEncode(txtAbstract.Text), radContent.Content, image, rdpPublishDateEdit.SelectedDate.Value, Convert.ToInt32(ddlNewsMenu.SelectedValue), HtmlUtility.HtmlEncode(txtResource.Text), ddlStatusEdit.SelectedValue == "1" ? true : false, ddlIsHotEdit.SelectedValue == "1" ? true : false);
+        int adminID = 0;
+        adminID = Convert.ToInt32(Session[Constants.SESSION_ADMIN_ID] ?? 0);
+        var ret = ctrNews.Insert(HtmlUtility.HtmlEncode(txtTitle.Text), HtmlUtility.HtmlEncode(txtAbstract.Text), radContent.Content, image, rdpPublishDateEdit.SelectedDate.Value, Convert.ToInt32(ddlNewsMenu.SelectedValue), HtmlUtility.HtmlEncode(txtResource.Text), ddlStatusEdit.SelectedValue == "1" ? true : false, ddlIsHotEdit.SelectedValue == "1" ? true : false, adminID);
         if (ret > 0)
         {
             lblMsg.Text = "Thêm mới thành công!";
@@ -403,7 +415,9 @@ public partial class BackEnd_pages_content_News : System.Web.UI.Page
             image = imgNews.Src.Substring(0, imgNews.Src.IndexOf(".thumb")+1);
         }        
         CtrNews ctrNews = new CtrNews();
-        if (ctrNews.Update(newsID, title, description, content, image, publishDate, categoryID, resource, status, isHot) > 0)
+        int adminID = 0;
+        adminID = Convert.ToInt32(Session[Constants.SESSION_ADMIN_ID] ?? 0);
+        if (ctrNews.Update(newsID, title, description, content, image, publishDate, categoryID, resource, status, isHot, adminID) > 0)
         {
             lblMsg.Text = "Cập nhật thành công";
             if (!string.IsNullOrEmpty(UploadImage.FileName))

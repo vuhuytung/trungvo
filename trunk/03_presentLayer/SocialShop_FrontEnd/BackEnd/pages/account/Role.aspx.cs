@@ -60,6 +60,8 @@ public partial class BackEnd_pages_account_Role : System.Web.UI.Page
         permission = Convert.ToInt32(Session[Constants.SESSION_ADMIN_PERMISSION] ?? 0);
         if (!IsPostBack)
         {
+            lbtAddNew.Visible = ((permission & VTCO.Config.Constants.PERMISSION_ADD) == VTCO.Config.Constants.PERMISSION_ADD);
+
             LoadPanel(1);
             CtrAdmin ctrAdmin=new CtrAdmin();
             rptRole.DataSource = ctrAdmin.RoleGetAll();
