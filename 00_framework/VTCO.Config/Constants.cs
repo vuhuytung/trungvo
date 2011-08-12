@@ -387,8 +387,7 @@ namespace VTCO.Config
         #endregion
 
         public const string SESSION_CURRENT_PAGE = "SESSION_CURRENT_PAGE";
-        public const string SESSION_CURRENT_TAB = "SESSION_CURRENT_TAB";
-        public const string SESSION_ACCOUNTID = "SESSION_ACCOUNTID";
+        public const string SESSION_CURRENT_TAB = "SESSION_CURRENT_TAB";        
         public const string SESSION_CURRENT_URL = "SESSION_CURRENT_URL";
         public const string PRIVATE_KEY = "@1B2c3D4e5F6g7H8";
         public const string KEY = "KEY";
