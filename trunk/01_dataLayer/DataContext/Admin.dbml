@@ -231,4 +231,17 @@
     <Parameter Name="PermissionID" Parameter="permissionID" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="dbo.uspFunctionGetParentID" Method="uspFunctionGetParentID">
+    <Parameter Name="FunctionID" Parameter="functionID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.uspFunctionGetIDByUrl" Method="uspFunctionGetIDByUrl">
+    <Parameter Name="Url" Parameter="url" Type="System.String" DbType="NVarChar(250)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.uspPermissionCheck" Method="uspPermissionCheck">
+    <Parameter Name="AdminID" Parameter="adminID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Url" Parameter="url" Type="System.String" DbType="NVarChar(250)" />
+    <Return Type="System.Int32" />
+  </Function>
 </Database>
