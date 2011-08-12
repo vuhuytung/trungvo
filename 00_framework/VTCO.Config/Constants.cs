@@ -387,6 +387,14 @@ namespace VTCO.Config
         public const string SESSION_ADMIN_PERMISSION = "SESSION_ADMIN_PERMISSION";
         #endregion
 
+        // Các hằng số cho quyền của Admin
+        #region PERMISSION cho ADmin
+        public const int PERMISSION_READ = 8;
+        public const int PERMISSION_ADD = 4;
+        public const int PERMISSION_EDIT = 2;
+        public const int PERMISSION_DELETE = 1;
+        #endregion
+
         public const string SESSION_CURRENT_PAGE = "SESSION_CURRENT_PAGE";
         public const string SESSION_CURRENT_TAB = "SESSION_CURRENT_TAB";        
         public const string SESSION_CURRENT_URL = "SESSION_CURRENT_URL";
