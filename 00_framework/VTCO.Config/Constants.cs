@@ -372,9 +372,17 @@ namespace VTCO.Config
         // Các hằng số cho Session của User
         #region SESSION cho User
         public const string SESSION_USER_ID = "SESSION_USER_ID";
-        public const string SESSION_USERT_NAME = "SESSION_USER_NAME";
-        public const string SESSION_FULL_NAME = "SESSION_FULL_NAME";
-        public const string SESSION_LOGIN_LEVEL = "SESSION_LOGIN_LEVEL";
+        public const string SESSION_USER_NAME = "SESSION_USER_NAME";
+        public const string SESSION_USER_FULLNAME = "SESSION_USER_FULLNAME";
+        public const string SESSION_USER_LEVEL = "SESSION_USER_LEVEL";
+        #endregion
+
+        // Các hằng số cho Session của Admin
+        #region SESSION cho ADmin
+        public const string SESSION_ADMIN_ID = "SESSION_ADMIN_ID";
+        public const string SESSION_ADMIN_NAME = "SESSION_ADMIN_NAME";
+        public const string SESSION_ADMIN_FULLNAME = "SESSION_ADMIN_FULLNAME";
+        public const string SESSION_ADMIN_LEVEL = "SESSION_ADMIN_LEVEL";
         #endregion
 
         public const string SESSION_CURRENT_PAGE = "SESSION_CURRENT_PAGE";
