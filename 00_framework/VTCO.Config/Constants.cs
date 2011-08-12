@@ -383,6 +383,7 @@ namespace VTCO.Config
         public const string SESSION_ADMIN_NAME = "SESSION_ADMIN_NAME";
         public const string SESSION_ADMIN_FULLNAME = "SESSION_ADMIN_FULLNAME";
         public const string SESSION_ADMIN_LEVEL = "SESSION_ADMIN_LEVEL";
+        public const string SESSION_ADMIN_ISLOGIN = "SESSION_ADMIN_ISLOGIN";
         #endregion
 
         public const string SESSION_CURRENT_PAGE = "SESSION_CURRENT_PAGE";
