@@ -32,19 +32,9 @@ public partial class master_masterBackend : System.Web.UI.MasterPage
             if (string.IsNullOrEmpty(LocalPath))
                 LocalPath = "/admin/login";
             Session[Constants.SESSION_CURRENT_URL] = LocalPath;
-            var a = _menu.CheckPermission(m_AccountID, LocalPath);
-            var Read = ((_menu.CheckPermission(m_AccountID, LocalPath) & 1) == 1);
-            if (!Read && (level != 1) && (LocalPath!="/admin"))
-            {
-                ViewState[Constants.SESSION_CURRENT_PAGE] = "0";
-                ViewState[Constants.SESSION_CURRENT_TAB] = null;
-                CookieManagement.Instance["current_page", false] = "0";
-                CookieManagement.Instance["current_tab", false] = null;
-                Response.Redirect("~/admin/login");
-            }
 
-            if (LocalPath != "/admin")
-            {
+            if ((LocalPath != "/admin") && (LocalPath != "/admin/notpermission"))
+            {                
                 var MenuID = _menu.GetMenuIDByLink(LocalPath);
                 var MenuParrentID = _menu.GetParentIDByChildID(MenuID);
                 if (MenuParrentID == 0)
@@ -59,6 +49,19 @@ public partial class master_masterBackend : System.Web.UI.MasterPage
                     CookieManagement.Instance["current_page", false] = MenuParrentID.ToString();
                     CookieManagement.Instance["current_tab", false] = MenuID.ToString();
                 }
+
+                var Read = ((_menu.CheckPermission(m_AccountID, LocalPath) & 1) == 1);
+                if (!Read && (level != 1))
+                {
+                    Response.Redirect("~/admin/notpermission");
+                }
+            }
+            else
+            {
+                ViewState[Constants.SESSION_CURRENT_PAGE] = "0";
+                ViewState[Constants.SESSION_CURRENT_TAB] = null;
+                CookieManagement.Instance["current_page", false] = "0";
+                CookieManagement.Instance["current_tab", false] = null;
             }
 
         }
