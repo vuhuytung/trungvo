@@ -72,7 +72,7 @@ public partial class backend_UserControls_ucMenu : System.Web.UI.UserControl
     {
         if (!Page.IsPostBack)
         {
-            m_AccountID = Convert.ToInt32(Session[Constants.SESSION_ACCOUNTID]);
+            m_AccountID = Convert.ToInt32(Session[Constants.SESSION_ADMIN_ID]);
             var tblMenuParent = _menu.FunctionGetByParentID(0,1);
             m_RowCount = tblMenuParent.Count;
             m_STT = 1;

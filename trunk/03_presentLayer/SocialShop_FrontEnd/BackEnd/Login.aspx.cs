@@ -12,7 +12,7 @@ using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 using VTCO.Config;
 using VTCO.Library;
-//using BusinessObject;
+using WorkFlowBLL;
 //using VTCO.Encrypt;
 public partial class backend_Login : System.Web.UI.Page
 {
@@ -33,33 +33,27 @@ public partial class backend_Login : System.Web.UI.Page
     }
     protected void btnclick_Click(object sender, EventArgs e)
     {
-        //AccountManagement acc = new AccountManagement();
-        //DataTable dt =acc.LoginAuthentication(this.txtusename.Text.Trim(),this.txtpassword.Text.Trim());
-        //DataTable dt1 = acc.CheckUser(this.txtusename.Text.Trim());
-        //if (dt.Rows.Count > 0)
-        //{
-        //    if (this.ckremember.Checked == true)
-        //    {
-        //        HttpCookie obj = new HttpCookie("Login");
-        //        string username = this.txtusename.Text;
-        //        obj.Values["name"] = username;
-        //        obj.Expires = DateTime.Now.AddYears(1);
-        //        Response.Cookies.Add(obj);
-        //    }
-        //    Session[Constants.SESSION_USERNAME] = dt.Rows[0]["UserName"].ToString();
-        //    Session[Constants.SESSION_ACCOUNTID] = dt.Rows[0]["AccountID"].ToString();
-        //    Session[Constants.SESSION_ACCOUNTFULLNAME] = dt.Rows[0]["FullName"].ToString();
-        //    Session[Constants.SESSION_ACCOUNTTYPE] = dt.Rows[0]["Type"].ToString();
-        //    Response.Redirect("/Default/Index.html");
-        //    this.lblmsg.Text = "";
-        //}
-        //else if(dt1.Rows.Count>0)
-        //{
-        //    this.lblmsg.Text = "Tài khoản của bạn đã bị khóa.<br/> Hãy liên hệ với ban quản trị để biết thêm thông tin !!";
-        //}
-        //else
-        //{
-        //    this.lblmsg.Text = "Sai UserName hoặc Password. Hãy đăng nhập lại!";
-        //}
+        CtrAdmin  acc = new CtrAdmin();
+        var dt = acc.AdminLogin(this.txtusename.Text.Trim(), VTCO.Utils.Encryption.GetMD5(this.txtpassword.Text.Trim()));
+
+        if ((dt!=null) && (dt.Status==1))
+        {
+            Session[Constants.SESSION_ADMIN_NAME] = dt.UserName;
+            Session[Constants.SESSION_ADMIN_ID] = dt.AdminID;
+            Session[Constants.SESSION_ADMIN_FULLNAME] = dt.FullName;
+            Session[Constants.SESSION_ADMIN_LEVEL] = dt.Level;
+            Session[Constants.SESSION_ADMIN_ISLOGIN] = true;
+
+            Response.Redirect("/admin");
+            this.lblmsg.Text = "";
+        }
+        else if ((dt != null) && (dt.Status == 0))
+        {
+            this.lblmsg.Text = "Tài khoản của bạn đã bị khóa.<br/> Hãy liên hệ với ban quản trị để biết thêm thông tin !!";
+        }
+        else
+        {
+            this.lblmsg.Text = "Sai UserName hoặc Password. Hãy đăng nhập lại!";
+        }
     }
 }
