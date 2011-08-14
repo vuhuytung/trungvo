@@ -194,6 +194,9 @@ public partial class BackEnd_pages_account_Admin : System.Web.UI.Page
             rdpBirthday.SelectedDate = info.Birthday;
             ddlStatusEdit.SelectedValue = info.Status.ToString();
             txtAbstract.Text = info.Description;
+            txtUserName.Text = info.UserName;
+            txtUserName.Visible = false;
+            lblUserName.Visible = true;
         }
 
         if (e.CommandName == "delete")
@@ -229,6 +232,9 @@ public partial class BackEnd_pages_account_Admin : System.Web.UI.Page
         txtAbstract.Text = "";
         ddlStatusEdit.SelectedValue = "1";
         spTitle.InnerText = "Thêm mới";
+        lblUserName.Text = "";
+        lblUserName.Visible = false;
+        txtUserName.Visible = true;
     }
     protected void lbtSave_Click(object sender, EventArgs e)
     {
