@@ -25,6 +25,26 @@ namespace WorkFlowBLL
             var pass = VTCO.Utils.Encryption.GetMD5(passWord);
             return BDS.UserInstance.uspUserInsert(userName, pass, fullName, address, phone, email, DateTime.Now, true);
         }
-       
+
+        public ClassExtend<int, uspUserGetListResult> UserGetList(string keyword, int status, int cur, int ps)
+        {
+            ClassExtend<int, uspUserGetListResult> ret = new ClassExtend<int, uspUserGetListResult>();
+            int? total = 0;
+            ret.Items = BDS.UserInstance.uspUserGetList(keyword, status, cur, ps, ref total).ToList();
+            ret.TotalRecord = total.Value;
+            return ret;
+        }
+        public int UserUpdateStatus(int userID, int status)
+        {
+            return BDS.UserInstance.uspUserUpdateStatus(userID, status);
+        }
+        public uspUserGetInfoByUserIDResult UserGetInfo(int userID)
+        {
+            return BDS.UserInstance.uspUserGetInfoByUserID(userID).FirstOrDefault();
+        }
+        public int UserDelete(int userID)
+        {
+            return BDS.UserInstance.uspUserDeleteByUserID(userID);
+        }
     }
 }
