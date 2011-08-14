@@ -20,10 +20,10 @@ namespace WorkFlowBLL
         /// <param name="phone"></param>
         /// <param name="email"></param>
         /// <returns></returns>
-        public int Insert(string userName,string passWord,string fullName,string address,string phone,string email)
+        public int Insert(string userName,string passWord,string fullName, DateTime birthday, string address,string phone,string email)
         {
             var pass = VTCO.Utils.Encryption.GetMD5(passWord);
-            return BDS.UserInstance.uspUserInsert(userName, pass, fullName, address, phone, email, DateTime.Now, true);
+            return BDS.UserInstance.uspUserInsert(userName, pass, fullName,birthday, address, phone, email, DateTime.Now, true);
         }
 
         public ClassExtend<int, uspUserGetListResult> UserGetList(string keyword, int status, int cur, int ps)

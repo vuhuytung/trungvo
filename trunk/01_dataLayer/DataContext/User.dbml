@@ -1,16 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Database1" Class="UserDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=183.182.100.136;Initial Catalog=Database1;Persist Security Info=True;User ID=tmt" SettingsObjectName="DataContext.Properties.Settings" SettingsPropertyName="Database1ConnectionString1" Provider="System.Data.SqlClient" />
-  <Function Name="dbo.uspUserInsert" Method="uspUserInsert">
-    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="PassWord" Parameter="passWord" Type="System.String" DbType="VarChar(150)" />
-    <Parameter Name="FullName" Parameter="fullName" Type="System.String" DbType="NVarChar(100)" />
-    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="NVarChar(200)" />
-    <Parameter Name="Phone" Parameter="phone" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="VarChar(200)" />
-    <Parameter Name="RegisterDate" Parameter="registerDate" Type="System.DateTime" DbType="DateTime" />
-    <Parameter Name="Status" Parameter="status" Type="System.Boolean" DbType="Bit" />
-    <Return Type="System.Int32" />
-  </Function>
   <Function Name="dbo.uspUserUpdateStatus" Method="uspUserUpdateStatus">
     <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
     <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
@@ -54,5 +43,17 @@
       <Column Name="RegisterDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
+  </Function>
+  <Function Name="dbo.uspUserInsert" Method="uspUserInsert">
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="PassWord" Parameter="passWord" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="FullName" Parameter="fullName" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Birthday" Parameter="birthday" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Phone" Parameter="phone" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="RegisterDate" Parameter="registerDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Status" Parameter="status" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
   </Function>
 </Database>

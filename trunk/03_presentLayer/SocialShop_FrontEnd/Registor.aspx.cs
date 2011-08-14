@@ -15,6 +15,6 @@ public partial class Registor : System.Web.UI.Page
     protected void btnRegistor_Click(object sender, EventArgs e)
     {
         CtrUser ctrUser = new CtrUser();
-        ctrUser.Insert(txtUserName.Text.Trim(), txtPassword.Text.Trim(), txtFullName.Text.Trim(), txtAddress.Text.Trim(), txtMobile.Text.Trim(), txtEmail.Text.Trim());
+        ctrUser.Insert(txtUserName.Text.Trim(), txtPassword.Text.Trim(), txtFullName.Text.Trim(),rdpBirthday.SelectedDate.Value, txtAddress.Text.Trim(), txtMobile.Text.Trim(), txtEmail.Text.Trim());
     }
 }

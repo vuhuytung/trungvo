@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/master/masterFrontend.master" AutoEventWireup="true" CodeFile="Registor.aspx.cs" Inherits="Registor" %>
-
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 <style type="text/css">
     td
@@ -50,6 +50,21 @@
                 <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Email không đúng định dạng!" CssClass="require" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="txtEmail" ValidationGroup="Registor"></asp:RegularExpressionValidator>
             </td>
         </tr>              
+        <tr>
+            <td>Ngày sinh:</td>
+            <td>
+                <div style="width: 150px">
+                 <telerik:RadDatePicker ID="rdpBirthday" runat="server" Culture="vi-VN" Skin="WebBlue">
+                        <Calendar Skin="WebBlue" UseColumnHeadersAsSelectors="False" UseRowHeadersAsSelectors="False"
+                            ViewSelectorText="x">
+                        </Calendar>
+                        <DateInput LabelCssClass="radLabelCss_WebBlue" Skin="WebBlue">
+                        </DateInput>
+                    </telerik:RadDatePicker>
+               </div>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ErrorMessage="*" CssClass="require" ControlToValidate="rdpBirthday" ValidationGroup="Registor"></asp:RequiredFieldValidator>
+            </td>
+        </tr>
         <tr>
             <td>Địa chỉ:</td>
             <td><asp:TextBox runat="server" ID="txtAddress" CssClass="inputText" Width="300"></asp:TextBox>
