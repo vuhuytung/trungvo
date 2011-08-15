@@ -432,3 +432,64 @@ a:active
     text-decoration:none;
 
 }
+.box_tygia
+{
+    width:96%;
+    float:left;
+    padding-left:10px;
+    margin-top:10px;
+    border:2px solid #CFCFCF;
+    padding-top:10px;
+}
+.box_tygia_title
+{
+    width:100%;
+    height:20px;
+}
+.box_tygia_title a
+{
+    font-family:Arial;
+    font-weight:bold;
+}
+.item_tygia
+{
+    font-family:Arial;
+    font-size:12px;
+     text-align:center;
+     padding:2px;
+    
+}
+.item_tygia1
+{
+    font-family:Arial;
+    font-size:12px;
+     padding:2px;
+     font-weight:bold;
+     
+}
+.item_tygia1 a
+{
+    color:#444444;
+}s
+.item_head
+{
+    font-family:Arial;
+    font-size:14px;
+     text-align:center;
+     color:#514F4F;
+}
+.item_head1
+{
+    font-family:Arial;
+    font-size:14px;
+     text-align:left;
+     color:#514F4F;
+     padding: 3px 0;
+}
+.tb_tygia
+{
+    width:90%;
+    border:1px solid #FFF;
+    margin-left:10px;
+    margin-top:20px;
+}

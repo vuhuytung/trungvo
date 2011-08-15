@@ -25,12 +25,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityBLL", "02_businessLay
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkFlowBLL", "02_businessLayer\WorkFlowBLL\WorkFlowBLL.csproj", "{7C96C532-BA92-456E-B349-1EB3915AC9DA}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SocialShop_FrontEnd", "03_presentLayer\SocialShop_FrontEnd\", "{218871F1-9C9B-401C-829F-EDBF6B4E0504}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SocialShop_FrontEnd", "03_presentLayer\SocialShop_FrontEnd", "{218871F1-9C9B-401C-829F-EDBF6B4E0504}"
 	ProjectSection(WebsiteProperties) = preProject
-		SccProjectName = "SAK"
-		SccAuxPath = "SAK"
-		SccLocalPath = "SAK"
-		SccProvider = "SAK"
+		SccProjectName = ""
+		SccAuxPath = ""
+		SccLocalPath = ""
+		SccProvider = ""
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
 		ProjectReferences = "{807A8C12-E6BA-441E-9791-AD832F178B95}|VTCO.Utils.dll;{68071AC2-E372-4AAB-AFF6-387D0A943FCB}|VTCO.Config.dll;{9595D673-09A6-4755-A8FA-6A232E01866A}|VTCO.Library.dll;{948E50AB-9541-4081-A771-9E4C7E51B344}|EntityBLL.dll;{7C96C532-BA92-456E-B349-1EB3915AC9DA}|WorkFlowBLL.dll;{D8D41B36-906A-4506-853A-2C85B38EA7A9}|ComponentBLL.dll;{D3C0E5A1-DF7D-4B90-AB14-D55D3D17678D}|DAL.dll;{192AA2BB-C2B8-4882-88F5-82C02765FC2E}|DataContext.dll;{67474ABA-1B71-4994-BD9A-1A1F3B2DC624}|SSServiceInfo.dll;{7EC985D8-31C0-4930-803D-0CF85B41291A}|VTCO.Encrypt.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/SocialShop_FrontEnd"
@@ -54,12 +54,12 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SocialShop_FrontEnd", "03_p
 		StartServerOnDebug = "false"
 	EndProjectSection
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "PhotoServices", "03_presentLayer\PhotoServices\", "{34042609-E455-4991-8F8C-56AB980C2630}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "PhotoServices", "03_presentLayer\PhotoServices", "{34042609-E455-4991-8F8C-56AB980C2630}"
 	ProjectSection(WebsiteProperties) = preProject
-		SccProjectName = "SAK"
-		SccAuxPath = "SAK"
-		SccLocalPath = "SAK"
-		SccProvider = "SAK"
+		SccProjectName = ""
+		SccAuxPath = ""
+		SccLocalPath = ""
+		SccProvider = ""
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
 		ProjectReferences = "{68071AC2-E372-4AAB-AFF6-387D0A943FCB}|VTCO.Config.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/PhotoServices"
