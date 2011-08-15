@@ -67,6 +67,12 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
             {
                 System.IO.Directory.CreateDirectory(Request.PhysicalApplicationPath + "/images/Market");
             }
+            CtrPartner pn = new CtrPartner();
+            pn.DeleteImgTemp(Request);
+            if (!System.IO.Directory.Exists(Request.PhysicalApplicationPath + "/images/temp"))
+            {
+                System.IO.Directory.CreateDirectory(Request.PhysicalApplicationPath + "/images/temp");
+            }
         }
     }
     private void BindDrop(ref DropDownList ddl1, ref DropDownList ddl2, ref DropDownList ddl3)
@@ -499,10 +505,14 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
                     int location = GetLocationID(ddlProvince1, ddlDistrict1, ddlVillage1);
                     if (fupload.FileName != "")
                     {
+                        //luu anh vo temp
+                        string strTemp = Path.Combine(Request.PhysicalApplicationPath, "images\\temp\\" + fupload.FileName);
+                        fupload.SaveAs(strTemp);
+
                         string strFile = Path.Combine(Request.PhysicalApplicationPath, "images\\Market");
                         strFile += "\\" + fupload.FileName;
 
-                        var EditImage1 = System.Drawing.Image.FromFile(fupload.PostedFile.FileName);
+                        var EditImage1 = System.Drawing.Image.FromFile(strTemp);
                         VTCO.Library.ImageResize Img2 = new VTCO.Library.ImageResize();
                         var newimg1 = Img2.Crop(EditImage1, 500, 300, VTCO.Library.ImageResize.AnchorPosition.Center);
                         newimg1.Save(strFile);
@@ -516,7 +526,7 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
                         string strFile1 = Path.Combine(Request.PhysicalApplicationPath, "images\\Market");
                         strFile1 += "\\" + newname;
 
-                        var EditImage = System.Drawing.Image.FromFile(fupload.PostedFile.FileName);
+                        var EditImage = System.Drawing.Image.FromFile(strTemp);
                         VTCO.Library.ImageResize Img1 = new VTCO.Library.ImageResize();
                         var newimg = Img1.Crop(EditImage, 120, 100, VTCO.Library.ImageResize.AnchorPosition.Center);
                         newimg.Save(strFile1);
@@ -676,10 +686,14 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
             ddlTypeBDSs2.DataBind();
             if (fupload.FileName != "")
             {
+                //luu anh vo temp
+                string strTemp = Path.Combine(Request.PhysicalApplicationPath, "images\\temp\\" + fupload.FileName);
+                fupload.SaveAs(strTemp);
+
                 string strFile = Path.Combine(Request.PhysicalApplicationPath, "images\\Market");
                 strFile += "\\" + fupload.FileName;
-               
-                var EditImage1 = System.Drawing.Image.FromFile(fupload.PostedFile.FileName);
+
+                var EditImage1 = System.Drawing.Image.FromFile(strTemp);
                 VTCO.Library.ImageResize Img2 = new VTCO.Library.ImageResize();
                 var newimg1 = Img2.Crop(EditImage1, 500, 300, VTCO.Library.ImageResize.AnchorPosition.Center);
                 newimg1.Save(strFile);
@@ -694,7 +708,7 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
                 string strFile1 = Path.Combine(Request.PhysicalApplicationPath, "images\\Market");
                 strFile1 += "\\" + newname;
 
-                var EditImage = System.Drawing.Image.FromFile(fupload.PostedFile.FileName);
+                var EditImage = System.Drawing.Image.FromFile(strTemp);
                 VTCO.Library.ImageResize Img = new VTCO.Library.ImageResize();
                 var newimg = Img.Crop(EditImage, 120, 100, VTCO.Library.ImageResize.AnchorPosition.Center);
                 newimg.Save(strFile1);

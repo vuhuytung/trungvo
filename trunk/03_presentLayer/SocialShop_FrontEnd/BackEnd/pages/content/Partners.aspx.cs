@@ -21,6 +21,11 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
             {
                 System.IO.Directory.CreateDirectory(Request.PhysicalApplicationPath + "/images/partner");
             }
+            partner.DeleteImgTemp(Request);
+            if (!System.IO.Directory.Exists(Request.PhysicalApplicationPath + "/images/temp"))
+            {
+                System.IO.Directory.CreateDirectory(Request.PhysicalApplicationPath + "/images/temp");
+            }
         }
     }
     protected void btnThemmoi_Click(object sender, EventArgs e)
@@ -90,10 +95,14 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
                 {
                     try
                     {
+                        //luu anh vo temp
+                        string strTemp = Path.Combine(Request.PhysicalApplicationPath, "images\\temp\\" + fupload.FileName);
+                        fupload.SaveAs(strTemp);
 
                         string strFile = Path.Combine(Request.PhysicalApplicationPath, "images\\partner");
-                        strFile += "\\" + fuploadLogo.FileName;
-                        var EditImage = System.Drawing.Image.FromFile(fuploadLogo.PostedFile.FileName);
+                        strFile += "\\" + fupload.FileName;
+                        //lay anh tu temp de cat va save vo partner
+                        var EditImage = System.Drawing.Image.FromFile(strTemp);
                         VTCO.Library.ImageResize Img = new VTCO.Library.ImageResize();
                         var newimg = Img.Crop(EditImage, 150, 100, VTCO.Library.ImageResize.AnchorPosition.Center);
                         newimg.Save(strFile);
@@ -102,17 +111,25 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
                         partner.DeleteImg(img.Text, Request);
                         BindRpt();
                         ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Cập nhật thành công !')", true);
+                        
                     }
                     catch
                     {
                         ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Cập nhật lỗi !')", true);
                     }
+                    finally
+                    {
+                        //xoa anh trong temp
+                       // partner.DeleteImgTemp(fupload.FileName, Request);
+                    }
+                        
                 }
             }
         }
         catch 
         { 
         }
+        
 
 
     }
@@ -136,9 +153,12 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
             {
                 try
                 {
+                    string strTemp = Path.Combine(Request.PhysicalApplicationPath, "images\\temp\\" + fuploadLogo.FileName);
+                    fuploadLogo.SaveAs(strTemp);
+
                     string strFile = Path.Combine(Request.PhysicalApplicationPath, "images\\partner");
                     strFile += "\\" + fuploadLogo.FileName;
-                    var EditImage = System.Drawing.Image.FromFile(fuploadLogo.PostedFile.FileName);
+                    var EditImage = System.Drawing.Image.FromFile(strTemp);
                     VTCO.Library.ImageResize Img = new VTCO.Library.ImageResize();
                     var newimg = Img.Crop(EditImage, 150, 100, VTCO.Library.ImageResize.AnchorPosition.Center);
                     newimg.Save(strFile);
@@ -148,8 +168,11 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
                     partner.InsertPartner(txtName.Text, @"/images/partner/" + fuploadLogo.FileName, txtWeb.Text, chkstatus.Checked);
                     ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Thêm mới thành công !')", true);
                     BindRpt();
+                    //xoa file trong temp
+                   // partner.DeleteImgTemp(fuploadLogo.FileName,Request);
+
                 }
-                catch
+                catch(Exception ex)
                 {
                 }
             }

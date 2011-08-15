@@ -404,3 +404,31 @@ a:active
     font-weight: bold;
     color: #ff8040;
 }
+/*=========parner*/
+.item_pn
+{
+    float:left;
+    padding:10px 10px;
+}
+.boxitem_pn
+{
+    width:100%;
+}
+.title_pn
+{
+    float:left;
+    width:100%;
+    padding-left:10px;
+}
+.title_pn a
+{
+    font:bold 14px tahoma;
+    color:#5278B2;
+   
+  
+}
+.title_pn a:hover
+{
+    text-decoration:none;
+
+}

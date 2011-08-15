@@ -45,6 +45,14 @@ public partial class pages_Bds_AddNews : System.Web.UI.Page
             //ddlTypeBDS.Items.Add(new ListItem("Bất động sản cần bán","15"));
             //ddlTypeBDS.Items.Add(new ListItem("Bất động sản cần mua","16"));
         }
+        if (!System.IO.Directory.Exists(Request.PhysicalApplicationPath + "/images/Market"))
+        {
+            System.IO.Directory.CreateDirectory(Request.PhysicalApplicationPath + "/images/Market");
+        }
+        if (!System.IO.Directory.Exists(Request.PhysicalApplicationPath + "/images/temp"))
+        {
+            System.IO.Directory.CreateDirectory(Request.PhysicalApplicationPath + "/images/temp");
+        }
     }
 
     protected void ddlProvince_SelectedIndexChanged(object sender, EventArgs e)
@@ -140,9 +148,13 @@ public partial class pages_Bds_AddNews : System.Web.UI.Page
         {
             if (fupload.FileName != "")
             {
+                //luu anh vo temp
+                string strTemp = Path.Combine(Request.PhysicalApplicationPath, "images\\temp\\" + fupload.FileName);
+                fupload.SaveAs(strTemp);
+
                 string strFile = Path.Combine(Request.PhysicalApplicationPath, "images\\Market");
                 strFile += "\\" + fupload.FileName;
-                var EditImage1 = System.Drawing.Image.FromFile(fupload.PostedFile.FileName);
+                var EditImage1 = System.Drawing.Image.FromFile(strTemp);
                 VTCO.Library.ImageResize Img2 = new VTCO.Library.ImageResize();
                 var newimg1 = Img2.Crop(EditImage1, 500, 300, VTCO.Library.ImageResize.AnchorPosition.Center);
                 newimg1.Save(strFile);
@@ -156,7 +168,7 @@ public partial class pages_Bds_AddNews : System.Web.UI.Page
                 string strFile1 = Path.Combine(Request.PhysicalApplicationPath, "images\\Market");
                 strFile1 += "\\" + newname;
 
-                var EditImage = System.Drawing.Image.FromFile(fupload.PostedFile.FileName);
+                var EditImage = System.Drawing.Image.FromFile(strTemp);
                 VTCO.Library.ImageResize Img = new VTCO.Library.ImageResize();
                 var newimg = Img.Crop(EditImage, 150, 100, VTCO.Library.ImageResize.AnchorPosition.Center);
                 newimg.Save(strFile1);
