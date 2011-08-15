@@ -27,9 +27,11 @@ namespace WorkFlowBLL
 
            foreach (uspPartnersGetAllResult item in pn)
            {
+               sb.Append("<div class='item_pn'>");
                sb.Append("<a href=" + item.Website + ">");
-               sb.Append("<img src=" + item.Img + ""+" alt='anh' width='166' height='124'/>");
+               sb.Append("<img src=" + item.Img + ""+" alt='anh'/>");
                sb.Append("</a>");
+               sb.Append("</div>");
            }
            return sb.ToString();
        }
@@ -63,6 +65,36 @@ namespace WorkFlowBLL
                    {
                        f.Attributes = FileAttributes.Archive;
                        f.Delete();
+                   }
+               }
+           }
+           catch
+           {
+           }
+       }
+       public void DeleteImgTemp(HttpRequest request)
+       {
+           try
+           {
+              /* //string newurl = Url.Substring(1);
+               string pathFile = Path.Combine(request.PhysicalApplicationPath, @"images/temp/" + Url);
+               if (File.Exists(pathFile))
+               {
+                   //lấy thông tin file
+                   FileInfo f = new FileInfo(pathFile);
+                   if (f.Exists)
+                   {
+                       f.Attributes = FileAttributes.Archive;
+                       f.Delete();
+                   }
+               }*/
+               DirectoryInfo directoryInfo = new DirectoryInfo(Path.Combine(request.PhysicalApplicationPath, @"images\\temp"));
+               if (directoryInfo.Exists)
+               {
+                   foreach (FileInfo file in directoryInfo.GetFiles())
+                   {
+
+                       file.Delete();
                    }
                }
            }
