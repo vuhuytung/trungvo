@@ -24,6 +24,12 @@ public partial class BackEnd_pages_content_SlideShow : System.Web.UI.Page
             {
                 System.IO.Directory.CreateDirectory(Request.PhysicalApplicationPath + "/images/slideshow");
             }
+            CtrPartner pn = new CtrPartner();
+            pn.DeleteImgTemp(Request);
+            if (!System.IO.Directory.Exists(Request.PhysicalApplicationPath + "/images/temp"))
+            {
+                System.IO.Directory.CreateDirectory(Request.PhysicalApplicationPath + "/images/temp");
+            }
         }
     }
     protected void btnThemmoi_Click(object sender, EventArgs e)
@@ -81,12 +87,16 @@ public partial class BackEnd_pages_content_SlideShow : System.Web.UI.Page
                     slide.DeleteImg(imgThumb.Value.Replace("/", "\\"), Request);
 
                     //=======================
+                    //luu anh vo temp
+                    string strTemp = Path.Combine(Request.PhysicalApplicationPath, "images\\temp\\" + fupload.FileName);
+                    fupload.SaveAs(strTemp);
+
                     string strFile = Path.Combine(Request.PhysicalApplicationPath, "images\\slideshow");
                     strFile += "\\" + fupload.FileName;
                     //fupload.PostedFile.SaveAs(strFile);
                     // FileUpload1.PostedFile.SaveAs(strFile);
 
-                    var EditImage1 = System.Drawing.Image.FromFile(fupload.PostedFile.FileName);
+                    var EditImage1 = System.Drawing.Image.FromFile(strTemp);
                     VTCO.Library.ImageResize Img1 = new VTCO.Library.ImageResize();
                     var newimg1 = Img1.Crop(EditImage1, 370, 210, VTCO.Library.ImageResize.AnchorPosition.Center);
                     newimg1.Save(strFile);
@@ -99,7 +109,7 @@ public partial class BackEnd_pages_content_SlideShow : System.Web.UI.Page
                     string strFile1 = Path.Combine(Request.PhysicalApplicationPath, "images\\slideshow");
                     strFile1 += "\\" + newname;
 
-                    var EditImage = System.Drawing.Image.FromFile(fupload.PostedFile.FileName);
+                    var EditImage = System.Drawing.Image.FromFile(strTemp);
                     VTCO.Library.ImageResize Img = new VTCO.Library.ImageResize();
                     var newimg = Img.Crop(EditImage, 150, 100, VTCO.Library.ImageResize.AnchorPosition.Center);
                     newimg.Save(strFile1);
@@ -167,12 +177,15 @@ public partial class BackEnd_pages_content_SlideShow : System.Web.UI.Page
     {
         try
         {
+            //luu anh vo temp
+            string strTemp = Path.Combine(Request.PhysicalApplicationPath, "images\\temp\\" + FileUpload1.FileName);
+            FileUpload1.SaveAs(strTemp);
             //up anh
             string strFile = Path.Combine(Request.PhysicalApplicationPath, "images\\slideshow");
             strFile += "\\" + FileUpload1.FileName;
             // FileUpload1.PostedFile.SaveAs(strFile);
 
-            var EditImage1 = System.Drawing.Image.FromFile(FileUpload1.PostedFile.FileName);
+            var EditImage1 = System.Drawing.Image.FromFile(strTemp);
             VTCO.Library.ImageResize Img1 = new VTCO.Library.ImageResize();
             var newimg1 = Img1.Crop(EditImage1, 370, 210, VTCO.Library.ImageResize.AnchorPosition.Center);
             newimg1.Save(strFile);
@@ -186,7 +199,7 @@ public partial class BackEnd_pages_content_SlideShow : System.Web.UI.Page
             string strFile1 = Path.Combine(Request.PhysicalApplicationPath, "images\\slideshow");
             strFile1 += "\\" + newname;
 
-            var EditImage = System.Drawing.Image.FromFile(FileUpload1.PostedFile.FileName);
+            var EditImage = System.Drawing.Image.FromFile(strTemp);
             VTCO.Library.ImageResize Img = new VTCO.Library.ImageResize();
             var newimg = Img.Crop(EditImage, 150, 100, VTCO.Library.ImageResize.AnchorPosition.Center);
             newimg.Save(strFile1);

@@ -264,7 +264,7 @@
                             }
                         </script>
                         <asp:Button ID="btnAdd" CssClass="btnButton" runat="server" Text="Thêm mới" OnClick="btnAdd_Click" Width="70" OnClientClick="return checkAdd()" />
-                        <asp:Button ID="btnThoat" runat="server" CssClass="btnButton" Text="Thoát" Width="70" />
+                        
                     </td>
                 </tr>
             </table>
