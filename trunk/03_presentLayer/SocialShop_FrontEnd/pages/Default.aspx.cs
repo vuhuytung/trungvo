@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using WorkFlowBLL;
 using DataContext;
 using EntityBLL;
-
+using System.Data;
 public partial class pages_Default : System.Web.UI.Page
 {
     protected int ktra=0;
@@ -19,6 +19,16 @@ public partial class pages_Default : System.Web.UI.Page
         _data=ctrNews.GetListCategoryNewsForHome().Items;
         rptContent.DataSource = _data;
         rptContent.DataBind();
-        ((master_masterFrontend)(this.Master)).VisibleNavigator = false;        
+        ((master_masterFrontend)(this.Master)).VisibleNavigator = false;
+        DataSet ds = new DataSet();
+        try
+        {
+            ds.ReadXml("http://www.vietcombank.com.vn/ExchangeRates/ExrateXML.aspx");
+            GridView1.DataSource = ds.Tables[1];
+            GridView1.DataBind();
+        }
+        catch
+        {
+        }
     }
 }

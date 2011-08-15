@@ -146,6 +146,30 @@
         </div>
         <div class="rightMain nr">
             <uc2:ucDoitac runat="server" ID="ucDoitac1" />
+            <div class="box_tygia">
+                <div class="box_tygia_title">
+                    <a>Tỷ giá</a>
+                </div>
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" CssClass="tb_tygia">
+                    <Columns>
+                        <asp:TemplateField HeaderText="Ngoại tệ"  ItemStyle-CssClass="item_tygia1" HeaderStyle-CssClass="item_head1"  ItemStyle-Width="100" >
+                            <ItemTemplate>
+                                <a><%#Eval("CurrencyCode")%></a>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Mua" ItemStyle-Width="100" HeaderStyle-CssClass="item_head" ItemStyle-CssClass="item_tygia" >
+                            <ItemTemplate>
+                                <a><%#Eval("Buy")%></a>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Bán" ItemStyle-Width="100" ItemStyle-CssClass="item_tygia" HeaderStyle-CssClass="item_head" >
+                            <ItemTemplate>
+                                <a><%#Eval("Sell")%></a>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>
+            </div>
         </div>
         <div class="clear">
         </div>
