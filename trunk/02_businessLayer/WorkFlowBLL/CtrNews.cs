@@ -66,7 +66,7 @@ namespace WorkFlowBLL
         {
             ClassExtend<string, ClassExtend<uspCategoryGetByParentIDResult, uspNewsGetByCategoryIDHomeResult>> ret = new ClassExtend<string, ClassExtend<uspCategoryGetByParentIDResult, uspNewsGetByCategoryIDHomeResult>>();
             ClassExtend<uspCategoryGetByParentIDResult, uspNewsGetByCategoryIDHomeResult> obj;
-            var lstCat = BDS.CategoryInstance.uspCategoryGetByParentID(0,1).ToList();
+            var lstCat = BDS.CategoryInstance.uspCategoryGetByParentID(0,3).ToList();
             foreach (var menu1 in lstCat)
             {
                 obj = new ClassExtend<uspCategoryGetByParentIDResult, uspNewsGetByCategoryIDHomeResult>();

@@ -167,6 +167,17 @@
                                         </asp:DropDownList>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td style="padding-top: 10px; padding-bottom: 15px">
+                                        Hiển thị ở trang chủ:
+                                    </td>
+                                    <td>
+                                        <asp:DropDownList runat="server" ID="ddlDefault">
+                                            <asp:ListItem Text="Có" Value="2"></asp:ListItem>
+                                            <asp:ListItem Text="Không" Value="0"></asp:ListItem>
+                                        </asp:DropDownList>
+                                    </td>
+                                </tr>
                             </table>
                         </div>
                         <div style="margin-left: 100px; font-size: 14px;">
