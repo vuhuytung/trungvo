@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/master/masterFrontend.master" AutoEventWireup="true" CodeFile="Registor.aspx.cs" Inherits="Registor" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/master/masterFrontend.master" AutoEventWireup="true" CodeFile="Register.aspx.cs" Inherits="Register" %>
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 <style type="text/css">
@@ -13,7 +13,10 @@
 </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="plhBody" Runat="Server">
+
 <center>
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
     <table width="500px" style="margin:auto; text-align:left">
         <tr>
             <td style="text-transform:uppercase; font-weight:bold; font-size:14px; color:#ff8040; padding:20px; padding-left:150px" colspan="2">Đăng ký thành viên</td>
