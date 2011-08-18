@@ -18,7 +18,12 @@ img
     height: auto !important;
 }
 
-
+select,input[type=text], textarea
+{
+    border:solid 1px #CCC;
+    padding:2px;
+    margin-right:5px;
+}
 a:hover
 {
     text-decoration: underline;
@@ -481,23 +486,11 @@ a:active
      color:#FFF;
      border-collapse:collapse;
      background:#019282;
-}
-.item_head1
-{
-    font-family:Arial;
-    font-size:14px;
-     text-align:center;
-     /*color:#514F4F;*/
-     color:#FFF;
-     padding: 3px 0;
-     border-collapse:collapse;
-     background:#019282;
-     border-left:solid 1px #019282;
+     border:solid 1px #EEE;
 }
 .tb_tygia
 {
-    border:1px solid #FFF;
-    width:100%;
+    width:100%;    
 }
 .tb_tygia td
 {

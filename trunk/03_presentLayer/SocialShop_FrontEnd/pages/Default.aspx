@@ -5,6 +5,7 @@
 <%@ Register Src="~/userControls/ucTopSearch.ascx" TagName="Search" TagPrefix="uc1" %>
 <%@ Register src="~/userControls/ucWeather.ascx" tagname="ucWeather" tagprefix="uc4" %>
 <%@ Register src="~/userControls/ucExRate.ascx" tagname="ucExRate" tagprefix="uc5" %>
+<%@ Register src="~/userControls/ucSuport.ascx" tagname="ucSuport" tagprefix="uc6" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
  <link href="/css/main.css" rel="stylesheet" type="text/css" />
  <script src="/csript/slide.js" type="text/javascript"></script>
@@ -79,6 +80,7 @@
             <uc2:ucDoitac runat="server" ID="ucDoitac1" />
             <uc4:ucWeather ID="ucWeather1" runat="server" />            
             <uc5:ucExRate ID="ucExRate1" runat="server" />
+            <uc6:ucSuport ID="ucSuport1" runat="server" />
         </div>
         <div class="clear">
         </div>
