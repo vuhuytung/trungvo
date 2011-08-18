@@ -3,7 +3,7 @@
      <div class="title" style="margin-bottom:0;">
          <span><a>Tỷ giá ngoại tệ</a></span>
       </div>
-      <div style="border:solid 1px #459B30;">
+      <div style="border:solid 1px #459B30; border-top:none">
      <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" CssClass="tb_tygia">
          <Columns>
              <asp:TemplateField HeaderText="Đơn vị"  ItemStyle-CssClass="item_tygia1" HeaderStyle-CssClass="item_head"  ItemStyle-Width="100" >
