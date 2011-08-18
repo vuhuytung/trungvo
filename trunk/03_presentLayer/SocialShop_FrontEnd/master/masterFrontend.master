@@ -78,7 +78,7 @@
             <!-- -->
         </div>
         <!--End main-->
-        <div class="footer">
+        <div class="footer">            
             <uc1:ucFooter runat="server" ID="ucFooter1" />
         </div>
     </div>

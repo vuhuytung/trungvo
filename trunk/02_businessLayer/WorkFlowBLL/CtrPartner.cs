@@ -17,24 +17,8 @@ namespace WorkFlowBLL
        public List<uspPartnersGetAllResult> GetListPartner()
        {
            return BDS.PartnerInstance.uspPartnersGetAll().ToList();
-       }
-
-       public string GenHtml()
-       {
-           StringBuilder sb = new StringBuilder();
-           List<uspPartnersGetAllResult> pn = new List<uspPartnersGetAllResult>();
-           pn = GetListPartner();
-
-           foreach (uspPartnersGetAllResult item in pn)
-           {
-               sb.Append("<div class='item_pn'>");
-               sb.Append("<a href=" + item.Website + ">");
-               sb.Append("<img src=" + item.Img + ""+" alt='anh'/>");
-               sb.Append("</a>");
-               sb.Append("</div>");
-           }
-           return sb.ToString();
-       }
+       }       
+       
        public List<uspPartnersGetInfoByPartnersIDResult> GetInfoByID(int ID)
        {
            return BDS.PartnerInstance.uspPartnersGetInfoByPartnersID(ID).ToList();
