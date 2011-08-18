@@ -492,6 +492,7 @@ a:active
      padding: 3px 0;
      border-collapse:collapse;
      background:#019282;
+     border-left:solid 1px #019282;
 }
 .tb_tygia
 {
