@@ -3,7 +3,7 @@
      <div class="title" style="margin-bottom:0;">
          <span><a>Hỗ trợ trực tuyến</a></span>
       </div>
-    <div align="center" style="border:solid 1px #459B30; font-weight:bold">
+    <div align="center" style="border:solid 1px #459B30; font-weight:bold; border-top:none">
         <a href="ymsgr:sendIM?trongtrung.vo_1110">
             <img src="http://mail.opi.yahoo.com/online?u=trongtrung.vo_1110&amp;t=2&amp;m=g" vspace="6" border="0" title="Trọng Trung">
         </a><br/>
