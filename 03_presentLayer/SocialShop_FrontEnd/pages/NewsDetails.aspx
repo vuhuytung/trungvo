@@ -22,9 +22,9 @@
                                 </span>
                             </p>
                             <center>
-                            <img width="450" runat="server" id="selImage" class="clear" style="border: solid 1px #AAA; margin:30px 10px;" />                
+                            <img width="450" runat="server" id="selImage" class="clear" style="border: solid 1px #AAA; margin:30px 10px 0 10px;" />                
                             </center>     
-                            <p runat="server" id="selContent"></p>
+                            <p runat="server" id="selContent" style="margin-top:30px;"></p>
                             <p style="text-align:right; font-style:italic; padding:10px;" id="selResource" runat="server"></p>
                             <div class="clear">
                             </div>

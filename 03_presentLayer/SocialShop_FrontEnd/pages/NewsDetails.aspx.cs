@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using WorkFlowBLL;
 using DataContext;
+using VTCO.Library;
 
 public partial class pages_NewsDetails : System.Web.UI.Page
 {
@@ -26,7 +27,7 @@ public partial class pages_NewsDetails : System.Web.UI.Page
             selTitle.InnerText = _data.Title;
             Page.Title = _data.Title;
             selCreateDate.InnerText = _data.CreateDate.ToString("dd/MM/yyyy");
-            selDescription.InnerText = _data.Description;
+            selDescription.InnerText = HtmlUtility.HtmlDecode(_data.Description);
             selContent.InnerHtml = _data.Content;
             if ((_data.Resource == null) || (_data.Resource.Trim() == ""))
                 selResource.Visible = false;

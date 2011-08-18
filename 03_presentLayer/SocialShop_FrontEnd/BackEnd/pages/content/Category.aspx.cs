@@ -70,9 +70,16 @@ public partial class BackEnd_pages_content_Category : System.Web.UI.Page
         txtUrl.Visible = edit;
     }
 
-    private void SetControlsRdb(bool edit)
+    private void SetControlsRdb(int status)
     {
-        ddlStatus.SelectedValue = edit ? "1" : "0";
+        if ((status & 1) == 1)
+            ddlStatus.SelectedValue = "1";
+        else
+            ddlStatus.SelectedValue = "0";
+        if ((status & 2) == 2)
+            ddlDefault.SelectedValue = "2";
+        else
+            ddlDefault.SelectedValue = "0";
     }
 
     private void SetControlsEdit(bool edit, string name)
@@ -165,7 +172,7 @@ public partial class BackEnd_pages_content_Category : System.Web.UI.Page
                     ddlParentID.Items.Add(listItemAdd);
                     ddlParentID.Enabled = false;
                     ddlMenuType.Items.Clear();
-                    SetControlsRdb(false);
+                    SetControlsRdb(1);
                     BinDataForDropType();
                 }
                 //else
@@ -193,14 +200,7 @@ public partial class BackEnd_pages_content_Category : System.Web.UI.Page
                     GetMenuTop(null, 0, "", MenuID);
                     txtMenuName.Text = HtmlUtility.HtmlDecode(MyMenuInfo.Name.ToString());
                     txtOrder.Text = MyMenuInfo.Order.ToString();
-                    if (MyMenuInfo.Status == 1)
-                    {
-                        SetControlsRdb(true);
-                    }
-                    else
-                    {
-                        SetControlsRdb(false);
-                    }
+                    SetControlsRdb(MyMenuInfo.Status);
                     if (MyMenuInfo.Type != 5)//Convert.ToInt32(EnumMenuType.Link))
                     {
                         SetControls(false);
@@ -275,6 +275,8 @@ public partial class BackEnd_pages_content_Category : System.Web.UI.Page
         int order = 1;
         int parentId = 1;
         string link = "";
+        int active = 1;
+        int indefault = 1;
         int status = 1;
         if (CheckAddOrEdit == 1)
         {
@@ -286,7 +288,9 @@ public partial class BackEnd_pages_content_Category : System.Web.UI.Page
             {
                 link = HtmlUtility.HtmlEncode(txtUrl.Text.Trim());
             }
-            status = Convert.ToInt32(ddlStatus.SelectedValue);
+            active = Convert.ToInt32(ddlStatus.SelectedValue);
+            indefault = Convert.ToInt32(ddlDefault.SelectedValue);
+            status = active | indefault;
             MyMenu.Insert(parentId,name,link,status,order,type);
             Response.Redirect("~/admin/category");
         }
@@ -310,7 +314,10 @@ public partial class BackEnd_pages_content_Category : System.Web.UI.Page
                 type = 5;
                 link = "/contact";
             }
-            status = Convert.ToInt32(ddlStatus.SelectedValue);
+            active = Convert.ToInt32(ddlStatus.SelectedValue);
+            indefault = Convert.ToInt32(ddlDefault.SelectedValue);
+            status = active | indefault;
+
             if (MyMenu.Update(MenuID, parentId, name, link, status, order, type) > 0)
             {
                 SetControlsEdit(false, " Cập nhật ");
