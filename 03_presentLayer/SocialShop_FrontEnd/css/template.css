@@ -455,7 +455,7 @@ a:active
 {
     font-family:Arial;
     font-size:12px;
-     text-align:center;
+     text-align:right;
      padding:2px;
     
 }
@@ -465,31 +465,42 @@ a:active
     font-size:12px;
      padding:2px;
      font-weight:bold;
+     text-align:center;
      
 }
 .item_tygia1 a
 {
     color:#444444;
-}s
+}
 .item_head
 {
     font-family:Arial;
     font-size:14px;
      text-align:center;
-     color:#514F4F;
+     /*color:#514F4F;*/
+     color:#FFF;
+     border-collapse:collapse;
+     background:#019282;
 }
 .item_head1
 {
     font-family:Arial;
     font-size:14px;
-     text-align:left;
-     color:#514F4F;
+     text-align:center;
+     /*color:#514F4F;*/
+     color:#FFF;
      padding: 3px 0;
+     border-collapse:collapse;
+     background:#019282;
 }
 .tb_tygia
 {
-    width:90%;
     border:1px solid #FFF;
-    margin-left:10px;
-    margin-top:20px;
+    width:100%;
+}
+.tb_tygia td
+{
+    border:solid 1px #EEE;
+    border-collapse:collapse;
+    padding:5px;
 }

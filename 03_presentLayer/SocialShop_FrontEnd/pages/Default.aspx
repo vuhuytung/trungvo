@@ -3,52 +3,18 @@
  <%@ Register Src="~/userControls/ucSlide.ascx" TagName="slide" TagPrefix="uc" %>
 <%@ Register Src="~/userControls/ucDoitac.ascx" TagName="ucDoitac" TagPrefix="uc2" %>
 <%@ Register Src="~/userControls/ucTopSearch.ascx" TagName="Search" TagPrefix="uc1" %>
+<%@ Register src="~/userControls/ucWeather.ascx" tagname="ucWeather" tagprefix="uc4" %>
+<%@ Register src="~/userControls/ucExRate.ascx" tagname="ucExRate" tagprefix="uc5" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <link href="../css/main.css" rel="stylesheet" type="text/css" />
-    <script src="../csript/slide.js" type="text/javascript"></script>
-    
+ <link href="/css/main.css" rel="stylesheet" type="text/css" />
+ <script src="/csript/slide.js" type="text/javascript"></script>
+ 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="plhBody" runat="Server">
     <div class="topSearch">
         <div class="containSubmenu">
         </div>
         <div class="leftTopSearch">
-           <!-- <div class="showImage">
-                <div>
-                    <div style="height: 185px;">
-                        <img src="/images/duan.png" width="427" height="185" />
-                    </div>
-                    <div style="height: 46px; margin-top: 15px; text-align: left; color: #ff8040;">
-                        <div class="nl" style="width: 317px; font-weight: bold; font-family: Tahoma; margin: 0 10px;">
-                            Căn hộ cao cấp ngoại ô thành phố Vinh</div>
-                        <div class="nl">
-                            <a href="#">
-                                <img src="/images/btnChitiet.png" /></a></div>
-                        <div class="clear">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="listImage">
-                <table>
-                    <tr>
-                        <td valign="middle" class="titleListImage">
-                            Căn hộ tại chung cư TECCO
-                        </td>
-                        <td class="frameListImage png_bg" valign="middle" align="center">
-                            <img src="/images/duan1.png" width="110" height="67" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td valign="middle" class="titleListImage">
-                            Căn hộ tại chung cư TECCO
-                        </td>
-                        <td class="frameListImage png_bg" valign="middle" align="center">
-                            <img src="/images/duan1.png" width="110" height="67" />
-                        </td>
-                    </tr>
-                </table>
-            </div>-->
             <uc:slide  runat="server"/>
             <div class="clear">
             </div>
@@ -57,41 +23,6 @@
             <div class="titleSearch png_bg">
                 TÌM KIẾM NÂNG CAO
             </div>
-
-           <!-- <div>
-                <div class="label nl">
-                    Tìm tại</div>
-                <div class="value nr">
-                    <select class="inputText" style="width: 80px;">
-                        <option>Vinh</option>
-                    </select></div>
-                <div class="clear">
-                </div>
-                <div class="label nl">
-                    Phường / Xã</div>
-                <div class="value nr">
-                    <select class="inputText" style="width: 100px;">
-                        <option>[--Tất cả--]</option>
-                    </select></div>
-                <div class="clear">
-                </div>
-                <div class="label nl">
-                    Loại hình</div>
-                <div class="value nr">
-                    <select class="inputText" style="width: 100px;">
-                        <option>[--Tất cả--]</option>
-                    </select></div>
-                <div class="clear">
-                </div>
-                <div class="label nl">
-                    Khoảng giá</div>
-                <div class="value nr">
-                    <select class="inputText" style="width: 80px;">
-                        <option>[--Tất cả--]</option>
-                    </select></div>
-                <div class="clear">
-                </div>
-            </div>-->
             <uc1:Search runat="server" />
         </div>
         <div class="clear">
@@ -146,30 +77,8 @@
         </div>
         <div class="rightMain nr">
             <uc2:ucDoitac runat="server" ID="ucDoitac1" />
-            <div class="box_tygia">
-                <div class="box_tygia_title">
-                    <a>Tỷ giá</a>
-                </div>
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" CssClass="tb_tygia">
-                    <Columns>
-                        <asp:TemplateField HeaderText="Ngoại tệ"  ItemStyle-CssClass="item_tygia1" HeaderStyle-CssClass="item_head1"  ItemStyle-Width="100" >
-                            <ItemTemplate>
-                                <a><%#Eval("CurrencyCode")%></a>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Mua" ItemStyle-Width="100" HeaderStyle-CssClass="item_head" ItemStyle-CssClass="item_tygia" >
-                            <ItemTemplate>
-                                <a><%#Eval("Buy")%></a>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Bán" ItemStyle-Width="100" ItemStyle-CssClass="item_tygia" HeaderStyle-CssClass="item_head" >
-                            <ItemTemplate>
-                                <a><%#Eval("Sell")%></a>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                    </Columns>
-                </asp:GridView>
-            </div>
+            <uc4:ucWeather ID="ucWeather1" runat="server" />            
+            <uc5:ucExRate ID="ucExRate1" runat="server" />
         </div>
         <div class="clear">
         </div>

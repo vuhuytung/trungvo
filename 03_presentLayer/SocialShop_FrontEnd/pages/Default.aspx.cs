@@ -19,16 +19,6 @@ public partial class pages_Default : System.Web.UI.Page
         _data=ctrNews.GetListCategoryNewsForHome().Items;
         rptContent.DataSource = _data;
         rptContent.DataBind();
-        ((master_masterFrontend)(this.Master)).VisibleNavigator = false;
-        DataSet ds = new DataSet();
-        try
-        {
-            ds.ReadXml("http://www.vietcombank.com.vn/ExchangeRates/ExrateXML.aspx");
-            GridView1.DataSource = ds.Tables[1];
-            GridView1.DataBind();
-        }
-        catch
-        {
-        }
+        ((master_masterFrontend)(this.Master)).VisibleNavigator = false;        
     }
 }
