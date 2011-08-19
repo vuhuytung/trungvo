@@ -26,6 +26,10 @@ select,input[type=text], textarea
 }
 a:hover
 {
+    text-decoration: none;
+}
+.spTitle a:hover
+{
     text-decoration: underline;
 }
 ol, ul
