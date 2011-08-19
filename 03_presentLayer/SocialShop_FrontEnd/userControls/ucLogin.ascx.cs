@@ -19,5 +19,6 @@ public partial class userControls_ucLogin : System.Web.UI.UserControl
         Session[Constants.SESSION_USER_ID] = null;
         Session[Constants.SESSION_USER_FULLNAME] = null;
         Session[Constants.SESSION_USER_ISLOGIN] = false;
+        Response.Redirect("/");
     }
 }

@@ -292,19 +292,6 @@ a.navigator:hover
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 .bodyContent
 {
     padding-top: 5px;
@@ -506,9 +493,9 @@ a:active
 
 .usermenu
 {
-    border:none; background-color:#FFF; margin-top:11px;
+    border:none !important; background-color:#FFF !important; margin-top:11px !important;
 }
 .usermenu .usermenuitem
 {
-    color:#000; margin-left:20px; line-height:25px;
+    color:#000; margin-left:111px; line-height:25px;
 }
