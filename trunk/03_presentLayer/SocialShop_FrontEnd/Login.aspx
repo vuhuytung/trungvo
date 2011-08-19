@@ -17,18 +17,18 @@
 <center>
     <asp:ScriptManager ID="ScriptManager1" runat="server">
     </asp:ScriptManager>
-    <table width="350px" style="margin:auto; text-align:left">
+    <table width="350px" style="margin:auto; text-align:left; background:#FFF; border:#B0E5F7 solid 3px; border-top-width:10px;border-bottom-width:10px;">
         <tr>
-            <td style="text-transform:uppercase; font-weight:bold; font-size:14px; color:#ff8040; padding:20px; padding-left:150px" colspan="2">Đăng nhập</td>
+            <td style="text-transform:uppercase; font-weight:bold; font-size:14px; color:#FFF; text-align:center; background:#BBD37E" colspan="2">Đăng nhập</td>
         </tr>
         <tr>
             <td>Tên đăng nhập:</td>
-            <td><asp:TextBox runat="server" ID="txtUserName" CssClass="inputText" Width="150"></asp:TextBox>
+            <td><asp:TextBox runat="server" ID="txtUserName" CssClass="inputText" Width="165"></asp:TextBox>
             </td>            
         </tr>
         <tr>
             <td>Mật khẩu:</td>
-            <td><asp:TextBox runat="server" ID="txtPassword"  CssClass="inputText" Width="150" TextMode="Password" ></asp:TextBox>
+            <td><asp:TextBox runat="server" ID="txtPassword"  CssClass="inputText" Width="165" TextMode="Password" ></asp:TextBox>
             </td>
         </tr>
         <tr>                       
@@ -38,7 +38,7 @@
                     Text="  Đăng nhập  "  /></td>
         </tr>
         <tr>                       
-            <td colspan="2" align="right" style="font-size:12px">Chưa có tài khoản? <a href="/register" style="color:#ff8040">Đăng ký</a></td>
+            <td colspan="2" align="right" style="font-size:12px">[ <a href="#">Quên mật khẩu?</a> ] Chưa có tài khoản? <a href="/register" style="color:#ff8040">Đăng ký</a></td>
         </tr>
 
     </table>
