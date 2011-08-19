@@ -37,7 +37,7 @@
             <td>Gõ lại mật khẩu:</td>
             <td><asp:TextBox runat="server" ID="txtPasswordAgain" CssClass="inputText" Width="150"  TextMode="Password" ></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="*" CssClass="require" ControlToValidate="txtPasswordAgain" ValidationGroup="Registor"></asp:RequiredFieldValidator>
-                <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Mật khẩu nhập lại chưa đúng!" CssClass="require" ControlToValidate="txtPasswordAgain" ControlToCompare="txtPassword" ValidationGroup="Registor"></asp:CompareValidator>
+                <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Chưa đúng!" CssClass="require" ControlToValidate="txtPasswordAgain" ControlToCompare="txtPassword" ValidationGroup="Registor"></asp:CompareValidator>
             </td>
         </tr>
         <tr>
@@ -50,13 +50,13 @@
             <td width="120px">Địa chỉ email:</td>
             <td><asp:TextBox runat="server" ID="txtEmail" CssClass="inputText" Width="150"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="*" CssClass="require" ControlToValidate="txtEmail" ValidationGroup="Registor"></asp:RequiredFieldValidator>
-                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Email không đúng định dạng!" CssClass="require" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="txtEmail" ValidationGroup="Registor"></asp:RegularExpressionValidator>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Không đúng!" CssClass="require" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="txtEmail" ValidationGroup="Registor"></asp:RegularExpressionValidator>
             </td>
         </tr>              
         <tr>
             <td>Ngày sinh:</td>
             <td>
-                <div style="width: 150px">
+                <div style="width: 150px" class="nl">
                  <telerik:RadDatePicker ID="rdpBirthday" runat="server" Culture="vi-VN" Skin="WebBlue">
                         <Calendar Skin="WebBlue" UseColumnHeadersAsSelectors="False" UseRowHeadersAsSelectors="False"
                             ViewSelectorText="x">
@@ -66,6 +66,7 @@
                     </telerik:RadDatePicker>
                </div>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ErrorMessage="*" CssClass="require" ControlToValidate="rdpBirthday" ValidationGroup="Registor"></asp:RequiredFieldValidator>
+                <div class="clear"></div>
             </td>
         </tr>
         <tr>

@@ -375,6 +375,7 @@ namespace VTCO.Config
         public const string SESSION_USER_NAME = "SESSION_USER_NAME";
         public const string SESSION_USER_FULLNAME = "SESSION_USER_FULLNAME";
         public const string SESSION_USER_LEVEL = "SESSION_USER_LEVEL";
+        public const string SESSION_USER_ISLOGIN = "SESSION_USER_ISLOGIN";
         #endregion
 
         // Các hằng số cho Session của Admin
