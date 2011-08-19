@@ -1,9 +1,9 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="ucLogin.ascx.cs" Inherits="userControls_ucLogin" %>
-<div class="box clear" style="border:none; background-color:#FFF; margin-top:11px; " id="divDoitac" runat="server">
+<div class="box clear usermenu">
      <div class="title" style="margin-bottom:0; text-align:left;height:22px; color:#000">
         <%if (Convert.ToBoolean(Session[VTCO.Config.Constants.SESSION_USER_ISLOGIN] ?? false))
           { %>
-            Chào, <a style="color:#FF8040" href="/register"><%=Session[VTCO.Config.Constants.SESSION_USER_FULLNAME]??"" %></a>
+            Chào, <a style="color:#FF8040" href="/userinfo"><%=Session[VTCO.Config.Constants.SESSION_USER_FULLNAME]??"" %></a>
         <%}
           else
           { %>
@@ -16,11 +16,11 @@
           { %>
         <div style="height:130px;">
             <ul class="spTitle">
-                <li><a style="color:#000; margin-left:20px; line-height:25px;" href="/register"><img src="/images/newdref.png" width="12" /> Thông tin cá nhân</a></li>
-                <li><a style="color:#000; margin-left:20px; line-height:25px;" href="/register"><img src="/images/change_password.png" width="12" /> Đổi mật khẩu</a></li>
-                <li><a style="color:#000; margin-left:20px; line-height:25px;" href="/addrealtymarket"><img width="12" src="/images/icon_2.png" /> Bất động sản của tôi </a></li>
-                <li><a style="color:#000; margin-left:20px; line-height:25px;" href="/addrealtymarket"><img width="12" src="/images/addnew_16.png" /> Đăng bất động sản </a></li>
-                <li><a style="color:#000; margin-left:20px; line-height:25px;" href="/addrealtymarket"><img width="12" src="/images/logout.png" /> Đăng xuất </a></li>
+                <li><a class="usermenuitem" href="/userinfo"><img src="/images/newdref.png" width="12" /> Thông tin cá nhân</a></li>
+                <li><a class="usermenuitem" href="/userchangepass"><img src="/images/change_password.png" width="12" /> Đổi mật khẩu</a></li>
+                <li><a class="usermenuitem" href="/myrealtymarket"><img width="12" src="/images/icon_2.png" /> Bất động sản của tôi </a></li>
+                <li><a class="usermenuitem" href="/addrealtymarket"><img width="12" src="/images/addnew_16.png" /> Đăng bất động sản </a></li>
+                <li><asp:LinkButton runat="server" ID="lbtLogout" CssClass="usermenuitem" OnClick="lbtLogout_Click"><img width="12" src="/images/logout.png" /> Đăng xuất </asp:LinkButton></li>
             </ul>
         </div>
         <%}%>
