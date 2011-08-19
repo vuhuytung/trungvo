@@ -4,7 +4,7 @@
 <%@ Register src="~/userControls/ucExRate.ascx" tagname="ucExRate" tagprefix="uc5" %>
 <%@ Register src="~/userControls/ucSuport.ascx" tagname="ucSuport" tagprefix="uc6" %>
 <uc1:ucLogin ID="ucLogin1" runat="server" />
-<div class="box clear" style="border:none; background-color:#FFF; margin-top:6px" id="divDoitac" runat="server">
+<div class="box clear" style="border:none; background-color:#FFF; margin-top:10px" id="divDoitac" runat="server">
      <div class="title" style="margin-bottom:0;">
          <span><a>Đối tác</a></span>
       </div>
