@@ -502,3 +502,13 @@ a:active
     border-collapse:collapse;
     padding:5px;
 }
+
+
+.usermenu
+{
+    border:none; background-color:#FFF; margin-top:11px;
+}
+.usermenu .usermenuitem
+{
+    color:#000; margin-left:20px; line-height:25px;
+}
