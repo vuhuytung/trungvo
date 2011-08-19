@@ -210,13 +210,6 @@ namespace DataContext
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspAdminUpdatePassword")]
-		public int uspAdminUpdatePassword([global::System.Data.Linq.Mapping.ParameterAttribute(Name="AdminID", DbType="Int")] System.Nullable<int> adminID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Password", DbType="NVarChar(50)")] string password)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), adminID, password);
-			return ((int)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspAdminGetListByRole")]
 		public ISingleResult<uspAdminGetListByRoleResult> uspAdminGetListByRole([global::System.Data.Linq.Mapping.ParameterAttribute(Name="RoleID", DbType="Int")] System.Nullable<int> roleID)
 		{
@@ -271,6 +264,20 @@ namespace DataContext
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userName, password);
 			return ((ISingleResult<uspAdminLoginResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspAdminUpdateProfile")]
+		public int uspAdminUpdateProfile([global::System.Data.Linq.Mapping.ParameterAttribute(Name="AdminID", DbType="Int")] System.Nullable<int> adminID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FullName", DbType="NVarChar(50)")] string fullName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Birthday", DbType="DateTime")] System.Nullable<System.DateTime> birthday, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="NVarChar(50)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Telephone", DbType="NVarChar(20)")] string telephone, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Description", DbType="NVarChar(500)")] string description)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), adminID, fullName, birthday, email, telephone, description);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspAdminUpdatePassword")]
+		public int uspAdminUpdatePassword([global::System.Data.Linq.Mapping.ParameterAttribute(Name="AdminID", DbType="Int")] System.Nullable<int> adminID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PasswordOld", DbType="NVarChar(50)")] string passwordOld, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PasswordNew", DbType="NVarChar(50)")] string passwordNew)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), adminID, passwordOld, passwordNew);
+			return ((int)(result.ReturnValue));
 		}
 	}
 	
