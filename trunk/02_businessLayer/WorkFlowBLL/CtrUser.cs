@@ -46,5 +46,9 @@ namespace WorkFlowBLL
         {
             return BDS.UserInstance.uspUserDeleteByUserID(userID);
         }
+        public uspUserLoginResult UserLogin(string userName, string password)
+        {
+            return BDS.UserInstance.uspUserLogin(userName, password).FirstOrDefault();
+        }
     }
 }
