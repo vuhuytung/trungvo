@@ -1,8 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="ucDocument.ascx.cs" Inherits="userControls_ucDocument" %>
 <%@ Register Src="ucPaging.ascx" TagName="ucPaging" TagPrefix="uc1" %>
 <div >
-    <asp:ScriptManager ID="ScriptManager1" runat="server">
-    </asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <asp:Repeater ID="RptDocument" runat="server">
