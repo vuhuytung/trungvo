@@ -38,6 +38,10 @@ namespace WorkFlowBLL
         {
             BDS.DocumentInstance.uspDocumentUpdateByDocumentID(DocID, Title, desc, Url,day,cate, status);
         }
+        public int UpdateDocStatus(int DocID, int status)
+        {
+            return BDS.DocumentInstance.uspDocumentUpdateStatus(DocID, status);
+        }
         public void DeleteDocByID(int docID)
         {
             BDS.DocumentInstance.uspDocumentDeleteByDocumentID(docID);
