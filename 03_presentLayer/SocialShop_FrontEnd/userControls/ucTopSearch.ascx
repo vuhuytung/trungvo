@@ -58,5 +58,6 @@
                 </tr>
             </table>
         </ContentTemplate>
+        <Triggers><asp:PostBackTrigger ControlID="ImgSearch" /></Triggers>
     </asp:UpdatePanel>
 </div>

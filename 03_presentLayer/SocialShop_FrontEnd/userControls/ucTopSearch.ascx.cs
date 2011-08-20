@@ -28,12 +28,12 @@ public partial class userControls_ucTopSearch : System.Web.UI.UserControl
             ddlProvince.DataTextField = "LocationText";
             ddlProvince.DataValueField = "LocationValue";            
             ddlProvince.DataBind();
-            ddlProvince.Items.Insert(0, new ListItem("Tất cả", "-1"));
+            ddlProvince.Items.Insert(0, new ListItem("--Tất cả--", "-1"));
             ddlProvince.SelectedIndex = 0;
 
 
-            ddlDistrict.Items.Insert(0, new ListItem("Tất cả", "-1"));
-            ddlVillage.Items.Insert(0, new ListItem("Tất cả", "-1"));
+            ddlDistrict.Items.Insert(0, new ListItem("--Tất cả--", "-1"));
+            ddlVillage.Items.Insert(0, new ListItem("--Tất cả--", "-1"));
 
             //add Type BDS temp
             //ddlTypeBDS.Items.Add(new ListItem("Bất động sản cần bán","21"));
@@ -46,7 +46,7 @@ public partial class userControls_ucTopSearch : System.Web.UI.UserControl
 
             //add Price temp
 
-            ddlPrice.Items.Add(new ListItem("tất cả", "0"));
+            ddlPrice.Items.Add(new ListItem("--Tất cả--", "0"));
             ddlPrice.Items.Add(new ListItem("dưới 20 triệu", "1"));
             ddlPrice.Items.Add(new ListItem("20-100 triệu", "2"));
             ddlPrice.Items.Add(new ListItem("100-500 triệu", "3"));
@@ -77,19 +77,19 @@ public partial class userControls_ucTopSearch : System.Web.UI.UserControl
             ddlDistrict.DataTextField = "LocationText";
             ddlDistrict.DataValueField = "LocationValue";            
             ddlDistrict.DataBind();
-            ddlDistrict.Items.Insert(0, new ListItem("Tất cả", "-1"));
+            ddlDistrict.Items.Insert(0, new ListItem("--Tất cả--", "-1"));
             ddlDistrict.SelectedIndex = 0;
 
             ddlVillage.Items.Clear();
-            ddlVillage.Items.Insert(0, new ListItem("Tất cả", "-1"));
+            ddlVillage.Items.Insert(0, new ListItem("--Tất cả--", "-1"));
         }
         else
         {
             ddlDistrict.Items.Clear();
-            ddlDistrict.Items.Insert(0, new ListItem("Tất cả", "-1"));
+            ddlDistrict.Items.Insert(0, new ListItem("--Tất cả--", "-1"));
 
             ddlVillage.Items.Clear();
-            ddlVillage.Items.Insert(0, new ListItem("Tất cả", "-1"));
+            ddlVillage.Items.Insert(0, new ListItem("--Tất cả--", "-1"));
         }
     }
     protected void ddlDistrict_SelectedIndexChanged(object sender, EventArgs e)
@@ -110,13 +110,13 @@ public partial class userControls_ucTopSearch : System.Web.UI.UserControl
             ddlVillage.DataTextField = "LocationText";
             ddlVillage.DataValueField = "LocationValue";
             ddlVillage.DataBind();
-            ddlVillage.Items.Insert(0, new ListItem("Tất cả", "-1"));
+            ddlVillage.Items.Insert(0, new ListItem("--Tất cả--", "-1"));
             ddlVillage.SelectedIndex = 0;
         }
         else
         {
             ddlVillage.Items.Clear();
-            ddlVillage.Items.Insert(0, new ListItem("Tất cả", "-1"));
+            ddlVillage.Items.Insert(0, new ListItem("--Tất cả--", "-1"));
         }
     }
 
