@@ -8,11 +8,53 @@ using WorkFlowBLL;
 using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
+using VTCO.Config;
+using System.Web.UI.HtmlControls;
 public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
 {
+    public int PartnersID
+    {
+        get
+        {
+            try
+            {
+                return Convert.ToInt32(ViewState["PartnersID"]);
+            }
+            catch
+            {
+                return -1;
+            }
+        }
+
+        set
+        {
+            ViewState["PartnersID"] = value;
+        }
+    }
+    public string PartnersImg
+    {
+        get
+        {
+            try
+            {
+                return ViewState["PartnersImg"].ToString();
+            }
+            catch
+            {
+                return "";
+            }
+        }
+
+        set
+        {
+            ViewState["PartnersImg"] = value;
+        }
+    }
     CtrPartner partner = new CtrPartner();
+    protected int permission = 0;
     protected void Page_Load(object sender, EventArgs e)
     {
+        permission = Convert.ToInt32(Session[Constants.SESSION_ADMIN_PERMISSION] ?? 0);
         if (!IsPostBack)
         {
             BindRpt();
@@ -27,68 +69,106 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
                 System.IO.Directory.CreateDirectory(Request.PhysicalApplicationPath + "/images/temp");
             }
         }
+        lblMsg.Text = "";
     }
     protected void btnThemmoi_Click(object sender, EventArgs e)
     {
         Panel2.Visible = true;
         Panel1.Visible = false;
         Panel3.Visible = false;
+        txtName.Text="";
+        txtWeb.Text = "";
+        ddlStatus.SelectedValue = "1";
     }
     void BindRpt()
     {
         RptPartner.DataSource = partner.GetListPartner();
         RptPartner.DataBind();
     }
+    protected void RptPartner_ItemDataBound(object sender, RepeaterItemEventArgs e)
+    {
+        if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+        {
+            HtmlGenericControl divListRow = e.Item.FindControl("divListRow") as HtmlGenericControl;
+            if (divListRow == null)
+            {
+                return;
+            }
+            if (e.Item.ItemIndex % 2 == 0)
+            {
+                divListRow.Attributes["class"] = "adminListRow-even";
+            }
+            (e.Item.FindControl("spSTT") as HtmlGenericControl).InnerText = (e.Item.ItemIndex + 1).ToString();
+
+            if (Convert.ToBoolean(DataBinder.Eval(e.Item.DataItem, "Status")))
+            {
+                if ((permission & VTCO.Config.Constants.PERMISSION_EDIT) == VTCO.Config.Constants.PERMISSION_EDIT)
+                    (e.Item.FindControl("lbtUnLock") as LinkButton).Visible = false;
+            }
+            else
+            {
+                if ((permission & VTCO.Config.Constants.PERMISSION_EDIT) == VTCO.Config.Constants.PERMISSION_EDIT)
+                    (e.Item.FindControl("lbtLock") as LinkButton).Visible = false;
+            }
+        }
+
+    }
     protected void RptPartner_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
-        if (e.CommandName == "Edit")
+        if (e.CommandName == "edit")
         {
             Panel1.Visible = true;
             Panel2.Visible = false;
             Panel3.Visible = false;
-            RptDetail.DataSource = partner.GetInfoByID(Int32.Parse(e.CommandArgument.ToString()));
-            RptDetail.DataBind();
+            PartnersID = Int32.Parse(e.CommandArgument.ToString());            
+            var pat = partner.GetInfoByID(PartnersID);
+            PartnersImg = pat.Img;
+            txtNameEdit.Text=pat.Name;
+            txtWebEdit.Text=pat.Website;
+            try{ddlStatusEdit.SelectedValue = pat.Status.Value ? "1" : "0";}
+            catch { ddlStatusEdit.SelectedValue = "0"; }
+            lblMsg.Text = "";
         }
-        else if (e.CommandName == "Delete")
+        else if (e.CommandName == "delete")
         {
             try
             {
-                HiddenField img = (HiddenField)e.Item.FindControl("hdImg");
-                partner.DeletePartner(Int32.Parse(e.CommandArgument.ToString()));
-                partner.DeleteImg(img.Value.Replace("/","\\"), Request);
-                ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Xóa thành công !')", true);
-                BindRpt();
+                if (partner.DeletePartner(Int32.Parse(e.CommandArgument.ToString())) > 0)
+                {
+                    partner.DeleteImg(PartnersImg.Replace("/", "\\"), Request);
+                    lblMsg.Text = "Xóa thành công !";
+                    BindRpt();
+                }else
+                    lblMsg.Text = "Xóa thất bại!";
             }
             catch
             {
-                ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Xóa thất bại !')", true);
+                lblMsg.Text = "Xóa thất bại!";
             }
         }
     }
     protected void btnUpdate_Click(object sender, EventArgs e)
     {
-        FileUpload fupload = (FileUpload)RptDetail.Controls[1].FindControl("fupload");
-        Label img = (Label)RptDetail.Controls[1].FindControl("lblImg");
-        Label ID = (Label)RptDetail.Controls[1].FindControl("lblID");
-        TextBox Name = (TextBox)RptDetail.Controls[1].FindControl("txtName");
-        TextBox web = (TextBox)RptDetail.Controls[1].FindControl("txtWeb");
-        CheckBox status = (CheckBox)RptDetail.Controls[1].FindControl("chkstatus");
         try
         {
-
-            if (fupload != null && img != null && ID != null && Name != null && web != null && status != null)
-            {
-                if (fupload.FileName == "")
+                if (fuploadEdit.FileName == "")
                 {
                     try
                     {
-                        partner.UpdatePartner(Int32.Parse(ID.Text), Name.Text, img.Text, web.Text, status.Checked);
-                        BindRpt();
-                        ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Cập nhật thành công !')", true);
+                        if (partner.UpdatePartner(PartnersID, txtNameEdit.Text, PartnersImg, txtWebEdit.Text, ddlStatusEdit.SelectedValue == "1" ? true : false) > 0)
+                        {
+                            BindRpt();
+                            lblMsg.Text = "Cập nhật thành công !";
+                            Panel1.Visible = false;
+                            Panel2.Visible = false;
+                            Panel3.Visible = true;
+                        }
+                        else
+                            lblMsg.Text = "Cập nhật bị lỗi !";
                     }
                     catch
                     {
-                        ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Cập nhật lỗi !')", true);
+                        lblMsg.Text = "Cập nhật bị lỗi !";
                     }
                 }
                 else
@@ -96,42 +176,44 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
                     try
                     {
                         //luu anh vo temp
-                        string strTemp = Path.Combine(Request.PhysicalApplicationPath, "images\\temp\\" + fupload.FileName);
-                        fupload.SaveAs(strTemp);
+                        string strTemp = Path.Combine(Request.PhysicalApplicationPath, "images\\temp\\" + fuploadEdit.FileName);
+                        fuploadEdit.SaveAs(strTemp);
 
                         string strFile = Path.Combine(Request.PhysicalApplicationPath, "images\\partner");
-                        strFile += "\\" + fupload.FileName;
+                        string strFile1 =  DateTime.Now.ToString("ddMMyyhhmmss") + Path.GetExtension(fuploadEdit.FileName);
+                        strFile += "\\" + strFile1;
                         //lay anh tu temp de cat va save vo partner
                         var EditImage = System.Drawing.Image.FromFile(strTemp);
                         VTCO.Library.ImageResize Img = new VTCO.Library.ImageResize();
                         var newimg = Img.Crop(EditImage, 150, 100, VTCO.Library.ImageResize.AnchorPosition.Center);
                         newimg.Save(strFile);
 
-                        partner.UpdatePartner(Int32.Parse(ID.Text), Name.Text, @"/images/partner/" + fupload.FileName, web.Text, status.Checked);
-                        partner.DeleteImg(img.Text, Request);
-                        BindRpt();
-                        ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Cập nhật thành công !')", true);
-                        
+                        if (partner.UpdatePartner(PartnersID, txtNameEdit.Text, @"/images/partner/" + strFile1, txtWebEdit.Text, ddlStatusEdit.SelectedValue == "1" ? true : false) > 0)
+                        {
+                            partner.DeleteImg(PartnersImg, Request);
+                            BindRpt();
+                            lblMsg.Text = "Cập nhật thành công !";
+                            Panel1.Visible = false;
+                            Panel2.Visible = false;
+                            Panel3.Visible = true;
+                        }else
+                            lblMsg.Text = "Cập nhật bị lỗi !";
                     }
                     catch
                     {
-                        ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Cập nhật lỗi !')", true);
+                        lblMsg.Text = "Cập nhật bị lỗi !";
                     }
                     finally
                     {
                         //xoa anh trong temp
-                       // partner.DeleteImgTemp(fupload.FileName, Request);
+                        // partner.DeleteImgTemp(fupload.FileName, Request);
                     }
-                        
+
                 }
-            }
         }
-        catch 
-        { 
+        catch
+        {
         }
-        
-
-
     }
     protected void btnHuy_Click(object sender, EventArgs e)
     {
@@ -145,9 +227,15 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
         {
             if (fuploadLogo.FileName == "")
             {
-                partner.InsertPartner(txtName.Text, "#", txtWeb.Text, chkstatus.Checked);
-                ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Thêm mới thành công !')", true);
-                BindRpt();
+                if (partner.InsertPartner(txtName.Text, "#", txtWeb.Text, ddlStatus.SelectedValue == "1" ? true : false) > 0)
+                {
+                    lblMsg.Text = "Thêm mới thành công";
+                    BindRpt();
+                    Panel1.Visible = false;
+                    Panel2.Visible = false;
+                    Panel3.Visible = true;
+                }else
+                    lblMsg.Text = "Thêm mới thất bại";
             }
             else
             {
@@ -157,7 +245,8 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
                     fuploadLogo.SaveAs(strTemp);
 
                     string strFile = Path.Combine(Request.PhysicalApplicationPath, "images\\partner");
-                    strFile += "\\" + fuploadLogo.FileName;
+                    string strFile1 = DateTime.Now.ToString("ddMMyyhhmmss") + Path.GetExtension(fuploadEdit.FileName);
+                    strFile += "\\" + strFile1;
                     var EditImage = System.Drawing.Image.FromFile(strTemp);
                     VTCO.Library.ImageResize Img = new VTCO.Library.ImageResize();
                     var newimg = Img.Crop(EditImage, 150, 100, VTCO.Library.ImageResize.AnchorPosition.Center);
@@ -165,15 +254,23 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
                     //fuploadLogo.PostedFile.SaveAs(strFile);
 
 
-                    partner.InsertPartner(txtName.Text, @"/images/partner/" + fuploadLogo.FileName, txtWeb.Text, chkstatus.Checked);
-                    ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Thêm mới thành công !')", true);
-                    BindRpt();
+                    if (partner.InsertPartner(txtName.Text, @"/images/partner/" + strFile1, txtWeb.Text, ddlStatus.SelectedValue == "1" ? true : false) > 0)
+                    {
+                        lblMsg.Text = "Thêm mới thành công";
+                        BindRpt();
+                        Panel1.Visible = false;
+                        Panel2.Visible = false;
+                        Panel3.Visible = true;
+                    }
+                    else
+                        lblMsg.Text = "Thêm mới thất bại";
                     //xoa file trong temp
                    // partner.DeleteImgTemp(fuploadLogo.FileName,Request);
 
                 }
                 catch(Exception ex)
                 {
+                    lblMsg.Text = "Thêm mới thất bại";
                 }
             }
         }

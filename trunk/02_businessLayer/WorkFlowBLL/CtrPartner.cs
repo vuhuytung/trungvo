@@ -19,21 +19,21 @@ namespace WorkFlowBLL
            return BDS.PartnerInstance.uspPartnersGetAll().ToList();
        }       
        
-       public List<uspPartnersGetInfoByPartnersIDResult> GetInfoByID(int ID)
+       public uspPartnersGetInfoByPartnersIDResult GetInfoByID(int ID)
        {
-           return BDS.PartnerInstance.uspPartnersGetInfoByPartnersID(ID).ToList();
+           return BDS.PartnerInstance.uspPartnersGetInfoByPartnersID(ID).FirstOrDefault();
        }
-       public void UpdatePartner(int ID,string Name,string Img,string Web,bool Status)
+       public int  UpdatePartner(int ID,string Name,string Img,string Web,bool Status)
        {
-           BDS.PartnerInstance.uspPartnersUpdateByPartnersID(ID, Name, Img, Web, Status);
+           return BDS.PartnerInstance.uspPartnersUpdateByPartnersID(ID, Name, Img, Web, Status);
        }
-       public void DeletePartner(int ID)
+       public int DeletePartner(int ID)
        {
-           BDS.PartnerInstance.uspPartnersDeleteByPartnersID(ID);
+           return BDS.PartnerInstance.uspPartnersDeleteByPartnersID(ID);
        }
-       public void InsertPartner(string Name, string Img, string Web, bool status)
+       public int InsertPartner(string Name, string Img, string Web, bool status)
        {
-           BDS.PartnerInstance.uspPartnersInsert(Name, Img, Web, status);
+           return BDS.PartnerInstance.uspPartnersInsert(Name, Img, Web, status);
        }
        public void DeleteImg(string Url, HttpRequest request)
        {
