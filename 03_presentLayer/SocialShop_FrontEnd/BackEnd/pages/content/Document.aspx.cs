@@ -57,6 +57,37 @@ public partial class BackEnd_pages_content_Document : System.Web.UI.Page
         DropDownList ddlTypeDoc = (DropDownList)Panel1.Controls[0].FindControl("ddlTypeDoc");
         try
         {
+            if (e.CommandName == "lockNews")
+            {
+                if (ctrN.UpdateDocStatus(Convert.ToInt32(e.CommandArgument), 0) > 0)
+                {
+                    ucPaging1_PageChange(ucPaging1);
+                    lblMsg.Text = "Cập nhật thành công";
+                    ////RadAjaxPanel1.ResponseScripts.Add("alert('Cập nhật thành công!')");
+
+                }
+                else
+                {
+                    lblMsg.Text = "Cập nhật thất bại";
+                    ////RadAjaxPanel1.ResponseScripts.Add("alert('Cập nhật thất bại!')");
+                }
+            }
+
+            if (e.CommandName == "unlockNews")
+            {
+                if (ctrN.UpdateDocStatus(Convert.ToInt32(e.CommandArgument), 1) > 0)
+                {
+                    ucPaging1_PageChange(ucPaging1);
+                    lblMsg.Text = "Cập nhật thành công";
+                    ////RadAjaxPanel1.ResponseScripts.Add("alert('Cập nhật thành công!')");
+                }
+                else
+                {
+                    lblMsg.Text = "Cập nhật thất bại";
+                    ////RadAjaxPanel1.ResponseScripts.Add("alert('Cập nhật thất bại!')");
+                }
+            }
+
             if (e.CommandName == "edit")
             {
 
