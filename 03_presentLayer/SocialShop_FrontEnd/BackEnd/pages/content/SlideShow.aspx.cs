@@ -6,11 +6,53 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using WorkFlowBLL;
 using System.IO;
+using VTCO.Config;
+using System.Web.UI.HtmlControls;
 public partial class BackEnd_pages_content_SlideShow : System.Web.UI.Page
 {
+    public string SlideShowImg
+    {
+        get
+        {
+            try
+            {
+                return ViewState["SlideShowImg"].ToString();
+            }
+            catch
+            {
+                return "";
+            }
+        }
+
+        set
+        {
+            ViewState["SlideShowImg"] = value;
+        }
+    }
+    public int SlideShowID
+    {
+        get
+        {
+            try
+            {
+                return Convert.ToInt32(ViewState["SlideShowID"]);
+            }
+            catch
+            {
+                return -1;
+            }
+        }
+
+        set
+        {
+            ViewState["SlideShowID"] = value;
+        }
+    }
     CtrSlideShow slide = new CtrSlideShow();
+    protected int permission = 0;
     protected void Page_Load(object sender, EventArgs e)
     {
+        permission = Convert.ToInt32(Session[Constants.SESSION_ADMIN_PERMISSION] ?? 0);
         ucPaging1.PageChange += new UserControls_ucPaging.PagingHandler(ucPaging1_PageChange);
         if (!IsPostBack)
         {
@@ -42,7 +84,7 @@ public partial class BackEnd_pages_content_SlideShow : System.Web.UI.Page
     {
 
         //var _data = ctrN.GetAllDoc(Int32.Parse(ddlTypeDoc.SelectedValue), ucPaging1.CurrentPage, ucPaging1.PageSize, "n", 2);
-        BindRpt(); ;
+        BindRpt();
         //ucPaging1.TotalRecord = _data.TotalRecord;
     }
     void BindRpt()
@@ -55,88 +97,109 @@ public partial class BackEnd_pages_content_SlideShow : System.Web.UI.Page
 
     protected void btnUpdate_Click(object sender, EventArgs e)
     {
-        FileUpload fupload = (FileUpload)RptDetail.Controls[1].FindControl("fupload");
-        Image img = (Image)RptDetail.Controls[1].FindControl("Image1");
-        HiddenField imgThumb = (HiddenField)RptDetail.Controls[1].FindControl("ImgThumb");
-        Label ID = (Label)RptDetail.Controls[1].FindControl("lblID");
-        TextBox Title = (TextBox)RptDetail.Controls[1].FindControl("txtDesc");
-        CheckBox status = (CheckBox)RptDetail.Controls[1].FindControl("chkstatus");
-        if (fupload != null && img != null && ID != null && Title != null && status != null)
-        {
-            if (fupload.FileName == "")
+        
+            if (fuploadEdit.FileName == "")
             {
                 try
                 {
-                    slide.SlideUpdate(Int32.Parse(ID.Text), Title.Text, img.ImageUrl, imgThumb.Value, status.Checked == true ? 1 : 0);
-                    BindRpt();
-                    ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Update thành công !')", true);
-                    Panel1.Visible = false;
+                    if (slide.SlideUpdate(SlideShowID, txtNameEdit.Text.Trim(), SlideShowImg, SlideShowImg + ".thumb", txtWebEdit.Text.Trim(), Convert.ToInt32(ddlStatusEdit.SelectedValue)) > 0)
+                    {
+                        BindRpt();
+                        lblMsg.Text = "Cập nhật thành công !";
+                        Panel1.Visible = false;
+                        Panel2.Visible = false;
+                        Panel3.Visible = true;
+                    }
+                    else
+                        lblMsg.Text = "Cập nhật bị lỗi !";
                 }
                 catch
                 {
-                    ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Update lỗi !')", true);
+                    lblMsg.Text = "Cập nhật bị lỗi !";
                 }
             }
             else
             {
                 try
                 {
-                    //delete old images 
-
-                    slide.DeleteImg(img.ImageUrl.Replace("/", "\\"), Request);
-                    slide.DeleteImg(imgThumb.Value.Replace("/", "\\"), Request);
-
-                    //=======================
                     //luu anh vo temp
-                    string strTemp = Path.Combine(Request.PhysicalApplicationPath, "images\\temp\\" + fupload.FileName);
-                    fupload.SaveAs(strTemp);
-
+                    string strTemp = Path.Combine(Request.PhysicalApplicationPath, "images\\temp\\" + FileUpload1.FileName);
+                    FileUpload1.SaveAs(strTemp);
+                    //up anh
                     string strFile = Path.Combine(Request.PhysicalApplicationPath, "images\\slideshow");
-                    strFile += "\\" + fupload.FileName;
-                    //fupload.PostedFile.SaveAs(strFile);
+                    string strFile1 = DateTime.Now.ToString("ddMMyyhhmmss") + Path.GetExtension(fuploadEdit.FileName);
+                    strFile += "\\" + strFile1;
                     // FileUpload1.PostedFile.SaveAs(strFile);
 
                     var EditImage1 = System.Drawing.Image.FromFile(strTemp);
                     VTCO.Library.ImageResize Img1 = new VTCO.Library.ImageResize();
                     var newimg1 = Img1.Crop(EditImage1, 370, 210, VTCO.Library.ImageResize.AnchorPosition.Center);
                     newimg1.Save(strFile);
-                    //create Image Thumb
+                    //create thumb img
+                    //doi ten file anh
 
-                    int length = fupload.FileName.Length - 4;
-                    string newname = fupload.FileName.Substring(0, length) + "_thumb";
-                    string exp = fupload.FileName.Substring(length);
-                    newname = newname + exp;
-                    string strFile1 = Path.Combine(Request.PhysicalApplicationPath, "images\\slideshow");
-                    strFile1 += "\\" + newname;
+                    string strFile2 = Path.Combine(Request.PhysicalApplicationPath, "images\\slideshow") + "\\" + strFile1 + ".thumb";
 
                     var EditImage = System.Drawing.Image.FromFile(strTemp);
                     VTCO.Library.ImageResize Img = new VTCO.Library.ImageResize();
                     var newimg = Img.Crop(EditImage, 150, 100, VTCO.Library.ImageResize.AnchorPosition.Center);
-                    newimg.Save(strFile1);
+                    newimg.Save(strFile2);
 
-                    slide.SlideUpdate(Int32.Parse(ID.Text), Title.Text, @"/images/slideshow/" + fupload.FileName, @"/images/slideshow/" + newname, status.Checked == true ? 1 : 0);
-                    BindRpt();
-                    ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Update thành công !')", true);
-                    Panel1.Visible = false;
-                    Panel2.Visible = false;
-                    Panel3.Visible = true;
+                    if (slide.SlideUpdate(SlideShowID, txtNameEdit.Text.Trim(), @"/images/slideshow/" + strFile1, @"/images/slideshow/" + strFile1+".thumb", txtWebEdit.Text.Trim(), Convert.ToInt32(ddlStatusEdit.SelectedValue)) > 0)
+                    {
+                        slide.DeleteImg(SlideShowImg,Request);
+                        BindRpt();
+                        lblMsg.Text = "Cập nhật thành công !";
+                        Panel1.Visible = false;
+                        Panel2.Visible = false;
+                        Panel3.Visible = true;
+                    }
+                    else
+                        lblMsg.Text = "Cập nhật bị lỗi !";
+                    CtrPartner pat = new CtrPartner();
+                    pat.DeleteImgTemp(Request);
                 }
                 catch
                 {
-                    ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Update lỗi !')", true);
+                    lblMsg.Text = "Cập nhật bị lỗi !";
                 }
             }
-        }
-        //ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('kk')", true);
     }
-    protected void Button1_Click(object sender, EventArgs e)
+    protected void btnHuy1_Click(object sender, EventArgs e)
     {
         Panel1.Visible = false;
         Panel3.Visible = true;
         Panel2.Visible = false;
     }
 
+    protected void RptSlide_ItemDataBound(object sender, RepeaterItemEventArgs e)
+    {
+        if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+        {
+            HtmlGenericControl divListRow = e.Item.FindControl("divListRow") as HtmlGenericControl;
+            if (divListRow == null)
+            {
+                return;
+            }
+            if (e.Item.ItemIndex % 2 == 0)
+            {
+                divListRow.Attributes["class"] = "adminListRow-even";
+            }
+            //(e.Item.FindControl("spSTT") as HtmlGenericControl).InnerText = (e.Item.ItemIndex + 1).ToString();
 
+            if (Convert.ToBoolean(DataBinder.Eval(e.Item.DataItem, "Status")))
+            {
+                if ((permission & VTCO.Config.Constants.PERMISSION_EDIT) == VTCO.Config.Constants.PERMISSION_EDIT)
+                    (e.Item.FindControl("lbtUnLock") as LinkButton).Visible = false;
+            }
+            else
+            {
+                if ((permission & VTCO.Config.Constants.PERMISSION_EDIT) == VTCO.Config.Constants.PERMISSION_EDIT)
+                    (e.Item.FindControl("lbtLock") as LinkButton).Visible = false;
+            }
+        }
+
+    }
 
     protected void RptSlide_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
@@ -145,25 +208,39 @@ public partial class BackEnd_pages_content_SlideShow : System.Web.UI.Page
             Panel1.Visible = true;
             Panel2.Visible = false;
             Panel3.Visible = false;
-            RptDetail.DataSource = slide.GetSlideInfo(Int32.Parse(e.CommandArgument.ToString()));
-            RptDetail.DataBind();
+            SlideShowID = Int32.Parse(e.CommandArgument.ToString());
+            var pat = slide.GetSlideInfo(SlideShowID);
+            SlideShowImg = pat.Img;
+            txtNameEdit.Text = pat.Title;
+            txtWebEdit.Text = pat.Url;
+            try { ddlStatusEdit.SelectedValue = pat.Status.ToString(); }
+            catch { ddlStatusEdit.SelectedValue = "0"; }
+            lblMsg.Text = "";
         }
         else if (e.CommandName == "Delete")
         {
             try
             {
-                HiddenField Img = (HiddenField)e.Item.FindControl("Img");
-                HiddenField ImgThumb = (HiddenField)e.Item.FindControl("ImgThumb");
-                //delete img
-                slide.DeleteImg(Img.Value.Replace("/", "\\"), Request);
-                slide.DeleteImg(ImgThumb.Value.Replace("/", "\\"), Request);
+                SlideShowID = Int32.Parse(e.CommandArgument.ToString());
+                var pat = slide.GetSlideInfo(SlideShowID);
+                SlideShowImg = pat.Img;
 
-                slide.SlideDeleteByID(Int32.Parse(e.CommandArgument.ToString()));
-                ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Delete thành công !')", true);
+                slide.DeleteImg(SlideShowImg.Replace("/", "\\"), Request);
+
+                if (slide.SlideDeleteByID(Int32.Parse(e.CommandArgument.ToString())) > 0)
+                {
+                    slide.DeleteImg(SlideShowImg.Replace("/", "\\"), Request);
+                    slide.DeleteImg(SlideShowImg.Replace("/", "\\")+".thumb", Request);
+                    lblMsg.Text = "Xóa thành công!";
+                }
+                else
+                {
+                    lblMsg.Text = "Xóa bị lỗi!";
+                }
             }
             catch
             {
-                ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Delete lổi !')", true);
+                lblMsg.Text = "Có lỗi xảy ra!";
             }
             finally
             {
@@ -182,7 +259,8 @@ public partial class BackEnd_pages_content_SlideShow : System.Web.UI.Page
             FileUpload1.SaveAs(strTemp);
             //up anh
             string strFile = Path.Combine(Request.PhysicalApplicationPath, "images\\slideshow");
-            strFile += "\\" + FileUpload1.FileName;
+            string strFile1 = DateTime.Now.ToString("ddMMyyhhmmss") + Path.GetExtension(fuploadEdit.FileName);
+            strFile += "\\" + strFile1;
             // FileUpload1.PostedFile.SaveAs(strFile);
 
             var EditImage1 = System.Drawing.Image.FromFile(strTemp);
@@ -192,27 +270,30 @@ public partial class BackEnd_pages_content_SlideShow : System.Web.UI.Page
             //create thumb img
             //doi ten file anh
 
-            int length = FileUpload1.FileName.Length - 4;
-            string newname = FileUpload1.FileName.Substring(0, length) + "_thumb";
-            string exp = FileUpload1.FileName.Substring(length);
-            newname = newname + exp;
-            string strFile1 = Path.Combine(Request.PhysicalApplicationPath, "images\\slideshow");
-            strFile1 += "\\" + newname;
+            string strFile2 = Path.Combine(Request.PhysicalApplicationPath, "images\\slideshow") + "\\" + strFile1 + ".thumb";
 
             var EditImage = System.Drawing.Image.FromFile(strTemp);
             VTCO.Library.ImageResize Img = new VTCO.Library.ImageResize();
             var newimg = Img.Crop(EditImage, 150, 100, VTCO.Library.ImageResize.AnchorPosition.Center);
-            newimg.Save(strFile1);
+            newimg.Save(strFile2);
             //
 
             //========
-            slide.SlideInsert(txtTitle.Text, @"/images/slideshow/" + FileUpload1.FileName, @"/images/slideshow/" + newname, chkstatus.Checked == true ? 1 : 0);
-            BindRpt();
-            ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Thêm mới thành công !')", true);
+            if (slide.SlideInsert(txtName.Text, @"/images/slideshow/" + strFile1, @"/images/slideshow/" + strFile1 + ".thumb",txtWeb.Text.Trim(), Convert.ToInt32(ddlStatus.SelectedValue)) > 0)
+            {
+                BindRpt();
+                Panel1.Visible = false;
+                Panel2.Visible = false;
+                Panel3.Visible = true;
+            }
+            else
+                lblMsg.Text = "Thêm mới thất bại";
+            CtrPartner ctrP = new CtrPartner();
+            ctrP.DeleteImgTemp(Request);
         }
         catch
         {
-            ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Thêm mới lổi !')", true);
+            lblMsg.Text = "Có lỗi xảy ra!";
         }
     }
     protected void btnHuy_Click(object sender, EventArgs e)
@@ -220,33 +301,5 @@ public partial class BackEnd_pages_content_SlideShow : System.Web.UI.Page
         Panel2.Visible = false;
         Panel1.Visible = false;
         Panel3.Visible = true;
-    }
-    protected void lbtDeleteAll_Click(object sender, EventArgs e)
-    {
-        try
-        {
-            foreach (RepeaterItem item in RptSlide.Items)
-            {
-                CheckBox chkDeleteAll = (CheckBox)item.FindControl("chkDeleteAll");
-                HiddenField slID = (HiddenField)item.FindControl("slID");
-                HiddenField Img = (HiddenField)item.FindControl("Img");
-                HiddenField ImgThumb = (HiddenField)item.FindControl("ImgThumb");
-                if (chkDeleteAll != null && slID != null && Img != null)
-                {
-                    if (chkDeleteAll.Checked == true)
-                    {
-                        slide.SlideDeleteByID(Int32.Parse(slID.Value));
-
-                        slide.DeleteImg(Img.Value.Replace("/", "\\"), Request);
-                        slide.DeleteImg(ImgThumb.Value.Replace("/", "\\"), Request);
-                    }
-                }
-            }
-            ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Xóa thành công !')", true);
-            BindRpt();
-        }
-        catch
-        {
-        }
-    }
+    }    
 }
