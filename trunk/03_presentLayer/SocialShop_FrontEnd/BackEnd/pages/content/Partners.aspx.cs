@@ -76,7 +76,7 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
         Panel2.Visible = true;
         Panel1.Visible = false;
         Panel3.Visible = false;
-        txtName.Text="";
+        txtName.Text = "";
         txtWeb.Text = "";
         ddlStatus.SelectedValue = "1";
     }
@@ -120,12 +120,12 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
             Panel1.Visible = true;
             Panel2.Visible = false;
             Panel3.Visible = false;
-            PartnersID = Int32.Parse(e.CommandArgument.ToString());            
+            PartnersID = Int32.Parse(e.CommandArgument.ToString());
             var pat = partner.GetInfoByID(PartnersID);
             PartnersImg = pat.Img;
-            txtNameEdit.Text=pat.Name;
-            txtWebEdit.Text=pat.Website;
-            try{ddlStatusEdit.SelectedValue = pat.Status.Value ? "1" : "0";}
+            txtNameEdit.Text = pat.Name;
+            txtWebEdit.Text = pat.Website;
+            try { ddlStatusEdit.SelectedValue = pat.Status.Value ? "1" : "0"; }
             catch { ddlStatusEdit.SelectedValue = "0"; }
             lblMsg.Text = "";
         }
@@ -133,12 +133,16 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
         {
             try
             {
-                if (partner.DeletePartner(Int32.Parse(e.CommandArgument.ToString())) > 0)
+                PartnersID = Int32.Parse(e.CommandArgument.ToString());
+                var pat = partner.GetInfoByID(PartnersID);
+                PartnersImg = pat.Img;
+                if (partner.DeletePartner(PartnersID) > 0)
                 {
                     partner.DeleteImg(PartnersImg.Replace("/", "\\"), Request);
                     lblMsg.Text = "Xóa thành công !";
                     BindRpt();
-                }else
+                }
+                else
                     lblMsg.Text = "Xóa thất bại!";
             }
             catch
@@ -151,65 +155,66 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
     {
         try
         {
-                if (fuploadEdit.FileName == "")
+            if (fuploadEdit.FileName == "")
+            {
+                try
                 {
-                    try
+                    if (partner.UpdatePartner(PartnersID, txtNameEdit.Text, PartnersImg, txtWebEdit.Text, ddlStatusEdit.SelectedValue == "1" ? true : false) > 0)
                     {
-                        if (partner.UpdatePartner(PartnersID, txtNameEdit.Text, PartnersImg, txtWebEdit.Text, ddlStatusEdit.SelectedValue == "1" ? true : false) > 0)
-                        {
-                            BindRpt();
-                            lblMsg.Text = "Cập nhật thành công !";
-                            Panel1.Visible = false;
-                            Panel2.Visible = false;
-                            Panel3.Visible = true;
-                        }
-                        else
-                            lblMsg.Text = "Cập nhật bị lỗi !";
+                        BindRpt();
+                        lblMsg.Text = "Cập nhật thành công !";
+                        Panel1.Visible = false;
+                        Panel2.Visible = false;
+                        Panel3.Visible = true;
                     }
-                    catch
-                    {
+                    else
                         lblMsg.Text = "Cập nhật bị lỗi !";
-                    }
                 }
-                else
+                catch
                 {
-                    try
-                    {
-                        //luu anh vo temp
-                        string strTemp = Path.Combine(Request.PhysicalApplicationPath, "images\\temp\\" + fuploadEdit.FileName);
-                        fuploadEdit.SaveAs(strTemp);
-
-                        string strFile = Path.Combine(Request.PhysicalApplicationPath, "images\\partner");
-                        string strFile1 =  DateTime.Now.ToString("ddMMyyhhmmss") + Path.GetExtension(fuploadEdit.FileName);
-                        strFile += "\\" + strFile1;
-                        //lay anh tu temp de cat va save vo partner
-                        var EditImage = System.Drawing.Image.FromFile(strTemp);
-                        VTCO.Library.ImageResize Img = new VTCO.Library.ImageResize();
-                        var newimg = Img.Crop(EditImage, 150, 100, VTCO.Library.ImageResize.AnchorPosition.Center);
-                        newimg.Save(strFile);
-
-                        if (partner.UpdatePartner(PartnersID, txtNameEdit.Text, @"/images/partner/" + strFile1, txtWebEdit.Text, ddlStatusEdit.SelectedValue == "1" ? true : false) > 0)
-                        {
-                            partner.DeleteImg(PartnersImg, Request);
-                            BindRpt();
-                            lblMsg.Text = "Cập nhật thành công !";
-                            Panel1.Visible = false;
-                            Panel2.Visible = false;
-                            Panel3.Visible = true;
-                        }else
-                            lblMsg.Text = "Cập nhật bị lỗi !";
-                    }
-                    catch
-                    {
-                        lblMsg.Text = "Cập nhật bị lỗi !";
-                    }
-                    finally
-                    {
-                        //xoa anh trong temp
-                        // partner.DeleteImgTemp(fupload.FileName, Request);
-                    }
-
+                    lblMsg.Text = "Cập nhật bị lỗi !";
                 }
+            }
+            else
+            {
+                try
+                {
+                    //luu anh vo temp
+                    string strTemp = Path.Combine(Request.PhysicalApplicationPath, "images\\temp\\" + fuploadEdit.FileName);
+                    fuploadEdit.SaveAs(strTemp);
+
+                    string strFile = Path.Combine(Request.PhysicalApplicationPath, "images\\partner");
+                    string strFile1 = DateTime.Now.ToString("ddMMyyhhmmss") + Path.GetExtension(fuploadEdit.FileName);
+                    strFile += "\\" + strFile1;
+                    //lay anh tu temp de cat va save vo partner
+                    var EditImage = System.Drawing.Image.FromFile(strTemp);
+                    VTCO.Library.ImageResize Img = new VTCO.Library.ImageResize();
+                    var newimg = Img.Crop(EditImage, 150, 100, VTCO.Library.ImageResize.AnchorPosition.Center);
+                    newimg.Save(strFile);
+
+                    if (partner.UpdatePartner(PartnersID, txtNameEdit.Text, @"/images/partner/" + strFile1, txtWebEdit.Text.Trim(), ddlStatusEdit.SelectedValue == "1" ? true : false) > 0)
+                    {
+                        partner.DeleteImg(PartnersImg, Request);
+                        BindRpt();
+                        lblMsg.Text = "Cập nhật thành công !";
+                        Panel1.Visible = false;
+                        Panel2.Visible = false;
+                        Panel3.Visible = true;
+                    }
+                    else
+                        lblMsg.Text = "Cập nhật bị lỗi !";
+                }
+                catch
+                {
+                    lblMsg.Text = "Cập nhật bị lỗi !";
+                }
+                finally
+                {
+                    //xoa anh trong temp
+                    partner.DeleteImgTemp(Request);
+                }
+
+            }
         }
         catch
         {
@@ -234,7 +239,8 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
                     Panel1.Visible = false;
                     Panel2.Visible = false;
                     Panel3.Visible = true;
-                }else
+                }
+                else
                     lblMsg.Text = "Thêm mới thất bại";
             }
             else
@@ -254,7 +260,7 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
                     //fuploadLogo.PostedFile.SaveAs(strFile);
 
 
-                    if (partner.InsertPartner(txtName.Text, @"/images/partner/" + strFile1, txtWeb.Text, ddlStatus.SelectedValue == "1" ? true : false) > 0)
+                    if (partner.InsertPartner(txtName.Text, @"/images/partner/" + strFile1, txtWeb.Text.Trim(), ddlStatus.SelectedValue == "1" ? true : false) > 0)
                     {
                         lblMsg.Text = "Thêm mới thành công";
                         BindRpt();
@@ -265,10 +271,10 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
                     else
                         lblMsg.Text = "Thêm mới thất bại";
                     //xoa file trong temp
-                   // partner.DeleteImgTemp(fuploadLogo.FileName,Request);
+                    partner.DeleteImgTemp(Request);
 
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     lblMsg.Text = "Thêm mới thất bại";
                 }
@@ -276,7 +282,7 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
         }
         catch
         {
-            ClientScript.RegisterStartupScript(Page.GetType(), "thông báo", "alert('Thêm mới lỗi !')", true);
+            lblMsg.Text = "Thêm mới thất bại";
         }
     }
     protected void btnHuy1_Click(object sender, EventArgs e)
@@ -285,5 +291,5 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
         Panel1.Visible = false;
         Panel3.Visible = true;
     }
-            
+
 }

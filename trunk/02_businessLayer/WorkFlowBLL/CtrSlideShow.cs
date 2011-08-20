@@ -31,21 +31,21 @@ namespace WorkFlowBLL
            return ret;
        }
 
-       public List<uspSlideShowGetInfoByIDResult> GetSlideInfo(int ID)
+       public uspSlideShowGetInfoByIDResult GetSlideInfo(int ID)
        {
-           return BDS.SlideShowInstance.uspSlideShowGetInfoByID(ID).ToList();
+           return BDS.SlideShowInstance.uspSlideShowGetInfoByID(ID).FirstOrDefault();
        }
-       public void SlideUpdate(int ID,string title, string img,string ImgThumb, int status)
+       public int SlideUpdate(int ID,string title, string img,string ImgThumb,string url, int status)
        {
-           BDS.SlideShowInstance.uspSlideShowUpdateByID(ID, title, img, ImgThumb, status);
+           return BDS.SlideShowInstance.uspSlideShowUpdateByID(ID, title, img, ImgThumb,url, status);
        }
-       public void SlideInsert(string title, string img, string ImgThumb, int status)
+       public int SlideInsert(string title, string img, string ImgThumb,string url, int status)
        {
-           BDS.SlideShowInstance.uspSlideShowInsert(title, img,ImgThumb,status);
+           return BDS.SlideShowInstance.uspSlideShowInsert(title, img,ImgThumb,url,status);
        }
-       public void SlideDeleteByID(int ID)
+       public int SlideDeleteByID(int ID)
        {
-           BDS.SlideShowInstance.uspSlideShowDeleteByID(ID);
+           return BDS.SlideShowInstance.uspSlideShowDeleteByID(ID);
        }
        public string GenHtmlSlide()
        {

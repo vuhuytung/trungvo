@@ -2,23 +2,6 @@
     CodeFile="Partners.aspx.cs" Inherits="BackEnd_pages_content_Partners" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
- <script type="text/javascript">
-     function checkAdd() {
-         var txtTitle = document.getElementById("ContentPlaceHolder1_txtName");
-         var fupload = document.getElementById("ContentPlaceHolder1_fuploadLogo");
-
-         if (txtTitle.value == "") {
-             alert('Tên không được để trống !');
-             return false;
-         }
-         else if (fupload.value == "") {
-             alert('bạn chưa chọn đường dẩn ảnh !');
-             return false;
-         }
-
-         return true;
-     }
-                            </script>
     <center style="color: Red; line-height: 30px;">
         <asp:Label ID="lblMsg" runat="server"></asp:Label></center>
     <asp:Panel ID="Panel2" runat="server" Visible="false">
@@ -178,7 +161,6 @@
                             </div>
                             <div class="adminColumn" style="width: 170px; text-align: center; padding-left: 15px;">
                                 <img src='<%#Eval("Img")%>' alt="anh" width="150" height="100" />
-                                <asp:HiddenField ID="hdImg" runat="server" Value='<%#Eval("Img")%>' />
                                 &nbsp;
                             </div>
                             <div class="adminColumn" style="width: 500px; text-align: justify;">
