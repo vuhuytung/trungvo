@@ -168,7 +168,7 @@ a:hover
     -moz-border-radius-topleft: 4px;
     -moz-border-radius-topright: 4px;
     background: #CCCCCC url(../img/box_title_bg.png) repeat-x scroll 50% 50%;
-    border: 1px solid #AAAAAA;
+    /*border: 1px solid #AAAAAA;*/
     color: #222222;
     font-weight: bold;
     padding:4px 0;

@@ -7,12 +7,15 @@ using System.Web.UI.WebControls;
 using WorkFlowBLL;
 using System.IO;
 using System.Web.UI.HtmlControls;
+using VTCO.Config;
 public partial class BackEnd_pages_content_Document : System.Web.UI.Page
 {
     CtrDocument doc = new CtrDocument();
     protected int CatID = -1;
+    protected int permission = 0;
     protected void Page_Load(object sender, EventArgs e)
     {
+        permission = Convert.ToInt32(Session[Constants.SESSION_ADMIN_PERMISSION] ?? 0);
         //CatID = 21;// Int32.Parse(Request.QueryString["CategoryID"]);
         ucPaging1.PageChange += new UserControls_ucPaging.PagingHandler(ucPaging1_PageChange);
         if (!IsPostBack)
@@ -34,6 +37,7 @@ public partial class BackEnd_pages_content_Document : System.Web.UI.Page
         RptDocument.DataSource = _data.Items;
         RptDocument.DataBind();
         ucPaging1.TotalRecord = _data.TotalRecord;
+        divPaging.Visible = ucPaging1.TotalPage > 1;
     }
     private void BindRpt(string day, int status)
     {
@@ -53,7 +57,7 @@ public partial class BackEnd_pages_content_Document : System.Web.UI.Page
         DropDownList ddlTypeDoc = (DropDownList)Panel1.Controls[0].FindControl("ddlTypeDoc");
         try
         {
-            if (e.CommandName == "Edit")
+            if (e.CommandName == "edit")
             {
 
                 //Repeater RptDetail = (Repeater)Panel1.Controls[0].FindControl("RptDetail");
@@ -67,7 +71,7 @@ public partial class BackEnd_pages_content_Document : System.Web.UI.Page
                     RptDetail.DataBind();
                 }
             }
-            else if (e.CommandName == "Delete")
+            else if (e.CommandName == "delete")
             {
                 Label URL = (Label)RptDetail.Controls[1].FindControl("lblUrl");
                 ctrN.DeleteDocByID(Int32.Parse(e.CommandArgument.ToString()));
@@ -196,12 +200,22 @@ public partial class BackEnd_pages_content_Document : System.Web.UI.Page
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
-                HtmlGenericControl listRow = e.Item.FindControl("listRow") as HtmlGenericControl;
+                HtmlTableRow listRow = e.Item.FindControl("listRow") as HtmlTableRow;
                 if (listRow == null)
                     return;
                 if (e.Item.ItemIndex % 2 == 0)
                 {
                     listRow.Attributes["class"] = "adminListRow-even";
+                }
+                if (Convert.ToBoolean(DataBinder.Eval(e.Item.DataItem, "Status")))
+                {
+                    if ((permission & VTCO.Config.Constants.PERMISSION_EDIT) == VTCO.Config.Constants.PERMISSION_EDIT)
+                        (e.Item.FindControl("lbtUnLock") as LinkButton).Visible = false;
+                }
+                else
+                {
+                    if ((permission & VTCO.Config.Constants.PERMISSION_EDIT) == VTCO.Config.Constants.PERMISSION_EDIT)
+                        (e.Item.FindControl("lbtLock") as LinkButton).Visible = false;
                 }
             }
         }

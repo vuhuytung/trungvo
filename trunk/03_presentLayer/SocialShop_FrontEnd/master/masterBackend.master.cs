@@ -49,7 +49,7 @@ public partial class master_masterBackend : System.Web.UI.MasterPage
                     CookieManagement.Instance["current_page", false] = MenuParrentID.ToString();
                     CookieManagement.Instance["current_tab", false] = MenuID.ToString();
                 }
-                Session[Constants.SESSION_ADMIN_PERMISSION] = _menu.CheckPermission(m_AccountID, LocalPath);
+                Session[Constants.SESSION_ADMIN_PERMISSION] =level==1?15: _menu.CheckPermission(m_AccountID, LocalPath);
 
                 var Read = ((Convert.ToInt32(Session[Constants.SESSION_ADMIN_PERMISSION] ?? 0) & Constants.PERMISSION_READ) == Constants.PERMISSION_READ);
                 if (!Read && (level != 1))
