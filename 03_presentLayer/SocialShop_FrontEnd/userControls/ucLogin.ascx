@@ -9,7 +9,7 @@
           { %>
              <a style="color:#000" href="/register"><img src="/images/newdref.png" width="12" /> Đăng ký</a>
              <a style="color:#000; margin-left:20px" href="/login"><img src="/images/icon_users.png" width="12" /> Đăng nhập</a>
-             <a style="color:#000; margin-left:20px" href="/login"><img width="12" src="/images/addnew_16.png" /> Đăng bất động sản </a>
+             <a style="color:#000; margin-left:20px" href="/addrealtymarket"><img width="12" src="/images/addnew_16.png" /> Đăng bất động sản </a>
          <%} %>         
       </div>      
       <%if (Convert.ToBoolean(Session[VTCO.Config.Constants.SESSION_USER_ISLOGIN] ?? false))
