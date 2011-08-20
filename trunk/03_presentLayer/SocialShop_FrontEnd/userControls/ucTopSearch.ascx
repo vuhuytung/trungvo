@@ -1,7 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="ucTopSearch.ascx.cs" Inherits="userControls_ucTopSearch" %>
 <div class="search">
-    <asp:ScriptManager ID="ScriptManager1" runat="server">
-    </asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <table class="tbSearch">

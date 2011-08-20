@@ -15,8 +15,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="plhBody" Runat="Server">
 
 <center>
-    <asp:ScriptManager ID="ScriptManager1" runat="server">
-    </asp:ScriptManager>
     <table width="350px" style="margin:auto; text-align:left; background:#FFF; border:#B0E5F7 solid 3px; border-top-width:10px;border-bottom-width:10px;">
         <tr>
             <td style="text-transform:uppercase; font-weight:bold; font-size:14px; color:#FFF; text-align:center; background:#BBD37E" colspan="2">Đăng nhập</td>

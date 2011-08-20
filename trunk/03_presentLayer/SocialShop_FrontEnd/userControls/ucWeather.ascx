@@ -1,6 +1,4 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="ucWeather.ascx.cs" Inherits="userControls_ucWeather" %>
-<asp:ScriptManager ID="ScriptManager1" runat="server">
-</asp:ScriptManager>
 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
 <ContentTemplate>
  <div class="box clear" style="border:none; background-color:#FFF; margin-top:10px" id="divWeather" runat="server">
