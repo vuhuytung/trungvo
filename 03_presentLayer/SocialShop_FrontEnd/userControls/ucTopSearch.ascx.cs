@@ -33,7 +33,7 @@ public partial class userControls_ucTopSearch : System.Web.UI.UserControl
 
 
             ddlDistrict.Items.Insert(0, new ListItem("--Tất cả--", "-1"));
-            ddlVillage.Items.Insert(0, new ListItem("--Tất cả--", "-1"));
+            //ddlVillage.Items.Insert(0, new ListItem("--Tất cả--", "-1"));
 
             //add Type BDS temp
             //ddlTypeBDS.Items.Add(new ListItem("Bất động sản cần bán","21"));
@@ -47,13 +47,13 @@ public partial class userControls_ucTopSearch : System.Web.UI.UserControl
             //add Price temp
 
             ddlPrice.Items.Add(new ListItem("--Tất cả--", "0"));
-            ddlPrice.Items.Add(new ListItem("dưới 20 triệu", "1"));
+            ddlPrice.Items.Add(new ListItem("Dưới 20 triệu", "1"));
             ddlPrice.Items.Add(new ListItem("20-100 triệu", "2"));
             ddlPrice.Items.Add(new ListItem("100-500 triệu", "3"));
             ddlPrice.Items.Add(new ListItem("500 triệu-2 tỷ", "4"));
             ddlPrice.Items.Add(new ListItem("2-10 tỷ", "5"));
             ddlPrice.Items.Add(new ListItem("10-20 tỷ", "6"));
-            ddlPrice.Items.Add(new ListItem("trên 20 tỷ", "7"));
+            ddlPrice.Items.Add(new ListItem("Trên 20 tỷ", "7"));
         }
 
     }
@@ -80,16 +80,16 @@ public partial class userControls_ucTopSearch : System.Web.UI.UserControl
             ddlDistrict.Items.Insert(0, new ListItem("--Tất cả--", "-1"));
             ddlDistrict.SelectedIndex = 0;
 
-            ddlVillage.Items.Clear();
-            ddlVillage.Items.Insert(0, new ListItem("--Tất cả--", "-1"));
+            //ddlVillage.Items.Clear();
+            //ddlVillage.Items.Insert(0, new ListItem("--Tất cả--", "-1"));
         }
         else
         {
             ddlDistrict.Items.Clear();
             ddlDistrict.Items.Insert(0, new ListItem("--Tất cả--", "-1"));
 
-            ddlVillage.Items.Clear();
-            ddlVillage.Items.Insert(0, new ListItem("--Tất cả--", "-1"));
+            //ddlVillage.Items.Clear();
+            //ddlVillage.Items.Insert(0, new ListItem("--Tất cả--", "-1"));
         }
     }
     protected void ddlDistrict_SelectedIndexChanged(object sender, EventArgs e)
@@ -106,17 +106,17 @@ public partial class userControls_ucTopSearch : System.Web.UI.UserControl
                 lInfo.LocationText = item.Name;
                 _source.Add(lInfo);
             }
-            ddlVillage.DataSource = _source;
-            ddlVillage.DataTextField = "LocationText";
-            ddlVillage.DataValueField = "LocationValue";
-            ddlVillage.DataBind();
-            ddlVillage.Items.Insert(0, new ListItem("--Tất cả--", "-1"));
-            ddlVillage.SelectedIndex = 0;
+            //ddlVillage.DataSource = _source;
+            //ddlVillage.DataTextField = "LocationText";
+            //ddlVillage.DataValueField = "LocationValue";
+            //ddlVillage.DataBind();
+            //ddlVillage.Items.Insert(0, new ListItem("--Tất cả--", "-1"));
+            //ddlVillage.SelectedIndex = 0;
         }
         else
         {
-            ddlVillage.Items.Clear();
-            ddlVillage.Items.Insert(0, new ListItem("--Tất cả--", "-1"));
+            //ddlVillage.Items.Clear();
+            //ddlVillage.Items.Insert(0, new ListItem("--Tất cả--", "-1"));
         }
     }
 
@@ -192,12 +192,12 @@ public partial class userControls_ucTopSearch : System.Web.UI.UserControl
             {
                 if (Int32.Parse(ddlDistrict.SelectedValue.Split('_')[0]) != -1) //nếu chọn huyện
                 {
-                    if (Int32.Parse(ddlVillage.SelectedValue.Split('_')[0]) != -1)
-                    {
-                        Code = Int32.Parse(ddlVillage.SelectedValue.Split('_')[1]);
-                        typeCode = 3;
-                    }
-                    else
+                    //if (Int32.Parse(ddlVillage.SelectedValue.Split('_')[0]) != -1)
+                    //{
+                    //    Code = Int32.Parse(ddlVillage.SelectedValue.Split('_')[1]);
+                    //    typeCode = 3;
+                    //}
+                    //else
                     {
                         Code = Int32.Parse(ddlDistrict.SelectedValue.Split('_')[1]);
                         typeCode = 2;
