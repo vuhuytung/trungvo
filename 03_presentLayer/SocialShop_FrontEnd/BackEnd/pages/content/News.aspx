@@ -6,8 +6,8 @@
 <asp:Content ID="contentHead" runat="server" ContentPlaceHolderID="Header">
     <script type="text/javascript">
         $(function () {
-            $("#chkAll").click(function () { 
-                $(".adminListRow-odd, .adminListRow-even").find("input:checkbox").attr("checked",$(this).attr("checked"));
+            $("#chkAll").click(function () {
+                $(".adminListRow-odd, .adminListRow-even").find("input:checkbox").attr("checked", $(this).attr("checked"));
             });
         });
     </script>
@@ -116,7 +116,7 @@
                             <div class="adminColumn" style="width: 30px">
                                 STT
                             </div>
-                            <div class="adminColumn" style="width: 500px; padding-left:20px; text-align:left;">
+                            <div class="adminColumn" style="width: 500px; padding-left: 20px; text-align: left;">
                                 Tiêu đề
                             </div>
                             <div class="adminColumn" style="width: 80px;">
@@ -136,7 +136,6 @@
                         </div>
                     </HeaderTemplate>
                     <ItemTemplate>
-                        <asp:HiddenField ID="hdfNews" runat="server" Value='<%#Eval("NewsID") %>' />
                         <div class="adminListRow-odd" id="divListRow" runat="server">
                             <div class="adminColumn" id="divCheckbox" style="width: 20px; vertical-align: bottom;">
                                 <asp:CheckBox ID="cbxCheck" runat="server" />&nbsp;
@@ -159,9 +158,9 @@
                                 <%#Convert.ToBoolean(Eval("IsHot")??false)?"<img src='/BackEnd/img/hot.gif' style='position:absolute' alt='Hot' />":"" %>
                             </div>
                             <div class="adminColumn" style="width: 92px; float: right">
-                            <%if ((permission | VTCO.Config.Constants.PERMISSION_READ) != VTCO.Config.Constants.PERMISSION_READ)
-                              { %>
-                                 <div class="function">
+                                <%if ((permission | VTCO.Config.Constants.PERMISSION_READ) != VTCO.Config.Constants.PERMISSION_READ)
+                                  { %>
+                                <div class="function">
                                     <ul>
                                         <li><a id="aContextMenu" href="javascript:;"><span style="float: left;">Chức năng</span>
                                             <span class="drop">
@@ -178,8 +177,8 @@
                                                     </asp:LinkButton>
                                                 </li>
                                                 <li>
-                                                    <asp:LinkButton ID="lbtLock" runat="server" CssClass='lock_icon' ToolTip='Khóa'
-                                                        CommandName="lockNews" CommandArgument='<%#Eval("NewsID") %>' Text="Khóa">
+                                                    <asp:LinkButton ID="lbtLock" runat="server" CssClass='lock_icon' ToolTip='Khóa' CommandName="lockNews"
+                                                        CommandArgument='<%#Eval("NewsID") %>' Text="Khóa">
                                                     </asp:LinkButton>
                                                     <asp:LinkButton ID="lbtUnLock" runat="server" CssClass='checked_icon' ToolTip='Kích hoạt'
                                                         CommandName="unlockNews" CommandArgument='<%#Eval("NewsID") %>' Text="Kích hoạt">
@@ -198,7 +197,8 @@
                                                   { %>
                                                 <li>
                                                     <asp:LinkButton ID="lbtDelete" runat="server" CssClass="delete_icon" ToolTip="Xóa"
-                                                        OnClientClick="return ConfirmDelete()" CommandName="delete" CommandArgument='<%#Eval("NewsID") %>' Text="Xóa">
+                                                        OnClientClick="return ConfirmDelete()" CommandName="delete" CommandArgument='<%#Eval("NewsID") %>'
+                                                        Text="Xóa">
                                                     </asp:LinkButton>
                                                 </li>
                                                 <%} %>
@@ -206,7 +206,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                            <%} %>
+                                <%} %>
                             </div>
                             <div class="clearn">
                             </div>
@@ -297,7 +297,8 @@
                                     <DateInput LabelCssClass="radLabelCss_WebBlue" Skin="WebBlue">
                                     </DateInput>
                                 </telerik:RadDatePicker>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ForeColor="Red" ErrorMessage="*" ValidationGroup="news" ControlToValidate="rdpPublishDateEdit"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ForeColor="Red"
+                                    ErrorMessage="*" ValidationGroup="news" ControlToValidate="rdpPublishDateEdit"></asp:RequiredFieldValidator>
                             </div>
                         </td>
                         <td class="tdStyle" style="width: 150px">
@@ -324,8 +325,8 @@
                             <asp:DropDownList ID="ddlNewsMenu" runat="server" Width="150">
                             </asp:DropDownList>
                             <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="ddlNewsMenu"
-                                ErrorMessage="*" ForeColor="Red" ValidationExpression="[1-9][0-9]*" ValidationGroup="news" SetFocusOnError="True"
-                                Font-Bold="True"></asp:RegularExpressionValidator>
+                                ErrorMessage="*" ForeColor="Red" ValidationExpression="[1-9][0-9]*" ValidationGroup="news"
+                                SetFocusOnError="True" Font-Bold="True"></asp:RegularExpressionValidator>
                         </td>
                         <td class="tdStyle" style="width: 150px">
                             &nbsp;
@@ -349,7 +350,8 @@
                         </td>
                         <td colspan="5" class="tdStyle" style="width: 720px">
                             <asp:TextBox ID="txtTitle" runat="server" Width="450px" MaxLength="100" CssClass="inputText"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ValidationGroup="news" ForeColor="Red" ErrorMessage="*" ControlToValidate="txtTitle"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ValidationGroup="news"
+                                ForeColor="Red" ErrorMessage="*" ControlToValidate="txtTitle"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr>
@@ -359,7 +361,8 @@
                         <td colspan="5" class="tdStyle">
                             <asp:TextBox ID="txtAbstract" runat="server" Width="500px" MaxLength="250" Height="100px"
                                 CssClass="inputText" TextMode="MultiLine" Rows="2" Font-Names="Arial" Font-Size="13px"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ValidationGroup="news" ForeColor="Red" ErrorMessage="*" ControlToValidate="txtAbstract"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ValidationGroup="news"
+                                ForeColor="Red" ErrorMessage="*" ControlToValidate="txtAbstract"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr valign="top">
@@ -374,8 +377,8 @@
                         </td>
                         <td class="tdStyle" colspan="4">
                             <asp:FileUpload ID="UploadImage" runat="server" Width="220" /><br />
-                            <asp:RegularExpressionValidator ID="vldUploadImage1" runat="server" ControlToValidate="UploadImage"  ForeColor="Red"
-                                ValidationExpression="(.*\.([gG][iI][fF]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[pP][nN][gG])$)"
+                            <asp:RegularExpressionValidator ID="vldUploadImage1" runat="server" ControlToValidate="UploadImage"
+                                ForeColor="Red" ValidationExpression="(.*\.([gG][iI][fF]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[pP][nN][gG])$)"
                                 Display="Dynamic" ErrorMessage="File *.Gif, *.Jpg, *.Jpeg, *.Png" ValidationGroup="news"
                                 Enabled="true" SetFocusOnError="True"></asp:RegularExpressionValidator>
                         </td>
@@ -385,10 +388,12 @@
                             Nội dung:
                         </td>
                         <td colspan="5" class="tdStyle" style="width: 600px;">
-                            <telerik:RadEditor ID="radContent" runat="server" ContentFilters="FixEnclosingP" AutoResizeHeight="True" EnableResize="False" Width="600px" 
-                            ImageManager-DeletePaths="~/images/news" ImageManager-ViewPaths="~/images/news" ImageManager-UploadPaths="~/images/news" ToolsFile="~/App_Data/ToolsFile.xml"
-                            FlashManager-ViewPaths="~/images/news" FlashManager-UploadPaths="~/images/news" FlashManager-DeletePaths="~/images/news" 
-                            MediaManager-ViewPaths="~/images/news" MediaManager-UploadPaths="~/images/news" MediaManager-DeletePaths="~/images/news">
+                            <telerik:RadEditor ID="radContent" runat="server" ContentFilters="FixEnclosingP"
+                                AutoResizeHeight="True" EnableResize="False" Width="600px" ImageManager-DeletePaths="~/images/news"
+                                ImageManager-ViewPaths="~/images/news" ImageManager-UploadPaths="~/images/news"
+                                ToolsFile="~/App_Data/ToolsFile.xml" FlashManager-ViewPaths="~/images/news" FlashManager-UploadPaths="~/images/news"
+                                FlashManager-DeletePaths="~/images/news" MediaManager-ViewPaths="~/images/news"
+                                MediaManager-UploadPaths="~/images/news" MediaManager-DeletePaths="~/images/news">
                             </telerik:RadEditor>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="radContent"
                                 ErrorMessage="*" ForeColor="Red" SetFocusOnError="True" ValidationGroup="news"></asp:RequiredFieldValidator>
