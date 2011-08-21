@@ -18,8 +18,7 @@
                         Quận/Huyện
                     </td>
                     <td>
-                        <asp:DropDownList ID="ddlDistrict" CssClass="ddl" runat="server" AutoPostBack="true" Height="22px"
-                            OnSelectedIndexChanged="ddlDistrict_SelectedIndexChanged" Width="135px">
+                        <asp:DropDownList ID="ddlDistrict" CssClass="ddl" runat="server" AutoPostBack="true" Height="22px" Width="135px">
                         </asp:DropDownList>
                     </td>
                 </tr>
