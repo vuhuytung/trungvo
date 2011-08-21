@@ -15,30 +15,13 @@ public partial class pages_Contact : System.Web.UI.Page
     }
     protected void btnSend_Click(object sender, EventArgs e)
     {
-        StringBuilder content = new StringBuilder();
-        content.Append(txtName.Text + "\n");
-        if (txtAddress.Text != "")
+
+        CtrNews ctrN = new CtrNews();
+        if (ctrN.ContactInsert(txtName.Text.Trim(), txtAddress.Text.Trim(), txtPhone.Text.Trim(), txtEmail.Text.Trim(), txtContent.Text.Trim()) > 0)
         {
-            content.Append(txtAddress.Text + "\n");
-        }
-        if (txtPhone.Text != "")
-        {
-            content.Append(txtPhone.Text + "\n");
-        }
-        content.Append(txtContent.Text + "\n");
-        if (mail.Send_Email(txtEmail.Text, txtTitle.Text, content.ToString()))
-        {
-            //do somethings is here
+            tbdSuccess.Visible = true;
+            tbdContact.Visible = false;
         }
 
-    }
-    protected void btnCancel_Click(object sender, EventArgs e)
-    {
-        txtAddress.Text = "";
-        txtContent.Text = "";
-        txtEmail.Text = "";
-        txtName.Text = "";
-        txtPhone.Text = "";
-        txtTitle.Text = "";
     }
 }
