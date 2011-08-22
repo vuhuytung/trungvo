@@ -107,6 +107,8 @@
                 </div>
                 <!--End body content-->
             </div>
+            <div class="clear">
+                </div>
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>

@@ -21,34 +21,34 @@ namespace WorkFlowBLL
             return ret;
         }
 
-        public ClassExtend<string, uspDocumentGetByConditionResult> GetAllDoc(int CatID, int cur, int ps, string CreateDate, int status)
+        public ClassExtend<string, uspDocumentGetByConditionResult> GetAllDoc(string keyWord,int CatID,DateTime fD, DateTime tD, int status, int cur, int ps)
         {
             ClassExtend<string, uspDocumentGetByConditionResult> ret = new ClassExtend<string, uspDocumentGetByConditionResult>();
             int? total = 0;
-            ret.Items = BDS.DocumentInstance.uspDocumentGetByCondition(CatID, cur, ps, CreateDate, status, ref total).ToList();
+            ret.Items = BDS.DocumentInstance.uspDocumentGetByCondition(keyWord,CatID,fD,tD,status, cur, ps, ref total).ToList();
             ret.TotalRecord = total.Value;
             return ret;
         }
 
-        public List<uspDocumentGetInfoByDocumentIDResult> GetInfoDocByID(int docID)
+        public uspDocumentGetInfoByDocumentIDResult GetInfoDocByID(int docID)
         {
-            return BDS.DocumentInstance.uspDocumentGetInfoByDocumentID(docID).ToList();
+            return BDS.DocumentInstance.uspDocumentGetInfoByDocumentID(docID).FirstOrDefault();
         }
-        public void UpdateDocByID(int DocID, string Title, string desc, string Url, DateTime day,int cate, int status)
+        public int UpdateDocByID(int DocID, string Title, string desc, string Url, DateTime day,int cate, int status)
         {
-            BDS.DocumentInstance.uspDocumentUpdateByDocumentID(DocID, Title, desc, Url,day,cate, status);
+            return BDS.DocumentInstance.uspDocumentUpdateByDocumentID(DocID, Title, desc, Url,day,cate, status);
         }
         public int UpdateDocStatus(int DocID, int status)
         {
             return BDS.DocumentInstance.uspDocumentUpdateStatus(DocID, status);
         }
-        public void DeleteDocByID(int docID)
+        public int DeleteDocByID(int docID)
         {
-            BDS.DocumentInstance.uspDocumentDeleteByDocumentID(docID);
+            return BDS.DocumentInstance.uspDocumentDeleteByDocumentID(docID);
         }
-        public void InsertDoc(string Title, string desc, string Url, DateTime day, int cate, int status)
+        public int InsertDoc(string Title, string desc, string Url, DateTime day, int cate, int status)
         {
-            BDS.DocumentInstance.uspDocumentInsert(Title, desc, Url, day, cate, status);
+            return BDS.DocumentInstance.uspDocumentInsert(Title, desc, Url, day, cate, status);
         }
         public void DeleteDocument(string Url, HttpRequest request)
         {

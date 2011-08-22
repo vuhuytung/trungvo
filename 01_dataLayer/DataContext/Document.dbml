@@ -1,5 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Database1" Class="DocumentDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=183.182.100.136;Initial Catalog=Database1;Persist Security Info=True;User ID=tmt" SettingsObjectName="DataContext.Properties.Settings" SettingsPropertyName="Database1ConnectionString1" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.uspDocumentUpdateStatus" Method="uspDocumentUpdateStatus">
+    <Parameter Name="DocumentID" Parameter="documentID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.uspDocumentUpdateByDocumentID" Method="uspDocumentUpdateByDocumentID">
+    <Parameter Name="DocumentID" Parameter="documentID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Title" Parameter="title" Type="System.String" DbType="NVarChar(400)" />
+    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="NText" />
+    <Parameter Name="URL" Parameter="uRL" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="CreateDate" Parameter="createDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="CategoryID" Parameter="categoryID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.uspDocumentInsert" Method="uspDocumentInsert">
+    <Parameter Name="Title" Parameter="title" Type="System.String" DbType="NVarChar(400)" />
+    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="NText" />
+    <Parameter Name="URL" Parameter="uRL" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="CreateDate" Parameter="createDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="CategoryID" Parameter="categoryID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.uspDocumentGetPage" Method="uspDocumentGetPage">
+    <Parameter Name="CategoryID" Parameter="categoryID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="currPage" Type="System.Int32" DbType="Int" />
+    <Parameter Name="recodperpage" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Pagesize" Parameter="pagesize" Type="System.Int32" DbType="Int" />
+    <ElementType Name="uspDocumentGetPageResult">
+      <Column Name="PhanTrang" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.uspDocumentGetInfoByDocumentID" Method="uspDocumentGetInfoByDocumentID">
+    <Parameter Name="DocumentID" Parameter="documentID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="uspDocumentGetInfoByDocumentIDResult">
+      <Column Name="DocumentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(400) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="URL" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
   <Function Name="dbo.uspDocumentGetAll" Method="uspDocumentGetAll">
     <Parameter Name="CategoryID" Parameter="categoryID" Type="System.Int32" DbType="Int" />
     <Parameter Name="currPage" Type="System.Int32" DbType="Int" />
@@ -10,19 +55,7 @@
       <Column Name="DocumentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Title" Type="System.String" DbType="NVarChar(400) NOT NULL" CanBeNull="false" />
       <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="URL" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="CategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.uspDocumentGetInfoByDocumentID" Method="uspDocumentGetInfoByDocumentID">
-    <Parameter Name="DocumentID" Parameter="documentID" Type="System.Int32" DbType="Int" />
-    <ElementType Name="uspDocumentGetInfoByDocumentIDResult">
-      <Column Name="DocumentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Title" Type="System.String" DbType="NVarChar(400) NOT NULL" CanBeNull="false" />
-      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="URL" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="URL" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="CategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -32,46 +65,24 @@
     <Parameter Name="DocumentID" Parameter="documentID" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.uspDocumentUpdateByDocumentID" Method="uspDocumentUpdateByDocumentID">
-    <Parameter Name="DocumentID" Parameter="documentID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Title" Parameter="title" Type="System.String" DbType="NVarChar(400)" />
-    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="NText" />
-    <Parameter Name="URL" Parameter="uRL" Type="System.String" DbType="VarChar(500)" />
-    <Parameter Name="CreateDate" Parameter="createDate" Type="System.DateTime" DbType="DateTime" />
-    <Parameter Name="CategoryID" Parameter="categoryID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.uspDocumentInsert" Method="uspDocumentInsert">
-    <Parameter Name="Title" Parameter="title" Type="System.String" DbType="NVarChar(400)" />
-    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="NText" />
-    <Parameter Name="URL" Parameter="uRL" Type="System.String" DbType="VarChar(500)" />
-    <Parameter Name="CreateDate" Parameter="createDate" Type="System.DateTime" DbType="DateTime" />
-    <Parameter Name="CategoryID" Parameter="categoryID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
-  </Function>
   <Function Name="dbo.uspDocumentGetByCondition" Method="uspDocumentGetByCondition">
+    <Parameter Name="Keyword" Parameter="keyword" Type="System.String" DbType="NVarChar(50)" />
     <Parameter Name="CategoryID" Parameter="categoryID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="currPage" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Pagesize" Parameter="pagesize" Type="System.Int32" DbType="Int" />
-    <Parameter Name="CreateDate" Parameter="createDate" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="FromDate" Parameter="fromDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="ToDate" Parameter="toDate" Type="System.DateTime" DbType="DateTime" />
     <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CurrentPage" Parameter="currentPage" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PageSize" Parameter="pageSize" Type="System.Int32" DbType="Int" />
     <Parameter Name="TotalRecord" Parameter="totalRecord" Type="System.Int32" DbType="Int" Direction="InOut" />
     <ElementType Name="uspDocumentGetByConditionResult">
       <Column Name="RowNumber" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="DocumentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Title" Type="System.String" DbType="NVarChar(400) NOT NULL" CanBeNull="false" />
-      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="URL" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="CategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DocumentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(400) NOT NULL" CanBeNull="false" />
+      <Column Name="URL" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
     </ElementType>
-  </Function>
-  <Function Name="dbo.uspDocumentUpdateStatus" Method="uspDocumentUpdateStatus">
-    <Parameter Name="DocumentID" Parameter="documentID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
   </Function>
 </Database>
