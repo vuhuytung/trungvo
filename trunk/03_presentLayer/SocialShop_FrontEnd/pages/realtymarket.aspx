@@ -18,7 +18,7 @@
                             <table class="tbMarket">
                                 <tr>
                                     <td>
-                                        TP/Tỉnh
+                                        TP/Tỉnh:
                                     </td>
                                     <td>
                                         <asp:DropDownList ID="ddlProvince" CssClass="ddl" runat="server" OnSelectedIndexChanged="ddlProvince_SelectedIndexChanged"
@@ -26,41 +26,34 @@
                                         </asp:DropDownList>
                                     </td>
                                     <td>
-                                        Quận/Huyện
+                                        Quận/Huyện:
                                     </td>
                                     <td>
                                         <asp:DropDownList ID="ddlDistrict" CssClass="ddl" runat="server" AutoPostBack="true"
-                                            Height="22px" OnSelectedIndexChanged="ddlDistrict_SelectedIndexChanged" Width="136px">
+                                            Height="22px" Width="136px">
                                         </asp:DropDownList>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        Phường/Xã
-                                    </td>
-                                    <td>
-                                        <asp:DropDownList ID="ddlVillage" CssClass="ddl" runat="server" Width="136px">
-                                        </asp:DropDownList>
-                                    </td>
-                                    <td>
-                                        Loại BĐS
+                                        Danh mục:
                                     </td>
                                     <td>
                                         <asp:DropDownList ID="ddlTypeBDS" CssClass="ddl" runat="server">
                                         </asp:DropDownList>
                                     </td>
-                                </tr>
-                                <tr>
                                     <td>
-                                        Khoảng Giá
+                                        Khoảng Giá:
                                     </td>
                                     <td>
                                         <asp:DropDownList ID="ddlPrice" CssClass="ddl" runat="server">
                                         </asp:DropDownList>
                                     </td>
-                                    <td style="text-align: center; padding-top: 7px;">
-                                        <asp:Button ID="btnSearch" CssClass="btnButton" runat="server" Text="Tìm" Width="70px"
-                                            OnClick="btnSearch_Click" />
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center; padding-top: 7px;" colspan="4">
+                                         <asp:ImageButton ID="ImgSearch" ImageUrl="~/images/btnSearch.png" 
+                                            runat="server" onclick="btnSearch_Click" />
                                     </td>
                                 </tr>
                             </table>
@@ -75,7 +68,7 @@
                                     </div>
                                     <div class="detail_item">
                                         <div class="detail_item_title">
-                                            <a href='../pages/RealtyMarketDetails.aspx?ID=<%#Eval("RealtyMarketID")%>'>
+                                            <a href='/pages/RealtyMarketDetails.aspx?ID=<%#Eval("RealtyMarketID")%>'>
                                                 <%#Eval("Title")%></a>
                                         </div>
                                         <div class="detail_item_add">
