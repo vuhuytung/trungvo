@@ -133,5 +133,34 @@ namespace WorkFlowBLL
                 }
             }
         }
+
+
+        /// <summary>
+        /// Lấy danh sách phản hồi cho phần quản lý
+        /// </summary>
+        public ClassExtend<string, uspContactGetListResult> ContactGetList(DateTime fromDate, DateTime toDate, int status, int cur, int ps)
+        {
+            ClassExtend<string, uspContactGetListResult> ret = new ClassExtend<string, uspContactGetListResult>();
+            int? total = 0;
+            ret.Items = BDS.NewsInstance.uspContactGetList(fromDate, toDate, status, cur, ps, ref total).ToList();
+            ret.TotalRecord = total.Value;
+            return ret;
+        }
+        public int ContactUpdateStatus(int contactID, int status)
+        {
+            return BDS.NewsInstance.uspContactUpdateStatus(contactID, status);
+        }
+        public int ContactDelete(int contactID)
+        {
+            return BDS.NewsInstance.uspContactDelete(contactID);
+        }
+        public int ContactDeleteMulti(string contactIDs)
+        {
+            return BDS.NewsInstance.uspContactDeleteMulti(contactIDs);
+        }
+        public int ContactInsert(string fullName,string address, string phone, string email, string description)
+        {
+            return BDS.NewsInstance.uspContactInsert(fullName, phone, description, email, address);
+        }
     }
 }

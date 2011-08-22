@@ -31,11 +31,10 @@ namespace WorkFlowBLL
       }
       public string GetFullAddressbyLocationID(int LocationID)
       {
-          ClassExtend<string, uspRealtyMarketGetFullAddByLoactionIDResult> ret = new ClassExtend<string, uspRealtyMarketGetFullAddByLoactionIDResult>();
-          ret.Items=BDS.RealtymarketInstance.uspRealtyMarketGetFullAddByLoactionID(LocationID).ToList();
+          var ret = BDS.RealtymarketInstance.uspRealtyMarketGetFullAddByLoactionID(LocationID).FirstOrDefault();
           try
           {
-              return ret.Items[0].address1.ToString();
+              return ret.address1;
           }
           catch
           {
@@ -51,26 +50,26 @@ namespace WorkFlowBLL
           ret.TotalRecord = total.Value;
           return ret;
       }
-      public List<uspRealtyMarketGetInfoByRealtyMarketIDResult> GetDetailRealtyMarketByID(int id)
+      public uspRealtyMarketGetInfoByRealtyMarketIDResult GetDetailRealtyMarketByID(int id)
       {
-          return BDS.RealtymarketInstance.uspRealtyMarketGetInfoByRealtyMarketID(id).ToList();
+          return BDS.RealtymarketInstance.uspRealtyMarketGetInfoByRealtyMarketID(id).FirstOrDefault();
       }
       public List<uspRealtyMarketGetCatIdByTypeResult> GetCatByType()
       {
           return BDS.RealtymarketInstance.uspRealtyMarketGetCatIdByType(4).ToList();
       }
 
-      public void UpdateMarket(int ID, string Title, string Desc, string user, string phone, string email, double price, int TypeBDS, string Img, string ImgThumb,string Legal, string Acreage, string ClientRoom, string bedRoom, string bathroom, string Position,string address, string Floor, int Location,string Street,  bool maugiao, bool hospital, bool school, bool market, bool university, bool Status)
+      public int UpdateMarket(int ID, string Title, string Desc, string user, string phone, string email, double price, int TypeBDS, string Img, string ImgThumb,string Legal, string Acreage, string ClientRoom, string bedRoom, string bathroom, string Position,string address, string Floor, int Location,string Street,  bool maugiao, bool hospital, bool school, bool market, bool university, bool Status)
       {
-          BDS.RealtymarketInstance.uspRealtyMarketUpdateByRealtyMarketID(ID, Title, Img, ImgThumb, Desc, user, phone, email, price, TypeBDS, Legal, Acreage, ClientRoom, bedRoom, bathroom, Position, Floor, maugiao, hospital, school, market, university, address, Location, Street, Status);
+          return BDS.RealtymarketInstance.uspRealtyMarketUpdateByRealtyMarketID(ID, Title, Img, ImgThumb, Desc, user, phone, email, price, TypeBDS, Legal, Acreage, ClientRoom, bedRoom, bathroom, Position, Floor, maugiao, hospital, school, market, university, address, Location, Street, Status);
       }
-      public void InsertMarket(string Title, string Desc, string user, string phone, string email, double price, int TypeBDS, string Img,string ImgThumb, string Legal, string Acreage, string ClientRoom, string bedRoom, string bathroom, string Position, string address, string Floor, int Location,string Street, bool maugiao, bool hospital, bool school, bool market, bool university, bool Status,int Shower)
+      public int InsertMarket(string Title, string Desc, string user, string phone, string email, double price, int TypeBDS, string Img,string ImgThumb, string Legal, string Acreage, string ClientRoom, string bedRoom, string bathroom, string Position, string address, string Floor, int Location,string Street, bool maugiao, bool hospital, bool school, bool market, bool university, bool Status,int Shower)
       {
-          BDS.RealtymarketInstance.uspRealtyMarketInsert(Title, Desc, Img, ImgThumb, user, phone, email, price, TypeBDS, Legal, Acreage, ClientRoom, bedRoom, bathroom, Position, Floor, maugiao, hospital, school, market, university, address, Location, Street,Shower, Status);
+          return BDS.RealtymarketInstance.uspRealtyMarketInsert(Title, Desc, Img, ImgThumb, user, phone, email, price, TypeBDS, Legal, Acreage, ClientRoom, bedRoom, bathroom, Position, Floor, maugiao, hospital, school, market, university, address, Location, Street,Shower, Status);
       }
-      public void DeleteMarket(int ID)
+      public int DeleteMarket(int ID)
       {
-          BDS.RealtymarketInstance.uspRealtyMarketDeleteByRealtyMarketID(ID);
+          return BDS.RealtymarketInstance.uspRealtyMarketDeleteByRealtyMarketID(ID);
       }
       public int UpdateStatus(int ID, bool status)
       {
