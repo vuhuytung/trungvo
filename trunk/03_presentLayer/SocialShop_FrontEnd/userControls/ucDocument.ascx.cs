@@ -34,6 +34,7 @@ public partial class userControls_ucDocument : System.Web.UI.UserControl
                 RptDocument.DataSource = _data.Items;
                 RptDocument.DataBind();
                 ucPaging1.TotalRecord = _data.TotalRecord;
+                divPaging.Visible = ucPaging1.TotalPage > 1;
             }
         }
         catch
