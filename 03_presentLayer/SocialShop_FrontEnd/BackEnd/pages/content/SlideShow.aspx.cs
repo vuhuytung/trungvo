@@ -203,7 +203,7 @@ public partial class BackEnd_pages_content_SlideShow : System.Web.UI.Page
 
     protected void RptSlide_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
-        if (e.CommandName == "Edit")
+        if (e.CommandName == "edit")
         {
             Panel1.Visible = true;
             Panel2.Visible = false;
@@ -217,7 +217,7 @@ public partial class BackEnd_pages_content_SlideShow : System.Web.UI.Page
             catch { ddlStatusEdit.SelectedValue = "0"; }
             lblMsg.Text = "";
         }
-        else if (e.CommandName == "Delete")
+        else if (e.CommandName == "delete")
         {
             try
             {
