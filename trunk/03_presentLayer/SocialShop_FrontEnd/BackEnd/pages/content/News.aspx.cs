@@ -119,17 +119,16 @@ public partial class BackEnd_pages_content_News : System.Web.UI.Page
         foreach (var row in rows)
         {
             if (row.Type == 2)
-            {
-                ListItem item = new ListItem(space + " ○ " + row.Name, row.CategoryID.ToString());
+            {                
+                ListItem item = new ListItem(space + " » " + row.Name, row.CategoryID.ToString());
                 ddlNewsMenu.Items.Add(item);
             }
-            GetMenuNewsAdd(tb, row.CategoryID.Value, space + " ○ " + row.Name);
+            GetMenuNewsAdd(tb, row.CategoryID.Value, space + " » " + row.Name);
         }
     }
 
     protected void pageChange(object sender)
-    {
-        ucPaging1.Visible = false;
+    {        
         if ((!rdpFromDate.SelectedDate.HasValue) || (!rdpToDate.SelectedDate.HasValue))
         {
             lblMsg.Text = "Ngày tháng tìm kiếm không hợp lệ!";
@@ -146,7 +145,7 @@ public partial class BackEnd_pages_content_News : System.Web.UI.Page
         var list = ctrNews.GetListForAdmin(Convert.ToInt32(ddlCategory.SelectedValue),txtKeyword.Text,rdpFromDate.SelectedDate.Value, rdpToDate.SelectedDate.Value, Convert.ToInt32(ddlStatus.SelectedValue),Convert.ToInt32(ddlIsHot.SelectedValue),ucPaging1.CurrentPage, ucPaging1.PageSize);
 
         ucPaging1.TotalRecord = list.TotalRecord;
-        ucPaging1.Visible = ucPaging1.TotalPage > 1;
+        divPaging.Visible = ucPaging1.TotalPage > 1;
 
         rptAllNews.DataSource = list.Items;
         rptAllNews.DataBind();
