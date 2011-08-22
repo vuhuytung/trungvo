@@ -20,6 +20,26 @@ namespace WorkFlowBLL
           ret.TotalRecord = total.Value;
           return ret;
       }
+      /// <summary>
+      /// 
+      /// </summary>
+      /// <param name="code"></param>
+      /// <param name="typeCode">1: Tỉnh, 2:Huyện, 3: xã</param>
+      /// <param name="TypeBDS"></param>
+      /// <param name="PriceStart"></param>
+      /// <param name="PriceEnd"></param>
+      /// <param name="cur"></param>
+      /// <param name="ps"></param>
+      /// <returns></returns>
+      public ClassExtend<string, uspRealtyMarketGetListResult> GetListRealtyMarketBy(int userID,int code, int typeCode, int TypeBDS, double PriceStart, double PriceEnd, int cur, int ps)
+      {
+
+          ClassExtend<string, uspRealtyMarketGetListResult> ret = new ClassExtend<string, uspRealtyMarketGetListResult>();
+          int? total = 0;
+          ret.Items = BDS.RealtymarketInstance.uspRealtyMarketGetList(userID,code, typeCode, TypeBDS, PriceStart, PriceEnd, cur, ps, ref total).ToList();
+          ret.TotalRecord = total.Value;
+          return ret;
+      }
       public ClassExtend<string, uspRealtyMarketGetAllByStatusResult> GetListRealtyMarketByStatus(int Code, int TypeCode, int TypeBDS, double PriceStart, double PriceEnd, int Cur, int ps)
       {
 
