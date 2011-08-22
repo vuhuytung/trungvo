@@ -31,7 +31,7 @@
                         <asp:TextBox ID="txtUser" runat="server" Text=""></asp:TextBox><a>*</a>
                     </td>
                     <td>
-                        Địa chỉ
+                        Địa chỉ:
                     </td>
                     <td style="padding: 5px 0;">
                         <asp:TextBox ID="txtAddress" runat="server" Text="" Width="200"></asp:TextBox><a>*</a>
@@ -39,13 +39,13 @@
                 </tr>
                 <tr>
                     <td>
-                        Điện thoại
+                        Điện thoại:
                     </td>
                     <td style="padding: 5px 0;">
                         <asp:TextBox ID="txtPhone" runat="server" Text=""></asp:TextBox><a>*</a>
                     </td>
                     <td>
-                        Email
+                        Email:
                     </td>
                     <td style="padding: 5px 0;">
                         <asp:TextBox ID="txtEmail" runat="server" Text="" Width="200"></asp:TextBox>
@@ -53,7 +53,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Loại BĐS
+                        Loại BĐS:
                     </td>
                     <td style="padding: 5px 0px;">
                         <asp:DropDownList ID="ddlTypeBDS" runat="server">
@@ -62,7 +62,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Địa điểm BĐS
+                        Địa điểm BĐS:
                     </td>
                     <td style="padding: 5px 0;">
                         <asp:DropDownList ID="ddlProvince" runat="server" OnSelectedIndexChanged="ddlProvince_SelectedIndexChanged"
@@ -86,7 +86,7 @@
                     <td>
                     </td>
                     <td style="padding: 10px 0;">
-                        số nhà,Đường phố/thôn-xóm:
+                        Số nhà,Đường phố/thôn-xóm:
                     </td>
                     <td>
                         <asp:TextBox ID="txtStreet" runat="server"></asp:TextBox>
@@ -108,13 +108,13 @@
                 </tr>
                 <tr>
                     <td>
-                        Hướng BĐS
+                        Hướng:
                     </td>
                     <td style="padding: 5px 0;">
                         <asp:TextBox ID="txtPosition" runat="server" Text=""></asp:TextBox>
                     </td>
                     <td>
-                        Số tầng
+                        Số tầng:
                     </td>
                     <td style="padding: 5px 0;">
                         <asp:TextBox ID="txtFloor" runat="server" Text="" Width="50"></asp:TextBox>
@@ -122,13 +122,13 @@
                 </tr>
                 <tr>
                     <td>
-                        Phòng khách
+                        Phòng khách:
                     </td>
                     <td style="padding: 5px 0;">
                         <asp:TextBox ID="txtClientRoom" runat="server" Text="" Width="50"></asp:TextBox>
                     </td>
                     <td>
-                        Phòng ngủ
+                        Phòng ngủ:
                     </td>
                     <td style="padding: 5px 0;">
                         <asp:TextBox ID="txtBedRoom" runat="server" Text="" Width="50"></asp:TextBox>
@@ -144,13 +144,13 @@
                 </tr>
                 <tr>
                     <td>
-                        Gần trường mẫu giáo
+                        Gần trường mẫu giáo:
                     </td>
                     <td style="padding: 5px 0;">
                         <asp:CheckBox ID="chkMaugiao" runat="server" />
                     </td>
                     <td>
-                        Gần trường trung học
+                        Gần trường trung học:
                     </td>
                     <td style="padding: 5px 0;">
                         <asp:CheckBox ID="chkschool" runat="server" />
@@ -158,13 +158,13 @@
                 </tr>
                 <tr>
                     <td>
-                        Gần bệnh viện
+                        Gần bệnh viện:
                     </td>
                     <td style="padding: 5px 0;">
                         <asp:CheckBox ID="chkHospital" runat="server" />
                     </td>
                     <td>
-                        Gần chợ
+                        Gần chợ:
                     </td>
                     <td style="padding: 5px 0;">
                         <asp:CheckBox ID="chkMarket" runat="server" />
@@ -172,7 +172,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Gần trường Đại học
+                        Gần trường Đại học:
                     </td>
                     <td style="padding: 5px 0;">
                         <asp:CheckBox ID="chkUniversity" runat="server" />
@@ -180,7 +180,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Giá BĐS
+                        Giá:
                     </td>
                     <td style="padding: 5px 0;">
                         <asp:TextBox ID="txtPrice" runat="server" Text=""></asp:TextBox><a>*</a>vnđ
@@ -188,7 +188,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Ảnh BĐS
+                        Hình ảnh:
                     </td>
                     <td>
                         <asp:FileUpload ID="fupload" runat="server" CssClass="fupload" />
@@ -196,7 +196,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Nội dung
+                        Nội dung:
                     </td>
                     <td colspan="2" style="padding: 5px 0;">
                         <asp:TextBox ID="txtDesc" runat="server" Text="" TextMode="MultiLine" Width="450"

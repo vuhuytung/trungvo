@@ -95,6 +95,15 @@ namespace WorkFlowBLL
             return BDS.CategoryInstance.uspCategoryGetNewsMenu().ToList();
         }
 
+        /// <summary>
+        /// Lấy danh sách các menu theo loại và menu cha
+        /// </summary>
+        /// <returns></returns>
+        public List<uspCategoryGetMenuByTypeResult> GetMenuByType(int type)
+        {
+            return BDS.CategoryInstance.uspCategoryGetMenuByType(type).ToList();
+        }
+
         //private void GenHtmlMenu(List<uspCategoryGetAllResult> menu, int ParentID,int y)
         //{
         //    try

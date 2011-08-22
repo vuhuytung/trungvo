@@ -62,12 +62,32 @@ namespace DataContext
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspDocumentGetAll")]
-		public ISingleResult<uspDocumentGetAllResult> uspDocumentGetAll([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CategoryID", DbType="Int")] System.Nullable<int> categoryID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> currPage, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Pagesize", DbType="Int")] System.Nullable<int> pagesize, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TotalRecord", DbType="Int")] ref System.Nullable<int> totalRecord)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspDocumentUpdateStatus")]
+		public int uspDocumentUpdateStatus([global::System.Data.Linq.Mapping.ParameterAttribute(Name="DocumentID", DbType="Int")] System.Nullable<int> documentID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Int")] System.Nullable<int> status)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), categoryID, currPage, pagesize, totalRecord);
-			totalRecord = ((System.Nullable<int>)(result.GetParameterValue(3)));
-			return ((ISingleResult<uspDocumentGetAllResult>)(result.ReturnValue));
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), documentID, status);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspDocumentUpdateByDocumentID")]
+		public int uspDocumentUpdateByDocumentID([global::System.Data.Linq.Mapping.ParameterAttribute(Name="DocumentID", DbType="Int")] System.Nullable<int> documentID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Title", DbType="NVarChar(400)")] string title, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Description", DbType="NText")] string description, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="URL", DbType="NVarChar(250)")] string uRL, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CreateDate", DbType="DateTime")] System.Nullable<System.DateTime> createDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CategoryID", DbType="Int")] System.Nullable<int> categoryID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Int")] System.Nullable<int> status)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), documentID, title, description, uRL, createDate, categoryID, status);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspDocumentInsert")]
+		public int uspDocumentInsert([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Title", DbType="NVarChar(400)")] string title, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Description", DbType="NText")] string description, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="URL", DbType="NVarChar(250)")] string uRL, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CreateDate", DbType="DateTime")] System.Nullable<System.DateTime> createDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CategoryID", DbType="Int")] System.Nullable<int> categoryID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Int")] System.Nullable<int> status)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), title, description, uRL, createDate, categoryID, status);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspDocumentGetPage")]
+		public ISingleResult<uspDocumentGetPageResult> uspDocumentGetPage([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CategoryID", DbType="Int")] System.Nullable<int> categoryID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> currPage, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> recodperpage, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Pagesize", DbType="Int")] System.Nullable<int> pagesize)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), categoryID, currPage, recodperpage, pagesize);
+			return ((ISingleResult<uspDocumentGetPageResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspDocumentGetInfoByDocumentID")]
@@ -77,6 +97,14 @@ namespace DataContext
 			return ((ISingleResult<uspDocumentGetInfoByDocumentIDResult>)(result.ReturnValue));
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspDocumentGetAll")]
+		public ISingleResult<uspDocumentGetAllResult> uspDocumentGetAll([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CategoryID", DbType="Int")] System.Nullable<int> categoryID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> currPage, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Pagesize", DbType="Int")] System.Nullable<int> pagesize, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TotalRecord", DbType="Int")] ref System.Nullable<int> totalRecord)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), categoryID, currPage, pagesize, totalRecord);
+			totalRecord = ((System.Nullable<int>)(result.GetParameterValue(3)));
+			return ((ISingleResult<uspDocumentGetAllResult>)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspDocumentDeleteByDocumentID")]
 		public int uspDocumentDeleteByDocumentID([global::System.Data.Linq.Mapping.ParameterAttribute(Name="DocumentID", DbType="Int")] System.Nullable<int> documentID)
 		{
@@ -84,33 +112,172 @@ namespace DataContext
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspDocumentUpdateByDocumentID")]
-		public int uspDocumentUpdateByDocumentID([global::System.Data.Linq.Mapping.ParameterAttribute(Name="DocumentID", DbType="Int")] System.Nullable<int> documentID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Title", DbType="NVarChar(400)")] string title, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Description", DbType="NText")] string description, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="URL", DbType="VarChar(500)")] string uRL, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CreateDate", DbType="DateTime")] System.Nullable<System.DateTime> createDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CategoryID", DbType="Int")] System.Nullable<int> categoryID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Int")] System.Nullable<int> status)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), documentID, title, description, uRL, createDate, categoryID, status);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspDocumentInsert")]
-		public int uspDocumentInsert([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Title", DbType="NVarChar(400)")] string title, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Description", DbType="NText")] string description, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="URL", DbType="VarChar(500)")] string uRL, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CreateDate", DbType="DateTime")] System.Nullable<System.DateTime> createDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CategoryID", DbType="Int")] System.Nullable<int> categoryID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Int")] System.Nullable<int> status)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), title, description, uRL, createDate, categoryID, status);
-			return ((int)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspDocumentGetByCondition")]
-		public ISingleResult<uspDocumentGetByConditionResult> uspDocumentGetByCondition([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CategoryID", DbType="Int")] System.Nullable<int> categoryID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> currPage, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Pagesize", DbType="Int")] System.Nullable<int> pagesize, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CreateDate", DbType="VarChar(30)")] string createDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Int")] System.Nullable<int> status, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TotalRecord", DbType="Int")] ref System.Nullable<int> totalRecord)
+		public ISingleResult<uspDocumentGetByConditionResult> uspDocumentGetByCondition([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Keyword", DbType="NVarChar(50)")] string keyword, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CategoryID", DbType="Int")] System.Nullable<int> categoryID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FromDate", DbType="DateTime")] System.Nullable<System.DateTime> fromDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ToDate", DbType="DateTime")] System.Nullable<System.DateTime> toDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Int")] System.Nullable<int> status, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CurrentPage", DbType="Int")] System.Nullable<int> currentPage, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PageSize", DbType="Int")] System.Nullable<int> pageSize, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TotalRecord", DbType="Int")] ref System.Nullable<int> totalRecord)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), categoryID, currPage, pagesize, createDate, status, totalRecord);
-			totalRecord = ((System.Nullable<int>)(result.GetParameterValue(5)));
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), keyword, categoryID, fromDate, toDate, status, currentPage, pageSize, totalRecord);
+			totalRecord = ((System.Nullable<int>)(result.GetParameterValue(7)));
 			return ((ISingleResult<uspDocumentGetByConditionResult>)(result.ReturnValue));
 		}
+	}
+	
+	public partial class uspDocumentGetPageResult
+	{
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspDocumentUpdateStatus")]
-		public int uspDocumentUpdateStatus([global::System.Data.Linq.Mapping.ParameterAttribute(Name="DocumentID", DbType="Int")] System.Nullable<int> documentID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Int")] System.Nullable<int> status)
+		private string _PhanTrang;
+		
+		public uspDocumentGetPageResult()
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), documentID, status);
-			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhanTrang", DbType="NVarChar(4000)")]
+		public string PhanTrang
+		{
+			get
+			{
+				return this._PhanTrang;
+			}
+			set
+			{
+				if ((this._PhanTrang != value))
+				{
+					this._PhanTrang = value;
+				}
+			}
+		}
+	}
+	
+	public partial class uspDocumentGetInfoByDocumentIDResult
+	{
+		
+		private int _DocumentID;
+		
+		private string _Title;
+		
+		private string _Description;
+		
+		private string _URL;
+		
+		private System.DateTime _CreateDate;
+		
+		private int _CategoryID;
+		
+		private int _Status;
+		
+		public uspDocumentGetInfoByDocumentIDResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DocumentID", DbType="Int NOT NULL")]
+		public int DocumentID
+		{
+			get
+			{
+				return this._DocumentID;
+			}
+			set
+			{
+				if ((this._DocumentID != value))
+				{
+					this._DocumentID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", DbType="NVarChar(400) NOT NULL", CanBeNull=false)]
+		public string Title
+		{
+			get
+			{
+				return this._Title;
+			}
+			set
+			{
+				if ((this._Title != value))
+				{
+					this._Title = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this._Description = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_URL", DbType="NVarChar(250) NOT NULL", CanBeNull=false)]
+		public string URL
+		{
+			get
+			{
+				return this._URL;
+			}
+			set
+			{
+				if ((this._URL != value))
+				{
+					this._URL = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime NOT NULL")]
+		public System.DateTime CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this._CreateDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategoryID", DbType="Int NOT NULL")]
+		public int CategoryID
+		{
+			get
+			{
+				return this._CategoryID;
+			}
+			set
+			{
+				if ((this._CategoryID != value))
+				{
+					this._CategoryID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Int NOT NULL")]
+		public int Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this._Status = value;
+				}
+			}
 		}
 	}
 	
@@ -201,141 +368,7 @@ namespace DataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_URL", DbType="VarChar(500) NOT NULL", CanBeNull=false)]
-		public string URL
-		{
-			get
-			{
-				return this._URL;
-			}
-			set
-			{
-				if ((this._URL != value))
-				{
-					this._URL = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime NOT NULL")]
-		public System.DateTime CreateDate
-		{
-			get
-			{
-				return this._CreateDate;
-			}
-			set
-			{
-				if ((this._CreateDate != value))
-				{
-					this._CreateDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategoryID", DbType="Int NOT NULL")]
-		public int CategoryID
-		{
-			get
-			{
-				return this._CategoryID;
-			}
-			set
-			{
-				if ((this._CategoryID != value))
-				{
-					this._CategoryID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Int NOT NULL")]
-		public int Status
-		{
-			get
-			{
-				return this._Status;
-			}
-			set
-			{
-				if ((this._Status != value))
-				{
-					this._Status = value;
-				}
-			}
-		}
-	}
-	
-	public partial class uspDocumentGetInfoByDocumentIDResult
-	{
-		
-		private int _DocumentID;
-		
-		private string _Title;
-		
-		private string _Description;
-		
-		private string _URL;
-		
-		private System.DateTime _CreateDate;
-		
-		private int _CategoryID;
-		
-		private int _Status;
-		
-		public uspDocumentGetInfoByDocumentIDResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DocumentID", DbType="Int NOT NULL")]
-		public int DocumentID
-		{
-			get
-			{
-				return this._DocumentID;
-			}
-			set
-			{
-				if ((this._DocumentID != value))
-				{
-					this._DocumentID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", DbType="NVarChar(400) NOT NULL", CanBeNull=false)]
-		public string Title
-		{
-			get
-			{
-				return this._Title;
-			}
-			set
-			{
-				if ((this._Title != value))
-				{
-					this._Title = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NText", UpdateCheck=UpdateCheck.Never)]
-		public string Description
-		{
-			get
-			{
-				return this._Description;
-			}
-			set
-			{
-				if ((this._Description != value))
-				{
-					this._Description = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_URL", DbType="VarChar(500) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_URL", DbType="NVarChar(250) NOT NULL", CanBeNull=false)]
 		public string URL
 		{
 			get
@@ -405,19 +438,19 @@ namespace DataContext
 		
 		private System.Nullable<long> _RowNumber;
 		
-		private int _DocumentID;
-		
-		private string _Title;
-		
-		private string _Description;
-		
-		private string _URL;
+		private int _CategoryID;
 		
 		private System.DateTime _CreateDate;
 		
-		private int _CategoryID;
+		private string _Description;
+		
+		private int _DocumentID;
 		
 		private int _Status;
+		
+		private string _Title;
+		
+		private string _URL;
 		
 		public uspDocumentGetByConditionResult()
 		{
@@ -439,66 +472,18 @@ namespace DataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DocumentID", DbType="Int NOT NULL")]
-		public int DocumentID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategoryID", DbType="Int NOT NULL")]
+		public int CategoryID
 		{
 			get
 			{
-				return this._DocumentID;
+				return this._CategoryID;
 			}
 			set
 			{
-				if ((this._DocumentID != value))
+				if ((this._CategoryID != value))
 				{
-					this._DocumentID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", DbType="NVarChar(400) NOT NULL", CanBeNull=false)]
-		public string Title
-		{
-			get
-			{
-				return this._Title;
-			}
-			set
-			{
-				if ((this._Title != value))
-				{
-					this._Title = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NText", UpdateCheck=UpdateCheck.Never)]
-		public string Description
-		{
-			get
-			{
-				return this._Description;
-			}
-			set
-			{
-				if ((this._Description != value))
-				{
-					this._Description = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_URL", DbType="VarChar(500) NOT NULL", CanBeNull=false)]
-		public string URL
-		{
-			get
-			{
-				return this._URL;
-			}
-			set
-			{
-				if ((this._URL != value))
-				{
-					this._URL = value;
+					this._CategoryID = value;
 				}
 			}
 		}
@@ -519,18 +504,34 @@ namespace DataContext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategoryID", DbType="Int NOT NULL")]
-		public int CategoryID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		public string Description
 		{
 			get
 			{
-				return this._CategoryID;
+				return this._Description;
 			}
 			set
 			{
-				if ((this._CategoryID != value))
+				if ((this._Description != value))
 				{
-					this._CategoryID = value;
+					this._Description = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DocumentID", DbType="Int NOT NULL")]
+		public int DocumentID
+		{
+			get
+			{
+				return this._DocumentID;
+			}
+			set
+			{
+				if ((this._DocumentID != value))
+				{
+					this._DocumentID = value;
 				}
 			}
 		}
@@ -547,6 +548,38 @@ namespace DataContext
 				if ((this._Status != value))
 				{
 					this._Status = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", DbType="NVarChar(400) NOT NULL", CanBeNull=false)]
+		public string Title
+		{
+			get
+			{
+				return this._Title;
+			}
+			set
+			{
+				if ((this._Title != value))
+				{
+					this._Title = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_URL", DbType="NVarChar(250) NOT NULL", CanBeNull=false)]
+		public string URL
+		{
+			get
+			{
+				return this._URL;
+			}
+			set
+			{
+				if ((this._URL != value))
+				{
+					this._URL = value;
 				}
 			}
 		}
