@@ -190,6 +190,7 @@ public partial class BackEnd_pages_content_Document : System.Web.UI.Page
                 Panel2.Visible = false;
                 Panel3.Visible = true;
                 Panel1.Visible = false;
+                ucPaging1_PageChange(ucPaging1);
                 lblMsg.Text = "Cập nhật thành công!";
             }
             else
@@ -212,6 +213,7 @@ public partial class BackEnd_pages_content_Document : System.Web.UI.Page
                 Panel2.Visible = false;
                 Panel3.Visible = true;
                 Panel1.Visible = false;
+                ucPaging1_PageChange(ucPaging1);
                 lblMsg.Text = "Cập nhật thành công!";
             }
             else
@@ -233,7 +235,9 @@ public partial class BackEnd_pages_content_Document : System.Web.UI.Page
             if (ctrN.InsertDoc(txtTitle.Text, txtDesc.Text, fileName, DateTime.Now, Int32.Parse(ddlTypeDoc1.SelectedValue), Convert.ToInt32(ddlStatusNew.SelectedValue)) > 0)
             {
                 Panel2.Visible = false;
-                Panel1.Visible = true;
+                Panel3.Visible = true;
+                Panel1.Visible = false;
+                ucPaging1_PageChange(ucPaging1);
                 lblMsg.Text = "Thêm mới thành công!";
             }else
                 lblMsg.Text = "Thêm mới thất bại!";
@@ -309,6 +313,7 @@ public partial class BackEnd_pages_content_Document : System.Web.UI.Page
                     }
             }
             lblMsg.Text = "Xóa thành công!";
+            ucPaging1_PageChange(ucPaging1);
         }
         catch
         {
