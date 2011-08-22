@@ -14,7 +14,7 @@
                            <a><%#Eval("Description") %></a>
                         </div>
                         <div class="doc_download">
-                            <a href='../pages/download.aspx?file=<%#Eval("Url") %>'>Download tài liệu này !&nbsp;&nbsp;<img src="../images/download1.gif" alt="anh" /> </a>
+                            <a href='/pages/download.aspx?file=<%#Eval("Url") %>'>Download tài liệu này !&nbsp;&nbsp;<img src="/images/download1.gif" alt="Download" /> </a>
                             
                         </div>
                     </div>
