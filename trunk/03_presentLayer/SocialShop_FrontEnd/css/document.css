@@ -49,10 +49,11 @@ a:hover
 }
 .doc_download a
 {
-    color: Red;
+    color: #459B30;
     text-decoration: none;
     font-family: Arial,Tahoma,Verdana;
     font-size: 12px;
+    font-weight:bold;
 }
 .tbEdit a
 {
