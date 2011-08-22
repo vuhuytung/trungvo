@@ -10,8 +10,7 @@ public partial class test_Download : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
-        string filename = Request["file"].ToString();
+        string filename = Request["file"]??"";
         fileDownload(filename, Server.MapPath("~/Resource/" + filename));
     }
     private void fileDownload(string fileName, string fileUrl)
