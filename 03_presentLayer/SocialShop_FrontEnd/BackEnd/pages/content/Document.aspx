@@ -6,21 +6,54 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:ScriptManager ID="ScriptManager1" runat="server">
     </asp:ScriptManager>
+    <script type="text/javascript">
+        function checkAdd() {
+            var txtTitle = document.getElementById("<%=txtTitle.ClientID %>");
+            var fupload = document.getElementById("<%=fupload.ClientID %>");
+            if (txtTitle.value == "") {
+                alert('Tiêu đề không được để trống !');
+                return false;
+            }
+            else if (fupload.value == "") {
+                alert('bạn chưa chọn đường dẩn tài liệu !');
+                return false;
+            }
+
+            return true;
+        }
+        function checkAdd1() {
+            var txtTitle = document.getElementById("<%=txtTitleEdit.ClientID %>");
+            if (txtTitle.value == "") {
+                alert('Tiêu đề không được để trống !');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
     <center style="color: Red; line-height: 30px;">
         <asp:Label ID="lblMsg" runat="server"></asp:Label></center>
     <asp:Panel ID="Panel2" runat="server" Visible="false">
-        <div class="box_hide">
-            <div class="MK_edit">
-                <div class="Edit_Title">
-                    <a>Thêm mới tài liệu</a>
-                </div>
-                <table cellspacing="8" class="tbDoc_my">
+        <div class="box" style="width: 920px;">
+            <div class="title">
+                <span>Thêm mới tài liệu</span>
+                <asp:LinkButton ID="lbtCancel" runat="server" CssClass="title-addnew" OnClick="btnHuy_Click">
+                    <img src="/BackEnd/img/cancel.png" style="vertical-align: top" alt='' />
+                    Bỏ qua
+                </asp:LinkButton>
+                <asp:LinkButton ID="lbtSave" runat="server" CssClass="title-addnew" OnClick="btnAdd_Click" OnClientClick="return checkAdd()">
+                    <img src="/BackEnd/img/page_save.png" style="vertical-align: top" alt='' />
+                    Lưu
+                </asp:LinkButton>
+            </div>
+            <div class="content" style="width: 918px;">
+                <table cellspacing="8">
                     <tr>
                         <td>
                             Tiêu đề:
                         </td>
                         <td style="padding: 5px 0;">
-                            <asp:TextBox ID="txtTitle" runat="server" Width="250"></asp:TextBox>
+                            <asp:TextBox ID="txtTitle" runat="server" Width="400" CssClass="inputText"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -28,12 +61,13 @@
                             Mô tả:
                         </td>
                         <td>
-                            <asp:TextBox ID="txtDesc" runat="server" TextMode="MultiLine" Width="250" Height="100"></asp:TextBox>
+                            <asp:TextBox ID="txtDesc" runat="server" TextMode="MultiLine" Width="450" Height="100"
+                                CssClass="inputText"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            File
+                            Tệp:
                         </td>
                         <td style="padding: 5px 0;">
                             <asp:FileUpload ID="fupload" runat="server" />
@@ -41,44 +75,22 @@
                     </tr>
                     <tr>
                         <td>
-                            Chuyên mục
+                            Chuyên mục:
                         </td>
                         <td>
                             <asp:DropDownList ID="ddlTypeDoc1" runat="server">
-                                <asp:ListItem Text="Bảng giá đất nhà nước" Value="21" />
-                                <asp:ListItem Text="Văn kiện liên quan đến BĐS" Value="22" />
                             </asp:DropDownList>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            Trạng thái hiển thị
+                            Trạng thái:
                         </td>
                         <td style="padding: 5px 5px;">
-                            <asp:CheckBox ID="chkstatus" BackColor="red" runat="server" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" style="padding: 10px 100px;">
-                            <script type="text/javascript">
-                                function checkAdd() {
-                                    var txtTitle = document.getElementById("ContentPlaceHolder1_txtTitle");
-                                    var fupload = document.getElementById("ContentPlaceHolder1_fupload");
-                                    if (txtTitle.value == "") {
-                                        alert('Tiêu đề không được để trống !');
-                                        return false;
-                                    }
-                                    else if (fupload.value == "") {
-                                        alert('bạn chưa chọn đường dẩn tài liệu !');
-                                        return false;
-                                    }
-
-                                    return true;
-                                }
-                            </script>
-                            <asp:Button ID="btnAdd" runat="server" Text="Thêm mới" OnClick="btnAdd_Click" OnClientClick="return checkAdd()"
-                                Width="70" />
-                            <asp:Button ID="btnHuy" runat="server" Text="Hủy" OnClick="btnHuy_Click" Width="70" />
+                            <asp:DropDownList ID="ddlStatusNew" runat="server" Width="80">
+                                <asp:ListItem Text="Hiển thị" Value="1" />
+                                <asp:ListItem Text="Ẩn" Value="0" />
+                            </asp:DropDownList>
                         </td>
                     </tr>
                 </table>
@@ -86,85 +98,66 @@
         </div>
     </asp:Panel>
     <asp:Panel ID="Panel1" runat="server" Visible="false">
-        <div class="box_hide">
-            <div class="MK_edit">
-                <div class="Edit_Title">
-                    <a>Sửa thông tin</a>
-                </div>
-                <asp:Repeater ID="RptDetail" runat="server">
-                    <HeaderTemplate>
-                        <table cellspacing="8" class="tbDoc_my">
-                    </HeaderTemplate>
-                    <ItemTemplate>
-                        <tr>
-                            <td>
-                                Tiêu đề:
-                            </td>
-                            <td style="padding: 5px 0;">
-                                <asp:TextBox ID="txtTitle" runat="server" Text='<%#Eval("Title")%>' Width="250"></asp:TextBox>
-                                <asp:Label ID="lblDocID" runat="server" Text='<%#Eval("DocumentID") %>' Visible="false"></asp:Label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Mô tả:
-                            </td>
-                            <td>
-                                <asp:TextBox ID="txtDesc" runat="server" TextMode="MultiLine" Text='<%# HttpUtility.HtmlDecode(Eval("Description").ToString()).Replace("</br>", "\n") %>'
-                                    Width="250" Height="100"></asp:TextBox>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                File
-                            </td>
-                            <td style="padding: 5px 0;">
-                                <asp:FileUpload ID="fupload" runat="server" />
-                                <asp:Label ID="lblUrl" runat="server" Text='<%#Eval("URL") %>' Visible="false"></asp:Label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Chuyên mục
-                            </td>
-                            <td>
-                                <asp:DropDownList ID="ddlTypeDoc" runat="server">
-                                    <asp:ListItem Text="Bảng giá đất nhà nước" Value="21" />
-                                    <asp:ListItem Text="Văn kiện liên quan đến BĐS" Value="22" />
-                                </asp:DropDownList>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Trạng thái hiển thị
-                            </td>
-                            <td style="padding: 5px 5px;">
-                                <asp:CheckBox ID="chkstatus" BackColor="red" runat="server" Checked=' <%#Convert.ToBoolean(Eval("Status")) %>' />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" style="padding: 10px 100px;">
-                                <script type="text/javascript">
-                                    function checkAdd1() {
-                                        var txtTitle = document.getElementById("ContentPlaceHolder1_RptDetail_txtTitle_0");
-                                        if (txtTitle.value == "") {
-                                            alert('Tiêu đề không được để trống !');
-                                            return false;
-                                        }
-
-                                        return true;
-                                    }
-                                </script>
-                                <asp:Button ID="btnUpdate" runat="server" Text="Cập nhật" OnClick="btnUpdate_Click"
-                                    OnClientClick="return checkAdd1()" Width="70" />
-                                <asp:Button ID="Button1" runat="server" Text="Hủy" OnClick="Button1_Click" Width="70" />
-                            </td>
-                        </tr>
-                    </ItemTemplate>
-                    <FooterTemplate>
-                        </table>
-                    </FooterTemplate>
-                </asp:Repeater>
+        <div class="box" style="width: 920px;">
+            <div class="title">
+                <span>Sửa tài liệu</span>
+                 <asp:LinkButton ID="LinkButton1" runat="server" CssClass="title-addnew" OnClick="Button1_Click">
+                    <img src="/BackEnd/img/cancel.png" style="vertical-align: top" alt='' />
+                    Bỏ qua
+                </asp:LinkButton>
+                <asp:LinkButton ID="LinkButton2" runat="server" CssClass="title-addnew" OnClick="btnUpdate_Click" OnClientClick="return checkAdd1()">
+                    <img src="/BackEnd/img/page_save.png" style="vertical-align: top" alt='' />
+                    Lưu
+                </asp:LinkButton>
+            </div>
+            <div class="content" style="width: 918px;">
+                <table cellspacing="8">
+                    <tr>
+                        <td>
+                            Tiêu đề:
+                        </td>
+                        <td style="padding: 5px 0;">
+                            <asp:TextBox ID="txtTitleEdit" runat="server" CssClass="inputText" Width="400"></asp:TextBox>                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Mô tả:
+                        </td>
+                        <td>
+                            <asp:TextBox ID="txtDescEdit" runat="server" TextMode="MultiLine"  CssClass="inputText"
+                                Width="450" Height="100"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            File:
+                        </td>
+                        <td style="padding: 5px 0;">
+                            <asp:FileUpload ID="fuploadEdit" runat="server" />                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Chuyên mục:
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="ddlTypeDocEdit" runat="server">
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Trạng thái:
+                        </td>
+                        <td style="padding: 5px 5px;">
+                            <asp:DropDownList ID="ddlStatusEdit" runat="server" Width="80">
+                                <asp:ListItem Text="Hiển thị" Value="1" />
+                                <asp:ListItem Text="Ẩn" Value="0" />
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
     </asp:Panel>
@@ -174,22 +167,30 @@
                 <span>Tìm kiếm tài liệu</span>
             </div>
             <div class="content" style="width: 918px;">
-                <table style="width: auto; margin: auto; height: 70px;">
+                <table style="width: auto; margin: auto; height: 70px;" cellspacing="5">
                     <tr>
+                        <td>
+                            Từ khóa:
+                        </td>
+                        <td>
+                            <asp:TextBox runat="server" Width="150px" ID="txtKeyWord" CssClass="inputText"></asp:TextBox>
+                        </td>
                         <td>
                             Loại tài liệu
                         </td>
-                        <td style="padding: 4px 15px;">
+                        <td>
                             <asp:DropDownList ID="ddlTypeDoc" runat="server">
-                                <asp:ListItem Text="Bảng giá đất nhà nước" Value="21" />
-                                <asp:ListItem Text="Văn kiện liên quan đến BĐS" Value="22" />
                             </asp:DropDownList>
                         </td>
-                        <td style="padding: 4px 10px;">
-                            Ngày tạo
+                        <td colspan="3">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Từ ngày
                         </td>
                         <td>
-                            <telerik:RadDatePicker ID="RadDatePicker1" runat="server" Calendar-CultureInfo="vi-VN"
+                            <telerik:RadDatePicker ID="rdpFromDate" runat="server" Calendar-CultureInfo="vi-VN"
                                 DateInput-DateFormat="dd-MM-yyyy" Skin="WebBlue">
                                 <Calendar ID="Calendar1" runat="server" Skin="WebBlue" UseColumnHeadersAsSelectors="False"
                                     UseRowHeadersAsSelectors="False" ViewSelectorText="x">
@@ -198,12 +199,25 @@
                                 </DateInput>
                             </telerik:RadDatePicker>
                         </td>
-                        <td style="padding: 4px 15px;">
+                        <td>
+                            Đến ngày
+                        </td>
+                        <td>
+                            <telerik:RadDatePicker ID="rdpToDate" runat="server" Calendar-CultureInfo="vi-VN"
+                                DateInput-DateFormat="dd-MM-yyyy" Skin="WebBlue">
+                                <Calendar ID="Calendar2" runat="server" Skin="WebBlue" UseColumnHeadersAsSelectors="False"
+                                    UseRowHeadersAsSelectors="False" ViewSelectorText="x">
+                                </Calendar>
+                                <DateInput ID="DateInput2" runat="server" LabelCssClass="radLabelCss_WebBlue" Skin="WebBlue">
+                                </DateInput>
+                            </telerik:RadDatePicker>
+                        </td>
+                        <td>
                             Trạng thái
                         </td>
-                        <td style="padding: 4px 15px;">
+                        <td>
                             <asp:DropDownList ID="ddlStatus" runat="server" Width="80">
-                                <asp:ListItem Text="Tất cả" Value="2" Selected="True" />
+                                <asp:ListItem Text="--Tất cả--" Value="-1" />
                                 <asp:ListItem Text="Hiển thị" Value="1" />
                                 <asp:ListItem Text="Ẩn" Value="0" />
                             </asp:DropDownList>
@@ -236,54 +250,51 @@
                 <asp:Repeater ID="RptDocument" runat="server" OnItemCommand="RptDocument_ItemCommand"
                     OnItemDataBound="RptDocument_ItemDataBound">
                     <HeaderTemplate>
-                        <table cellspacing="0" class="tbl_doc" style="float: left; width:100%;">
-                            <thead>
-                                <tr class="adminListRow-Header">
-                                    <td style="width: 20px;">
-                                        <input type="checkbox" id="chkAll" />
-                                    </td>
-                                    <td style="width: 20px;">
-                                        STT
-                                    </td>
-                                    <td>
-                                        Tên tài liệu
-                                    </td>
-                                    <td>
-                                        Ngày tạo
-                                    </td>
-                                    <td class="td1">
-                                        Trạng thái
-                                    </td>
-                                    <td class="td1">
-                                        Chức năng
-                                    </td>
-                                </tr>
-                            </thead>
+                        <div class="adminListRow-Header">
+                            <div class="adminColumn" style="width: 20px;">
+                                <input type="checkbox" id="chkAll" />
+                            </div>
+                            <div class="adminColumn" style="width: 30px">
+                                STT
+                            </div>
+                            <div class="adminColumn" style="width: 500px; margin-left: 20px; text-align: left;">
+                                Tên tài liệu
+                            </div>
+                            <div class="adminColumn" style="width: 80px;">
+                                Cập nhật
+                            </div>
+                            <div class="adminColumn" style="width: 80px;">
+                                Trạng thái
+                            </div>
+                            <div class="adminColumn" style="width: 92px; float: right">
+                                &nbsp;
+                            </div>
+                            <div class="clearn">
+                            </div>
+                        </div>
                     </HeaderTemplate>
                     <ItemTemplate>
-                        <tr runat="server" id="listRow">
-                            <td>
+                        <div class="adminListRow-odd" id="divListRow" runat="server">
+                            <div class="adminColumn" id="divCheckbox" style="width: 20px; vertical-align: bottom;">
                                 <asp:CheckBox ID="chkDeleteAll" runat="server" />
                                 <asp:HiddenField ID="hdID" runat="server" Value='<%#Eval("DocumentID") %>' />
-                                <asp:HiddenField ID="hdFile" runat="server" Value='<%#Eval("Url") %>' />
-                            </td>
-                            <td>
-                                <%#Eval("RowNumber")%>
-                            </td>
-                            <td style="width: 500px; text-align: left;">
-                                <%#Eval("Title") %>
-                            </td>
-                            <td>
-                                <%#Convert.ToDateTime(Eval("CreateDate")).ToString("dd-MM-yyyy")%>
-                            </td>
-                            <td class="td2">
-                                <%#Convert.ToBoolean(Eval("Status")??false)?"Hoạt động":"Bị khóa" %>
-                            </td>
-                            <td class="td2">
-                                <div class="adminColumn" style="width: 92px; float: right">
-                            <%if ((permission | VTCO.Config.Constants.PERMISSION_READ) != VTCO.Config.Constants.PERMISSION_READ)
-                              { %>
-                                 <div class="function">
+                            </div>
+                            <div class="adminColumn" style="width: 30px;">
+                                <%#Eval("RowNumber")%>&nbsp;
+                            </div>
+                            <div class="adminColumn" style="width: 520px; text-align: left">
+                                <%#Eval("Title") %>&nbsp;
+                            </div>
+                            <div class="adminColumn" style="width: 80px;">
+                                <%#Convert.ToDateTime(Eval("CreateDate")).ToString("dd/MM/yyyy")%>&nbsp;
+                            </div>
+                            <div class="adminColumn" style="width: 80px;">
+                                <%#Convert.ToBoolean(Eval("Status")??false)?"Hoạt động":"Bị khóa" %>&nbsp;
+                            </div>
+                            <div class="adminColumn" style="width: 92px; float: right">
+                                <%if ((permission | VTCO.Config.Constants.PERMISSION_READ) != VTCO.Config.Constants.PERMISSION_READ)
+                                  { %>
+                                <div class="function">
                                     <ul>
                                         <li><a id="aContextMenu" href="javascript:;"><span style="float: left;">Chức năng</span>
                                             <span class="drop">
@@ -300,8 +311,8 @@
                                                     </asp:LinkButton>
                                                 </li>
                                                 <li>
-                                                    <asp:LinkButton ID="lbtLock" runat="server" CssClass='lock_icon' ToolTip='Khóa'
-                                                        CommandName="lockNews" CommandArgument='<%#Eval("DocumentID") %>' Text="Khóa">
+                                                    <asp:LinkButton ID="lbtLock" runat="server" CssClass='lock_icon' ToolTip='Khóa' CommandName="lockNews"
+                                                        CommandArgument='<%#Eval("DocumentID") %>' Text="Khóa">
                                                     </asp:LinkButton>
                                                     <asp:LinkButton ID="lbtUnLock" runat="server" CssClass='checked_icon' ToolTip='Kích hoạt'
                                                         CommandName="unlockNews" CommandArgument='<%#Eval("DocumentID") %>' Text="Kích hoạt">
@@ -312,7 +323,8 @@
                                                   { %>
                                                 <li>
                                                     <asp:LinkButton ID="lbtDelete" runat="server" CssClass="delete_icon" ToolTip="Xóa"
-                                                        OnClientClick="return ConfirmDelete()" CommandName="delete" CommandArgument='<%#Eval("DocumentID") %>' Text="Xóa">
+                                                        OnClientClick="return ConfirmDelete()" CommandName="delete" CommandArgument='<%#Eval("DocumentID") %>'
+                                                        Text="Xóa">
                                                     </asp:LinkButton>
                                                 </li>
                                                 <%} %>
@@ -320,19 +332,19 @@
                                         </li>
                                     </ul>
                                 </div>
-                            <%} %>
+                                <%} %>
                             </div>
-                            </td>
-                        </tr>
+                            <div class="clearn">
+                            </div>
+                        </div>
                     </ItemTemplate>
-                    <FooterTemplate>
-                        </table>
-                    </FooterTemplate>
                 </asp:Repeater>
+                <div class="clearn">
+                </div>
+                <div id="divPaging" runat="server" class="paginator2 nr">
+                    <uc1:ucPaging ID="ucPaging1" runat="server" />
+                </div>
             </div>
-        </div>
-        <div id="divPaging" runat="server" class="paginator2 nr">
-            <uc1:ucPaging ID="ucPaging1" runat="server" />
         </div>
     </asp:Panel>
 </asp:Content>

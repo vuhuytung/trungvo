@@ -8,8 +8,28 @@ using WorkFlowBLL;
 using System.IO;
 using System.Web.UI.HtmlControls;
 using VTCO.Config;
+using DataContext;
 public partial class BackEnd_pages_content_Document : System.Web.UI.Page
 {
+    public int CurrentDocID
+    {
+        get
+        {
+            try
+            {
+                return Convert.ToInt32(ViewState["CurrentDocID"]);
+            }
+            catch
+            {
+                return -1;
+            }
+        }
+
+        set
+        {
+            ViewState["CurrentDocID"] = value;
+        }
+    }
     CtrDocument doc = new CtrDocument();
     protected int CatID = -1;
     protected int permission = 0;
@@ -20,6 +40,18 @@ public partial class BackEnd_pages_content_Document : System.Web.UI.Page
         ucPaging1.PageChange += new UserControls_ucPaging.PagingHandler(ucPaging1_PageChange);
         if (!IsPostBack)
         {
+            rdpFromDate.SelectedDate = DateTime.Now.AddMonths(-12);
+            rdpToDate.SelectedDate = DateTime.Now;
+
+            CtrCategory ctrCat = new CtrCategory();
+            var tb = ctrCat.GetMenuByType(3);
+
+            ddlTypeDoc.Items.Add(new ListItem("Trang chủ", "0"));
+            GetMenuTop(tb, 0, "");
+            ddlTypeDoc1.Items.Clear();
+            ddlTypeDocEdit.Items.Clear();
+            GetMenuNewsAdd(tb, 0, "");
+            
             ucPaging1.PageSize = 8;
             ucPaging1.PageDisplay = 5;
             ucPaging1.CurrentPage = 1;
@@ -29,32 +61,58 @@ public partial class BackEnd_pages_content_Document : System.Web.UI.Page
                 System.IO.Directory.CreateDirectory(Request.PhysicalApplicationPath + "/Resource");
             }
         }
+        lblMsg.Text = "";
+    }
+    public void GetMenuTop(List<uspCategoryGetMenuByTypeResult> tb, int parentID, string space)
+    {
+        var rows = tb.Where(x => x.ParentID == parentID);
+        foreach (var row in rows)
+        {
+            ddlTypeDoc.Items.Add(new ListItem(space + ". . . " + row.Name, row.CategoryID.ToString()));
+            GetMenuTop(tb, row.CategoryID.Value, space + ". . . ");
+        }
+    }
+    public void GetMenuNewsAdd(List<uspCategoryGetMenuByTypeResult> tb, int parentID, string space)
+    {
+        var rows = tb.Where(x => x.ParentID == parentID);
+        foreach (var row in rows)
+        {
+            if (row.Type == 3)
+            {
+                ListItem item = new ListItem(space + " » " + row.Name, row.CategoryID.ToString());
+                ddlTypeDoc1.Items.Add(item);
+                ddlTypeDocEdit.Items.Add(item);
+            }
+            GetMenuNewsAdd(tb, row.CategoryID.Value, space + " » " + row.Name);
+        }
     }
     protected void ucPaging1_PageChange(object sender)
     {
+
+        if ((!rdpFromDate.SelectedDate.HasValue) || (!rdpToDate.SelectedDate.HasValue))
+        {
+            lblMsg.Text = "Ngày tháng tìm kiếm không hợp lệ!";
+            return;
+        }
+
+        if (rdpFromDate.SelectedDate.Value.CompareTo(rdpToDate.SelectedDate.Value) > 0)
+        {
+            lblMsg.Text = "Ngày tháng tìm kiếm không hợp lệ!";
+            return;
+        }
         CtrDocument ctrN = new CtrDocument();
-        var _data = ctrN.GetAllDoc(Int32.Parse(ddlTypeDoc.SelectedValue), ucPaging1.CurrentPage, ucPaging1.PageSize, "n", 2);
+        var _data = ctrN.GetAllDoc(txtKeyWord.Text,Int32.Parse(ddlTypeDoc.SelectedValue), rdpFromDate.SelectedDate.Value,rdpToDate.SelectedDate.Value,Convert.ToInt32(ddlStatus.SelectedValue), ucPaging1.CurrentPage, ucPaging1.PageSize);
         RptDocument.DataSource = _data.Items;
         RptDocument.DataBind();
         ucPaging1.TotalRecord = _data.TotalRecord;
         divPaging.Visible = ucPaging1.TotalPage > 1;
     }
-    private void BindRpt(string day, int status)
-    {
-        CtrDocument ctrN = new CtrDocument();
-        var _data = ctrN.GetAllDoc(Int32.Parse(ddlTypeDoc.SelectedValue), ucPaging1.CurrentPage, ucPaging1.PageSize, day, status);
-        RptDocument.DataSource = _data.Items;
-        RptDocument.DataBind();
-        //ucPaging1.TotalRecord = _data.TotalRecord;
-    }
 
 
     protected void RptDocument_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
-
+        if (e.CommandArgument == null) return;
         CtrDocument ctrN = new CtrDocument();
-        //Repeater RptDetail = (Repeater)Panel1.Controls[0].FindControl("RptDetail");
-        DropDownList ddlTypeDoc = (DropDownList)Panel1.Controls[0].FindControl("ddlTypeDoc");
         try
         {
             if (e.CommandName == "lockNews")
@@ -62,13 +120,13 @@ public partial class BackEnd_pages_content_Document : System.Web.UI.Page
                 if (ctrN.UpdateDocStatus(Convert.ToInt32(e.CommandArgument), 0) > 0)
                 {
                     ucPaging1_PageChange(ucPaging1);
-                    lblMsg.Text = "Cập nhật thành công";
+                    lblMsg.Text = "Cập nhật thành công!";
                     ////RadAjaxPanel1.ResponseScripts.Add("alert('Cập nhật thành công!')");
 
                 }
                 else
                 {
-                    lblMsg.Text = "Cập nhật thất bại";
+                    lblMsg.Text = "Cập nhật thất bại!";
                     ////RadAjaxPanel1.ResponseScripts.Add("alert('Cập nhật thất bại!')");
                 }
             }
@@ -78,42 +136,39 @@ public partial class BackEnd_pages_content_Document : System.Web.UI.Page
                 if (ctrN.UpdateDocStatus(Convert.ToInt32(e.CommandArgument), 1) > 0)
                 {
                     ucPaging1_PageChange(ucPaging1);
-                    lblMsg.Text = "Cập nhật thành công";
+                    lblMsg.Text = "Cập nhật thành công!";
                     ////RadAjaxPanel1.ResponseScripts.Add("alert('Cập nhật thành công!')");
                 }
                 else
                 {
-                    lblMsg.Text = "Cập nhật thất bại";
+                    lblMsg.Text = "Cập nhật thất bại!";
                     ////RadAjaxPanel1.ResponseScripts.Add("alert('Cập nhật thất bại!')");
                 }
             }
 
             if (e.CommandName == "edit")
             {
-
-                //Repeater RptDetail = (Repeater)Panel1.Controls[0].FindControl("RptDetail");
-                //DropDownList ddlTypeDoc = (DropDownList)Panel1.Controls[0].FindControl("ddlTypeDoc");
-                if (RptDetail != null && ddlTypeDoc != null)
-                {
-                    Panel1.Visible = true;
-                    Panel2.Visible = false;
-                    Panel3.Visible = false;
-                    RptDetail.DataSource = ctrN.GetInfoDocByID(Int32.Parse(e.CommandArgument.ToString()));
-                    RptDetail.DataBind();
-                }
+                CurrentDocID = Convert.ToInt32(e.CommandArgument);
+                var info = ctrN.GetInfoDocByID(CurrentDocID);
+                txtTitleEdit.Text = info.Title;
+                txtDescEdit.Text = HttpUtility.HtmlDecode(info.Description);
+                ddlStatusEdit.SelectedValue = info.Status.ToString();
+                Panel1.Visible = true;
+                Panel2.Visible = false;
+                Panel3.Visible = false;
             }
             else if (e.CommandName == "delete")
             {
-                Label URL = (Label)RptDetail.Controls[1].FindControl("lblUrl");
-                ctrN.DeleteDocByID(Int32.Parse(e.CommandArgument.ToString()));
-                ctrN.DeleteDocument(URL.Text, Request);
-                ClientScript.RegisterStartupScript(Page.GetType(), "thongbao", "alert('Xóa thành công');", true);
+                var info = ctrN.GetInfoDocByID(Convert.ToInt32(e.CommandArgument));
+                if (ctrN.DeleteDocByID(info.DocumentID) > 0)
+                {
+                    ctrN.DeleteDocument(info.URL, Request);
+                    lblMsg.Text = "Xóa thành công!";
+                    ucPaging1_PageChange(ucPaging1);
+                }
             }
         }
-        finally
-        {
-            BindRpt("n", Int32.Parse(ddlStatus.SelectedValue));
-        }
+        catch { }
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
@@ -123,55 +178,48 @@ public partial class BackEnd_pages_content_Document : System.Web.UI.Page
     }
     protected void btnUpdate_Click(object sender, EventArgs e)
     {
-
-
         CtrDocument ctrN = new CtrDocument();
-        FileUpload fupload = (FileUpload)RptDetail.Controls[1].FindControl("fupload");
-        TextBox title = (TextBox)RptDetail.Controls[1].FindControl("txtTitle");
-        TextBox desc = (TextBox)RptDetail.Controls[1].FindControl("txtDesc");
-        CheckBox status = (CheckBox)RptDetail.Controls[1].FindControl("chkstatus");
-        Label docID = (Label)RptDetail.Controls[1].FindControl("lblDocID");
-        Label URL = (Label)RptDetail.Controls[1].FindControl("lblUrl");
-        try
-        {
-            if (fupload != null && title != null && desc != null & status != null)
-            {
-                if (fupload.FileName == "")
-                {
-                    string text = HttpUtility.HtmlEncode(desc.Text).Replace("\n", "</br>");
-                    DateTime day = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
-                    ctrN.UpdateDocByID(Int32.Parse(docID.Text), title.Text, text, URL.Text, day, 21, status.Checked == true ? 1 : 0);
-                    ClientScript.RegisterStartupScript(Page.GetType(), "thongbao", "alert('cập nhật thành công !');", true);
-                }
-                else
-                {
 
-                    string strFile = Path.Combine(Request.PhysicalApplicationPath, "Resource");
-                    strFile += "\\" + fupload.FileName;
-                    fupload.PostedFile.SaveAs(strFile);
-                    string text = HttpUtility.HtmlEncode(desc.Text).Replace("\n", "</br>");
-                    DateTime day = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
-                    ctrN.UpdateDocByID(Int32.Parse(docID.Text), title.Text, text, fupload.FileName, day, 21, status.Checked == true ? 1 : 0);
-                    ClientScript.RegisterStartupScript(Page.GetType(), "thongbao", "alert('Cập nhật thành công !');", true);
-                }
-            }
-        }
-        catch
+
+        if (fuploadEdit.FileName == "")
         {
-            ClientScript.RegisterStartupScript(Page.GetType(), "thongbao", "alert('Cập nhật lỗi !');", true);
-        }
-        finally
-        {
-            if (RadDatePicker1.SelectedDate == null)
+            string text = HttpUtility.HtmlEncode(txtDescEdit.Text).Replace("\n", "</br>");
+            DateTime day = DateTime.Now;
+            if (ctrN.UpdateDocByID(CurrentDocID, txtTitleEdit.Text, text, ctrN.GetInfoDocByID(CurrentDocID).URL, day, Convert.ToInt32(ddlTypeDocEdit.SelectedValue), Convert.ToInt32(ddlStatusEdit.SelectedValue)) > 0)
             {
-                BindRpt("n", Int32.Parse(ddlStatus.SelectedValue));
+                Panel2.Visible = false;
+                Panel3.Visible = true;
+                Panel1.Visible = false;
+                lblMsg.Text = "Cập nhật thành công!";
             }
             else
             {
-                BindRpt(RadDatePicker1.SelectedDate.ToString(), Int32.Parse(ddlStatus.SelectedValue));
+                lblMsg.Text = "Cập nhật lỗi!";
             }
-            Panel1.Visible = false;
         }
+        else
+        {
+
+            string strFile = Path.Combine(Request.PhysicalApplicationPath, "Resource");
+            string fileName = DateTime.Now.ToString("ddMMyyhhmmss") + fuploadEdit.FileName;
+            strFile += "\\" + fileName;
+            fuploadEdit.PostedFile.SaveAs(strFile);
+            string text = HttpUtility.HtmlEncode(txtDescEdit.Text).Replace("\n", "</br>");
+            string old = ctrN.GetInfoDocByID(CurrentDocID).URL;
+            if (ctrN.UpdateDocByID(CurrentDocID, txtTitleEdit.Text, text, fileName, DateTime.Now, Convert.ToInt32(ddlTypeDocEdit.SelectedValue), Convert.ToInt32(ddlStatusEdit.SelectedValue)) > 0)
+            {
+                doc.DeleteDocument(old, Request);
+                Panel2.Visible = false;
+                Panel3.Visible = true;
+                Panel1.Visible = false;
+                lblMsg.Text = "Cập nhật thành công!";
+            }
+            else
+            {
+                lblMsg.Text = "Cập nhật lỗi!";
+            }
+        }
+                
     }
     protected void btnAdd_Click(object sender, EventArgs e)
     {
@@ -179,20 +227,22 @@ public partial class BackEnd_pages_content_Document : System.Web.UI.Page
         try
         {
             string strFile = Path.Combine(Request.PhysicalApplicationPath, "Resource");
-            strFile += "\\" + fupload.FileName;
+            string fileName = DateTime.Now.ToString("ddMMyyhhmmss") + fupload.FileName;
+            strFile += "\\" + fileName;
             fupload.PostedFile.SaveAs(strFile);
-            ctrN.InsertDoc(txtTitle.Text, txtDesc.Text, fupload.FileName, new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0), Int32.Parse(ddlTypeDoc1.SelectedValue), chkstatus.Checked == true ? 1 : 0);
-            Panel2.Visible = false;
-            ClientScript.RegisterStartupScript(Page.GetType(), "thongbao", "alert('Thêm mới thành công !');", true);
+            if (ctrN.InsertDoc(txtTitle.Text, txtDesc.Text, fileName, DateTime.Now, Int32.Parse(ddlTypeDoc1.SelectedValue), Convert.ToInt32(ddlStatusNew.SelectedValue)) > 0)
+            {
+                Panel2.Visible = false;
+                Panel1.Visible = true;
+                lblMsg.Text = "Thêm mới thành công!";
+            }else
+                lblMsg.Text = "Thêm mới thất bại!";
         }
         catch
         {
-            ClientScript.RegisterStartupScript(Page.GetType(), "thongbao", "alert('thêm mới lỗi !');", true);
+            lblMsg.Text = "Có lỗi xảy ra!";
         }
-        finally
-        {
-            BindRpt("n", Int32.Parse(ddlStatus.SelectedValue));
-        }
+       
 
     }
     protected void btnThemmoi_Click(object sender, EventArgs e)
@@ -210,20 +260,7 @@ public partial class BackEnd_pages_content_Document : System.Web.UI.Page
     }
     protected void btnSearch_Click(object sender, EventArgs e)
     {
-        try
-        {
-            if (RadDatePicker1.SelectedDate == null)
-            {
-                BindRpt("n", Int32.Parse(ddlStatus.SelectedValue));
-            }
-            else
-            {
-                BindRpt(RadDatePicker1.SelectedDate.ToString(), Int32.Parse(ddlStatus.SelectedValue));
-            }
-        }
-        catch
-        {
-        }
+        ucPaging1_PageChange(ucPaging1);
     }
     protected void RptDocument_ItemDataBound(object sender, RepeaterItemEventArgs e)
     {
@@ -261,31 +298,21 @@ public partial class BackEnd_pages_content_Document : System.Web.UI.Page
             foreach (RepeaterItem item in RptDocument.Items)
             {
                 CheckBox chkDeleteAll = (CheckBox)item.FindControl("chkDeleteAll");
-                HiddenField hdID = (HiddenField)item.FindControl("hdID");
-                HiddenField hdFile = (HiddenField)item.FindControl("hdFile");
-                if (chkDeleteAll != null && hdID != null)
-                {
+                HiddenField hdID = (HiddenField)item.FindControl("hdID");                
                     if (chkDeleteAll.Checked == true)
                     {
-                        doc.DeleteDocByID(Int32.Parse(hdID.Value));
-                        doc.DeleteDocument(hdFile.Value, Request);
+                        var info = doc.GetInfoDocByID(Int32.Parse(hdID.Value));
+                        if (doc.DeleteDocByID(info.DocumentID) > 0)
+                        {
+                            doc.DeleteDocument(info.URL, Request);
+                        }
                     }
-
-                }
             }
-            if (RadDatePicker1.SelectedDate == null)
-            {
-                BindRpt("n", Int32.Parse(ddlStatus.SelectedValue));
-            }
-            else
-            {
-                BindRpt(RadDatePicker1.SelectedDate.ToString(), Int32.Parse(ddlStatus.SelectedValue));
-            }
-            ClientScript.RegisterStartupScript(Page.GetType(), "thongbao", "alert('Xóa thành công !');", true);
-
+            lblMsg.Text = "Xóa thành công!";
         }
         catch
         {
+            lblMsg.Text = "Có lỗi xảy ra!";
         }
     }
 
