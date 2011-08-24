@@ -124,7 +124,7 @@ public partial class pages_Bds_AddNews : System.Web.UI.Page
     protected void btnAdd_Click(object sender, EventArgs e)
     {
         CtrRealtyMarket ctrN = new CtrRealtyMarket();
-        //try
+        try
         {            
             if (!Convert.ToBoolean(Session[VTCO.Config.Constants.SESSION_USER_ID] ?? false))
                 Response.Redirect("/login");
@@ -177,7 +177,7 @@ public partial class pages_Bds_AddNews : System.Web.UI.Page
                     Int32.Parse(ddlBathrooms.SelectedValue), txtPosition.Text.Trim(), Int32.Parse(ddlFloor.SelectedValue), chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked, 
                     chkUniversity.Checked,locationID,txtStreet.Text.Trim(), 0,userID)>0)
                 {
-                    ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('Thêm mới thành công! Chúng tôi sẽ kiểm duyệt trước khi đưa lên trang!')", true);
+                    ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('Thêm mới thành công! Chúng tôi sẽ kiểm duyệt trước khi đưa lên trang!'); window.location='/myrealtymarket';", true);
                 }
             }
             else
@@ -188,14 +188,14 @@ public partial class pages_Bds_AddNews : System.Web.UI.Page
                      Int32.Parse(ddlBathrooms.SelectedValue), txtPosition.Text.Trim(), Int32.Parse(ddlFloor.SelectedValue), chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked,
                      chkUniversity.Checked, locationID, txtStreet.Text.Trim(), 0, userID) > 0)
                 {
-                    ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('Thêm mới thành công! Chúng tôi sẽ kiểm duyệt trước khi đưa lên trang!')", true);
+                    ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('Thêm mới thành công! Chúng tôi sẽ kiểm duyệt trước khi đưa lên trang!'); window.location='/myrealtymarket';", true);
                 }
             }
             
         }
-       // catch
-       // {
-        //    ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('Thêm mới lỗi !')", true);
-       // }
+        catch
+        {
+            ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('Thêm mới lỗi !')", true);
+        }
     }
 }
