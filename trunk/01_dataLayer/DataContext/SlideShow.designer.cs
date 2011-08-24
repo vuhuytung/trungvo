@@ -111,6 +111,13 @@ namespace DataContext
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, title, img, imgThumb, url, status);
 			return ((int)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspSlideShowUpdateStatus")]
+		public int uspSlideShowUpdateStatus([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] System.Nullable<int> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="Int")] System.Nullable<int> status)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, status);
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	public partial class uspSlideShowGetAllResult
