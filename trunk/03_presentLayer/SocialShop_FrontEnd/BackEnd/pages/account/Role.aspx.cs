@@ -174,6 +174,11 @@ public partial class BackEnd_pages_account_Role : System.Web.UI.Page
 
         if (e.CommandName == "delete")
         {
+            var permis = ((permission & Constants.PERMISSION_DELETE) == Constants.PERMISSION_DELETE);
+            if (!permis)
+            {
+                Response.Redirect("~/admin/notpermission");
+            }
             CurrentNewsID = Convert.ToInt32(e.CommandArgument);            
             if (ctrAdmin.RoleDelete(CurrentNewsID) > 0)
             {
@@ -197,6 +202,11 @@ public partial class BackEnd_pages_account_Role : System.Web.UI.Page
         if (e.CommandArgument == null) return;
         if (e.CommandName == "delete")
         {
+            var permis = ((permission & Constants.PERMISSION_EDIT) == Constants.PERMISSION_EDIT);
+            if (!permis)
+            {
+                Response.Redirect("~/admin/notpermission");
+            }
             if (ctrAdmin.PermissionDelete(Convert.ToInt32(e.CommandArgument)) > 0)
             {
                 rptAdminInRole.DataSource = ctrAdmin.AdminGetListByRole(CurrentNewsID);

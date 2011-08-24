@@ -131,6 +131,11 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
         }
         else if (e.CommandName == "delete")
         {
+            var permis = ((permission & Constants.PERMISSION_DELETE) == Constants.PERMISSION_DELETE);
+            if (!permis)
+            {
+                Response.Redirect("~/admin/notpermission");
+            }
             try
             {
                 PartnersID = Int32.Parse(e.CommandArgument.ToString());

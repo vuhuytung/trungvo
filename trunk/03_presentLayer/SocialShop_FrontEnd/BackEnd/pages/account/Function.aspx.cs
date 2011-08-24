@@ -204,6 +204,11 @@ public partial class BackEnd_pages_account_Function : System.Web.UI.Page
             case "Delete":
                 //if (Convert.ToInt32(MyAccount.GetInfo(Convert.ToInt32(Session[Constants.SESSION_ACCOUNTID])).Type) == Convert.ToInt32(EnumAccountType.RootAdmin) || Convert.ToInt32(MyAccount.GetInfo(Convert.ToInt32(Session[Constants.SESSION_ACCOUNTID])).Type) == Convert.ToInt32(EnumAccountType.Admin))
                 {
+                    var permis = ((permission & Constants.PERMISSION_DELETE) == Constants.PERMISSION_DELETE);
+                    if (!permis)
+                    {
+                        Response.Redirect("~/admin/notpermission");
+                    }
                     CtrEdit.Visible = false;
                     MenuID = Convert.ToInt32(e.Node.Value);
                     var MenuChild = MyMenu.FunctionGetByParentID(Convert.ToInt32(e.Node.Value), -1);
