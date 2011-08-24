@@ -203,6 +203,37 @@ public partial class BackEnd_pages_content_SlideShow : System.Web.UI.Page
 
     protected void RptSlide_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
+        if (e.CommandArgument == null) return;
+        if (e.CommandName == "lockNews")
+        {
+            if (slide.SlideUpdateStatus(Convert.ToInt32(e.CommandArgument), 0) > 0)
+            {
+                ucPaging1_PageChange(ucPaging1);
+                lblMsg.Text = "Cập nhật thành công";
+                ////RadAjaxPanel1.ResponseScripts.Add("alert('Cập nhật thành công!')");
+
+            }
+            else
+            {
+                lblMsg.Text = "Cập nhật thất bại";
+                ////RadAjaxPanel1.ResponseScripts.Add("alert('Cập nhật thất bại!')");
+            }
+        }
+
+        if (e.CommandName == "unlockNews")
+        {
+            if (slide.SlideUpdateStatus(Convert.ToInt32(e.CommandArgument), 1) > 0)
+            {
+                ucPaging1_PageChange(ucPaging1);
+                lblMsg.Text = "Cập nhật thành công";
+                ////RadAjaxPanel1.ResponseScripts.Add("alert('Cập nhật thành công!')");
+            }
+            else
+            {
+                lblMsg.Text = "Cập nhật thất bại";
+                ////RadAjaxPanel1.ResponseScripts.Add("alert('Cập nhật thất bại!')");
+            }
+        }
         if (e.CommandName == "edit")
         {
             Panel1.Visible = true;
