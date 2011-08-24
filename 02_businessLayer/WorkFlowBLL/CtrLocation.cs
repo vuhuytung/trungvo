@@ -103,5 +103,10 @@ namespace WorkFlowBLL
            return BDS.LocationInstance.uspLocationGetListVillage(destrictCode).ToList();
        }
 
+       public int getLocationIDByCode(int provinceCode, int districtCode, int villageCode)
+       {
+           return BDS.LocationInstance.uspLocationGetIDByCode(provinceCode, districtCode, villageCode);
+       }
+
     }
 }
