@@ -1,79 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Database1" Class="RealtyMarketDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=183.182.100.136;Initial Catalog=Database1;Persist Security Info=True;User ID=tmt" SettingsObjectName="DataContext.Properties.Settings" SettingsPropertyName="Database1ConnectionString1" Provider="System.Data.SqlClient" />
-  <Function Name="dbo.uspRealtyMarketDeleteByRealtyMarketID" Method="uspRealtyMarketDeleteByRealtyMarketID">
-    <Parameter Name="RealtyMarketID" Parameter="realtyMarketID" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.uspRealtyMarketUpdateByRealtyMarketID" Method="uspRealtyMarketUpdateByRealtyMarketID">
-    <Parameter Name="RealtyMarketID" Parameter="realtyMarketID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Title" Parameter="title" Type="System.String" DbType="NVarChar(250)" />
-    <Parameter Name="Image" Parameter="image" Type="System.String" DbType="NVarChar(500)" />
-    <Parameter Name="ImageThumb" Parameter="imageThumb" Type="System.String" DbType="NVarChar(500)" />
-    <Parameter Name="Descrition" Parameter="descrition" Type="System.String" DbType="NVarChar(500)" />
-    <Parameter Name="UserPublish" Parameter="userPublish" Type="System.String" DbType="NVarChar(50)" />
-    <Parameter Name="Phone" Parameter="phone" Type="System.String" DbType="NVarChar(50)" />
-    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(100)" />
-    <Parameter Name="Price" Parameter="price" Type="System.Double" DbType="Float" />
-    <Parameter Name="Type" Parameter="type" Type="System.Int32" DbType="Int" />
-    <Parameter Name="LegalStatus" Parameter="legalStatus" Type="System.String" DbType="NVarChar(250)" />
-    <Parameter Name="Acreage" Parameter="acreage" Type="System.String" DbType="NVarChar(50)" />
-    <Parameter Name="ClientRoom" Parameter="clientRoom" Type="System.String" DbType="NVarChar(2)" />
-    <Parameter Name="BedRoom" Parameter="bedRoom" Type="System.String" DbType="NVarChar(2)" />
-    <Parameter Name="Bathrooms" Parameter="bathrooms" Type="System.String" DbType="NVarChar(2)" />
-    <Parameter Name="Position" Parameter="position" Type="System.String" DbType="NVarChar(250)" />
-    <Parameter Name="Floor" Parameter="floor" Type="System.String" DbType="NVarChar(2)" />
-    <Parameter Name="NearKindergarten" Parameter="nearKindergarten" Type="System.Boolean" DbType="Bit" />
-    <Parameter Name="NearHospital" Parameter="nearHospital" Type="System.Boolean" DbType="Bit" />
-    <Parameter Name="NearlySchool" Parameter="nearlySchool" Type="System.Boolean" DbType="Bit" />
-    <Parameter Name="NearlyMarket" Parameter="nearlyMarket" Type="System.Boolean" DbType="Bit" />
-    <Parameter Name="NearlyUniversity" Parameter="nearlyUniversity" Type="System.Boolean" DbType="Bit" />
-    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="NVarChar(250)" />
-    <Parameter Name="LocationID" Parameter="locationID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Street" Parameter="street" Type="System.String" DbType="NVarChar(250)" />
-    <Parameter Name="Status" Parameter="status" Type="System.Boolean" DbType="Bit" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.uspRealtyMarketGetAllByCatID" Method="uspRealtyMarketGetAllByCatID">
-    <Parameter Name="CategoryID" Parameter="categoryID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="currPage" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Pagesize" Parameter="pagesize" Type="System.Int32" DbType="Int" />
-    <Parameter Name="TotalRecord" Parameter="totalRecord" Type="System.Int32" DbType="Int" Direction="InOut" />
-    <ElementType Name="uspRealtyMarketGetAllByCatIDResult">
-      <Column Name="RowNumber" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="RealtyMarketID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Title" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
-      <Column Name="Descrition" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="Image" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="ImageThumb" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="UserPublish" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Email" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="Price" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="LegalStatus" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="Acreage" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="ClientRoom" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
-      <Column Name="BedRoom" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
-      <Column Name="Bathrooms" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
-      <Column Name="Position" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="Floor" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
-      <Column Name="GaraOto" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Cooler" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="CableTv" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="NearKindergarten" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="NearHospital" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="NearlySchool" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="NearlyMarket" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="NearlyUniversity" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Internet" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="NearlyPark" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Address" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="LocationID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Street" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.uspRealtyMarketGetCatIdByType" Method="uspRealtyMarketGetCatIdByType">
     <Parameter Name="Type" Parameter="type" Type="System.Int32" DbType="Int" />
     <ElementType Name="uspRealtyMarketGetCatIdByTypeResult">
@@ -86,26 +12,55 @@
       <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
   </Function>
+  <Function Name="dbo.uspRealtyMarketInsert" Method="uspRealtyMarketInsert">
+    <Parameter Name="Title" Parameter="title" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="Descrition" Parameter="descrition" Type="System.String" DbType="NText" />
+    <Parameter Name="Image" Parameter="image" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="UserPublish" Parameter="userPublish" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Phone" Parameter="phone" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="Price" Parameter="price" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="Type" Parameter="type" Type="System.Int32" DbType="Int" />
+    <Parameter Name="LegalStatus" Parameter="legalStatus" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="Acreage" Parameter="acreage" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ClientRoom" Parameter="clientRoom" Type="System.Int32" DbType="Int" />
+    <Parameter Name="BedRoom" Parameter="bedRoom" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Bathrooms" Parameter="bathrooms" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Position" Parameter="position" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="Floor" Parameter="floor" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NearKindergarten" Parameter="nearKindergarten" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="NearHospital" Parameter="nearHospital" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="NearlySchool" Parameter="nearlySchool" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="NearlyMarket" Parameter="nearlyMarket" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="NearlyUniversity" Parameter="nearlyUniversity" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="LocationID" Parameter="locationID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Street" Parameter="street" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="CreateDate" Parameter="createDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
   <Function Name="dbo.uspRealtyMarketGetInfoByRealtyMarketID" Method="uspRealtyMarketGetInfoByRealtyMarketID">
     <Parameter Name="RealtyMarketID" Parameter="realtyMarketID" Type="System.Int32" DbType="Int" />
     <ElementType Name="uspRealtyMarketGetInfoByRealtyMarketIDResult">
       <Column Name="RealtyMarketID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Title" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
       <Column Name="Descrition" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="Image" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="ImageThumb" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Image" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
       <Column Name="UserPublish" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
       <Column Name="Email" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="Price" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Price" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="LegalStatus" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="Acreage" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="ClientRoom" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
-      <Column Name="BedRoom" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
-      <Column Name="Bathrooms" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="Acreage" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClientRoom" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BedRoom" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Bathrooms" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Position" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="Floor" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="Floor" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="GaraOto" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="Cooler" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="CableTv" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
@@ -116,11 +71,13 @@
       <Column Name="NearlyUniversity" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="Internet" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="NearlyPark" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Address" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
       <Column Name="LocationID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Street" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Street" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FullName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.uspRealtyMarketGetFullAddByLoactionID" Method="uspRealtyMarketGetFullAddByLoactionID">
@@ -129,143 +86,23 @@
       <Column Name="address1" Type="System.String" DbType="NVarChar(400)" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.uspRealtyMarketGetAllByStatus" Method="uspRealtyMarketGetAllByStatus">
-    <Parameter Name="Code" Parameter="code" Type="System.Int32" DbType="Int" />
-    <Parameter Name="TypeCode" Parameter="typeCode" Type="System.Int32" DbType="Int" />
-    <Parameter Name="TypeBDS" Parameter="typeBDS" Type="System.Int32" DbType="Int" />
-    <Parameter Name="PriceStart" Parameter="priceStart" Type="System.Double" DbType="Float" />
-    <Parameter Name="PriceEnd" Parameter="priceEnd" Type="System.Double" DbType="Float" />
-    <Parameter Name="currPage" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Pagesize" Parameter="pagesize" Type="System.Int32" DbType="Int" />
-    <Parameter Name="TotalRecord" Parameter="totalRecord" Type="System.Int32" DbType="Int" Direction="InOut" />
-    <ElementType Name="uspRealtyMarketGetAllByStatusResult">
-      <Column Name="RowNumber" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="RealtyMarketID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Title" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
-      <Column Name="Descrition" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="Image" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="ImageThumb" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="UserPublish" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Email" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="Price" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="LegalStatus" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="Acreage" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="ClientRoom" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
-      <Column Name="BedRoom" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
-      <Column Name="Bathrooms" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
-      <Column Name="Position" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="Floor" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
-      <Column Name="GaraOto" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Cooler" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="CableTv" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="NearKindergarten" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="NearHospital" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="NearlySchool" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="NearlyMarket" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="NearlyUniversity" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Internet" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="NearlyPark" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Address" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="LocationID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Street" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-    </ElementType>
+  <Function Name="dbo.uspRealtyMarketDeleteByRealtyMarketID" Method="uspRealtyMarketDeleteByRealtyMarketID">
+    <Parameter Name="RealtyMarketID" Parameter="realtyMarketID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.uspRealtyMarketupdateStatus" Method="uspRealtyMarketupdateStatus">
     <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Status" Parameter="status" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.uspRealtyMarketGetShower" Method="uspRealtyMarketGetShower">
-    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.uspRealtyMarketInsert" Method="uspRealtyMarketInsert">
-    <Parameter Name="Title" Parameter="title" Type="System.String" DbType="NVarChar(250)" />
-    <Parameter Name="Descrition" Parameter="descrition" Type="System.String" DbType="NVarChar(500)" />
-    <Parameter Name="Image" Parameter="image" Type="System.String" DbType="NVarChar(500)" />
-    <Parameter Name="ImageThumb" Parameter="imageThumb" Type="System.String" DbType="NVarChar(500)" />
-    <Parameter Name="UserPublish" Parameter="userPublish" Type="System.String" DbType="NVarChar(50)" />
-    <Parameter Name="Phone" Parameter="phone" Type="System.String" DbType="NVarChar(20)" />
-    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(100)" />
-    <Parameter Name="Price" Parameter="price" Type="System.Double" DbType="Float" />
-    <Parameter Name="Type" Parameter="type" Type="System.Int32" DbType="Int" />
-    <Parameter Name="LegalStatus" Parameter="legalStatus" Type="System.String" DbType="NVarChar(250)" />
-    <Parameter Name="Acreage" Parameter="acreage" Type="System.String" DbType="NVarChar(50)" />
-    <Parameter Name="ClientRoom" Parameter="clientRoom" Type="System.String" DbType="NVarChar(2)" />
-    <Parameter Name="BedRoom" Parameter="bedRoom" Type="System.String" DbType="NVarChar(2)" />
-    <Parameter Name="Bathrooms" Parameter="bathrooms" Type="System.String" DbType="NVarChar(2)" />
-    <Parameter Name="Position" Parameter="position" Type="System.String" DbType="NVarChar(250)" />
-    <Parameter Name="Floor" Parameter="floor" Type="System.String" DbType="NVarChar(2)" />
-    <Parameter Name="NearKindergarten" Parameter="nearKindergarten" Type="System.Boolean" DbType="Bit" />
-    <Parameter Name="NearHospital" Parameter="nearHospital" Type="System.Boolean" DbType="Bit" />
-    <Parameter Name="NearlySchool" Parameter="nearlySchool" Type="System.Boolean" DbType="Bit" />
-    <Parameter Name="NearlyMarket" Parameter="nearlyMarket" Type="System.Boolean" DbType="Bit" />
-    <Parameter Name="NearlyUniversity" Parameter="nearlyUniversity" Type="System.Boolean" DbType="Bit" />
-    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="NVarChar(250)" />
-    <Parameter Name="LocationID" Parameter="locationID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Street" Parameter="street" Type="System.String" DbType="NVarChar(250)" />
-    <Parameter Name="Shower" Parameter="shower" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Status" Parameter="status" Type="System.Boolean" DbType="Bit" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.uspRealtyMarketGetByCondition" Method="uspRealtyMarketGetByCondition">
-    <Parameter Name="TypeUser" Parameter="typeUser" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Code" Parameter="code" Type="System.Int32" DbType="Int" />
-    <Parameter Name="TypeCode" Parameter="typeCode" Type="System.Int32" DbType="Int" />
-    <Parameter Name="TypeBDS" Parameter="typeBDS" Type="System.Int32" DbType="Int" />
-    <Parameter Name="PriceStart" Parameter="priceStart" Type="System.Double" DbType="Float" />
-    <Parameter Name="PriceEnd" Parameter="priceEnd" Type="System.Double" DbType="Float" />
-    <Parameter Name="currPage" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Pagesize" Parameter="pagesize" Type="System.Int32" DbType="Int" />
-    <Parameter Name="TotalRecord" Parameter="totalRecord" Type="System.Int32" DbType="Int" Direction="InOut" />
-    <ElementType Name="uspRealtyMarketGetByConditionResult">
-      <Column Name="RowNumber" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="RealtyMarketID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Title" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
-      <Column Name="Descrition" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="Image" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="ImageThumb" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="UserPublish" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Email" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="Price" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="LegalStatus" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="Acreage" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="ClientRoom" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
-      <Column Name="BedRoom" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
-      <Column Name="Bathrooms" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
-      <Column Name="Position" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="Floor" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
-      <Column Name="GaraOto" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Cooler" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="CableTv" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="NearKindergarten" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="NearHospital" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="NearlySchool" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="NearlyMarket" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="NearlyUniversity" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Internet" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="NearlyPark" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Address" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="LocationID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Street" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="Shower" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-    </ElementType>
   </Function>
   <Function Name="dbo.uspRealtyMarketGetList" Method="uspRealtyMarketGetList">
     <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
     <Parameter Name="Code" Parameter="code" Type="System.Int32" DbType="Int" />
     <Parameter Name="TypeCode" Parameter="typeCode" Type="System.Int32" DbType="Int" />
     <Parameter Name="TypeBDS" Parameter="typeBDS" Type="System.Int32" DbType="Int" />
-    <Parameter Name="PriceStart" Parameter="priceStart" Type="System.Double" DbType="Float" />
-    <Parameter Name="PriceEnd" Parameter="priceEnd" Type="System.Double" DbType="Float" />
+    <Parameter Name="PriceStart" Parameter="priceStart" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="PriceEnd" Parameter="priceEnd" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="Status" Parameter="status" Type="System.Int32" DbType="Int" />
     <Parameter Name="CurrPage" Parameter="currPage" Type="System.Int32" DbType="Int" />
     <Parameter Name="Pagesize" Parameter="pagesize" Type="System.Int32" DbType="Int" />
     <Parameter Name="TotalRecord" Parameter="totalRecord" Type="System.Int32" DbType="Int" Direction="InOut" />
@@ -274,20 +111,20 @@
       <Column Name="RealtyMarketID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Title" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
       <Column Name="Descrition" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="Image" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="ImageThumb" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Image" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
       <Column Name="UserPublish" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
       <Column Name="Email" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="Price" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Price" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="LegalStatus" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="Acreage" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="ClientRoom" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
-      <Column Name="BedRoom" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
-      <Column Name="Bathrooms" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="Acreage" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClientRoom" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BedRoom" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Bathrooms" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Position" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="Floor" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="Floor" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="GaraOto" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="Cooler" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="CableTv" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
@@ -298,12 +135,10 @@
       <Column Name="NearlyUniversity" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="Internet" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="NearlyPark" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Address" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
       <Column Name="LocationID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Street" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="Shower" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Street" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="UserName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="FullName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
