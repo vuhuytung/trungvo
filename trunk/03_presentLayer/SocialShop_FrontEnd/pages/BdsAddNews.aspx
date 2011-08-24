@@ -262,17 +262,18 @@
             </table>
             <table>
                 <tr>
-                    <td colspan="4" style="padding: 10px 300px;">
-                        
+                    <td colspan="4" style="padding: 10px 300px;">                        
                         <script type="text/javascript">
                             function checkAdd() {
                                 var txtTitle =$('#<%=txtTitle.ClientID %>');
                                 var txtUser = $('#<%=txtUser.ClientID %>');
                                 var txtPhone = $('#<%=txtPhone.ClientID %>');
                                 var txtAddress = $('#<%=txtAddress.ClientID %>');
+                                var ddlDonVi = $('#<%=ddlDonVi.ClientID %>');
                                 var txtPrice = $('#<%=txtPrice.ClientID %>');
                                 var txtEmail = $('#<%=txtEmail.ClientID %>');
                                 var ddlLocation = $('#<%=ddlProvince.ClientID %>');
+                                
                                 if ($.trim(txtTitle.val()) == "") {
                                     alert('Tiêu đề không được để trống !');
                                     txtTitle.focus();
@@ -282,15 +283,16 @@
                                     alert('Tiêu đề phải có từ 16 ký tự trở lên !');
                                     txtTitle.focus();
                                     return false;
-                                }                               
-                                if ($.trim(txtPrice.val()) == "") {
-                                    alert('Giá bán không được để trống !');
-                                    txtPrice.focus();
-                                    return false;
-                                }
+                                }                                                               
                                 if (ddlLocation.val() == "-1") {
                                     alert('Bạn chưa chọn TP/Tỉnh !');
                                     ddlLocation.focus();
+                                    return false;
+                                }
+
+                                if ((ddlDonVi.val() != "0") && ($.trim(txtPrice.val()) == "")) {
+                                    alert('Giá bán không được để trống !');
+                                    txtPrice.focus();
                                     return false;
                                 }
 
