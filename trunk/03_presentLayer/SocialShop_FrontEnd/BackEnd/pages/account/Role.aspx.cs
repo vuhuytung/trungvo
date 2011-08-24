@@ -281,6 +281,11 @@ public partial class BackEnd_pages_account_Role : System.Web.UI.Page
             lbtSaveEdit();
             return;
         }
+        var permis = ((permission & Constants.PERMISSION_ADD) == Constants.PERMISSION_ADD);
+        if (!permis)
+        {
+            Response.Redirect("~/admin/notpermission");
+        }
         CtrAdmin ctrAdmin = new CtrAdmin();
         var ret = ctrAdmin.RoleInsert(txtTitle.Text.Trim(), txtAbstract.Text.Trim(), Convert.ToInt32(ddlStatusEdit.SelectedValue));
         if (ret > 0)
@@ -308,7 +313,12 @@ public partial class BackEnd_pages_account_Role : System.Web.UI.Page
 
     }
     protected void lbtSaveEdit()
-    {        
+    {
+        var permis = ((permission & Constants.PERMISSION_EDIT) == Constants.PERMISSION_EDIT);
+        if (!permis)
+        {
+            Response.Redirect("~/admin/notpermission");
+        }
         CtrAdmin ctrAdmin = new CtrAdmin();
         if (ctrAdmin.RoleUpdate(CurrentNewsID,txtTitle.Text.Trim(),txtAbstract.Text.Trim(),Convert.ToInt32(ddlStatusEdit.SelectedValue)) >0)
         {

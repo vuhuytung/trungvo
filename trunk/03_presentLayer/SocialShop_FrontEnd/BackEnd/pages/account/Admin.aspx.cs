@@ -243,6 +243,13 @@ public partial class BackEnd_pages_account_Admin : System.Web.UI.Page
             lbtSaveEdit();
             return;
         }
+
+        var permis = ((permission & Constants.PERMISSION_ADD) == Constants.PERMISSION_ADD);
+        if (!permis)
+        {
+            Response.Redirect("~/admin/notpermission");
+        }
+
         CtrAdmin ctrAdmin = new CtrAdmin();
         var pass = VTCO.Utils.Encryption.GetMD5(txtPassword.Text);
         var ret = ctrAdmin.AdminInsert(txtUserName.Text, pass, txtFullName.Text, rdpBirthday.SelectedDate.Value, txtEmail.Text, txtTelephone.Text, txtAbstract.Text, Convert.ToInt32(ddlStatusEdit.SelectedValue));
@@ -263,6 +270,11 @@ public partial class BackEnd_pages_account_Admin : System.Web.UI.Page
     }
     protected void lbtSaveEdit()
     {
+        var permis = ((permission & Constants.PERMISSION_EDIT) == Constants.PERMISSION_EDIT);
+        if (!permis)
+        {
+            Response.Redirect("~/admin/notpermission");
+        }
         CtrAdmin ctrAdmin = new CtrAdmin();
         var ret = ctrAdmin.AdminUpdate(CurrentNewsID,txtFullName.Text, rdpBirthday.SelectedDate.Value, txtEmail.Text, txtTelephone.Text, txtAbstract.Text, Convert.ToInt32(ddlStatusEdit.SelectedValue));     
         if (ret> 0)

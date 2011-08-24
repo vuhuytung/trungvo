@@ -236,7 +236,8 @@ public partial class BackEnd_pages_account_Function : System.Web.UI.Page
     }
 
     protected void btnSave_Click(object sender, EventArgs e)
-    {
+    {        
+
         string name = "";
         int order = 1;
         int parentId = 1;
@@ -263,12 +264,22 @@ public partial class BackEnd_pages_account_Function : System.Web.UI.Page
         }
 
         if (CheckAddOrEdit == 1)
-        {            
+        {
+            var permis = ((permission & Constants.PERMISSION_ADD) == Constants.PERMISSION_ADD);
+            if (!permis)
+            {
+                Response.Redirect("~/admin/notpermission");
+            }
             MyMenu.FunctionInsert(name, link, order, parentId,status);
             Response.Redirect("~/admin/function");
         }
         else
-        {            
+        {
+            var permis = ((permission & Constants.PERMISSION_EDIT) == Constants.PERMISSION_EDIT);
+            if (!permis)
+            {
+                Response.Redirect("~/admin/notpermission");
+            }
             MyMenu.FunctionUpdate(MenuID, name, link, order, parentId, status);
             Response.Redirect("~/admin/function");
         }
