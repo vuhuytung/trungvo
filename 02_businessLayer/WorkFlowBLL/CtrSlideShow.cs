@@ -39,6 +39,10 @@ namespace WorkFlowBLL
        {
            return BDS.SlideShowInstance.uspSlideShowUpdateByID(ID, title, img, ImgThumb,url, status);
        }
+       public int SlideUpdateStatus(int ID, int status)
+       {
+           return BDS.SlideShowInstance.uspSlideShowUpdateStatus(ID, status);
+       }
        public int SlideInsert(string title, string img, string ImgThumb,string url, int status)
        {
            return BDS.SlideShowInstance.uspSlideShowInsert(title, img,ImgThumb,url,status);
