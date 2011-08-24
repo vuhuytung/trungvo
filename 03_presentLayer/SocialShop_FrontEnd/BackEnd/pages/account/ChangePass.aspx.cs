@@ -45,7 +45,11 @@ public partial class BackEnd_pages_account_ChangePass : System.Web.UI.Page
         }
     }    
     protected void lbtSave_Click(object sender, EventArgs e)
-    {        
+    {
+        if (AdminID != Convert.ToInt32(Session[Constants.SESSION_ADMIN_ID] ?? "-1"))
+        {
+            Response.Redirect("~/admin/notpermission");
+        }
         CtrAdmin ctrAdmin = new CtrAdmin();
         var ret = ctrAdmin.ChangePass(AdminID,VTCO.Utils.Encryption.GetMD5(txtPassword.Text),VTCO.Utils.Encryption.GetMD5(txtPasswordNew.Text));
         if (ret > 0)

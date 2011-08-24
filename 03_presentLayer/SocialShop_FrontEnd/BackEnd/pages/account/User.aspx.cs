@@ -185,6 +185,11 @@ public partial class BackEnd_pages_account_User : System.Web.UI.Page
     }
     protected void lbtSave_Click(object sender, EventArgs e)
     {
+        var permis = ((permission & Constants.PERMISSION_EDIT) == Constants.PERMISSION_EDIT);
+        if (!permis)
+        {
+            Response.Redirect("~/admin/notpermission");
+        }
         CtrUser ctrUser = new CtrUser();
         var ret = ctrUser.UserUpdateStatus(CurrentNewsID,Convert.ToInt32(ddlStatusEdit.SelectedValue));     
         if (ret> 0)
