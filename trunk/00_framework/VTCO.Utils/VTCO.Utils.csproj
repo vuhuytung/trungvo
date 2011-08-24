@@ -77,22 +77,7 @@
   <ItemGroup>
     <Compile Include="AdminUtils.cs" />
     <Compile Include="Caching.cs" />
-    <Compile Include="DeepZoomComposer\DeepZoomCreationProgressEventArgs.cs" />
-    <Compile Include="DeepZoomComposer\DeepZoomGenerator.cs" />
-    <Compile Include="DeepZoomComposer\EditableBitmap.cs" />
     <Compile Include="Encryption.cs" />
-    <Compile Include="GoServices\Banknetvn.cs" />
-    <Compile Include="GoServices\Bet168.cs" />
-    <Compile Include="GoServices\GoRaoVatServices.cs" />
-    <Compile Include="GoServices\ActivityWS.cs" />
-    <Compile Include="GoServices\NganLuong.cs" />
-    <Compile Include="GoServices\VTCebankSSO\CacheRepository.cs" />
-    <Compile Include="GoServices\VTCebankSSO\DataCaching.cs" />
-    <Compile Include="GoServices\VTCebankSSO\HttpHelper.cs" />
-    <Compile Include="GoServices\VTCebankSSO\SSOHelper.cs" />
-    <Compile Include="GoServices\UserInfoAPI.cs" />
-    <Compile Include="GoServices\VTCebankSSO\KeyGenerate.cs" />
-    <Compile Include="GoServices\WSMapApi.cs" />
     <Compile Include="JMessageLog.cs" />
     <Compile Include="Logging.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
