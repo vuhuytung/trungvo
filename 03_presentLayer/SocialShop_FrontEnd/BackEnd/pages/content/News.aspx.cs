@@ -301,6 +301,11 @@ public partial class BackEnd_pages_content_News : System.Web.UI.Page
 
         if (e.CommandName == "delete")
         {
+            var permis = ((permission & Constants.PERMISSION_DELETE) == Constants.PERMISSION_DELETE);
+            if (!permis)
+            {
+                Response.Redirect("~/admin/notpermission");
+            }
             CurrentNewsID = Convert.ToInt32(e.CommandArgument);            
             string strImage = "";
             try
@@ -461,7 +466,12 @@ public partial class BackEnd_pages_content_News : System.Web.UI.Page
     }
 
     protected void lbtDeleteAll_Click(object sender, EventArgs e)
-    {                
+    {
+        var permis = ((permission & Constants.PERMISSION_DELETE) == Constants.PERMISSION_DELETE);
+        if (!permis)
+        {
+            Response.Redirect("~/admin/notpermission");
+        }
         CtrNews ctrNews = new CtrNews();
         foreach (RepeaterItem item in rptAllNews.Items)
         {

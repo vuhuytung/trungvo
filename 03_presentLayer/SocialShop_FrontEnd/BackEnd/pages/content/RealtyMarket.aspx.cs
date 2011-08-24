@@ -309,6 +309,11 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
         }
         else if (e.CommandName == "delete")
         {
+            var permis = ((permission & Constants.PERMISSION_DELETE) == Constants.PERMISSION_DELETE);
+            if (!permis)
+            {
+                Response.Redirect("~/admin/notpermission");
+            }
             try
             {
                 CurrentID = Int32.Parse(e.CommandArgument.ToString());
@@ -385,6 +390,11 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
 
     protected void lbtDeleteAll_Click(object sender, EventArgs e)
     {
+        var permis = ((permission & Constants.PERMISSION_DELETE) == Constants.PERMISSION_DELETE);
+        if (!permis)
+        {
+            Response.Redirect("~/admin/notpermission");
+        }
         try
         {
             foreach (RepeaterItem item in RptReatyMarket.Items)

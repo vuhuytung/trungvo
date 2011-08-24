@@ -159,6 +159,11 @@ public partial class BackEnd_pages_content_Document : System.Web.UI.Page
             }
             else if (e.CommandName == "delete")
             {
+                var permis = ((permission & Constants.PERMISSION_DELETE) == Constants.PERMISSION_DELETE);
+                if (!permis)
+                {
+                    Response.Redirect("~/admin/notpermission");
+                }
                 var info = ctrN.GetInfoDocByID(Convert.ToInt32(e.CommandArgument));
                 if (ctrN.DeleteDocByID(info.DocumentID) > 0)
                 {
@@ -298,6 +303,11 @@ public partial class BackEnd_pages_content_Document : System.Web.UI.Page
     }
     protected void lbtDeleteAll_Click(object sender, EventArgs e)
     {
+        var permis = ((permission & Constants.PERMISSION_DELETE) == Constants.PERMISSION_DELETE);
+        if (!permis)
+        {
+            Response.Redirect("~/admin/notpermission");
+        }
         try
         {
             foreach (RepeaterItem item in RptDocument.Items)

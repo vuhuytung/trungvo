@@ -219,6 +219,11 @@ public partial class BackEnd_pages_content_SlideShow : System.Web.UI.Page
         }
         else if (e.CommandName == "delete")
         {
+            var permis = ((permission & Constants.PERMISSION_DELETE) == Constants.PERMISSION_DELETE);
+            if (!permis)
+            {
+                Response.Redirect("~/admin/notpermission");
+            }
             try
             {
                 SlideShowID = Int32.Parse(e.CommandArgument.ToString());

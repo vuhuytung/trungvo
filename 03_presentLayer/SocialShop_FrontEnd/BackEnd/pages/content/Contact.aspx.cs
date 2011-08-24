@@ -116,6 +116,11 @@ public partial class BackEnd_pages_content_Contact : System.Web.UI.Page
         
         if (e.CommandName == "delete")
         {
+            var permis = ((permission & Constants.PERMISSION_DELETE) == Constants.PERMISSION_DELETE);
+            if (!permis)
+            {
+                Response.Redirect("~/admin/notpermission");
+            }
             if (ctrNews.ContactDelete(Convert.ToInt32(e.CommandArgument)) > 0)
             {
                 lblMsg.Text = "Đã xóa thành công";
@@ -131,7 +136,12 @@ public partial class BackEnd_pages_content_Contact : System.Web.UI.Page
     }    
 
     protected void lbtDeleteAll_Click(object sender, EventArgs e)
-    {                
+    {
+        var permis = ((permission & Constants.PERMISSION_DELETE) == Constants.PERMISSION_DELETE);
+        if (!permis)
+        {
+            Response.Redirect("~/admin/notpermission");
+        }
         CtrNews ctrNews = new CtrNews();
         var ids = "";
         foreach (RepeaterItem item in rptAllNews.Items)

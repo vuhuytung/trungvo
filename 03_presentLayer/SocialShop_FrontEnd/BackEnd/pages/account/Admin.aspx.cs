@@ -201,6 +201,11 @@ public partial class BackEnd_pages_account_Admin : System.Web.UI.Page
 
         if (e.CommandName == "delete")
         {
+            var permis = ((permission & Constants.PERMISSION_DELETE) == Constants.PERMISSION_DELETE);
+            if (!permis)
+            {
+                Response.Redirect("~/admin/notpermission");
+            }
             CurrentNewsID = Convert.ToInt32(e.CommandArgument);            
             if (ctrAdmin.AdminDelete(CurrentNewsID) > 0)
             {               
