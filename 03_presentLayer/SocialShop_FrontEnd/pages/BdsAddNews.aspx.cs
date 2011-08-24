@@ -16,18 +16,10 @@ public partial class pages_Bds_AddNews : System.Web.UI.Page
         {
 
             var _data = Location.GetProvince();
-            List<LocationInfoSearch> _source = new List<LocationInfoSearch>();
-            foreach (var item in _data)
-            {
-                LocationInfoSearch lInfo = new LocationInfoSearch();
-                lInfo.LocationValue = item.LocationID + "_" + item.ProvinceCode;
-                lInfo.LocationText = item.Name;
-                _source.Add(lInfo);
-            }
 
-            ddlProvince.DataSource = _source;
-            ddlProvince.DataTextField = "LocationText";
-            ddlProvince.DataValueField = "LocationValue";
+            ddlProvince.DataSource = _data;
+            ddlProvince.DataTextField = "Name";
+            ddlProvince.DataValueField = "ProvinceCode";
             ddlProvince.DataBind();
             ddlProvince.Items.Insert(0, new ListItem("Tỉnh/TP", "-1"));
             ddlProvince.SelectedIndex = 0;
@@ -42,8 +34,33 @@ public partial class pages_Bds_AddNews : System.Web.UI.Page
             ddlTypeBDS.DataValueField = "CategoryID";
             ddlTypeBDS.DataBind();
 
-            //ddlTypeBDS.Items.Add(new ListItem("Bất động sản cần bán","15"));
-            //ddlTypeBDS.Items.Add(new ListItem("Bất động sản cần mua","16"));
+
+            for (int i = 0; i <= 20; i++)
+            {
+                ddlBathrooms.Items.Add(new ListItem(i.ToString(),i.ToString()));
+                ddlBedRoom.Items.Add(new ListItem(i.ToString(),i.ToString()));
+                ddlClientRoom.Items.Add(new ListItem(i.ToString(),i.ToString()));
+                if(i<=10)
+                    ddlFloor.Items.Add(new ListItem(i.ToString(),i.ToString()));                
+            }
+
+            if (!Convert.ToBoolean(Session[VTCO.Config.Constants.SESSION_USER_ISLOGIN] ?? false))
+            {
+                Response.Redirect("/login");
+            }
+            else
+            {
+                CtrUser us = new CtrUser();
+                var m_UI=us.UserGetInfo(Convert.ToInt32(Session[VTCO.Config.Constants.SESSION_USER_ID] ?? -1));
+                if (m_UI != null)
+                {
+                    txtUser.Text = m_UI.FullName;
+                    txtEmail.Text = m_UI.Email;
+                    txtPhone.Text = m_UI.Phone;
+                    txtAddress.Text = m_UI.Address;
+                }
+            }
+
         }
         if (!System.IO.Directory.Exists(Request.PhysicalApplicationPath + "/images/Market"))
         {
@@ -60,20 +77,13 @@ public partial class pages_Bds_AddNews : System.Web.UI.Page
 
         if (ddlProvince.SelectedValue.Trim() != "-1")
         {
-            int index = Int32.Parse(ddlProvince.SelectedValue.Split('_')[1]);
+            int index = Int32.Parse(ddlProvince.SelectedValue);
             var _data = Location.GetDistrict(index);
-            List<LocationInfoSearch> _source = new List<LocationInfoSearch>();
-            foreach (var item in _data)
-            {
-                LocationInfoSearch lInfo = new LocationInfoSearch();
-                lInfo.LocationValue = item.LocationID + "_" + item.DistrictCode;
-                lInfo.LocationText = item.Name;
-                _source.Add(lInfo);
-            }
+
             ddlDistrict.Items.Clear();
-            ddlDistrict.DataSource = _source;
-            ddlDistrict.DataTextField = "LocationText";
-            ddlDistrict.DataValueField = "LocationValue";
+            ddlDistrict.DataSource = _data;
+            ddlDistrict.DataTextField = "Name";
+            ddlDistrict.DataValueField = "DistrictCode";
             ddlDistrict.DataBind();
             ddlDistrict.Items.Insert(0, new ListItem("Quận/Huyện", "-1"));
             ddlDistrict.SelectedIndex = 0;
@@ -95,19 +105,11 @@ public partial class pages_Bds_AddNews : System.Web.UI.Page
 
         if (ddlDistrict.SelectedValue.Trim() != "-1")
         {
-            int index = Int32.Parse(ddlDistrict.SelectedValue.Split('_')[1]);
+            int index = Int32.Parse(ddlDistrict.SelectedValue);
             var _data = Location.GetVillage(index);
-            List<LocationInfoSearch> _source = new List<LocationInfoSearch>();
-            foreach (var item in _data)
-            {
-                LocationInfoSearch lInfo = new LocationInfoSearch();
-                lInfo.LocationValue = item.LocationID + "_" + item.VillageCode;
-                lInfo.LocationText = item.Name;
-                _source.Add(lInfo);
-            }
-            ddlVillage.DataSource = _source;
-            ddlVillage.DataTextField = "LocationText";
-            ddlVillage.DataValueField = "LocationValue";
+            ddlVillage.DataSource = _data;
+            ddlVillage.DataTextField = "Name";
+            ddlVillage.DataValueField = "LocationID";
             ddlVillage.DataBind();
             ddlVillage.Items.Insert(0, new ListItem("Phường/Xã", "-1"));
             ddlVillage.SelectedIndex = 0;
@@ -118,53 +120,46 @@ public partial class pages_Bds_AddNews : System.Web.UI.Page
             ddlVillage.Items.Insert(0, new ListItem("Phường/Xã", "-1"));
         }
     }
-    private int GetLocationID(DropDownList ddlProvince, DropDownList ddlDistrict, DropDownList ddlVillage)
-    {
-        if (Int32.Parse(ddlProvince.SelectedValue.Split('_')[0]) != -1) //kiểm tra nếu chọn tỉnh
-        {
-            if (Int32.Parse(ddlDistrict.SelectedValue.Split('_')[0]) != -1) //nếu chọn huyện
-            {
-                if (Int32.Parse(ddlVillage.SelectedValue.Split('_')[0]) != -1)
-                {
-                    return Int32.Parse(ddlVillage.SelectedValue.Split('_')[0]);
-                }
-                else
-                {
-                    return Int32.Parse(ddlDistrict.SelectedValue.Split('_')[0]);
-                }
-            }
-            else
-            {
-                return Int32.Parse(ddlProvince.SelectedValue.Split('_')[0]);
-            }
-        }
 
-        return 0;
-    }
     protected void btnAdd_Click(object sender, EventArgs e)
     {
         CtrRealtyMarket ctrN = new CtrRealtyMarket();
-        try
-        {
+        //try
+        {            
+            if (!Convert.ToBoolean(Session[VTCO.Config.Constants.SESSION_USER_ID] ?? false))
+                Response.Redirect("/login");
+            int locationID = Location.getLocationIDByCode(Convert.ToInt32(ddlProvince.SelectedValue),Convert.ToInt32(ddlDistrict.SelectedValue),Convert.ToInt32(ddlVillage.SelectedValue));
+            var userID = Convert.ToInt32(Session[VTCO.Config.Constants.SESSION_USER_ID]);
+            long price = 0;
+            
+            try
+            {
+                price = Int64.Parse(txtPrice.Text.Trim());
+            }
+            catch { price = 0; }
+            int dientich=0;
+            try
+            {
+                dientich = Int32.Parse(txtDientich.Text.Trim());
+            }
+            catch { dientich = 0; }
+             
             if (fupload.FileName != "")
             {
-                //luu anh vo temp
+                //luu anh vo temp                
+                string fileName = DateTime.Now.ToString("ddMMyyhhmmss") + fupload.FileName;
                 string strTemp = Path.Combine(Request.PhysicalApplicationPath, "images\\temp\\" + fupload.FileName);
                 fupload.SaveAs(strTemp);
 
                 string strFile = Path.Combine(Request.PhysicalApplicationPath, "images\\Market");
-                strFile += "\\" + fupload.FileName;
+                strFile += "\\" + fileName;
                 var EditImage1 = System.Drawing.Image.FromFile(strTemp);
                 VTCO.Library.ImageResize Img2 = new VTCO.Library.ImageResize();
                 var newimg1 = Img2.Crop(EditImage1, 500, 300, VTCO.Library.ImageResize.AnchorPosition.Center);
                 newimg1.Save(strFile);
                 //fupload.PostedFile.SaveAs(strFile);
 
-
-                int length = fupload.FileName.Length - 4;
-                string newname = fupload.FileName.Substring(0, length) + "_thumb";
-                string exp = fupload.FileName.Substring(length);
-                newname = newname + exp;
+                string newname = fileName + ".thumb";                                
                 string strFile1 = Path.Combine(Request.PhysicalApplicationPath, "images\\Market");
                 strFile1 += "\\" + newname;
 
@@ -172,42 +167,35 @@ public partial class pages_Bds_AddNews : System.Web.UI.Page
                 VTCO.Library.ImageResize Img = new VTCO.Library.ImageResize();
                 var newimg = Img.Crop(EditImage, 150, 100, VTCO.Library.ImageResize.AnchorPosition.Center);
                 newimg.Save(strFile1);
-
-
-                int locationID = GetLocationID(ddlProvince, ddlDistrict, ddlVillage);
-                string address = ctrN.GetFullAddressbyLocationID(locationID);
-                string str = txtStreet.Text + "-" + address;
-                ctrN.InsertMarket(txtTitle.Text, txtDesc.Text, txtUser.Text, txtPhone.Text, txtEmail.Text, Int32.Parse(txtPrice.Text), Int32.Parse(ddlTypeBDS.SelectedValue), @"/images/Market/" + fupload.FileName, @"/images/Market/" + newname, txtLegal.Text, txtDientich.Text, txtClientRoom.Text, txtBedRoom.Text, txtBathrooms.Text, txtPosition.Text, txtAddress.Text, txtFloor.Text, locationID, str, chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked, chkUniversity.Checked, false,0);
+                CtrPartner pth = new CtrPartner();
+                pth.DeleteImgTemp(Request);
+                
+                
+                if(
+                ctrN.Insert(txtTitle.Text.Trim(), txtDesc.Text.Trim(), @"/images/market/" + fileName, txtUser.Text.Trim(), txtPhone.Text.Trim(), txtEmail.Text.Trim(), txtAddress.Text.Trim(), price * Convert.ToInt32(ddlDonVi.SelectedValue),
+                    Int32.Parse(ddlTypeBDS.SelectedValue), txtLegal.Text.Trim(), dientich, Int32.Parse(ddlClientRoom.SelectedValue), Int32.Parse(ddlBedRoom.SelectedValue), 
+                    Int32.Parse(ddlBathrooms.SelectedValue), txtPosition.Text.Trim(), Int32.Parse(ddlFloor.SelectedValue), chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked, 
+                    chkUniversity.Checked,locationID,txtStreet.Text.Trim(), 0,userID)>0)
+                {
+                    ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('Thêm mới thành công! Chúng tôi sẽ kiểm duyệt trước khi đưa lên trang!')", true);
+                }
             }
             else
             {
-
-                int locationID = GetLocationID(ddlProvince, ddlDistrict, ddlVillage);
-                string address = ctrN.GetFullAddressbyLocationID(locationID);
-                string str = txtStreet.Text + "-" + address;
-                ctrN.InsertMarket(txtTitle.Text, txtDesc.Text, txtUser.Text, txtPhone.Text, txtEmail.Text, Int32.Parse(txtPrice.Text), Int32.Parse(ddlTypeBDS.SelectedValue), @"/images/Market/", @"/images/Market/", txtLegal.Text, txtDientich.Text, txtClientRoom.Text, txtBedRoom.Text, txtBathrooms.Text, txtPosition.Text, txtAddress.Text, txtFloor.Text, locationID, str, chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked, chkUniversity.Checked, false,0);
+                if (
+                 ctrN.Insert(txtTitle.Text.Trim(), txtDesc.Text.Trim(), "", txtUser.Text.Trim(), txtPhone.Text.Trim(), txtEmail.Text.Trim(), txtAddress.Text.Trim(), price * Convert.ToInt32(ddlDonVi.SelectedValue),
+                     Int32.Parse(ddlTypeBDS.SelectedValue), txtLegal.Text.Trim(), dientich, Int32.Parse(ddlClientRoom.SelectedValue), Int32.Parse(ddlBedRoom.SelectedValue),
+                     Int32.Parse(ddlBathrooms.SelectedValue), txtPosition.Text.Trim(), Int32.Parse(ddlFloor.SelectedValue), chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked,
+                     chkUniversity.Checked, locationID, txtStreet.Text.Trim(), 0, userID) > 0)
+                {
+                    ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('Thêm mới thành công! Chúng tôi sẽ kiểm duyệt trước khi đưa lên trang!')", true);
+                }
             }
-            ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('Thêm mới thành công !')", true);
-        }
-        catch
-        {
-            ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('Thêm mới lỗi !')", true);
             
         }
-    }
-}
-public class LocationInfoSearchA
-{
-    protected string m_LocationValue;
-    protected string m_LocationText;
-    public string LocationValue
-    {
-        get { return m_LocationValue; }
-        set { m_LocationValue = value; }
-    }
-    public string LocationText
-    {
-        get { return m_LocationText; }
-        set { m_LocationText = value; }
+       // catch
+       // {
+        //    ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('Thêm mới lỗi !')", true);
+       // }
     }
 }
