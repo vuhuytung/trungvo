@@ -15,29 +15,17 @@ public partial class userControls_ucTopSearch : System.Web.UI.UserControl
         {
 
             var _data = Location.GetProvince();
-            List<LocationInfoSearch> _source = new List<LocationInfoSearch>();
-            foreach (var item in _data)
-            {
-                LocationInfoSearch lInfo=new LocationInfoSearch();
-                lInfo.LocationValue=item.LocationID+"_"+item.ProvinceCode;
-                lInfo.LocationText=item.Name;
-                _source.Add(lInfo);
-            }
 
-            ddlProvince.DataSource = _source;
-            ddlProvince.DataTextField = "LocationText";
-            ddlProvince.DataValueField = "LocationValue";            
+            ddlProvince.DataSource = _data;
+            ddlProvince.DataTextField = "Name";
+            ddlProvince.DataValueField = "ProvinceCode";            
             ddlProvince.DataBind();
             ddlProvince.Items.Insert(0, new ListItem("--Tất cả--", "-1"));
             ddlProvince.SelectedIndex = 0;
 
 
             ddlDistrict.Items.Insert(0, new ListItem("--Tất cả--", "-1"));
-            //ddlVillage.Items.Insert(0, new ListItem("--Tất cả--", "-1"));
 
-            //add Type BDS temp
-            //ddlTypeBDS.Items.Add(new ListItem("Bất động sản cần bán","21"));
-            //ddlTypeBDS.Items.Add(new ListItem("Bất động sản cần mua","22"));
 
             ddlTypeBDS.DataSource = market.GetCatByType();
             ddlTypeBDS.DataTextField = "Name";
@@ -59,88 +47,33 @@ public partial class userControls_ucTopSearch : System.Web.UI.UserControl
     }
     protected void ddlProvince_SelectedIndexChanged(object sender, EventArgs e)
     {
-        //int index = Int32.Parse(ddlProvince.SelectedValue.Split('_')[1]);
         if (ddlProvince.SelectedValue.Trim() != "-1")
         {
-            int index = Int32.Parse(ddlProvince.SelectedValue.Split('_')[1]);
+            int index = Int32.Parse(ddlProvince.SelectedValue);
             var _data = Location.GetDistrict(index);
-            List<LocationInfoSearch> _source = new List<LocationInfoSearch>();
-            foreach (var item in _data)
-            {
-                LocationInfoSearch lInfo = new LocationInfoSearch();
-                lInfo.LocationValue = item.LocationID + "_" + item.DistrictCode;
-                lInfo.LocationText = item.Name;
-                _source.Add(lInfo);
-            }
+
             ddlDistrict.Items.Clear();
-            ddlDistrict.DataSource = _source;
-            ddlDistrict.DataTextField = "LocationText";
-            ddlDistrict.DataValueField = "LocationValue";            
+            ddlDistrict.DataSource = _data;
+            ddlDistrict.DataTextField = "Name";
+            ddlDistrict.DataValueField = "DistrictCode";            
             ddlDistrict.DataBind();
             ddlDistrict.Items.Insert(0, new ListItem("--Tất cả--", "-1"));
             ddlDistrict.SelectedIndex = 0;
-
-            //ddlVillage.Items.Clear();
-            //ddlVillage.Items.Insert(0, new ListItem("--Tất cả--", "-1"));
         }
         else
         {
             ddlDistrict.Items.Clear();
             ddlDistrict.Items.Insert(0, new ListItem("--Tất cả--", "-1"));
 
-            //ddlVillage.Items.Clear();
-            //ddlVillage.Items.Insert(0, new ListItem("--Tất cả--", "-1"));
-        }
-    }
-    protected void ddlDistrict_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        if (ddlDistrict.SelectedValue.Trim() != "-1")
-        {
-            int index = Int32.Parse(ddlDistrict.SelectedValue.Split('_')[1]);        
-            var _data = Location.GetVillage(index);
-            List<LocationInfoSearch> _source = new List<LocationInfoSearch>();
-            foreach (var item in _data)
-            {
-                LocationInfoSearch lInfo = new LocationInfoSearch();
-                lInfo.LocationValue = item.LocationID + "_" + item.VillageCode;
-                lInfo.LocationText = item.Name;
-                _source.Add(lInfo);
-            }
-            //ddlVillage.DataSource = _source;
-            //ddlVillage.DataTextField = "LocationText";
-            //ddlVillage.DataValueField = "LocationValue";
-            //ddlVillage.DataBind();
-            //ddlVillage.Items.Insert(0, new ListItem("--Tất cả--", "-1"));
-            //ddlVillage.SelectedIndex = 0;
-        }
-        else
-        {
-            //ddlVillage.Items.Clear();
-            //ddlVillage.Items.Insert(0, new ListItem("--Tất cả--", "-1"));
         }
     }
 
-    public class LocationInfoSearch
-    {
-        protected string m_LocationValue;
-        protected string m_LocationText;
-        public string LocationValue
-        {
-            get { return m_LocationValue; }
-            set { m_LocationValue = value; }
-        }
-        public string LocationText
-        {
-            get { return m_LocationText; }
-            set { m_LocationText = value; }
-        }
-    }
-    private void GetPrice(int type, ref double begin, ref double end)
+    private void GetPrice(int type, ref long begin, ref long end)
     {
         if (type == 0)
         {
             begin = 0;
-            end = double.MaxValue;
+            end = long.MaxValue;
         }
         else if (type == 1)
         {
@@ -175,57 +108,21 @@ public partial class userControls_ucTopSearch : System.Web.UI.UserControl
         else if (type == 7)
         {
             begin = 20000000000;
-            end = double.MaxValue;
+            end = long.MaxValue;
         }
 
     }
     protected void ImgSearch_Click(object sender, ImageClickEventArgs e)
     {
-        //try
-        //{
-            double begin = 0;
-            double end = 0;
-            int Code, typeCode, typeBDS;
+
+            long begin = 0;
+            long end = 0;
+            int Code, typeBDS,CodeP;
             typeBDS = Int32.Parse(ddlTypeBDS.SelectedValue);
             GetPrice(Int32.Parse(ddlPrice.SelectedValue), ref begin, ref end);
-            if (Int32.Parse(ddlProvince.SelectedValue.Split('_')[0]) != -1) //kiểm tra nếu chọn tỉnh
-            {
-                if (Int32.Parse(ddlDistrict.SelectedValue.Split('_')[0]) != -1) //nếu chọn huyện
-                {
-                    //if (Int32.Parse(ddlVillage.SelectedValue.Split('_')[0]) != -1)
-                    //{
-                    //    Code = Int32.Parse(ddlVillage.SelectedValue.Split('_')[1]);
-                    //    typeCode = 3;
-                    //}
-                    //else
-                    {
-                        Code = Int32.Parse(ddlDistrict.SelectedValue.Split('_')[1]);
-                        typeCode = 2;
-                    }
-
-                }
-                else
-                {
-                    Code = Int32.Parse(ddlProvince.SelectedValue.Split('_')[1]);
-                    typeCode = 1;
-                }
-            }
-            else
-            {
-                Code = 0;
-                typeCode = 1;
-            }
-            string str = "~/pages/realtymarket.aspx?code=" + Code.ToString() + "&typecode=" + typeCode.ToString() + "&typebds=" + typeBDS.ToString() + "&price=" + ddlPrice.SelectedValue;
+            Code = Int32.Parse(ddlDistrict.SelectedValue);
+            CodeP = Int32.Parse(ddlProvince.SelectedValue);            
+            string str = "~/pages/realtymarket.aspx?code=" + Code.ToString() + "&codep=" + CodeP.ToString() + "&typebds=" + typeBDS.ToString() + "&price=" + ddlPrice.SelectedValue;
             Response.Redirect(str);
-        //}
-        //catch(Exception ex)
-       // {
-          //  string error = ex.ToString();
-        //    Response.Redirect("realtymarket.aspx?code=0");
-        //}
-        
-            
-       
-
     }
 }

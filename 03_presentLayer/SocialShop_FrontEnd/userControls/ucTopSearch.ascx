@@ -22,15 +22,6 @@
                         </asp:DropDownList>
                     </td>
                 </tr>
-                <%--<tr>
-                    <td>
-                        Phường/Xã
-                    </td>
-                    <td>
-                        <asp:DropDownList ID="ddlVillage" CssClass="ddl" runat="server" Width="135px">
-                        </asp:DropDownList>
-                    </td>
-                </tr>--%>
                 <tr>
                     <td>
                         Loại BĐS
