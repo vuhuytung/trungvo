@@ -139,7 +139,7 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
                 if (partner.DeletePartner(PartnersID) > 0)
                 {
                     partner.DeleteImg(PartnersImg.Replace("/", "\\"), Request);
-                    lblMsg.Text = "Xóa thành công !";
+                    lblMsg.Text = "Xóa thành công !";                    
                     BindRpt();
                 }
                 else
