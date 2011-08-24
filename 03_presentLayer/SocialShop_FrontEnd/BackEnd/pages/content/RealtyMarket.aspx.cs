@@ -318,6 +318,7 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
 
                 if (ctrN.DeleteMarket(Int32.Parse(e.CommandArgument.ToString())) > 0)
                 {
+                    ucPaging1.CurrentPage = 1;
                     BindRpt();
                     ctrN.DeleteImg(image1.Replace("/", "\\"), Request);
                     ctrN.DeleteImg((image1+".thumb").Replace("/", "\\"), Request);

@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/master/masterFrontend.master" AutoEventWireup="true"
-    CodeFile="realtymarket.aspx.cs" Inherits="pages_realtymarket" %>
+    CodeFile="Myrealtymarket.aspx.cs" Inherits="pages_Myrealtymarket" %>
 
 <%--<%@ Register Src="~/userControls/ucRealtyMarket.ascx" TagName="ucRealtyMarket" TagPrefix="uc1" %>--%>
 <%@ Register Src="~/userControls/ucDoitac.ascx" TagName="ucDoitac" TagPrefix="uc2" %>
@@ -60,7 +60,8 @@
                         </div>
                     </div>
                     <div class="content">
-                        <asp:Repeater ID="RptReatyMarket" runat="server">
+                        <asp:Repeater ID="RptReatyMarket" runat="server" 
+                            onitemcommand="RptReatyMarket_ItemCommand">
                             <ItemTemplate>
                                 <div class="realty_item">
                                     <div class="img_item">
@@ -70,6 +71,7 @@
                                         <div class="detail_item_title">                                            
                                             <a href='/realtymarketdetails/<%#VTCO.Library.Lib.GetUrlText(Eval("Title").ToString()) %>-<%#Eval("Type")%>-<%#Eval("RealtyMarketID")%>'>
                                                 <%#Eval("Title")%></a>
+                                                <asp:Button ID="btnDelete" CommandName="delete" CommandArgument='<%#Eval("RealtyMarketID") %>' runat="server" Text="Xóa" CssClass="nr" />
                                         </div>
                                         <div class="detail_item_title">
                                             <%#Eval("Descrition").ToString().Length > 201 ? Eval("Descrition").ToString().Substring(0, 200) : Eval("Descrition")%></a>
@@ -92,7 +94,6 @@
                     </div>
                     <div class="clear">
                     </div>
-                    <hr style="margin-top: 30px;" />
                 </div>
                 <div class="rightMain nr">
                     <uc2:ucDoitac ID="ucDoitac1" runat="server" />

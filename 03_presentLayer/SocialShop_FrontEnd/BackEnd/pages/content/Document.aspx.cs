@@ -164,6 +164,7 @@ public partial class BackEnd_pages_content_Document : System.Web.UI.Page
                 {
                     ctrN.DeleteDocument(info.URL, Request);
                     lblMsg.Text = "Xóa thành công!";
+                    ucPaging1.CurrentPage = 1;
                     ucPaging1_PageChange(ucPaging1);
                 }
             }
@@ -313,6 +314,7 @@ public partial class BackEnd_pages_content_Document : System.Web.UI.Page
                     }
             }
             lblMsg.Text = "Xóa thành công!";
+            ucPaging1.CurrentPage = 1;
             ucPaging1_PageChange(ucPaging1);
         }
         catch

@@ -244,6 +244,7 @@ public partial class BackEnd_pages_content_SlideShow : System.Web.UI.Page
             }
             finally
             {
+                ucPaging1.CurrentPage = 1;
                 BindRpt();
             }
 
