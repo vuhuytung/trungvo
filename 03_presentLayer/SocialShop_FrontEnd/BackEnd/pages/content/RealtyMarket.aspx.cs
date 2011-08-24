@@ -41,24 +41,15 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
             //=========top search
 
             var _data = Location.GetProvince();
-            List<LocationInfoSearch> _source = new List<LocationInfoSearch>();
-            foreach (var item in _data)
-            {
-                LocationInfoSearch lInfo = new LocationInfoSearch();
-                lInfo.LocationValue = item.LocationID + "_" + item.ProvinceCode;
-                lInfo.LocationText = item.Name;
-                _source.Add(lInfo);
-            }
 
-            ddlProvince.DataSource = _source;
-            ddlProvince.DataTextField = "LocationText";
-            ddlProvince.DataValueField = "LocationValue";
+            ddlProvince.DataSource = _data;
+            ddlProvince.DataTextField = "Name";
+            ddlProvince.DataValueField = "ProvinceCode";
             ddlProvince.DataBind();
             ddlProvince.Items.Insert(0, new ListItem("--Tất cả--", "-1"));
             ddlProvince.SelectedIndex = 0;
 
             ddlDistrict.Items.Insert(0, new ListItem("--Tất cả--", "-1"));
-            //ddlVillage.Items.Insert(0, new ListItem("--Tất cả--", "-1"));
 
             //add Type BDS temp
             ddlTypeBDS.DataSource = ctrN.GetCatByType();
@@ -94,35 +85,14 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
                 System.IO.Directory.CreateDirectory(Request.PhysicalApplicationPath + "/images/temp");
             }
         }
+        lblMsg.Text = "";
     }
-    private void BindDrop(ref DropDownList ddl1, ref DropDownList ddl2, ref DropDownList ddl3)
-    {
-        var _data = Location.GetProvince();
-        List<LocationInfoSearch> _source = new List<LocationInfoSearch>();
-        foreach (var item in _data)
-        {
-            LocationInfoSearch lInfo = new LocationInfoSearch();
-            lInfo.LocationValue = item.LocationID + "_" + item.ProvinceCode;
-            lInfo.LocationText = item.Name;
-            _source.Add(lInfo);
-        }
-
-        ddl1.DataSource = _source;
-        ddl1.DataTextField = "LocationText";
-        ddl1.DataValueField = "LocationValue";
-        ddl1.DataBind();
-        ddl1.Items.Insert(0, new ListItem("TP/Tỉnh", "-1"));
-        ddl1.SelectedIndex = 0;
-
-        ddl2.Items.Insert(0, new ListItem("Quận/Huyện", "-1"));
-        ddl3.Items.Insert(0, new ListItem("Phường/Xã", "-1"));
-    }
-    private void GetPrice(int type, ref double begin, ref double end)
+    private void GetPrice(int type, ref long begin, ref long end)
     {
         if (type == 0)
         {
             begin = 0;
-            end = double.MaxValue;
+            end = long.MaxValue;
         }
         else if (type == 1)
         {
@@ -157,7 +127,7 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
         else if (type == 7)
         {
             begin = 20000000000;
-            end = double.MaxValue;
+            end = long.MaxValue;
         }
 
     }
@@ -165,86 +135,47 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
     {
         BindRpt();
     }
-    private int GetLocationID(DropDownList ddlProvince, DropDownList ddlDistrict, DropDownList ddlVillage)
-    {
-        if (Int32.Parse(ddlProvince.SelectedValue.Split('_')[0]) != -1) //kiểm tra nếu chọn tỉnh
-        {
-            if (Int32.Parse(ddlDistrict.SelectedValue.Split('_')[0]) != -1) //nếu chọn huyện
-            {
-                if (Int32.Parse(ddlVillage.SelectedValue.Split('_')[0]) != -1)
-                {
-                    return Int32.Parse(ddlVillage.SelectedValue.Split('_')[0]);
-                }
-                else
-                {
-                    return Int32.Parse(ddlDistrict.SelectedValue.Split('_')[0]);
-                }
-            }
-            else
-            {
-                return Int32.Parse(ddlProvince.SelectedValue.Split('_')[0]);
-            }
-        }
 
-        return 0;
-    }
 
     protected void BindRpt()
     {
-        double begin = 0;
-        double end = 0;
+        long begin = 0;
+        long end = 0;
         GetPrice(Int32.Parse(ddlPrice.SelectedValue), ref begin, ref end);
-        if (Int32.Parse(ddlProvince.SelectedValue.Split('_')[0]) != -1) //kiểm tra nếu chọn tỉnh
+
+        if (Int32.Parse(ddlDistrict.SelectedValue) != -1) //nếu chọn huyện
         {
-            if (Int32.Parse(ddlDistrict.SelectedValue.Split('_')[0]) != -1) //nếu chọn huyện
-            {
 
-                int Code = Int32.Parse(ddlDistrict.SelectedValue.Split('_')[1]);
-                var _data = ctrN.GetListRealtyMarketByCondition(Int32.Parse(ddlTypeUser.SelectedValue), Code, 2, Int32.Parse(ddlTypeBDS.SelectedValue), begin, end, ucPaging1.CurrentPage, ucPaging1.PageSize);
-                RptReatyMarket.DataSource = _data.Items;
-                RptReatyMarket.DataBind();
-                ucPaging1.TotalRecord = _data.TotalRecord;
-                // return Code;
-
-            }
-            else
-            {
-                int Code = Int32.Parse(ddlProvince.SelectedValue.Split('_')[1]);
-                var _data = ctrN.GetListRealtyMarketByCondition(Int32.Parse(ddlTypeUser.SelectedValue), Code, 1, Int32.Parse(ddlTypeBDS.SelectedValue), begin, end, ucPaging1.CurrentPage, ucPaging1.PageSize);
-                RptReatyMarket.DataSource = _data.Items;
-                RptReatyMarket.DataBind();
-                ucPaging1.TotalRecord = _data.TotalRecord;
-                // return Code;
-            }
+            int Code = Int32.Parse(ddlDistrict.SelectedValue);
+            var _data = ctrN.GetListRealtyMarket(-1, Code, 2, Int32.Parse(ddlTypeBDS.SelectedValue), begin, end,Convert.ToInt32(ddlStatusSearch.SelectedValue), ucPaging1.CurrentPage, ucPaging1.PageSize);
+            RptReatyMarket.DataSource = _data.Items;
+            RptReatyMarket.DataBind();
+            ucPaging1.TotalRecord = _data.TotalRecord;
+            divPaging.Visible = ucPaging1.TotalPage > 1;
 
         }
         else
         {
-            var _data = ctrN.GetListRealtyMarketByCondition(Int32.Parse(ddlTypeUser.SelectedValue), 0, 1, Int32.Parse(ddlTypeBDS.SelectedValue), begin, end, ucPaging1.CurrentPage, ucPaging1.PageSize);
+            int Code = Int32.Parse(ddlProvince.SelectedValue);
+            var _data = ctrN.GetListRealtyMarket(-1, Code, 1, Int32.Parse(ddlTypeBDS.SelectedValue), begin, end,Convert.ToInt32(ddlStatusSearch.SelectedValue), ucPaging1.CurrentPage, ucPaging1.PageSize);
             RptReatyMarket.DataSource = _data.Items;
             RptReatyMarket.DataBind();
             ucPaging1.TotalRecord = _data.TotalRecord;
+            divPaging.Visible = ucPaging1.TotalPage > 1;
         }
+
     }
     protected void ddlProvince_SelectedIndexChanged(object sender, EventArgs e)
     {
-        //int index = Int32.Parse(ddlProvince.SelectedValue.Split('_')[1]);
         if (ddlProvince.SelectedValue.Trim() != "-1")
         {
-            int index = Int32.Parse(ddlProvince.SelectedValue.Split('_')[1]);
+            int index = Int32.Parse(ddlProvince.SelectedValue);
             var _data = Location.GetDistrict(index);
-            List<LocationInfoSearch> _source = new List<LocationInfoSearch>();
-            foreach (var item in _data)
-            {
-                LocationInfoSearch lInfo = new LocationInfoSearch();
-                lInfo.LocationValue = item.LocationID + "_" + item.DistrictCode;
-                lInfo.LocationText = item.Name;
-                _source.Add(lInfo);
-            }
+
             ddlDistrict.Items.Clear();
-            ddlDistrict.DataSource = _source;
-            ddlDistrict.DataTextField = "LocationText";
-            ddlDistrict.DataValueField = "LocationValue";
+            ddlDistrict.DataSource = _data;
+            ddlDistrict.DataTextField = "Name";
+            ddlDistrict.DataValueField = "DistrictCode";
             ddlDistrict.DataBind();
             ddlDistrict.Items.Insert(0, new ListItem("Tất cả", "-1"));
             ddlDistrict.SelectedIndex = 0;
@@ -254,34 +185,17 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
         {
             ddlDistrict.Items.Clear();
             ddlDistrict.Items.Insert(0, new ListItem("Tất cả", "-1"));
-
         }
     }
     protected void btnSearch_Click(object sender, EventArgs e)
     {
         //some code here
         BindRpt();
-
     }
     protected void btnThemmoi_Click(object sender, EventArgs e)
     {
         Panel1.Visible = false;
         Panel3.Visible = false;
-    }
-    public class LocationInfoSearch
-    {
-        protected string m_LocationValue;
-        protected string m_LocationText;
-        public string LocationValue
-        {
-            get { return m_LocationValue; }
-            set { m_LocationValue = value; }
-        }
-        public string LocationText
-        {
-            get { return m_LocationText; }
-            set { m_LocationText = value; }
-        }
     }
 
 
@@ -298,19 +212,44 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
             {
                 divListRow.Attributes["class"] = "adminListRow-even";
             }
-
-            if (Convert.ToBoolean(DataBinder.Eval(e.Item.DataItem, "Status")))
+            if ((permission & VTCO.Config.Constants.PERMISSION_EDIT) == VTCO.Config.Constants.PERMISSION_EDIT)
             {
-                if ((permission & VTCO.Config.Constants.PERMISSION_EDIT) == VTCO.Config.Constants.PERMISSION_EDIT)
-                    (e.Item.FindControl("lbtUnLock") as LinkButton).Visible = false;
-            }
-            else
-            {
-                if ((permission & VTCO.Config.Constants.PERMISSION_EDIT) == VTCO.Config.Constants.PERMISSION_EDIT)
-                    (e.Item.FindControl("lbtLock") as LinkButton).Visible = false;
+                switch (Convert.ToInt32(DataBinder.Eval(e.Item.DataItem, "Status")))
+                {
+                    case 1:
+                        (e.Item.FindControl("liUnLock") as HtmlGenericControl).Visible = false;
+                        break;
+                    case 2:
+                        (e.Item.FindControl("liLock") as HtmlGenericControl).Visible = false;
+                        break;
+                }
             }
         }
 
+    }
+
+    protected string getTextPrice(long? _price)
+    {
+        if ((!_price.HasValue) || (_price.Value == 0))
+            return "Thỏa thuận";
+        double pr = 0;
+        pr = _price.Value / 1000000000.0;
+        if (pr >= 1)
+        {
+            return pr.ToString() + " Tỷ";
+        }
+        pr = _price.Value / 1000000.0;
+        if (pr >= 1)
+        {
+            return pr.ToString() + " Triệu";
+        }
+
+        pr = _price.Value / 100000;
+        if (pr >= 1)
+        {
+            return pr.ToString() + " Trăm nghìn";
+        }
+        return _price.Value.ToString("0,0") + " VNĐ";
     }
     protected void RptReatyMarket_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
@@ -338,24 +277,35 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
             
             //ddlTypeBDSs
             lblAddressStreet.Text=info.Address;
-            lblAreage.Text=info.Acreage;
+            lblAreage.Text=info.Acreage.ToString();
             lblLegatStatus.Text=info.LegalStatus;
             lblPosition.Text=info.Position;
-            lblFloor.Text=info.Floor;
-            lblClientRoom.Text=info.ClientRoom;
-            lblBedRoom.Text=info.BedRoom;
-            lblBathRoom.Text=info.Bathrooms;
+            lblFloor.Text=info.Floor.ToString();
+            lblClientRoom.Text=info.ClientRoom.ToString();
+            lblBedRoom.Text=info.BedRoom.ToString();
+            lblBathRoom.Text=info.Bathrooms.ToString();
             lblNearKindergarten.Text=info.NearKindergarten.Value?"Có":"Không";
             lblNearSchool.Text=info.NearlySchool.Value?"Có":"Không";
             lblNearHospital.Text=info.NearHospital.Value?"Có":"Không";
             lblMarket.Text=info.NearlyMarket.Value?"Có":"Không";
             lblNearUniversity.Text=info.NearlyUniversity.Value?"Có":"Không";
-            lblPrice.Text=info.Price.Value.ToString("0,0");
+            lblPrice.Text = getTextPrice(info.Price);
             lblDescription.Text=info.Descrition;
-            ddlStatus.SelectedValue=info.Status.Value?"1":"0";
+            ddlStatus.Items.Clear();
+            ddlStatus.Items.Add(new ListItem("Kích hoạt","1"));
+            ddlStatus.Items.Add(new ListItem("Khóa","2"));
+            if(info.Status==0)
+                ddlStatus.Items.Insert(0, new ListItem("Chưa duyệt","0"));
+            ddlStatus.SelectedValue=info.Status.ToString();
             Panel1.Visible = true;
             Panel3.Visible = false;
             lblMsg.Text = "";
+            if ((info.Image != null) && (info.Image.Trim() != ""))
+                imgImage.ImageUrl =  info.Image + ".thumb";
+            else
+            {
+                imgImage.ImageUrl = "/images/nomarket.jpg";
+            }
         }
         else if (e.CommandName == "delete")
         {
@@ -365,13 +315,12 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
                 var info = ctrN.GetDetailRealtyMarketByID(CurrentID);
 
                 var image1 = info.Image;
-                var image2 = info.ImageThumb;
 
                 if (ctrN.DeleteMarket(Int32.Parse(e.CommandArgument.ToString())) > 0)
                 {
                     BindRpt();
                     ctrN.DeleteImg(image1.Replace("/", "\\"), Request);
-                    ctrN.DeleteImg(image2.Replace("/", "\\"), Request);
+                    ctrN.DeleteImg((image1+".thumb").Replace("/", "\\"), Request);
                     lblMsg.Text = "Xóa thành công!";
                 }
                 else
@@ -387,7 +336,7 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
 
         if (e.CommandName == "lockNews")
         {
-            if (ctrN.UpdateStatus(Convert.ToInt32(e.CommandArgument), false) > 0)
+            if (ctrN.UpdateStatus(Convert.ToInt32(e.CommandArgument), 2) > 0)
             {
                 BindRpt();
                 lblMsg.Text = "Cập nhật thành công";
@@ -403,7 +352,7 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
 
         if (e.CommandName == "unlockNews")
         {
-            if (ctrN.UpdateStatus(Convert.ToInt32(e.CommandArgument), true) > 0)
+            if (ctrN.UpdateStatus(Convert.ToInt32(e.CommandArgument), 1) > 0)
             {
                 BindRpt();
                 lblMsg.Text = "Cập nhật thành công";
@@ -418,7 +367,7 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
     }
     protected void btnUpdate_Click(object sender, EventArgs e)
     {
-        if (ctrN.UpdateStatus(CurrentID, Convert.ToBoolean(ddlStatus.SelectedValue)) > 0)
+        if (ctrN.UpdateStatus(CurrentID, Convert.ToInt32(ddlStatus.SelectedValue)) > 0)
         {
             lblMsg.Text = "Cập nhật thành công!";
             Panel3.Visible = true;
@@ -445,11 +394,9 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
                 {
                     if (chkDeleteAll.Checked == true)
                     {
-                        HiddenField Img = (HiddenField)item.FindControl("Img");
-                        HiddenField ImgThumb = (HiddenField)item.FindControl("ImgThumb");
-
-                        ctrN.DeleteImg(Img.Value.Replace("/", "\\"), Request);
-                        ctrN.DeleteImg(ImgThumb.Value.Replace("/", "\\"), Request);
+                        var Img = ctrN.GetDetailRealtyMarketByID(Convert.ToInt32(hdID.Value)).Image;
+                        ctrN.DeleteImg(Img.Replace("/", "\\"), Request);
+                        ctrN.DeleteImg((Img+".thumb").Replace("/", "\\"), Request);
 
                         ctrN.DeleteMarket(Int32.Parse(hdID.Value));
                     }

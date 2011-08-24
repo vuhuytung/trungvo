@@ -76,7 +76,7 @@
                             Diện tích:
                         </td>
                         <td style="padding: 5px 0;">
-                            <b><asp:Label runat="server" ID="lblAreage"></asp:Label></b>
+                            <b><asp:Label runat="server" ID="lblAreage"></asp:Label> m²</b>
                         </td>
                         <td>
                             Tình trạng pháp lý:
@@ -170,7 +170,7 @@
                             Hình ảnh:
                         </td>
                         <td>
-                            <asp:FileUpload ID="fupload" runat="server" />
+                            <asp:Image runat="server" ID="imgImage" />
                         </td>
                     </tr>
                     <tr>
@@ -244,13 +244,14 @@
                             </asp:DropDownList>
                         </td>
                         <td>
-                            Người đăng
+                            Trạng thái
                         </td>
                         <td>
-                            <asp:DropDownList ID="ddlTypeUser" runat="server">
-                                <asp:ListItem Text="Tất cả" Value="2" Selected="True" />
-                                <asp:ListItem Text="Admin" Value="1" />
-                                <asp:ListItem Text="User" Value="0" />
+                            <asp:DropDownList ID="ddlStatusSearch" runat="server">
+                                <asp:ListItem Text="Tất cả" Value="-1"/>
+                                <asp:ListItem Text="Chưa duyệt" Value="0" />
+                                <asp:ListItem Text="Chấp nhận" Value="1" />
+                                <asp:ListItem Text="Từ chối" Value="2" />
                             </asp:DropDownList>
                         </td>
                         <td style="text-align: center; padding-top: 7px;">
@@ -263,10 +264,6 @@
         <div id="divListNews" runat="server" class="box" style="width: 920px;">
             <div class="title">
                 <span style="float: left">Danh sách bất động sản </span>
-                <asp:LinkButton ID="LinkButton1" runat="server" CssClass="title-addnew" OnClick="btnThemmoi_Click">
-                <img src="/BackEnd/img/addnew_16.png" style="vertical-align: top" alt='Thêm mới' />
-                Thêm mới
-                </asp:LinkButton>
                 <asp:LinkButton ID="LinkButton2" OnClientClick="return ConfirmDelete();" runat="server"
                     CssClass="title-addnew" OnClick="lbtDeleteAll_Click">
                 <img src="/BackEnd/img/icon-delete.png" style="vertical-align: top" alt='Xóa' />
@@ -286,7 +283,7 @@
                             <div class="adminColumn" style="width: 30px">
                                 STT
                             </div>
-                            <div class="adminColumn" style="width: 480px; padding-left: 20px; text-align: left;">
+                            <div class="adminColumn" style="width: 370px; padding-left: 20px; text-align: left;">
                                 Tiêu đề
                             </div>
                             <div class="adminColumn" style="width: 120px; text-align:left">
@@ -295,7 +292,10 @@
                             <div class="adminColumn" style="width: 80px; text-align:left">
                                 Ngày tạo
                             </div>
-                            <div class="adminColumn" style="width: 80px; text-align:left">
+                            <div class="adminColumn" style="width: 120px; text-align:left">
+                                Người dùng
+                            </div>
+                            <div class="adminColumn" style="width: 65px; text-align:left">
                                 Trạng thái
                             </div>
                             <div class="adminColumn" style="width: 92px; float: right">
@@ -310,23 +310,24 @@
                             <div class="adminColumn" id="divCheckbox" style="width: 20px; vertical-align: bottom;">
                                     <asp:CheckBox ID="chkDeleteAll" runat="server" />
                                     <asp:HiddenField ID="hdID" runat="server" Value=' <%#Eval("RealtyMarketID") %>' />
-                                    <asp:HiddenField ID="Img" runat="server" Value='<%#Eval("Image") %>' />
-                                    <asp:HiddenField ID="ImgThumb" runat="server" Value='<%#Eval("ImageThumb") %>' />
                             </div>
                             <div class="adminColumn" style="width: 30px; text-align: left; padding-left: 15px;">
                                 <%#Eval("RowNumber")%>&nbsp;
                             </div>
-                            <div class="adminColumn" style="width: 480px; text-align: justify;">
+                            <div class="adminColumn" style="width: 370px; text-align: justify;">
                                 <%#Eval("Title")%>&nbsp;
                             </div>
                             <div class="adminColumn" style="width: 120px; text-align:left">
-                                <%#Eval("UserPublish") %>&nbsp;
+                                <b><%#Eval("UserPublish") %></b>&nbsp;
                             </div>
                             <div class="adminColumn" style="width: 80px">
                                 <%#Convert.ToDateTime(Eval("CreateDate")).ToString("dd/MM/yyyy")%>&nbsp;
                             </div>
-                            <div class="adminColumn" style="width: 80px; text-align: center;">
-                                <%#Convert.ToBoolean(Eval("Status")??false)?"Hoạt động":"Bị khóa" %>
+                            <div class="adminColumn" style="width: 120px; text-align:left">
+                                <%#Eval("UserName") %>&nbsp;
+                            </div>
+                            <div class="adminColumn" style="width: 65px; text-align: center;">
+                                <%#Convert.ToInt32(Eval("Status")??0)==0?"Chưa duyệt":(Convert.ToInt32(Eval("Status")??0)==1?"Chấp nhận":"Từ chối") %>
                             </div>
                             <div class="adminColumn" style="width: 92px; float: right">
                                 <%if ((permission | VTCO.Config.Constants.PERMISSION_READ) != VTCO.Config.Constants.PERMISSION_READ)
@@ -347,12 +348,14 @@
                                                         CommandArgument='<%#Eval("RealtyMarketID") %>' Text="Sửa">
                                                     </asp:LinkButton>
                                                 </li>
-                                                <li>
-                                                    <asp:LinkButton ID="lbtLock" runat="server" CssClass='lock_icon' ToolTip='Khóa' CommandName="lockNews"
-                                                        CommandArgument='<%#Eval("RealtyMarketID") %>' Text="Khóa">
+                                                <li id="liLock" runat="server">
+                                                    <asp:LinkButton ID="lbtLock" runat="server" CssClass='lock_icon' ToolTip='Từ chối' CommandName="lockNews"
+                                                        CommandArgument='<%#Eval("RealtyMarketID") %>' Text="Từ chối">
                                                     </asp:LinkButton>
-                                                    <asp:LinkButton ID="lbtUnLock" runat="server" CssClass='checked_icon' ToolTip='Kích hoạt'
-                                                        CommandName="unlockNews" CommandArgument='<%#Eval("RealtyMarketID") %>' Text="Kích hoạt">
+                                                </li>
+                                                <li id="liUnLock" runat="server">
+                                                    <asp:LinkButton ID="lbtUnLock" runat="server" CssClass='checked_icon' ToolTip='Chấp nhận'
+                                                        CommandName="unlockNews" CommandArgument='<%#Eval("RealtyMarketID") %>' Text="Chấp nhận">
                                                     </asp:LinkButton>
                                                 </li>
                                                 <%}%>
