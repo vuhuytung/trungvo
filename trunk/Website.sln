@@ -25,7 +25,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityBLL", "02_businessLay
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkFlowBLL", "02_businessLayer\WorkFlowBLL\WorkFlowBLL.csproj", "{7C96C532-BA92-456E-B349-1EB3915AC9DA}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SocialShop_FrontEnd", "03_presentLayer\SocialShop_FrontEnd", "{218871F1-9C9B-401C-829F-EDBF6B4E0504}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SocialShop_FrontEnd", "03_presentLayer\SocialShop_FrontEnd\", "{218871F1-9C9B-401C-829F-EDBF6B4E0504}"
 	ProjectSection(WebsiteProperties) = preProject
 		SccProjectName = ""
 		SccAuxPath = ""
@@ -50,35 +50,6 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SocialShop_FrontEnd", "03_p
 		VWDPort = "2010"
 		VWDDynamicPort = "false"
 		VWDVirtualPath = "/"
-		DefaultWebSiteLanguage = "Visual C#"
-		StartServerOnDebug = "false"
-	EndProjectSection
-EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "PhotoServices", "03_presentLayer\PhotoServices", "{34042609-E455-4991-8F8C-56AB980C2630}"
-	ProjectSection(WebsiteProperties) = preProject
-		SccProjectName = ""
-		SccAuxPath = ""
-		SccLocalPath = ""
-		SccProvider = ""
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		ProjectReferences = "{68071AC2-E372-4AAB-AFF6-387D0A943FCB}|VTCO.Config.dll;"
-		Debug.AspNetCompiler.VirtualPath = "/PhotoServices"
-		Debug.AspNetCompiler.PhysicalPath = "03_presentLayer\PhotoServices\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\PhotoServices\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/PhotoServices"
-		Release.AspNetCompiler.PhysicalPath = "03_presentLayer\PhotoServices\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\PhotoServices\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "8888"
-		VWDDynamicPort = "false"
-		VWDVirtualPath = "/photoservices"
 		DefaultWebSiteLanguage = "Visual C#"
 		StartServerOnDebug = "false"
 	EndProjectSection
@@ -187,16 +158,6 @@ Global
 		{218871F1-9C9B-401C-829F-EDBF6B4E0504}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{218871F1-9C9B-401C-829F-EDBF6B4E0504}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
 		{218871F1-9C9B-401C-829F-EDBF6B4E0504}.Release|x86.ActiveCfg = Debug|Any CPU
-		{34042609-E455-4991-8F8C-56AB980C2630}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{34042609-E455-4991-8F8C-56AB980C2630}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{34042609-E455-4991-8F8C-56AB980C2630}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{34042609-E455-4991-8F8C-56AB980C2630}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{34042609-E455-4991-8F8C-56AB980C2630}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{34042609-E455-4991-8F8C-56AB980C2630}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{34042609-E455-4991-8F8C-56AB980C2630}.Release|Any CPU.Build.0 = Debug|Any CPU
-		{34042609-E455-4991-8F8C-56AB980C2630}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{34042609-E455-4991-8F8C-56AB980C2630}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
-		{34042609-E455-4991-8F8C-56AB980C2630}.Release|x86.ActiveCfg = Debug|Any CPU
 		{67474ABA-1B71-4994-BD9A-1A1F3B2DC624}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{67474ABA-1B71-4994-BD9A-1A1F3B2DC624}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67474ABA-1B71-4994-BD9A-1A1F3B2DC624}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -233,6 +194,5 @@ Global
 		{7C96C532-BA92-456E-B349-1EB3915AC9DA} = {46AE7416-9314-4D11-B47F-8540E990290A}
 		{67474ABA-1B71-4994-BD9A-1A1F3B2DC624} = {46AE7416-9314-4D11-B47F-8540E990290A}
 		{218871F1-9C9B-401C-829F-EDBF6B4E0504} = {B9F7D242-4110-4383-A350-0047B51AE57C}
-		{34042609-E455-4991-8F8C-56AB980C2630} = {B9F7D242-4110-4383-A350-0047B51AE57C}
 	EndGlobalSection
 EndGlobal
