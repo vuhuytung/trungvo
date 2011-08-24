@@ -36,4 +36,21 @@
       <Column Name="VillageCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
+  <Function Name="dbo.uspLocationGetInfoByLocationID" Method="uspLocationGetInfoByLocationID">
+    <Parameter Name="LocationID" Parameter="locationID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="uspLocationGetInfoByLocationIDResult">
+      <Column Name="LocationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ProvinceCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DistrictCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="VillageCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.uspLocationGetIDByCode" Method="uspLocationGetIDByCode">
+    <Parameter Name="ProvinceCode" Parameter="provinceCode" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DistrictCode" Parameter="districtCode" Type="System.Int32" DbType="Int" />
+    <Parameter Name="VillageCode" Parameter="villageCode" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
 </Database>
