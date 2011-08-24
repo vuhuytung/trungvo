@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/master/masterFrontend.master" AutoEventWireup="true"
     CodeFile="Myrealtymarket.aspx.cs" Inherits="pages_Myrealtymarket" %>
 
-<%--<%@ Register Src="~/userControls/ucRealtyMarket.ascx" TagName="ucRealtyMarket" TagPrefix="uc1" %>--%>
 <%@ Register Src="~/userControls/ucDoitac.ascx" TagName="ucDoitac" TagPrefix="uc2" %>
 <%@ Register Src="~/userControls/ucPaging.ascx" TagName="ucPaging" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
