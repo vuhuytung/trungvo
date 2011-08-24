@@ -8,7 +8,7 @@ using WorkFlowBLL;
 public partial class pages_realtymarket : System.Web.UI.Page
 {
     CtrLocation Location = new CtrLocation();
-    CtrRealtyMarket market = new CtrRealtyMarket();
+    protected CtrRealtyMarket market = new CtrRealtyMarket();
     protected void Page_Load(object sender, EventArgs e)
     {
         ucPaging1.PageChange += new UserControls_ucPaging.PagingHandler(ucPaging1_PageChange);
@@ -43,18 +43,17 @@ public partial class pages_realtymarket : System.Web.UI.Page
             ddlPrice.Items.Add(new ListItem("Trên 20 tỷ", "7"));
 
             //================
-            
-             int code = Convert.ToInt32(Request.QueryString["code"] ?? "-1");
-             int typecode = Convert.ToInt32(Request.QueryString["typecode"] ?? "-1");
-             int cat=Convert.ToInt32(Request.QueryString["CategoryID"] ?? "-1");
-             int price=Int32.Parse(Request.QueryString["price"]??"0");
-            if(typecode==1)
-            {
-                try{ddlProvince.SelectedValue=code.ToString();}catch{}
-            }else
-            {
-                try{ddlDistrict.SelectedValue=code.ToString();}catch{}
-            }
+
+            int codeProvince = Convert.ToInt32(Request.QueryString["codep"] ?? "-1");
+            int code = Convert.ToInt32(Request.QueryString["code"] ?? "-1");
+            int cat = Convert.ToInt32(Request.QueryString["typebds"] ?? (Request.QueryString["CategoryID"]??"-1"));
+            int price=Int32.Parse(Request.QueryString["price"]??"0");
+
+            try{ddlProvince.SelectedValue=codeProvince.ToString();}catch{}
+            ddlProvince_SelectedIndexChanged(sender,e);
+            try { ddlDistrict.SelectedValue = code.ToString(); }
+            catch { }
+
             try { ddlPrice.SelectedValue = price.ToString(); }
             catch { }
             try { ddlTypeBDS.SelectedValue = cat.ToString(); }
@@ -64,7 +63,6 @@ public partial class pages_realtymarket : System.Web.UI.Page
 
             ucPaging1.CurrentPage = 1;
             ucPaging1_PageChange(ucPaging1);
-
         }
 
     }
@@ -74,8 +72,8 @@ public partial class pages_realtymarket : System.Web.UI.Page
          int typecode = 1;
          int cat=Convert.ToInt32(ddlTypeBDS.SelectedValue);
          int price = Int32.Parse(ddlPrice.SelectedValue);
-         double begin = 0;
-         double end = 0;
+         long begin = 0;
+         long end = 0;
          GetPrice(price, ref begin, ref end);
 
          if (ddlDistrict.SelectedValue != "-1")
@@ -92,18 +90,18 @@ public partial class pages_realtymarket : System.Web.UI.Page
          }
 
          CtrRealtyMarket ctrN = new CtrRealtyMarket();
-         var _data = ctrN.GetListRealtyMarketBy(-1,code,typecode,cat,begin,end,ucPaging1.CurrentPage, ucPaging1.PageSize);
+         var _data = ctrN.GetListRealtyMarket(-1,code,typecode,cat,begin,end,1,ucPaging1.CurrentPage, ucPaging1.PageSize);
          RptReatyMarket.DataSource = _data.Items;
          RptReatyMarket.DataBind();
          ucPaging1.TotalRecord = _data.TotalRecord;
          divPaging.Visible = ucPaging1.TotalPage > 1;
     }
-    private void GetPrice(int type, ref double begin, ref double end)
+    private void GetPrice(int type, ref long begin, ref long end)
     {
         if (type == 0)
         {
             begin = 0;
-            end = double.MaxValue;
+            end = long.MaxValue;
         }
         else if (type == 1)
         {
@@ -138,11 +136,34 @@ public partial class pages_realtymarket : System.Web.UI.Page
         else if (type == 7)
         {
             begin = 20000000000;
-            end = double.MaxValue;
+            end = long.MaxValue;
         }
 
     }
-   
+
+    protected string getTextPrice(long? _price)
+    {
+        if ((!_price.HasValue) || (_price.Value==0))
+            return "Thỏa thuận";
+        double pr = 0;
+        pr=_price.Value / 1000000000.0;
+        if (pr >= 1)
+        {
+            return pr.ToString() + " Tỷ";
+        }
+        pr = _price.Value / 1000000.0;
+        if (pr >= 1)
+        {
+            return pr.ToString() + " Triệu";
+        }
+
+        pr = _price.Value / 100000;
+        if (pr>=1)
+        {
+            return pr.ToString() + " Trăm nghìn";
+        }
+        return _price.Value.ToString("0,0") + " VNĐ";
+    }
 
     protected void ddlProvince_SelectedIndexChanged(object sender, EventArgs e)
     {

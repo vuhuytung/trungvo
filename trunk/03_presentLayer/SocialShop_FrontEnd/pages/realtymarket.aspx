@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/master/masterFrontend.master" AutoEventWireup="true"
     CodeFile="realtymarket.aspx.cs" Inherits="pages_realtymarket" %>
 
-<%@ Register Src="~/userControls/ucRealtyMarket.ascx" TagName="ucRealtyMarket" TagPrefix="uc1" %>
+<%--<%@ Register Src="~/userControls/ucRealtyMarket.ascx" TagName="ucRealtyMarket" TagPrefix="uc1" %>--%>
 <%@ Register Src="~/userControls/ucDoitac.ascx" TagName="ucDoitac" TagPrefix="uc2" %>
 <%@ Register Src="~/userControls/ucPaging.ascx" TagName="ucPaging" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
@@ -12,7 +12,7 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <div class="bodyContent">
-                <div class="leftMain nl">
+                <div class="leftMain nl" style="font-size:12px;">
                     <div class="topsearch">
                         <div class="search">
                             <table class="tbMarket">
@@ -52,8 +52,8 @@
                                 </tr>
                                 <tr>
                                     <td style="text-align: center; padding-top: 7px;" colspan="4">
-                                         <asp:ImageButton ID="ImgSearch" ImageUrl="~/images/btnSearch.png" 
-                                            runat="server" onclick="btnSearch_Click" />
+                                        <asp:ImageButton ID="ImgSearch" ImageUrl="~/images/btnSearch.png" runat="server"
+                                            OnClick="btnSearch_Click" />
                                     </td>
                                 </tr>
                             </table>
@@ -64,23 +64,24 @@
                             <ItemTemplate>
                                 <div class="realty_item">
                                     <div class="img_item">
-                                        <img alt="noImage" src="<%#Eval("ImageThumb")%>" />
+                                        <img alt="noImage" width="110" style="margin: 5px" src="<%#Eval("Image").ToString().Trim()==""?"/images/nomarket.jpg":Eval("Image").ToString().Trim()+".thumb"%>" />
                                     </div>
                                     <div class="detail_item">
                                         <div class="detail_item_title">
                                             <a href='/pages/RealtyMarketDetails.aspx?ID=<%#Eval("RealtyMarketID")%>'>
                                                 <%#Eval("Title")%></a>
                                         </div>
-                                        <div class="detail_item_add">
-                                            <a>Địa chỉ:&nbsp;&nbsp;<%#Eval("Street").ToString().Substring(0, 1) != "-" ? Eval("Street").ToString() : Eval("Street").ToString().Substring(1)%></a></div>
-                                        <div class="detail_item_price">
-                                            <a>Giá:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                <%#string.Format("{0:0,0 VNĐ}", Eval("Price"))%></a>
+                                        <div class="detail_item_title">
+                                            <%#Eval("Descrition").ToString().Length > 201 ? Eval("Descrition").ToString().Substring(0, 200) : Eval("Descrition")%></a>
                                         </div>
-                                        <div class="detail_item_date">
-                                            <a>
-                                                <%#Convert.ToDateTime(Eval("CreateDate")).ToString("dd-MM-yyyy")%></a>
-                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div style="margin:10px">
+                                    Địa chỉ: <b style="margin-right:10px"><%#market.GetFullAddressbyLocationID(Convert.ToInt32(Eval("LocationID"))) %></b>
+                                    <%#Convert.ToInt32(Eval("Acreage"))>0?"Diện tích: <b style='margin-right:10px'>"+Eval("Acreage")+" m²</b>":"" %>
+                                    Giá: <b style="margin-right:10px"><%#getTextPrice(Convert.ToInt64(Eval("Price")))%></b>
+                                    <span class="nr"><%#Convert.ToDateTime(Eval("CreateDate")).ToString("dd-MM-yyyy")%></a></span>
+                                    <div class="clear"></div>
                                     </div>
                                 </div>
                             </ItemTemplate>
@@ -101,7 +102,7 @@
                 <!--End body content-->
             </div>
             <div class="clear">
-                </div>
+            </div>
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>
