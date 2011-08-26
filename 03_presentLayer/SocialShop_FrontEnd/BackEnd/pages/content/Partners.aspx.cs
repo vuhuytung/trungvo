@@ -185,17 +185,11 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
                 try
                 {
                     //luu anh vo temp
-                    string strTemp = Path.Combine(Request.PhysicalApplicationPath, "images\\temp\\" + fuploadEdit.FileName);
-                    fuploadEdit.SaveAs(strTemp);
-
+                   
                     string strFile = Path.Combine(Request.PhysicalApplicationPath, "images\\partner");
                     string strFile1 = DateTime.Now.ToString("ddMMyyhhmmss") + Path.GetExtension(fuploadEdit.FileName);
                     strFile += "\\" + strFile1;
-                    //lay anh tu temp de cat va save vo partner
-                    var EditImage = System.Drawing.Image.FromFile(strTemp);
-                    VTCO.Library.ImageResize Img = new VTCO.Library.ImageResize();
-                    var newimg = Img.Crop(EditImage, 150, 100, VTCO.Library.ImageResize.AnchorPosition.Center);
-                    newimg.Save(strFile);
+                    fuploadEdit.SaveAs(strFile);
 
                     if (partner.UpdatePartner(PartnersID, txtNameEdit.Text, @"/images/partner/" + strFile1, txtWebEdit.Text.Trim(), ddlStatusEdit.SelectedValue == "1" ? true : false) > 0)
                     {
@@ -252,18 +246,11 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
             {
                 try
                 {
-                    string strTemp = Path.Combine(Request.PhysicalApplicationPath, "images\\temp\\" + fuploadLogo.FileName);
-                    fuploadLogo.SaveAs(strTemp);
 
                     string strFile = Path.Combine(Request.PhysicalApplicationPath, "images\\partner");
-                    string strFile1 = DateTime.Now.ToString("ddMMyyhhmmss") + Path.GetExtension(fuploadEdit.FileName);
+                    string strFile1 = DateTime.Now.ToString("ddMMyyhhmmss") + Path.GetExtension(fuploadLogo.FileName);
                     strFile += "\\" + strFile1;
-                    var EditImage = System.Drawing.Image.FromFile(strTemp);
-                    VTCO.Library.ImageResize Img = new VTCO.Library.ImageResize();
-                    var newimg = Img.Crop(EditImage, 150, 100, VTCO.Library.ImageResize.AnchorPosition.Center);
-                    newimg.Save(strFile);
-                    //fuploadLogo.PostedFile.SaveAs(strFile);
-
+                    fuploadLogo.SaveAs(strFile);
 
                     if (partner.InsertPartner(txtName.Text, @"/images/partner/" + strFile1, txtWeb.Text.Trim(), ddlStatus.SelectedValue == "1" ? true : false) > 0)
                     {

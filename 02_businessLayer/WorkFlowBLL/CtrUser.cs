@@ -50,5 +50,13 @@ namespace WorkFlowBLL
         {
             return BDS.UserInstance.uspUserLogin(userName, password).FirstOrDefault();
         }
+        public int ChangePass(int adminID, string passOld, string passNew)
+        {
+            return BDS.UserInstance.uspUserUpdatePassword(adminID, passOld, passNew);
+        }
+        public int Update(int userID, string fullName, DateTime birthday, string address, string phone, string email)
+        {
+            return BDS.UserInstance.uspUserUpdateByUserID(userID, fullName, address, phone, email, birthday);
+        }
     }
 }

@@ -29,8 +29,8 @@ public partial class userControls_ucDoitacl : System.Web.UI.UserControl
         foreach (uspPartnersGetAllResult item in pn)
         {
             sb.Append("<div class='item_pn'>");
-            sb.Append("<a href=" + item.Website + ">");
-            sb.Append("<img src=" + item.Img + "" + " alt='anh'/>");
+            sb.Append("<a href=\"" + item.Website + "\" title=\""+item.Name+"\">");
+            sb.Append("<img src=" + item.Img + "" + " alt=\""+item.Name+"\" style=\"width:150px !important; height:100px !important\" />");
             sb.Append("</a>");
             sb.Append("</div>");
         }

@@ -279,6 +279,20 @@ namespace DataContext
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), adminID, passwordOld, passwordNew);
 			return ((int)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspConfigUpdate")]
+		public int uspConfigUpdate([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Yahoo1", DbType="NVarChar(50)")] string yahoo1, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TextYahoo1", DbType="NVarChar(50)")] string textYahoo1, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Yahoo2", DbType="NVarChar(50)")] string yahoo2, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TextYahoo2", DbType="NVarChar(50)")] string textYahoo2, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Yahoo3", DbType="NVarChar(50)")] string yahoo3, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TextYahoo3", DbType="NVarChar(50)")] string textYahoo3, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Skype1", DbType="NVarChar(50)")] string skype1, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TextSkype1", DbType="NVarChar(50)")] string textSkype1, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Skype2", DbType="NVarChar(50)")] string skype2, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TextSkype2", DbType="NVarChar(50)")] string textSkype2, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Skype3", DbType="NVarChar(50)")] string skype3, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TextSkype3", DbType="NVarChar(50)")] string textSkype3, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Phone", DbType="NVarChar(50)")] string phone, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="NVarChar(250)")] string address, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="NVarChar(50)")] string email)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), yahoo1, textYahoo1, yahoo2, textYahoo2, yahoo3, textYahoo3, skype1, textSkype1, skype2, textSkype2, skype3, textSkype3, phone, address, email);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspConfigGetInfo")]
+		public ISingleResult<uspConfigGetInfoResult> uspConfigGetInfo()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<uspConfigGetInfoResult>)(result.ReturnValue));
+		}
 	}
 	
 	public partial class uspFunctionByParentIDResult
@@ -1938,6 +1952,284 @@ namespace DataContext
 				if ((this._Level != value))
 				{
 					this._Level = value;
+				}
+			}
+		}
+	}
+	
+	public partial class uspConfigGetInfoResult
+	{
+		
+		private string _Yahoo1;
+		
+		private string _TextYahoo1;
+		
+		private string _Yahoo2;
+		
+		private string _TextYahoo2;
+		
+		private string _Yahoo3;
+		
+		private string _TextYahoo3;
+		
+		private string _Skype1;
+		
+		private string _TextSkype1;
+		
+		private string _Skype2;
+		
+		private string _TextSkype2;
+		
+		private string _Skype3;
+		
+		private string _TextSkype3;
+		
+		private string _Phone;
+		
+		private string _Address;
+		
+		private string _Email;
+		
+		public uspConfigGetInfoResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Yahoo1", DbType="NVarChar(50)")]
+		public string Yahoo1
+		{
+			get
+			{
+				return this._Yahoo1;
+			}
+			set
+			{
+				if ((this._Yahoo1 != value))
+				{
+					this._Yahoo1 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TextYahoo1", DbType="NVarChar(50)")]
+		public string TextYahoo1
+		{
+			get
+			{
+				return this._TextYahoo1;
+			}
+			set
+			{
+				if ((this._TextYahoo1 != value))
+				{
+					this._TextYahoo1 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Yahoo2", DbType="NVarChar(50)")]
+		public string Yahoo2
+		{
+			get
+			{
+				return this._Yahoo2;
+			}
+			set
+			{
+				if ((this._Yahoo2 != value))
+				{
+					this._Yahoo2 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TextYahoo2", DbType="NVarChar(50)")]
+		public string TextYahoo2
+		{
+			get
+			{
+				return this._TextYahoo2;
+			}
+			set
+			{
+				if ((this._TextYahoo2 != value))
+				{
+					this._TextYahoo2 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Yahoo3", DbType="NVarChar(50)")]
+		public string Yahoo3
+		{
+			get
+			{
+				return this._Yahoo3;
+			}
+			set
+			{
+				if ((this._Yahoo3 != value))
+				{
+					this._Yahoo3 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TextYahoo3", DbType="NVarChar(50)")]
+		public string TextYahoo3
+		{
+			get
+			{
+				return this._TextYahoo3;
+			}
+			set
+			{
+				if ((this._TextYahoo3 != value))
+				{
+					this._TextYahoo3 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Skype1", DbType="NVarChar(50)")]
+		public string Skype1
+		{
+			get
+			{
+				return this._Skype1;
+			}
+			set
+			{
+				if ((this._Skype1 != value))
+				{
+					this._Skype1 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TextSkype1", DbType="NVarChar(50)")]
+		public string TextSkype1
+		{
+			get
+			{
+				return this._TextSkype1;
+			}
+			set
+			{
+				if ((this._TextSkype1 != value))
+				{
+					this._TextSkype1 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Skype2", DbType="NVarChar(50)")]
+		public string Skype2
+		{
+			get
+			{
+				return this._Skype2;
+			}
+			set
+			{
+				if ((this._Skype2 != value))
+				{
+					this._Skype2 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TextSkype2", DbType="NVarChar(50)")]
+		public string TextSkype2
+		{
+			get
+			{
+				return this._TextSkype2;
+			}
+			set
+			{
+				if ((this._TextSkype2 != value))
+				{
+					this._TextSkype2 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Skype3", DbType="NVarChar(50)")]
+		public string Skype3
+		{
+			get
+			{
+				return this._Skype3;
+			}
+			set
+			{
+				if ((this._Skype3 != value))
+				{
+					this._Skype3 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TextSkype3", DbType="NVarChar(50)")]
+		public string TextSkype3
+		{
+			get
+			{
+				return this._TextSkype3;
+			}
+			set
+			{
+				if ((this._TextSkype3 != value))
+				{
+					this._TextSkype3 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="NVarChar(50)")]
+		public string Phone
+		{
+			get
+			{
+				return this._Phone;
+			}
+			set
+			{
+				if ((this._Phone != value))
+				{
+					this._Phone = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(250)")]
+		public string Address
+		{
+			get
+			{
+				return this._Address;
+			}
+			set
+			{
+				if ((this._Address != value))
+				{
+					this._Address = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(50)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this._Email = value;
 				}
 			}
 		}

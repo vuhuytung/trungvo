@@ -49,10 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CartInfo.cs" />
     <Compile Include="Image.cs" />
     <Compile Include="PriceService.cs" />
-    <Compile Include="SiteInfo.cs" />
     <Compile Include="ClassExtend.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

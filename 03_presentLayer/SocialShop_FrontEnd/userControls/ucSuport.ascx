@@ -4,19 +4,30 @@
          <span><a>Hỗ trợ trực tuyến</a></span>
       </div>
     <div align="center" style="border:solid 1px #459B30; font-weight:bold; border-top:none">
-        <a href="ymsgr:sendIM?trongtrung.vo_1110">
-            <img src="http://mail.opi.yahoo.com/online?u=trongtrung.vo_1110&amp;t=2&amp;m=g" vspace="6" border="0" title="Trọng Trung">
-        </a><br/>
-        <a href="ymsgr:sendIM?trongtrung.vo_1110">Mr Trung - 0168 282 7659</a>
-        <br />
-        <a href="ymsgr:sendIM?giangsinhbuon2010">
-            <img src="http://mail.opi.yahoo.com/online?u=giangsinhbuon2010&amp;t=2&amp;m=g" vspace="6" border="0" title="Hữu Mỹ">
-        </a><br/>
-        <a href="ymsgr:sendIM?giangsinhbuon2010">Mr Mỹ - 0932 376 249</a>
+        &nbsp;
+        <asp:Repeater ID="rptYahoo" runat="server">
+            <ItemTemplate>
+                <a href="ymsgr:sendIM?<%#Eval("YahooID") %>">
+            <img src="http://mail.opi.yahoo.com/online?u=<%#Eval("YahooID") %>&amp;t=2&amp;m=g" vspace="6" border="0" title="<%#Eval("YahooText").ToString().Replace("\"","'") %>" height="25" width="125">
+            </a><br/>
+            <a href="ymsgr:sendIM?<%#Eval("YahooID") %>"><%#Eval("YahooText") %></a>
+            <br />
+            </ItemTemplate>
+        </asp:Repeater>
+        <asp:Repeater ID="rptSkype" runat="server">
+            <ItemTemplate>
+                <a href="skype:<%#Eval("SkypeID") %>">
+                <img src="http://mystatus.skype.com/bigclassic/<%#Eval("SkypeID") %>" vspace="6" border="0" title="<%#Eval("SkypeText").ToString().Replace("\"","'") %>" height="30" width="145">
+            </a><br/>
+            <a href="skype:<%#Eval("SkypeID") %>"><%#Eval("SkypeText") %></a>
+            <br />
+            </ItemTemplate>
+        </asp:Repeater>   
         <div style="margin:20px 0; color:#666">
             Số lượt truy cập: <%=Application["So_Nguoi_TruyCap"]%>
             - Online: <%=Application["So_Nguoi_Online"]%>
         </div>
+
     </div>
     <div class="clear"></div>
 </div>

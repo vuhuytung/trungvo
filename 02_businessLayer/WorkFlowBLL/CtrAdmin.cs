@@ -146,6 +146,17 @@ namespace WorkFlowBLL
             return BDS.AdminInstance.uspAdminLogin(userName, password).FirstOrDefault();
         }
         #endregion
+
+        public int UpdateSiteConfig(string yahoo1,string textYahoo1,string yahoo2,string textYahoo2,string yahoo3,string textYahoo3,string skype1,string textSkype1,string skype2,string textSkype2,string skype3,string textSkype3,string phone,string address,string email)
+        {
+            return BDS.AdminInstance.uspConfigUpdate(yahoo1, textYahoo1, yahoo2, textYahoo2, yahoo3, textYahoo3, skype1, textSkype1, skype2, textSkype2, skype3, textSkype3, phone, address, email);
+        }
+
+        public uspConfigGetInfoResult GetConfigInfo()
+        {
+            return BDS.AdminInstance.uspConfigGetInfo().FirstOrDefault();
+        }
+
         /*
         /// <summary>
         /// Thêm mới Log
