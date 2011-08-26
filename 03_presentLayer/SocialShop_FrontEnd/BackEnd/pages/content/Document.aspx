@@ -67,7 +67,7 @@
                     </tr>
                     <tr>
                         <td>
-                            Tệp:
+                            Tệp (<20MB):
                         </td>
                         <td style="padding: 5px 0;">
                             <asp:FileUpload ID="fupload" runat="server" />
@@ -131,7 +131,7 @@
                     </tr>
                     <tr>
                         <td>
-                            File:
+                            Tệp (<=20MB):
                         </td>
                         <td style="padding: 5px 0;">
                             <asp:FileUpload ID="fuploadEdit" runat="server" />                            
