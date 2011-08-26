@@ -76,13 +76,6 @@ namespace DataContext
 			return ((ISingleResult<uspSlideShowGetAllResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspSlideShowGetGroup")]
-		public ISingleResult<uspSlideShowGetGroupResult> uspSlideShowGetGroup()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<uspSlideShowGetGroupResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspSlideShowGetAllForPage")]
 		public ISingleResult<uspSlideShowGetAllForPageResult> uspSlideShowGetAllForPage([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> currPage, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Pagesize", DbType="Int")] System.Nullable<int> pagesize, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TotalRecord", DbType="Int")] ref System.Nullable<int> totalRecord)
 		{
@@ -117,6 +110,13 @@ namespace DataContext
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, status);
 			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspSlideShowGetGroup")]
+		public ISingleResult<uspSlideShowGetGroupResult> uspSlideShowGetGroup()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<uspSlideShowGetGroupResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -153,104 +153,6 @@ namespace DataContext
 					this._RowNumber = value;
 				}
 			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this._ID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", DbType="NVarChar(400) NOT NULL", CanBeNull=false)]
-		public string Title
-		{
-			get
-			{
-				return this._Title;
-			}
-			set
-			{
-				if ((this._Title != value))
-				{
-					this._Title = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Img", DbType="VarChar(300)")]
-		public string Img
-		{
-			get
-			{
-				return this._Img;
-			}
-			set
-			{
-				if ((this._Img != value))
-				{
-					this._Img = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImgThumb", DbType="VarChar(300)")]
-		public string ImgThumb
-		{
-			get
-			{
-				return this._ImgThumb;
-			}
-			set
-			{
-				if ((this._ImgThumb != value))
-				{
-					this._ImgThumb = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Int NOT NULL")]
-		public int Status
-		{
-			get
-			{
-				return this._Status;
-			}
-			set
-			{
-				if ((this._Status != value))
-				{
-					this._Status = value;
-				}
-			}
-		}
-	}
-	
-	public partial class uspSlideShowGetGroupResult
-	{
-		
-		private int _ID;
-		
-		private string _Title;
-		
-		private string _Img;
-		
-		private string _ImgThumb;
-		
-		private int _Status;
-		
-		public uspSlideShowGetGroupResult()
-		{
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
@@ -484,6 +386,122 @@ namespace DataContext
 		private string _Url;
 		
 		public uspSlideShowGetInfoByIDResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", DbType="NVarChar(400) NOT NULL", CanBeNull=false)]
+		public string Title
+		{
+			get
+			{
+				return this._Title;
+			}
+			set
+			{
+				if ((this._Title != value))
+				{
+					this._Title = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Img", DbType="VarChar(300)")]
+		public string Img
+		{
+			get
+			{
+				return this._Img;
+			}
+			set
+			{
+				if ((this._Img != value))
+				{
+					this._Img = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImgThumb", DbType="VarChar(300)")]
+		public string ImgThumb
+		{
+			get
+			{
+				return this._ImgThumb;
+			}
+			set
+			{
+				if ((this._ImgThumb != value))
+				{
+					this._ImgThumb = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Int NOT NULL")]
+		public int Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this._Status = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Url", DbType="NVarChar(250)")]
+		public string Url
+		{
+			get
+			{
+				return this._Url;
+			}
+			set
+			{
+				if ((this._Url != value))
+				{
+					this._Url = value;
+				}
+			}
+		}
+	}
+	
+	public partial class uspSlideShowGetGroupResult
+	{
+		
+		private int _ID;
+		
+		private string _Title;
+		
+		private string _Img;
+		
+		private string _ImgThumb;
+		
+		private int _Status;
+		
+		private string _Url;
+		
+		public uspSlideShowGetGroupResult()
 		{
 		}
 		
