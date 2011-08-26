@@ -37,6 +37,7 @@ public partial class BackEnd_pages_account_ChangePass : System.Web.UI.Page
     }
     protected void Page_Load(object sender, EventArgs e)
     {
+        Page.Title = "Đổi mật khẩu";
         if (!Convert.ToBoolean(Session[Constants.SESSION_ADMIN_ISLOGIN] ?? false))
             Response.Redirect("/admin/login");
         if (!IsPostBack)
@@ -46,6 +47,8 @@ public partial class BackEnd_pages_account_ChangePass : System.Web.UI.Page
     }    
     protected void lbtSave_Click(object sender, EventArgs e)
     {
+        if (!Convert.ToBoolean(Session[Constants.SESSION_ADMIN_ISLOGIN] ?? false))
+            Response.Redirect("/admin/login");
         if (AdminID != Convert.ToInt32(Session[Constants.SESSION_ADMIN_ID] ?? "-1"))
         {
             Response.Redirect("~/admin/notpermission");

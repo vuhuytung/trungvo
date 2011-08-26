@@ -120,11 +120,11 @@ public partial class BackEnd_pages_content_SlideShow : System.Web.UI.Page
             }
             else
             {
-                try
+               try
                 {
                     //luu anh vo temp
-                    string strTemp = Path.Combine(Request.PhysicalApplicationPath, "images\\temp\\" + FileUpload1.FileName);
-                    FileUpload1.SaveAs(strTemp);
+                    string strTemp = Path.Combine(Request.PhysicalApplicationPath, "images\\temp\\" + fuploadEdit.FileName);
+                    fuploadEdit.SaveAs(strTemp);
                     //up anh
                     string strFile = Path.Combine(Request.PhysicalApplicationPath, "images\\slideshow");
                     string strFile1 = DateTime.Now.ToString("ddMMyyhhmmss") + Path.GetExtension(fuploadEdit.FileName);
@@ -158,7 +158,7 @@ public partial class BackEnd_pages_content_SlideShow : System.Web.UI.Page
                         lblMsg.Text = "Cập nhật bị lỗi !";
                     CtrPartner pat = new CtrPartner();
                     pat.DeleteImgTemp(Request);
-                }
+               }
                 catch
                 {
                     lblMsg.Text = "Cập nhật bị lỗi !";
@@ -296,7 +296,7 @@ public partial class BackEnd_pages_content_SlideShow : System.Web.UI.Page
             FileUpload1.SaveAs(strTemp);
             //up anh
             string strFile = Path.Combine(Request.PhysicalApplicationPath, "images\\slideshow");
-            string strFile1 = DateTime.Now.ToString("ddMMyyhhmmss") + Path.GetExtension(fuploadEdit.FileName);
+            string strFile1 = DateTime.Now.ToString("ddMMyyhhmmss") + Path.GetExtension(FileUpload1.FileName);
             strFile += "\\" + strFile1;
             // FileUpload1.PostedFile.SaveAs(strFile);
 

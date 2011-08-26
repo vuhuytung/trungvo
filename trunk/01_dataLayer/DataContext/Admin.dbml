@@ -271,4 +271,41 @@
     <Parameter Name="PasswordNew" Parameter="passwordNew" Type="System.String" DbType="NVarChar(50)" />
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="dbo.uspConfigUpdate" Method="uspConfigUpdate">
+    <Parameter Name="Yahoo1" Parameter="yahoo1" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="TextYahoo1" Parameter="textYahoo1" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Yahoo2" Parameter="yahoo2" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="TextYahoo2" Parameter="textYahoo2" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Yahoo3" Parameter="yahoo3" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="TextYahoo3" Parameter="textYahoo3" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Skype1" Parameter="skype1" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="TextSkype1" Parameter="textSkype1" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Skype2" Parameter="skype2" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="TextSkype2" Parameter="textSkype2" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Skype3" Parameter="skype3" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="TextSkype3" Parameter="textSkype3" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Phone" Parameter="phone" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.uspConfigGetInfo" Method="uspConfigGetInfo">
+    <ElementType Name="uspConfigGetInfoResult">
+      <Column Name="Yahoo1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TextYahoo1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Yahoo2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TextYahoo2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Yahoo3" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TextYahoo3" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Skype1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TextSkype1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Skype2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TextSkype2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Skype3" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TextSkype3" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
 </Database>

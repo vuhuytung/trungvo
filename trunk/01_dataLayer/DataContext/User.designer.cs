@@ -104,6 +104,20 @@ namespace DataContext
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userName, password);
 			return ((ISingleResult<uspUserLoginResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspUserUpdatePassword")]
+		public int uspUserUpdatePassword([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="Int")] System.Nullable<int> userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PasswordOld", DbType="NVarChar(50)")] string passwordOld, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PasswordNew", DbType="NVarChar(50)")] string passwordNew)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userID, passwordOld, passwordNew);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspUserUpdateByUserID")]
+		public int uspUserUpdateByUserID([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="Int")] System.Nullable<int> userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FullName", DbType="NVarChar(100)")] string fullName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="NVarChar(200)")] string address, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Phone", DbType="VarChar(20)")] string phone, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="VarChar(200)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Birthday", DbType="DateTime")] System.Nullable<System.DateTime> birthday)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userID, fullName, address, phone, email, birthday);
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	public partial class uspUserGetListResult

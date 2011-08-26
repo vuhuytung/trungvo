@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/master/masterFrontend.master" AutoEventWireup="true"
-    CodeFile="Register.aspx.cs" Inherits="Register" %>
+    CodeFile="UserInfo.aspx.cs" Inherits="UserInfo" %>
     <%@ Register Src="~/userControls/ucDoitac.ascx" TagName="ucDoitac" TagPrefix="uc2" %>
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
@@ -22,7 +22,7 @@
                     <tr>
                         <td style="text-transform: uppercase; font-weight: bold; font-size: 14px; color: #ff8040;
                             padding: 20px; padding-left: 150px" colspan="2">
-                            Đăng ký thành viên
+                            Thông tin cá nhân
                         </td>
                     </tr>
                     <tr>
@@ -30,33 +30,7 @@
                             Tên đăng nhập:
                         </td>
                         <td>
-                            <asp:TextBox runat="server" ID="txtUserName" CssClass="inputText" Width="150"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*"
-                                CssClass="require" ControlToValidate="txtUserName" ValidationGroup="Registor"></asp:RequiredFieldValidator>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Mật khẩu:
-                        </td>
-                        <td>
-                            <asp:TextBox runat="server" ID="txtPassword" CssClass="inputText" Width="150" TextMode="Password"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*"
-                                CssClass="require" ControlToValidate="txtPassword" ValidationGroup="Registor"></asp:RequiredFieldValidator>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Gõ lại mật khẩu:
-                        </td>
-                        <td>
-                            <asp:TextBox runat="server" ID="txtPasswordAgain" CssClass="inputText" Width="150"
-                                TextMode="Password"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="*"
-                                CssClass="require" ControlToValidate="txtPasswordAgain" ValidationGroup="Registor"></asp:RequiredFieldValidator>
-                            <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Chưa đúng!"
-                                CssClass="require" ControlToValidate="txtPasswordAgain" ControlToCompare="txtPassword"
-                                ValidationGroup="Registor"></asp:CompareValidator>
+                            <b><asp:Label ID="lblUserName" runat="server"></asp:Label></b>
                         </td>
                     </tr>
                     <tr>
@@ -124,7 +98,7 @@
                     </tr>
                     <tr>
                         <td colspan="2" align="center">
-                            <asp:Button runat="server" ID="btnRegistor" Text="  Đăng ký  " ValidationGroup="Registor"
+                            <asp:Button runat="server" ID="btnRegistor" Text="  Cập nhật  " ValidationGroup="Registor"
                                 OnClick="btnRegistor_Click" />
                         </td>
                     </tr>
