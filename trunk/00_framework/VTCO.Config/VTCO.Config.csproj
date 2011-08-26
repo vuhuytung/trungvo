@@ -80,8 +80,6 @@
     <Compile Include="Global.cs" />
     <Compile Include="Pattern\Prototype.cs" />
     <Compile Include="Pattern\Singleton.cs" />
-    <Compile Include="PermissionBackendConstants.cs" />
-    <Compile Include="ProductStatusConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SettingSingleton.cs" />
   </ItemGroup>
