@@ -62,9 +62,9 @@ namespace WorkFlowBLL
            {
                sb.Append("<div class='mybox'>");
                sb.Append("<div class='mybox_img'>");
-               sb.Append("<img alt='anh'  src='" + item.Img + "'/></div>");
+               sb.Append("<img alt='Image' title=\" item.Title\" src='" + item.Img + "'/></div>");
 
-               sb.Append("<div class='mybox_title'>"+ item.Title + " </div>");
+               sb.Append("<div class='mybox_title'><a href=\""+item.Url+"\">"+ item.Title + "</a></div>");
                sb.Append("</div>");
            }
            sb.Append("</div>");
