@@ -75,7 +75,7 @@ public partial class BackEnd_pages_content_News : System.Web.UI.Page
             ddlNewsMenu.Items.Clear();
             GetMenuNewsAdd(tb, 0, "");
 
-            ucPaging1.PageSize = 10;
+            ucPaging1.PageSize = 15;
             ucPaging1.CurrentPage = 1;
             ucPaging1.PageDisplay = 10;
             pageChange(ucPaging1);

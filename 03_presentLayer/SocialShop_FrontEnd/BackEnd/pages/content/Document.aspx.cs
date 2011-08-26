@@ -52,7 +52,7 @@ public partial class BackEnd_pages_content_Document : System.Web.UI.Page
             ddlTypeDocEdit.Items.Clear();
             GetMenuNewsAdd(tb, 0, "");
             
-            ucPaging1.PageSize = 8;
+            ucPaging1.PageSize = 15;
             ucPaging1.PageDisplay = 5;
             ucPaging1.CurrentPage = 1;
             ucPaging1_PageChange(ucPaging1);
