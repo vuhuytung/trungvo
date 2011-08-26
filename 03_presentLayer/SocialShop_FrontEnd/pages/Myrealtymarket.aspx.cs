@@ -81,11 +81,13 @@ public partial class pages_Myrealtymarket : System.Web.UI.Page
          CtrRealtyMarket ctrN = new CtrRealtyMarket();
 
 
-         var _data = ctrN.GetListRealtyMarket(userID, code, typecode, cat, begin, end, 1, ucPaging1.CurrentPage, ucPaging1.PageSize);
+         var _data = ctrN.GetListRealtyMarket(userID, code, typecode, cat, begin, end, -1, ucPaging1.CurrentPage, ucPaging1.PageSize);
          RptReatyMarket.DataSource = _data.Items;
          RptReatyMarket.DataBind();
          ucPaging1.TotalRecord = _data.TotalRecord;
          divPaging.Visible = ucPaging1.TotalPage > 1;
+        RptReatyMarket.Visible=ucPaging1.TotalRecord>0;
+        ctNoFound.Visible = !RptReatyMarket.Visible;
     }
     private void GetPrice(int type, ref long begin, ref long end)
     {

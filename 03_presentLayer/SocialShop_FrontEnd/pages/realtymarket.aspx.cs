@@ -95,6 +95,8 @@ public partial class pages_realtymarket : System.Web.UI.Page
          RptReatyMarket.DataBind();
          ucPaging1.TotalRecord = _data.TotalRecord;
          divPaging.Visible = ucPaging1.TotalPage > 1;
+         RptReatyMarket.Visible = ucPaging1.TotalRecord > 0;
+         ctNotFound.Visible = !RptReatyMarket.Visible;
     }
     private void GetPrice(int type, ref long begin, ref long end)
     {
