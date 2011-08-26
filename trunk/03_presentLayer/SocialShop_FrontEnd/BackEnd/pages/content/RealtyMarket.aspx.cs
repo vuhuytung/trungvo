@@ -68,7 +68,7 @@ public partial class BackEnd_pages_content_RealtyMarket : System.Web.UI.Page
 
             //================
 
-            ucPaging1.PageSize = 10;
+            ucPaging1.PageSize = 15;
             ucPaging1.PageDisplay = 5;
 
             ucPaging1.CurrentPage = 1;
