@@ -8,5 +8,5 @@
 <div class="bottomFooter">
     AULAC real estate JSC<br />
     Copyright &copy; 2011 AULAC Jsc. All right resevred    
-    - Add: Xóm 15 - Nghi Kim - TP. Vinh - Nghệ An
+    - Add: <%=add %>
 </div>
