@@ -39,8 +39,7 @@
                         <td style="width: 100px" class="tdStyle">
                             Tên đăng nhập:
                         </td>
-                        <td style="width: 160px" class="tdStyle" colspan="2">
-                            <asp:TextBox ID="txtUserName" runat="server" Width="200px" MaxLength="100" CssClass="inputText"></asp:TextBox>
+                        <td style="width: 160px" class="tdStyle" colspan="2">                            
                             <asp:Label runat="server" ID="lblUserName"></asp:Label>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ValidationGroup="news"
                                 ForeColor="Red" ErrorMessage="*" ControlToValidate="txtUserName"></asp:RequiredFieldValidator>

@@ -172,10 +172,11 @@ public partial class pages_Bds_AddNews : System.Web.UI.Page
                 
                 
                 if(
-                ctrN.Insert(txtTitle.Text.Trim(), txtDesc.Text.Trim(), @"/images/market/" + fileName, txtUser.Text.Trim(), txtPhone.Text.Trim(), txtEmail.Text.Trim(), txtAddress.Text.Trim(), price * Convert.ToInt32(ddlDonVi.SelectedValue),
-                    Int32.Parse(ddlTypeBDS.SelectedValue), txtLegal.Text.Trim(), dientich, Int32.Parse(ddlClientRoom.SelectedValue), Int32.Parse(ddlBedRoom.SelectedValue), 
-                    Int32.Parse(ddlBathrooms.SelectedValue), txtPosition.Text.Trim(), Int32.Parse(ddlFloor.SelectedValue), chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked, 
-                    chkUniversity.Checked,locationID,txtStreet.Text.Trim(), 0,userID)>0)
+                ctrN.Insert(txtTitle.Text.Trim(),HttpUtility.HtmlEncode(txtDesc.Text.Trim()), @"/images/market/" + fileName, HttpUtility.HtmlEncode(txtUser.Text.Trim()), HttpUtility.HtmlEncode(txtPhone.Text.Trim()),
+                    HttpUtility.HtmlEncode(txtEmail.Text.Trim()), HttpUtility.HtmlEncode(txtAddress.Text.Trim()), price * Convert.ToInt32(ddlDonVi.SelectedValue),
+                    Int32.Parse(ddlTypeBDS.SelectedValue), HttpUtility.HtmlEncode(txtLegal.Text.Trim()), dientich, Int32.Parse(ddlClientRoom.SelectedValue), Int32.Parse(ddlBedRoom.SelectedValue), 
+                    Int32.Parse(ddlBathrooms.SelectedValue), HttpUtility.HtmlEncode(txtPosition.Text.Trim()), Int32.Parse(ddlFloor.SelectedValue), chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked, 
+                    chkUniversity.Checked,locationID,HttpUtility.HtmlEncode(txtStreet.Text.Trim()), 0,userID)>0)
                 {
                     ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('Thêm mới thành công! Chúng tôi sẽ kiểm duyệt trước khi đưa lên trang!'); window.location='/myrealtymarket';", true);
                 }
@@ -183,10 +184,11 @@ public partial class pages_Bds_AddNews : System.Web.UI.Page
             else
             {
                 if (
-                 ctrN.Insert(txtTitle.Text.Trim(), txtDesc.Text.Trim(), "", txtUser.Text.Trim(), txtPhone.Text.Trim(), txtEmail.Text.Trim(), txtAddress.Text.Trim(), price * Convert.ToInt32(ddlDonVi.SelectedValue),
-                     Int32.Parse(ddlTypeBDS.SelectedValue), txtLegal.Text.Trim(), dientich, Int32.Parse(ddlClientRoom.SelectedValue), Int32.Parse(ddlBedRoom.SelectedValue),
-                     Int32.Parse(ddlBathrooms.SelectedValue), txtPosition.Text.Trim(), Int32.Parse(ddlFloor.SelectedValue), chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked,
-                     chkUniversity.Checked, locationID, txtStreet.Text.Trim(), 0, userID) > 0)
+                 ctrN.Insert(txtTitle.Text.Trim(), HttpUtility.HtmlEncode(txtDesc.Text.Trim()), "", HttpUtility.HtmlEncode(txtUser.Text.Trim()), HttpUtility.HtmlEncode(txtPhone.Text.Trim()),
+                    HttpUtility.HtmlEncode(txtEmail.Text.Trim()), HttpUtility.HtmlEncode(txtAddress.Text.Trim()), price * Convert.ToInt32(ddlDonVi.SelectedValue),
+                    Int32.Parse(ddlTypeBDS.SelectedValue), HttpUtility.HtmlEncode(txtLegal.Text.Trim()), dientich, Int32.Parse(ddlClientRoom.SelectedValue), Int32.Parse(ddlBedRoom.SelectedValue),
+                    Int32.Parse(ddlBathrooms.SelectedValue), HttpUtility.HtmlEncode(txtPosition.Text.Trim()), Int32.Parse(ddlFloor.SelectedValue), chkMaugiao.Checked, chkHospital.Checked, chkschool.Checked, chkMarket.Checked,
+                    chkUniversity.Checked, locationID, HttpUtility.HtmlEncode(txtStreet.Text.Trim()), 0, userID) > 0)
                 {
                     ClientScript.RegisterStartupScript(Page.GetType(), "Thông báo", "alert('Thêm mới thành công! Chúng tôi sẽ kiểm duyệt trước khi đưa lên trang!'); window.location='/myrealtymarket';", true);
                 }

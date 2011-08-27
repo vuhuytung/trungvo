@@ -123,8 +123,8 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
             PartnersID = Int32.Parse(e.CommandArgument.ToString());
             var pat = partner.GetInfoByID(PartnersID);
             PartnersImg = pat.Img;
-            txtNameEdit.Text = pat.Name;
-            txtWebEdit.Text = pat.Website;
+            txtNameEdit.Text = HttpUtility.HtmlDecode(pat.Name);
+            txtWebEdit.Text = HttpUtility.HtmlDecode(pat.Website);
             try { ddlStatusEdit.SelectedValue = pat.Status.Value ? "1" : "0"; }
             catch { ddlStatusEdit.SelectedValue = "0"; }
             lblMsg.Text = "";
@@ -164,7 +164,7 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
             {
                 try
                 {
-                    if (partner.UpdatePartner(PartnersID, txtNameEdit.Text, PartnersImg, txtWebEdit.Text, ddlStatusEdit.SelectedValue == "1" ? true : false) > 0)
+                    if (partner.UpdatePartner(PartnersID, HttpUtility.HtmlEncode(txtNameEdit.Text), PartnersImg, HttpUtility.HtmlEncode(txtWebEdit.Text), ddlStatusEdit.SelectedValue == "1" ? true : false) > 0)
                     {
                         BindRpt();
                         lblMsg.Text = "Cập nhật thành công !";
@@ -191,7 +191,7 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
                     strFile += "\\" + strFile1;
                     fuploadEdit.SaveAs(strFile);
 
-                    if (partner.UpdatePartner(PartnersID, txtNameEdit.Text, @"/images/partner/" + strFile1, txtWebEdit.Text.Trim(), ddlStatusEdit.SelectedValue == "1" ? true : false) > 0)
+                    if (partner.UpdatePartner(PartnersID, HttpUtility.HtmlEncode(txtNameEdit.Text), @"/images/partner/" + strFile1, HttpUtility.HtmlEncode(txtWebEdit.Text.Trim()), ddlStatusEdit.SelectedValue == "1" ? true : false) > 0)
                     {
                         partner.DeleteImg(PartnersImg, Request);
                         BindRpt();
@@ -231,7 +231,7 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
         {
             if (fuploadLogo.FileName == "")
             {
-                if (partner.InsertPartner(txtName.Text, "#", txtWeb.Text, ddlStatus.SelectedValue == "1" ? true : false) > 0)
+                if (partner.InsertPartner( HttpUtility.HtmlEncode(txtName.Text), "#", HttpUtility.HtmlEncode(txtWeb.Text), ddlStatus.SelectedValue == "1" ? true : false) > 0)
                 {
                     lblMsg.Text = "Thêm mới thành công";
                     BindRpt();
@@ -252,7 +252,7 @@ public partial class BackEnd_pages_content_Partners : System.Web.UI.Page
                     strFile += "\\" + strFile1;
                     fuploadLogo.SaveAs(strFile);
 
-                    if (partner.InsertPartner(txtName.Text, @"/images/partner/" + strFile1, txtWeb.Text.Trim(), ddlStatus.SelectedValue == "1" ? true : false) > 0)
+                    if (partner.InsertPartner(HttpUtility.HtmlEncode(txtName.Text), @"/images/partner/" + strFile1, HttpUtility.HtmlEncode(txtWeb.Text.Trim()), ddlStatus.SelectedValue == "1" ? true : false) > 0)
                     {
                         lblMsg.Text = "Thêm mới thành công";
                         BindRpt();

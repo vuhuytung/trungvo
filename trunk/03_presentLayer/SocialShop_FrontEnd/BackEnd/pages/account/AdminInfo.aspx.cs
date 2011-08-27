@@ -44,18 +44,14 @@ public partial class BackEnd_pages_account_AdminInfo : System.Web.UI.Page
             AdminID = Convert.ToInt32(Session[Constants.SESSION_ADMIN_ID] ?? "-1");
             CtrAdmin ctrAdmin = new CtrAdmin();
             var info = ctrAdmin.AdminGetInfo(AdminID);
-            lblUserName.Text = info.UserName;
-            txtFullName.Text = info.FullName;
-            txtUserName.Visible = false;
+            lblUserName.Text = HtmlUtility.HtmlEncode(info.UserName);
+            txtFullName.Text = HtmlUtility.HtmlDecode(info.FullName);
             lblUserName.Visible = true;
-            txtEmail.Text = info.Email;
-            txtTelephone.Text = info.Telephone;
+            txtEmail.Text = HtmlUtility.HtmlDecode(info.Email);
+            txtTelephone.Text = HtmlUtility.HtmlDecode(info.Telephone);
             lblCreateDate.Text = info.DateCreate.Value.ToString("dd/MM/yyyy");
             rdpBirthday.SelectedDate = info.Birthday;
-            txtAbstract.Text = info.Description;
-            txtUserName.Text = info.UserName;
-            txtUserName.Visible = false;
-            lblUserName.Visible = true;
+            txtAbstract.Text = HtmlUtility.HtmlDecode(info.Description);
         }
     }    
     protected void lbtSave_Click(object sender, EventArgs e)
@@ -65,7 +61,8 @@ public partial class BackEnd_pages_account_AdminInfo : System.Web.UI.Page
             Response.Redirect("~/admin/notpermission");
         }
         CtrAdmin ctrAdmin = new CtrAdmin();
-        var ret = ctrAdmin.AdminUpdate(AdminID, txtFullName.Text, rdpBirthday.SelectedDate.Value, txtEmail.Text, txtTelephone.Text, txtAbstract.Text);     
+        var ret = ctrAdmin.AdminUpdate(AdminID, HtmlUtility.HtmlEncode(txtFullName.Text), rdpBirthday.SelectedDate.Value, HtmlUtility.HtmlEncode(txtEmail.Text), 
+            HtmlUtility.HtmlEncode(txtTelephone.Text), HtmlUtility.HtmlEncode(txtAbstract.Text));     
         if (ret> 0)
         {
             lblMsg.Text = "Cập nhật thành công";
