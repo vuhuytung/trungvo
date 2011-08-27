@@ -22,7 +22,8 @@ public partial class pages_Contact : System.Web.UI.Page
     protected void btnSend_Click(object sender, EventArgs e)
     {
         CtrNews ctrN = new CtrNews();
-        if (ctrN.ContactInsert(txtName.Text.Trim(), txtAddress.Text.Trim(), txtPhone.Text.Trim(), txtEmail.Text.Trim(), txtContent.Text.Trim()) > 0)
+        if (ctrN.ContactInsert(HttpUtility.HtmlEncode(txtName.Text.Trim()), HttpUtility.HtmlEncode(txtAddress.Text.Trim()), HttpUtility.HtmlEncode(txtPhone.Text.Trim()), 
+            HttpUtility.HtmlEncode(txtEmail.Text.Trim()), HttpUtility.HtmlEncode(txtContent.Text.Trim())) > 0)
         {
             tbdSuccess.Visible = true;
             tbdContact.Visible = false;

@@ -102,7 +102,7 @@ public partial class BackEnd_pages_content_SlideShow : System.Web.UI.Page
             {
                 try
                 {
-                    if (slide.SlideUpdate(SlideShowID, txtNameEdit.Text.Trim(), SlideShowImg, SlideShowImg + ".thumb", txtWebEdit.Text.Trim(), Convert.ToInt32(ddlStatusEdit.SelectedValue)) > 0)
+                    if (slide.SlideUpdate(SlideShowID, HttpUtility.HtmlEncode(txtNameEdit.Text.Trim()), SlideShowImg, SlideShowImg + ".thumb", HttpUtility.HtmlEncode(txtWebEdit.Text.Trim()), Convert.ToInt32(ddlStatusEdit.SelectedValue)) > 0)
                     {
                         BindRpt();
                         lblMsg.Text = "Cập nhật thành công !";
@@ -145,7 +145,8 @@ public partial class BackEnd_pages_content_SlideShow : System.Web.UI.Page
                     var newimg = Img.Crop(EditImage, 150, 100, VTCO.Library.ImageResize.AnchorPosition.Center);
                     newimg.Save(strFile2);
 
-                    if (slide.SlideUpdate(SlideShowID, txtNameEdit.Text.Trim(), @"/images/slideshow/" + strFile1, @"/images/slideshow/" + strFile1+".thumb", txtWebEdit.Text.Trim(), Convert.ToInt32(ddlStatusEdit.SelectedValue)) > 0)
+                    if (slide.SlideUpdate(SlideShowID, HttpUtility.HtmlEncode(txtNameEdit.Text.Trim()), @"/images/slideshow/" + strFile1, @"/images/slideshow/" + strFile1+".thumb", 
+                        HttpUtility.HtmlEncode(txtWebEdit.Text.Trim()), Convert.ToInt32(ddlStatusEdit.SelectedValue)) > 0)
                     {
                         slide.DeleteImg(SlideShowImg,Request);
                         BindRpt();
@@ -242,8 +243,8 @@ public partial class BackEnd_pages_content_SlideShow : System.Web.UI.Page
             SlideShowID = Int32.Parse(e.CommandArgument.ToString());
             var pat = slide.GetSlideInfo(SlideShowID);
             SlideShowImg = pat.Img;
-            txtNameEdit.Text = pat.Title;
-            txtWebEdit.Text = pat.Url;
+            txtNameEdit.Text = HttpUtility.HtmlDecode(pat.Title);
+            txtWebEdit.Text = HttpUtility.HtmlDecode(pat.Url);
             try { ddlStatusEdit.SelectedValue = pat.Status.ToString(); }
             catch { ddlStatusEdit.SelectedValue = "0"; }
             lblMsg.Text = "";
@@ -316,7 +317,8 @@ public partial class BackEnd_pages_content_SlideShow : System.Web.UI.Page
             //
 
             //========
-            if (slide.SlideInsert(txtName.Text, @"/images/slideshow/" + strFile1, @"/images/slideshow/" + strFile1 + ".thumb",txtWeb.Text.Trim(), Convert.ToInt32(ddlStatus.SelectedValue)) > 0)
+            if (slide.SlideInsert(HttpUtility.HtmlEncode(txtName.Text.Trim()), @"/images/slideshow/" + strFile1, @"/images/slideshow/" + strFile1 + ".thumb",
+                HttpUtility.HtmlEncode(txtWeb.Text.Trim()), Convert.ToInt32(ddlStatus.SelectedValue)) > 0)
             {
                 BindRpt();
                 Panel1.Visible = false;

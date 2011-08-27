@@ -183,7 +183,7 @@ public partial class BackEnd_pages_account_Function : System.Web.UI.Page
                     GetMenuTop(null, 0, "", MenuID);
                     txtMenuName.Text = HtmlUtility.HtmlDecode(MyMenuInfo.Name.ToString());
                     txtOrder.Text = MyMenuInfo.Order.ToString();
-                    txtUrl.Text = MyMenuInfo.Url;
+                    txtUrl.Text = HtmlUtility.HtmlDecode(MyMenuInfo.Url);
                     if (MyMenuInfo.Status == 1)
                     {
                         SetControlsRdb(true);

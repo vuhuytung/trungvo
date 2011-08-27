@@ -150,7 +150,7 @@ public partial class BackEnd_pages_content_Document : System.Web.UI.Page
             {
                 CurrentDocID = Convert.ToInt32(e.CommandArgument);
                 var info = ctrN.GetInfoDocByID(CurrentDocID);
-                txtTitleEdit.Text = info.Title;
+                txtTitleEdit.Text = HttpUtility.HtmlDecode(info.Title);
                 txtDescEdit.Text = HttpUtility.HtmlDecode(info.Description);
                 ddlStatusEdit.SelectedValue = info.Status.ToString();
                 Panel1.Visible = true;
@@ -189,9 +189,9 @@ public partial class BackEnd_pages_content_Document : System.Web.UI.Page
 
         if (fuploadEdit.FileName == "")
         {
-            string text = HttpUtility.HtmlEncode(txtDescEdit.Text).Replace("\n", "</br>");
+            string text = HttpUtility.HtmlEncode(txtDescEdit.Text.Trim()).Replace("\n", "</br>");
             DateTime day = DateTime.Now;
-            if (ctrN.UpdateDocByID(CurrentDocID, txtTitleEdit.Text, text, ctrN.GetInfoDocByID(CurrentDocID).URL, day, Convert.ToInt32(ddlTypeDocEdit.SelectedValue), Convert.ToInt32(ddlStatusEdit.SelectedValue)) > 0)
+            if (ctrN.UpdateDocByID(CurrentDocID, HttpUtility.HtmlEncode(txtTitleEdit.Text.Trim()), text, ctrN.GetInfoDocByID(CurrentDocID).URL, day, Convert.ToInt32(ddlTypeDocEdit.SelectedValue), Convert.ToInt32(ddlStatusEdit.SelectedValue)) > 0)
             {
                 Panel2.Visible = false;
                 Panel3.Visible = true;
@@ -213,7 +213,7 @@ public partial class BackEnd_pages_content_Document : System.Web.UI.Page
             fuploadEdit.PostedFile.SaveAs(strFile);
             string text = HttpUtility.HtmlEncode(txtDescEdit.Text).Replace("\n", "</br>");
             string old = ctrN.GetInfoDocByID(CurrentDocID).URL;
-            if (ctrN.UpdateDocByID(CurrentDocID, txtTitleEdit.Text, text, fileName, DateTime.Now, Convert.ToInt32(ddlTypeDocEdit.SelectedValue), Convert.ToInt32(ddlStatusEdit.SelectedValue)) > 0)
+            if (ctrN.UpdateDocByID(CurrentDocID, HttpUtility.HtmlDecode(txtTitleEdit.Text.Trim()), text, fileName, DateTime.Now, Convert.ToInt32(ddlTypeDocEdit.SelectedValue), Convert.ToInt32(ddlStatusEdit.SelectedValue)) > 0)
             {
                 doc.DeleteDocument(old, Request);
                 Panel2.Visible = false;
@@ -238,7 +238,8 @@ public partial class BackEnd_pages_content_Document : System.Web.UI.Page
             string fileName = DateTime.Now.ToString("ddMMyyhhmmss") + fupload.FileName;
             strFile += "\\" + fileName;
             fupload.PostedFile.SaveAs(strFile);
-            if (ctrN.InsertDoc(txtTitle.Text, txtDesc.Text, fileName, DateTime.Now, Int32.Parse(ddlTypeDoc1.SelectedValue), Convert.ToInt32(ddlStatusNew.SelectedValue)) > 0)
+            string text = HttpUtility.HtmlEncode(txtDesc.Text.Trim()).Replace("\n", "</br>");
+            if (ctrN.InsertDoc(HttpUtility.HtmlEncode(txtTitle.Text), text, fileName, DateTime.Now, Int32.Parse(ddlTypeDoc1.SelectedValue), Convert.ToInt32(ddlStatusNew.SelectedValue)) > 0)
             {
                 Panel2.Visible = false;
                 Panel3.Visible = true;

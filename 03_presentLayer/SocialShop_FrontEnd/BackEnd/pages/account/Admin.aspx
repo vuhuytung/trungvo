@@ -113,7 +113,7 @@
                                 <%#Eval("RowNumber")%>&nbsp;
                             </div>
                             <div class="adminColumn" style="width: 150px; text-align: left;">
-                                <%#Eval("UserName")%>&nbsp;
+                                <%#VTCO.Library.HtmlUtility.HtmlEncode(Eval("UserName").ToString())%>&nbsp;
                             </div>
                             <div class="adminColumn" style="width: 180px; text-align: left;">
                                 <%#Eval("FullName")%>&nbsp;

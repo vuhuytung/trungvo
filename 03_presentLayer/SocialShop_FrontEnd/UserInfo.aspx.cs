@@ -17,12 +17,12 @@ public partial class UserInfo : System.Web.UI.Page
         {
             CtrUser ctrU = new CtrUser();
             var info = ctrU.UserGetInfo(Convert.ToInt32(Session[VTCO.Config.Constants.SESSION_USER_ID] ?? -1));
-            lblUserName.Text = info.UserName;
-            txtFullName.Text = info.FullName;
-            txtEmail.Text = info.Email;
+            lblUserName.Text = HttpUtility.HtmlDecode(info.UserName);
+            txtFullName.Text = HttpUtility.HtmlDecode(info.FullName);
+            txtEmail.Text = HttpUtility.HtmlDecode(info.Email);
             rdpBirthday.SelectedDate = info.Birthday;
-            txtAddress.Text = info.Address;
-            txtMobile.Text = info.Phone;
+            txtAddress.Text = HttpUtility.HtmlDecode(info.Address);
+            txtMobile.Text = HttpUtility.HtmlDecode(info.Phone);
         }
     }
     protected void btnRegistor_Click(object sender, EventArgs e)
@@ -30,7 +30,8 @@ public partial class UserInfo : System.Web.UI.Page
         if (!Convert.ToBoolean(Session[VTCO.Config.Constants.SESSION_USER_ISLOGIN] ?? false))
             Response.Redirect("~/login");
         CtrUser ctrUser = new CtrUser();
-        if (ctrUser.Update(Convert.ToInt32(Session[VTCO.Config.Constants.SESSION_USER_ID] ?? -1), txtFullName.Text.Trim(), rdpBirthday.SelectedDate.Value, txtAddress.Text.Trim(), txtMobile.Text.Trim(), txtEmail.Text.Trim()) > 0)
+        if (ctrUser.Update(Convert.ToInt32(Session[VTCO.Config.Constants.SESSION_USER_ID] ?? -1), HttpUtility.HtmlEncode(txtFullName.Text.Trim()), 
+            rdpBirthday.SelectedDate.Value, HttpUtility.HtmlEncode(txtAddress.Text.Trim()), HttpUtility.HtmlEncode(txtMobile.Text.Trim()), HttpUtility.HtmlEncode(txtEmail.Text.Trim())) > 0)
         {
             ClientScript.RegisterStartupScript(Page.GetType(), "thongbao", "alert('Cập nhật thành công!')", true);
         }

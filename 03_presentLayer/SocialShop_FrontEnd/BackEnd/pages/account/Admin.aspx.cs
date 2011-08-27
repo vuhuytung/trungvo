@@ -183,17 +183,17 @@ public partial class BackEnd_pages_account_Admin : System.Web.UI.Page
             LoadPanel(3);
             CurrentNewsID = Convert.ToInt32(e.CommandArgument);
             var info = ctrAdmin.AdminGetInfo(CurrentNewsID);
-            lblUserName.Text = info.UserName;
-            txtFullName.Text = info.FullName;
+            lblUserName.Text = HtmlUtility.HtmlEncode(info.UserName);
+            txtFullName.Text = HtmlUtility.HtmlDecode(info.FullName);
             txtUserName.Visible = false;
             lblUserName.Visible = true;
             trPass.Visible = false;
-            txtEmail.Text = info.Email;
-            txtTelephone.Text = info.Telephone;
+            txtEmail.Text = HtmlUtility.HtmlEncode(info.Email);
+            txtTelephone.Text = HtmlUtility.HtmlEncode(info.Telephone);
             lblCreateDate.Text = info.DateCreate.Value.ToString("dd/MM/yyyy");
             rdpBirthday.SelectedDate = info.Birthday;
             ddlStatusEdit.SelectedValue = info.Status.ToString();
-            txtAbstract.Text = info.Description;
+            txtAbstract.Text = HtmlUtility.HtmlEncode(info.Description);
             txtUserName.Text = info.UserName;
             txtUserName.Visible = false;
             lblUserName.Visible = true;
@@ -257,7 +257,9 @@ public partial class BackEnd_pages_account_Admin : System.Web.UI.Page
 
         CtrAdmin ctrAdmin = new CtrAdmin();
         var pass = VTCO.Utils.Encryption.GetMD5(txtPassword.Text);
-        var ret = ctrAdmin.AdminInsert(txtUserName.Text, pass, txtFullName.Text, rdpBirthday.SelectedDate.Value, txtEmail.Text, txtTelephone.Text, txtAbstract.Text, Convert.ToInt32(ddlStatusEdit.SelectedValue));
+        var ret = ctrAdmin.AdminInsert(txtUserName.Text, pass, HtmlUtility.HtmlEncode(txtFullName.Text.Trim()), rdpBirthday.SelectedDate.Value, 
+        HtmlUtility.HtmlEncode(txtEmail.Text.Trim()), HtmlUtility.HtmlEncode(txtTelephone.Text.Trim()), HtmlUtility.HtmlEncode(txtAbstract.Text.Trim()), 
+        Convert.ToInt32(ddlStatusEdit.SelectedValue));
         if (ret > 0)
         {
             lblMsg.Text = "Thêm mới thành công!";
@@ -281,7 +283,8 @@ public partial class BackEnd_pages_account_Admin : System.Web.UI.Page
             Response.Redirect("~/admin/notpermission");
         }
         CtrAdmin ctrAdmin = new CtrAdmin();
-        var ret = ctrAdmin.AdminUpdate(CurrentNewsID,txtFullName.Text, rdpBirthday.SelectedDate.Value, txtEmail.Text, txtTelephone.Text, txtAbstract.Text, Convert.ToInt32(ddlStatusEdit.SelectedValue));     
+        var ret = ctrAdmin.AdminUpdate(CurrentNewsID, HtmlUtility.HtmlEncode(txtFullName.Text.Trim()), rdpBirthday.SelectedDate.Value, HtmlUtility.HtmlEncode(txtEmail.Text.Trim()),
+           HtmlUtility.HtmlEncode(txtTelephone.Text.Trim()), HtmlUtility.HtmlEncode(txtAbstract.Text.Trim()), Convert.ToInt32(ddlStatusEdit.SelectedValue));
         if (ret> 0)
         {
             lblMsg.Text = "Cập nhật thành công";
