@@ -56,9 +56,9 @@
                                     <td colspan="2" style="padding: 20px; padding-top: 0; line-height: 25px;">
                                         <b style="text-transform: uppercase; color: #459B30;">Công ty cổ phần bất động sản Âu
                                             Lạc</b><br />
-                                        Địa chỉ: <b>Xóm 15 - Nghi Kim - TP.Vinh - Nghệ An</b><br />
-                                        Email: <b>votrongtrung@gmail.com</b><br />
-                                        Điện thoại: <b>01682827659</b><br />
+                                        <%=(config!=null)?"Địa chỉ: <b>"+config.Address+"</b><br />":"" %>
+                                        <%=(config != null) ? "Email: <b>" + config.Email + "</b><br />" : ""%>
+                                        <%=(config != null) ? "Điện thoại: <b>" + config.Phone + "</b><br />" : ""%>
                                     </td>
                                 </tr>
                                 <tbody runat="server" id="tbdSuccess" visible="false">
