@@ -18,7 +18,7 @@ public partial class master_masterBackend : System.Web.UI.MasterPage
 {
     protected void Page_Init(object sender, EventArgs e)
     {
-        Session.Timeout = 60;
+        Session.Timeout = 120;
         bool islogin = Convert.ToBoolean(Session[Constants.SESSION_ADMIN_ISLOGIN] ?? false);
         if (!islogin)
             Response.Redirect("~/admin/login");
