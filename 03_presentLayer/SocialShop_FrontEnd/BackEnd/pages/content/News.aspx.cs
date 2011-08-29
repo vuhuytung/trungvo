@@ -372,6 +372,8 @@ public partial class BackEnd_pages_content_News : System.Web.UI.Page
         }
         int adminID = 0;
         adminID = Convert.ToInt32(Session[Constants.SESSION_ADMIN_ID] ?? 0);
+        if (adminID <= 0)
+            Response.Redirect("~/admin/login");
         var ret = ctrNews.Insert(HtmlUtility.HtmlEncode(txtTitle.Text), HtmlUtility.HtmlEncode(txtAbstract.Text), radContent.Content, image, rdpPublishDateEdit.SelectedDate.Value, Convert.ToInt32(ddlNewsMenu.SelectedValue), HtmlUtility.HtmlEncode(txtResource.Text), ddlStatusEdit.SelectedValue == "1" ? true : false, ddlIsHotEdit.SelectedValue == "1" ? true : false, adminID);
         if (ret > 0)
         {
@@ -421,6 +423,9 @@ public partial class BackEnd_pages_content_News : System.Web.UI.Page
         CtrNews ctrNews = new CtrNews();
         int adminID = 0;
         adminID = Convert.ToInt32(Session[Constants.SESSION_ADMIN_ID] ?? 0);
+        if (adminID <= 0)
+            Response.Redirect("~/admin/login");
+        string imgN = ctrNews.GetInfo(newsID).Img;
         if (ctrNews.Update(newsID, title, description, content, image, publishDate, categoryID, resource, status, isHot, adminID) > 0)
         {
             lblMsg.Text = "Cập nhật thành công";
@@ -438,7 +443,7 @@ public partial class BackEnd_pages_content_News : System.Web.UI.Page
                 {
                     //loi luu anh 
                 }
-                ctrNews.DeleteImage(Request, imgNews.Src.Substring(0, imgNews.Src.IndexOf(".thumb")));
+                ctrNews.DeleteImage(Request, imgN);
             }
             Response.Redirect("~/admin/news");
         }
